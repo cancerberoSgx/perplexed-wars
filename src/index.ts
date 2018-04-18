@@ -9,6 +9,8 @@ export function start() {
   
   
   console.log('hello');
+
+  debugger;
   
   const p = document.createElement('p');
   p.innerHTML = 'hello world';
