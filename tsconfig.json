@@ -1,22 +1,21 @@
 {
   "compilerOptions": {
     "target": "es2018",
-    "module": "commonjs",
+    "module": "system",
     "lib": [
       "es2016",
       "dom"
     ],
-    "outDir": "lib",
+    "outDir": "dist",
+    "outFile": "dist/bundle.js",
     "removeComments": false,
     "preserveConstEnums": true,
-    "declaration": true,
-    "declarationDir": "dist",
     "sourceMap": true,
-    "baseUrl": "./src"
+    "baseUrl": "./src",
+    "rootDir": "."
   },
   "include": [
     "src/**/*.ts",
-    "spec/**/*.ts",
-    "testing/**/*.ts"
+    "spec/**/*.ts"
   ]
 }

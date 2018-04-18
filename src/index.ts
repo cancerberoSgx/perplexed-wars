@@ -1,5 +1,16 @@
-console.log('hello')
+import { Game } from './model/Game';
+import { Board } from './model/Board';
 
-const p = document.createElement('p')
-p.innerHTML = 'hello world'
-document.body.appendChild(p)
+
+export function start() {
+
+  const game = new Game();
+  const board = new Board();
+  
+  
+  console.log('hello');
+  
+  const p = document.createElement('p');
+  p.innerHTML = 'hello world';
+  document.body.appendChild(p);
+}

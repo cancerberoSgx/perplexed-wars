@@ -4,14 +4,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "browserify src/index.ts -o dist/bundle.js",
-    "watch": "watchify src/index.ts -o dist/bundle.js",
-    "test": "ts-node -r tsconfig-paths/register node_modules/jasmine/bin/jasmine --config=./spec/support/jasmine.json"
+    "build": "tsc -m system --outFile dist/bundle.js",
+    "watch": "tsc --watch -m system --outFile dist/bundle.js",
+    "test": "ts-node -r tsconfig-paths/register node_modules/jasmine/bin/jasmine --config=./spec/support/jasmine.json",
+    "prepare": "mkdir dist; cp -r node_modules/systemjs/dist dist/systemjs; cp -r html/* dist"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {},
+  "dependencies": {
+    "systemjs": "^0.21.3",
+    "tslint-config-airbnb": "^5.8.0"
+  },
   "devDependencies": {
     "@types/jasmine": "^2.8.6",
     "@types/node": "^9.6.2",
