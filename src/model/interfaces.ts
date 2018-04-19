@@ -1,7 +1,5 @@
-
-
 export interface IState {
-  board: IBoard,
+  board: IBoard
   players?: IPlayer[]
 }
 export interface IThing{
@@ -15,14 +13,17 @@ export interface IPlayer extends IThing{
 }
 export interface IBoard {
   boxes: IBox[]
+  n: number
+  m: number
+  traspasable: false
 }
 export interface IBox extends IThing {
-  x:number,
-  y: number,
-  terrain: string,
+  x:number
+  y: number
+  terrain: string
   units: IUnit[]
 }
 export interface IUnit extends IThing{
-  type:string,
+  type:string
   playerId: string
 }
