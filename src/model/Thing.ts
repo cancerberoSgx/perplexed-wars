@@ -1,6 +1,6 @@
 export class Thing {
 
-  name: string
-  description: string
-  id: string
+  public name: string
+  public description: string
+  public id: string
 }

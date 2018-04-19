@@ -1,21 +1,23 @@
-import { Thing } from './Thing';
-import { Terrain } from './Terrain';
+// import { Terrain } from './Terrain';
 import { Box } from './Box';
+import { Thing } from './Thing';
 
 export class Board extends Thing {
 
-  constructor() {
+  public config: IBoardConfig;
+  public boxes: Box[][];
+  
+  constructor(config: IBoardConfig) {
     super();
+    this.config = config
   }
 
-  boxes: Box[][];
-  
-  test1(): string {
+  public test1(): string {
     return 'hello';
   }
 }
 
-export interface BoardConfig {
+export interface IBoardConfig {
   n:number;
   m: number;
 }

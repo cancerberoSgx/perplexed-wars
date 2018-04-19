@@ -1,21 +1,29 @@
 {
   "compilerOptions": {
-    "target": "es2018",
-    "module": "system",
-    "lib": [
-      "es2016",
-      "dom"
-    ],
-    "outDir": "dist",
-    "outFile": "dist/bundle.js",
-    "removeComments": false,
-    "preserveConstEnums": true,
+    "outDir": "build/dist",
+    "module": "esnext",
+    "target": "es5",
+    "lib": ["es6", "dom"],
     "sourceMap": true,
-    "baseUrl": "./src",
-    "rootDir": "."
+    "allowJs": true,
+    "jsx": "react",
+    "moduleResolution": "node",
+    "rootDir": "src",
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "noUnusedLocals": true
   },
-  "include": [
-    "src/**/*.ts",
-    "spec/**/*.ts"
+  "exclude": [
+    "node_modules",
+    "build",
+    "scripts",
+    "acceptance-tests",
+    "webpack",
+    "jest",
+    "src/setupTests.ts"
   ]
 }

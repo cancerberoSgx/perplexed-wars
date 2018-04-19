@@ -1,37 +1,28 @@
 {
   "name": "perplexed-wars",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "build": "tsc -m system --outFile dist/bundle.js",
-    "watch": "tsc --watch -m system --outFile dist/bundle.js",
-    "test": "ts-node -r tsconfig-paths/register node_modules/jasmine/bin/jasmine --config=./spec/support/jasmine.json",
-    "prepare": "mkdir dist; cp -r node_modules/systemjs/dist dist/systemjs; cp -r html/* dist"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "version": "0.0.1",
+  "description": "real-time tower-defense-like game but where you decide if attack or defend.",
+  "private": true,
   "dependencies": {
-    "systemjs": "^0.21.3",
-    "tslint-config-airbnb": "^5.8.0"
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
+    "react-redux": "^5.0.7",
+    "react-scripts-ts": "2.15.1",
+    "redux": "^4.0.0"
+  },
+  "scripts": {
+    "start": "react-scripts-ts start",
+    "build": "react-scripts-ts build",
+    "test": "react-scripts-ts test --env=jsdom",
+    "eject": "react-scripts-ts eject"
   },
   "devDependencies": {
-    "@types/jasmine": "^2.8.6",
-    "@types/node": "^9.6.2",
-    "@types/shelljs": "^0.7.8",
-    "browserify": "^16.2.0",
-    "jasmine": "^3.1.0",
-    "nyc": "^11.6.0",
-    "shelljs": "^0.8.1",
-    "strip-ansi": "^4.0.0",
-    "ts-node": "^5.0.1",
-    "tsconfig-paths": "^3.2.0",
-    "tsify": "^4.0.0",
-    "tslint": "^5.9.1",
-    "tslint-config-airbnb-base": "^0.1.0",
-    "typedoc": "^0.11.1",
-    "typescript": "^2.8.1",
-    "watchify": "^3.11.0"
+    "@types/jest": "^22.2.3",
+    "@types/node": "^9.6.5",
+    "@types/react": "^16.3.11",
+    "@types/react-dom": "^16.0.5",
+    "@types/react-redux": "^5.0.16",
+    "@types/redux": "^3.6.0",
+    "typescript": "^2.8.1"
   }
 }

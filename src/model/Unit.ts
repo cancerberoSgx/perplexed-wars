@@ -1,11 +1,11 @@
 import { Thing } from './Thing';
 
 export class Unit extends Thing {
-  defaultAttributes: UnitAttributes;
-  currentAttributes: UnitAttributes;
+  public defaultAttributes: IUnitAttributes;
+  public currentAttributes: IUnitAttributes;
 }
 
-export interface UnitAttributes{
+export interface IUnitAttributes{
   moveSpeed:number;
   attackSpeed: number;
   health: number;

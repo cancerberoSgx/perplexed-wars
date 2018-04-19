@@ -2,19 +2,21 @@ import { Thing } from './Thing';
 
 export class Game extends Thing{
 
-  constructor(options?: GameOptions) {
+
+  public options: IGameOptions;
+  public defaultOptions: IGameOptions;
+
+  
+  constructor(options?: IGameOptions) {
     super();
     this.options = Object.assign({}, this.defaultOptions, options || {});
   }
   
-  options: GameOptions;
-  defaultOptions: GameOptions;
-
-  start(options: GameOptions) {
-    
+  public start(options: IGameOptions) {
+    // console.log('TODO')
   }
 }
 
-export interface GameOptions {
+export interface IGameOptions {
   speed: number;
 }
