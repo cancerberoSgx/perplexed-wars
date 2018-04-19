@@ -1,15 +1,12 @@
 import * as React from 'react';
 import logo from '../logo.svg';
-import {initialState} from '../model/initialState'
 import { IState } from '../model/interfaces';
+import { State } from '../model/State';
 import './App.css';
-import {Board} from './Board';
+import { Board } from './Board';
 
 export class App extends React.Component<{}, IState> {
-  constructor() {
-    super({});
-    this.state = initialState()
-  }
+  
   public render() {
     return (
       <div className="App">
@@ -20,16 +17,20 @@ export class App extends React.Component<{}, IState> {
         <p className="App-intro">
           To get started, edit <code>src/App.tsx</code> and save to reload. Hello
         </p>
-        <Board board={this.state.board} key={123} />
-        <button onClick={()=>{
-          this.state.board.boxes[1].units.push({
-            type: 'tower', 
-            playerId: 'player2'
-          })
-          this.setState(this.state)
-        }} >addunit</button>
-        
+        <Board key={123} />
+        <button onClick={()=>this.clickAddUnitHandler} >addunit</button>
       </div>
     );
+  }
+
+  protected clickAddUnitHandler() {
+    const state = State.get()
+    const playerControls = state.uiState.playerControls.find(pc=>pc.playerId===state.uiState.currentPlayer)||{}as any
+    playerControls.addUnitButtonPressed = !playerControls.addUnitButtonPressed
+    state.board.boxes[1].units.push({
+      type: 'tower', 
+      playerId: 'player2'
+    })
+    this.setState(state)
   }
 }

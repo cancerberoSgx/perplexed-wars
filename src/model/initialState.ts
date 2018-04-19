@@ -1,4 +1,4 @@
-import { IState } from "./interfaces";
+import { IPlayerUIState, IState } from "./interfaces";
 
 
 // const state: IState = initialState()
@@ -100,9 +100,21 @@ export function initialState():IState {
       },
     ]
   },
-    players:[
-      {id: 'player1'}, {id: 'player2'}
-    ]
+  players:[
+    {id: 'player1'}, {id: 'player2'}
+  ],
+  uiState: {
+    currentPlayer: 'player1',
+    playerControls: [
+      {playerId: 'player1',  addUnitButtonPressed: false},
+      {playerId: 'player2', addUnitButtonPressed: false}
+    ],
+    getCurrentPlayerUIState():IPlayerUIState{
+      return this.playerControls.find(c=>c.playerId===this.currentPlayer) || this.playerControls[0]
+    }
+  }
+
+
   }
 }
 

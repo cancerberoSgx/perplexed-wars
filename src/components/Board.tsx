@@ -1,23 +1,19 @@
 import * as React from 'react';
-import { IState } from '../model/interfaces';
+import { State } from '../model/State';
+import { range } from '../util/util';
 import { BoardRow } from './BoardRow';
 
+export class Board extends React.Component<{}> {
 
-function range(n:number){
-  const a = new Array(n)
-  for (let i = 0; i < a.length; i++) {
-    a[i] = i  
+  public render() {
+    return (
+      <table className="Board">
+      {
+        range(State.get().board.n).map(n=>
+          <BoardRow key={n} n={n}/>
+        )
+      }
+      </table>
+    );
   }
-  return a
 }
-export const Board: React.StatelessComponent<IState> = ({board}) => {
-  return (
-    <table className="Board">
-    {
-      range(board.n).map(n=>
-        <BoardRow board={board} n={n} key={n}/>
-      )
-    }
-    </table>
-  );
-};

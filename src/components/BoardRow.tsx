@@ -1,20 +1,30 @@
 import * as React from 'react';
-import { IBoard } from '../model/interfaces';
+import { State } from '../model/State';
 import './BoardRow.css';
 
-interface IBoardRowState{
-  board: IBoard
+interface IBoardRowState {
   n: number
   key: number
 }
-export const BoardRow: React.StatelessComponent<IBoardRowState> = ({board, n}) => {
-  return (
+export class BoardRow extends React.Component<IBoardRowState> {
+  constructor(c:IBoardRowState){
+    super(c)
+  }
+  public render() {
+    return (
     <tr className="BoardRow">
     {
-      board.boxes.filter(b=>b.x===n).map(b=>
-       <td className="BoardBox"key={b.key}>{b.terrain} ({b.units.length})</td>
+      State.get().board.boxes.filter(b=>b.x===this.props.n).map(b=>
+       <td className="BoardBox" key={b.key} onClick={this.boxClicked} >{b.terrain} ({b.units.length})</td>
       )
     }  
     </tr>
-  );
+    )
+  }
+
+  protected boxClicked(){
+    if(State.get().uiState.getCurrentPlayerUIState().addUnitButtonPressed) {
+      console.log('unit added in here')
+    }
+  }
 }
