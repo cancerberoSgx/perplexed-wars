@@ -7,12 +7,11 @@ export interface IState extends IThing  {
 
 export interface IUnitType extends IThing {
   type:string
-
 }
 export interface IThing{
   name?:string
   description?:string
-  key?: number
+  // key?: number
   id?: string
   timestamp?: number
 }

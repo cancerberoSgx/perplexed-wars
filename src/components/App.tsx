@@ -8,6 +8,9 @@ import { BaseComponent, IBaseComponent } from './BaseComponent';
 import { State } from '../model/State';
 
 export class App extends BaseComponent<{}> {
+  constructor(props:{}){
+    super(props)
+  }
   public render() {
     return (
       <div className="App">

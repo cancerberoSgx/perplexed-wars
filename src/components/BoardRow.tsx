@@ -14,7 +14,7 @@ export class BoardRow extends BaseComponent<{n:number}>  {
       <tr className="BoardRow">
       {
         this.state.board.boxes.filter(b=>b.x===this.props.n).map(b=>
-          <td className="BoardBox" key={b.key} onClick={this.boxClicked} data-x={b.x} data-y={b.y}>{b.terrain} ({b.units.length})</td>
+          <td className="BoardBox" key={b.x+'_'+b.y} onClick={this.boxClicked} data-x={b.x} data-y={b.y}>{b.terrain} ({b.units.length})</td>
         )
       }  
       </tr>

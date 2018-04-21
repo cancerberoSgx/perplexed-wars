@@ -2,8 +2,8 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import {App} from './App';
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
+it('App renders without crashing', () => {
+  const parent = document.createElement('div');
+  ReactDOM.render(<App />, parent);
+  ReactDOM.unmountComponentAtNode(parent);
 });

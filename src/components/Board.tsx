@@ -4,8 +4,8 @@ import { BaseComponent, IBaseComponent } from './BaseComponent';
 import { BoardRow } from './BoardRow';
 
 export class Board extends BaseComponent<{}> implements IBaseComponent {
-  constructor(){
-    super({})
+  constructor(props:{}){
+    super(props)
   }
   public render() {
     return (
@@ -20,7 +20,6 @@ export class Board extends BaseComponent<{}> implements IBaseComponent {
       </table>
     );
   }
-
   public getComponentName(): string {
     return 'Board'
   }

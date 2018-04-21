@@ -12,17 +12,15 @@ export interface IBaseComponent {
 export abstract class BaseComponent<Prop> extends React.Component<Prop, IState>implements IBaseComponent{ 
   public abstract  getComponentName(): string
   public storeUsubscribe: Unsubscribe;
-
   constructor(props:Prop){
     super(props)
     this.state = State.get()
     this.storeUsubscribe = store.subscribe(()=>{
       const newState = State.get()
       this.setState(newState)
-      // console.log('new state setted', newState.timestamp, this.getComponentName())
+      console.log('new state setted', newState.timestamp, this.getComponentName())
     })
   }
-
   public componentWillUnmount(){
     if(super.componentWillUnmount!==undefined){
       super.componentWillUnmount()
