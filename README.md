@@ -7,3 +7,5 @@ TODO
 
 
 tsc && browserify -p tsify dist/src/index.js -o dist/bundle.js
+
+* revert changes in tslint.json and tsconfig.json - for warnings and validation - no unused variables, etc

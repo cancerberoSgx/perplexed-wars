@@ -8,7 +8,7 @@ export class State {
 
   private constructor(){
     this.stateInternal = initialState()
-  }
+  } 
   
   public static getInstance():State {
     if(!this.instance){
@@ -16,31 +16,27 @@ export class State {
     }
     return this.instance
   }
-  
-  public get state() : IState {
-    return this.stateInternal 
-  }
 
-  public static get():IState{
-    return this.getInstance().state
+  public static get(): IState{
+    return this.getInstance().stateInternal
   }
   
-
   public static getCurrentPlayerUIState(s:IState=this.getInstance().stateInternal):IPlayerUIState{
     return s.uiState.playerControls.find(c=>c.playerId===s.uiState.currentPlayer) || s.uiState.playerControls[0]
   }
   
-  public static clone(state:IState=this.getInstance().stateInternal):IState{
+  public static clone(state:IState):IState{
     const s = JSON.parse(JSON.stringify(state)) as IState
     s.timestamp = Date.now()
     return s
   }
 
-  public static modify( modify:(state:IState)=>void=(r)=>{return}, state:IState=this.getInstance().stateInternal):void{
-    const c = this.clone()
+  public static modify( state:IState, modify:(state:IState)=>void):IState{
+    const c = this.clone(state)
     c.timestamp = Date.now()
     modify(c)
     this.getInstance().stateInternal = c
+    return c
   }
 
   public static newUnit(type: string, playerId: string): IUnit {
@@ -50,6 +46,5 @@ export class State {
       timestamp: Date.now()
     }
   }
-
 
 }

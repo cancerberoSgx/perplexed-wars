@@ -3,11 +3,11 @@ import logo from '../logo.svg';
 import './App.css';
 import { Board } from './Board';
 import { store } from '../redurcers/store';
-import { IClickAddUnitButtonAction, ACTION_ADD_UNIT_CLICK_BUTTON } from '../redurcers/addNewUnit';
-import { BaseComponent } from './BaseComponent';
+import { ACTION_ADD_UNIT_CLICK_BUTTON } from '../redurcers/addNewUnit';
+import { BaseComponent, IBaseComponent } from './BaseComponent';
+import { State } from '../model/State';
 
 export class App extends BaseComponent<{}> {
-  
   public render() {
     return (
       <div className="App">
@@ -19,17 +19,17 @@ export class App extends BaseComponent<{}> {
           To get started, edit <code>src/App.tsx</code> and save to reload. Hello
         </p>
         <Board key={123} />
-        <button onClick={()=>this.clickAddUnitHandler} >addunit</button>
+        <button onClick={this.clickAddUnitHandler} className={State.getCurrentPlayerUIState(this.state).addUnitButtonPressed ? 'add-unit add-unit-button-pressed' : 'add-unit'} >Add Unit</button>
       </div>
     );
   }
-
   protected clickAddUnitHandler() {
-    const action:IClickAddUnitButtonAction = {
+    store.dispatch({
       type: ACTION_ADD_UNIT_CLICK_BUTTON, 
-      unitId: this.state.unitsTypes[0].type,
-      playerId: this.state.uiState.currentPlayer
-    }
-    store.dispatch(action)
+      unitId: State.get().unitsTypes[0].type
+    })
+  }
+  public getComponentName(): string {
+    return 'App'
   }
 }

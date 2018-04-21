@@ -5,16 +5,24 @@ import { store } from '../redurcers/store';
 import { State } from '../model/State';
 import { Unsubscribe } from 'redux';
 
-export class BaseComponent<Prop> extends React.Component<Prop, IState> {
+export interface IBaseComponent {
+  getComponentName():string
+}
+
+export abstract class BaseComponent<Prop> extends React.Component<Prop, IState>implements IBaseComponent{ 
+  public abstract  getComponentName(): string
   public storeUsubscribe: Unsubscribe;
 
   constructor(props:Prop){
     super(props)
     this.state = State.get()
     this.storeUsubscribe = store.subscribe(()=>{
-      this.setState(State.get())
+      const newState = State.get()
+      this.setState(newState)
+      // console.log('new state setted', newState.timestamp, this.getComponentName())
     })
   }
+
   public componentWillUnmount(){
     if(super.componentWillUnmount!==undefined){
       super.componentWillUnmount()

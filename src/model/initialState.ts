@@ -1,6 +1,8 @@
-import { IState } from "./interfaces";
+import { IState} from "./interfaces";
 
 export function initialState():IState {
+  const n=10
+  const m=12;
   return {
     timestamp: Date.now(),
     unitsTypes: [
@@ -9,109 +11,38 @@ export function initialState():IState {
       }
     ],
     board: {
-      n: 4, m: 4, 
-      boxes: [
-      {
-        x:0, 
-        y:0, 
-        terrain: 'green', 
-        units: [{
-          type: 'base', 
-          playerId: 'player1'
-        }]
-      }, 
-      {
-        x: 1, y: 0, 
-        terrain: 'grey', 
-        units: []
-      }, 
-      {
-        x: 2, y: 0, 
-        terrain: 'grey', 
-        units: []
-      }, 
-      {
-        x: 3, y: 0, 
-        terrain: 'grey', 
-        units: []
-      },
-      {
-        x: 0, y: 1, 
-        terrain: 'grey', 
-        units: []
-      },
-      {
-        x: 1, y: 1, 
-        terrain: 'grey', 
-        units: []
-      },
-      {
-        x: 2, y: 1, 
-        terrain: 'grey', 
-        units: []
-      },
-      {
-        x: 3, y: 1, 
-        terrain: 'grey', 
-        units: []
-      },
-
-      {
-        x: 0, y: 2, 
-        terrain: 'grey', 
-        units: []
-      },
-      {
-        x: 1, y: 2, 
-        terrain: 'grey', 
-        units: []
-      },
-      {
-        x: 2, y: 2, 
-        terrain: 'grey', 
-        units: []
-      },
-      {
-        x: 3, y: 2, 
-        terrain: 'grey', 
-        units: []
-      },
-
-      {
-        x: 0, y: 3, 
-        terrain: 'grey', 
-        units: []
-      },
-      {
-        x: 1, y: 3, 
-        terrain: 'grey', 
-        units: []
-      },
-      {
-        x: 2, y: 3, 
-        terrain: 'grey', 
-        units: []
-      },
-      {
-        x:3, 
-        y:3, 
-        terrain: 'green', 
-        units: [{
-          type: 'base', 
-          playerId: 'player2'
-        }]
-      },
-    ]
-  },
-  players:[
-    {id: 'player1'}, {id: 'player2'}
-  ],
-  uiState: {
-    currentPlayer: 'player1',
-    playerControls: [
-      {playerId: 'player1',  addUnitButtonPressed: false},
-      {playerId: 'player2', addUnitButtonPressed: false}
-    ]
+      n, m, 
+      boxes: createBoxes( n, m)
+    },
+    players:[
+      {id: 'player1'}, {id: 'player2'}
+    ],
+    uiState: {
+      currentPlayer: 'player1',
+      playerControls: [
+        {playerId: 'player1',  addUnitButtonPressed: false},
+        {playerId: 'player2', addUnitButtonPressed: false}
+      ]
+    }
   }
+}
+
+function createBoxes(n:number, m:number){
+  const boxes = []
+  for (let i = 0; i < n; i++) {
+    for (let j = 0; j < m; j++) {
+      boxes.push({
+        x: i, y: j, 
+        terrain: 'grey', 
+        units: i===0&&j===0 ? [{
+            type: 'base', 
+            playerId: 'player1'
+          }] : i===n-1&&j===m-1 ? [{
+            type: 'base', 
+            playerId: 'player2'
+          }] : []
+      })
+    }    
   }
+  return boxes
 }

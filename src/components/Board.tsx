@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { range } from '../util/util';
-import { BaseComponent } from './BaseComponent';
+import { BaseComponent, IBaseComponent } from './BaseComponent';
 import { BoardRow } from './BoardRow';
 
-export class Board extends BaseComponent<{}> {
+export class Board extends BaseComponent<{}> implements IBaseComponent {
   constructor(){
     super({})
   }
@@ -19,5 +19,9 @@ export class Board extends BaseComponent<{}> {
         </tbody>
       </table>
     );
+  }
+
+  public getComponentName(): string {
+    return 'Board'
   }
 }
