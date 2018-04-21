@@ -1,10 +1,13 @@
-import { IPlayerUIState, IState } from "./interfaces";
-
-
-// const state: IState = initialState()
+import { IState } from "./interfaces";
 
 export function initialState():IState {
   return {
+    timestamp: Date.now(),
+    unitsTypes: [
+      {
+        type: 'base'
+      }
+    ],
     board: {
       n: 4, m: 4, 
       boxes: [
@@ -108,47 +111,7 @@ export function initialState():IState {
     playerControls: [
       {playerId: 'player1',  addUnitButtonPressed: false},
       {playerId: 'player2', addUnitButtonPressed: false}
-    ],
-    getCurrentPlayerUIState():IPlayerUIState{
-      return this.playerControls.find(c=>c.playerId===this.currentPlayer) || this.playerControls[0]
-    }
+    ]
   }
-
-
   }
 }
-
-
-// export const ACTION_ADD_UNIT = 'add-unit'
-// export interface IAction {
-//   type:string
-// }
-// export interface IAddUnitAction extends IAction {
-//   // playerId: string
-//   x: number
-//   y : number,
-//   unit: IUnit
-// }
-
-// this is the handler from real user action - it interacts with the state variable
-// let state:IState
-// export function addUnit():IAddUnitAction{
-//   if (!state){
-//     state = initialState()
-//   }
-//   return {
-//       type:ACTION_ADD_UNIT,
-//       x: 1,
-//       y: 2, 
-//       unit: {
-//         type: 'tower',
-//         playerId: 'player2'
-//       }
-//     }
-// }
-// export const addTodo = (text:string) => ({
-//   id: nextTodoId++,
-//   text,
-//   type: 'ADD_TODO',
-// })
-​

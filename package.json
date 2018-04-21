@@ -4,6 +4,7 @@
   "description": "real-time tower-defense-like game but where you decide if attack or defend.",
   "private": true,
   "dependencies": {
+    "immutable": "^3.8.2",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "react-redux": "^5.0.7",
@@ -14,7 +15,9 @@
     "start": "react-scripts-ts start",
     "build": "react-scripts-ts build",
     "test": "react-scripts-ts test --env=jsdom",
-    "eject": "react-scripts-ts eject"
+    "eject": "react-scripts-ts eject",
+    "lint": "tslint src/**/*.ts",
+    "lint-fix": "tslint --fix src/**/*.ts"
   },
   "devDependencies": {
     "@types/jest": "^22.2.3",

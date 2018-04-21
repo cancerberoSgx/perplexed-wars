@@ -1,30 +1,36 @@
 import * as React from 'react';
 import { State } from '../model/State';
 import './BoardRow.css';
+import { BaseComponent } from './BaseComponent';
+import { IAddUnitAction, ACTION_ADD_UNIT } from '../redurcers/addNewUnit';
+import { store } from '../redurcers/store';
 
-interface IBoardRowState {
-  n: number
-  key: number
-}
-export class BoardRow extends React.Component<IBoardRowState> {
-  constructor(c:IBoardRowState){
-    super(c)
+export class BoardRow extends BaseComponent<{n:number}> {
+  constructor(props:{n:number}){
+    super(props)
   }
   public render() {
     return (
-    <tr className="BoardRow">
-    {
-      State.get().board.boxes.filter(b=>b.x===this.props.n).map(b=>
-       <td className="BoardBox" key={b.key} onClick={this.boxClicked} >{b.terrain} ({b.units.length})</td>
-      )
-    }  
-    </tr>
+      <tr className="BoardRow">hola_{this.state.board.boxes.length}
+      {
+        this.state.board.boxes.filter(b=>b.x===this.props.n).map(b=>
+          <td className="BoardBox" key={b.key} onClick={this.boxClicked} data-x={b.x} data-y={b.y}>{b.terrain} ({b.units.length})</td>
+        )
+      }  
+      </tr>
     )
   }
-
-  protected boxClicked(){
-    if(State.get().uiState.getCurrentPlayerUIState().addUnitButtonPressed) {
-      console.log('unit added in here')
+  protected boxClicked(e:React.MouseEvent<HTMLTableDataCellElement>){
+    if(e.currentTarget!==null){  
+      const action:IAddUnitAction = {
+        many: 1, 
+        type: ACTION_ADD_UNIT,
+        x: parseInt(e.currentTarget.getAttribute('data-x')||'0', 10), 
+        y: parseInt(e.currentTarget.getAttribute('data-y')||'0', 10),
+        playerId: State.get().uiState.currentPlayer,
+        unitId: State.get().unitsTypes[0].type
+      }
+      store.dispatch(action)
     }
   }
 }

@@ -1,11 +1,12 @@
 import * as React from 'react';
 import logo from '../logo.svg';
-import { IState } from '../model/interfaces';
-import { State } from '../model/State';
 import './App.css';
 import { Board } from './Board';
+import { store } from '../redurcers/store';
+import { IClickAddUnitButtonAction, ACTION_ADD_UNIT_CLICK_BUTTON } from '../redurcers/addNewUnit';
+import { BaseComponent } from './BaseComponent';
 
-export class App extends React.Component<{}, IState> {
+export class App extends BaseComponent<{}> {
   
   public render() {
     return (
@@ -24,13 +25,11 @@ export class App extends React.Component<{}, IState> {
   }
 
   protected clickAddUnitHandler() {
-    const state = State.get()
-    const playerControls = state.uiState.playerControls.find(pc=>pc.playerId===state.uiState.currentPlayer)||{}as any
-    playerControls.addUnitButtonPressed = !playerControls.addUnitButtonPressed
-    state.board.boxes[1].units.push({
-      type: 'tower', 
-      playerId: 'player2'
-    })
-    this.setState(state)
+    const action:IClickAddUnitButtonAction = {
+      type: ACTION_ADD_UNIT_CLICK_BUTTON, 
+      unitId: this.state.unitsTypes[0].type,
+      playerId: this.state.uiState.currentPlayer
+    }
+    store.dispatch(action)
   }
 }
