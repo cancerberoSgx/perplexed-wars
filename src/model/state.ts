@@ -1,5 +1,6 @@
 import { initialState } from "./initialState";
-import { IState, IPlayerUIState, IUnit } from "./interfaces";
+import { IState, IPlayerUIState, IUnit, IUnitProperties } from "./interfaces";
+import { clone } from "util/util";
 
 export class State {
 
@@ -26,7 +27,7 @@ export class State {
   }
   
   public static clone(state:IState):IState{
-    const s = JSON.parse(JSON.stringify(state)) as IState
+    const s = clone<IState>(state)
     s.timestamp = Date.now()
     return s
   }
@@ -39,11 +40,12 @@ export class State {
     return c
   }
 
-  public static newUnit(type: string, playerId: string): IUnit {
+  public static newUnit(state:IState, typeId: string, playerId: string): IUnit {
     return {
-      type,
+      typeId,
       playerId,
-      timestamp: Date.now()
+      timestamp: Date.now(),
+      state: clone<IUnitProperties>(state.unitsTypes.find(u=>u.id===typeId).properties)
     }
   }
 

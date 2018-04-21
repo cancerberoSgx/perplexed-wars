@@ -1,33 +1,51 @@
-import { IState} from "./interfaces";
+import { IState, IBox} from "./interfaces";
 
 export function initialState():IState {
-  const n=10
-  const m=12;
-  return {
+  const n=14
+  const m=12
+  const state = {
     timestamp: Date.now(),
     unitsTypes: [
       {
-        type: 'base',
         name: 'Town Hall',
         image: 'https://d1u5p3l4wpay3k.cloudfront.net/wowpedia/a/a5/HumanTownhall.gif',
-        unitTypeId: 'human-base'
+        id: 'human-base',
+        properties: {
+          damage: 2,
+          speed:0,
+          health: 10,
+          range: 2,
+          territoryRadius: 2
+        }
       },
       {
-        type: 'unit',
         name: 'Footman',
         image: 'https://d1u5p3l4wpay3k.cloudfront.net/wowpedia/5/53/HumanFootman.gif',
-        unitTypeId: 'footman'
+        id: 'footman',
+        properties: {
+          damage: 1,
+          speed: 1,
+          health: 2,
+          range: 1,
+          territoryRadius: 2
+        }
       },
       {
-        type: 'unit',
         name: 'archer',
         image: 'https://d1u5p3l4wpay3k.cloudfront.net/wowpedia/4/4d/ElfArcher.gif',
-        unitTypeId: 'archer'
+        id: 'archer',
+        properties: {
+          damage: 1,
+          speed: 1,
+          health: 2,
+          range: 2,
+          territoryRadius: 2
+        }
       }
     ],
     board: {
       n, m, 
-      boxes: createBoxes( n, m)
+      boxes: []
     },
     players:[
       {
@@ -49,7 +67,16 @@ export function initialState():IState {
       playerControls: [
         {
           playerId: 'player1', 
-          addUnitButtons: [{unitTypeId: 'footman', pressed: false}, {unitTypeId: 'archer', pressed: false}]
+          addUnitButtons: [
+            {
+              unitTypeId: 'footman', 
+              pressed: false
+            }, 
+            {
+              unitTypeId: 'archer', 
+              pressed: false
+            }
+          ]
         },
         {
           playerId: 'player2', 
@@ -58,24 +85,48 @@ export function initialState():IState {
       ]
     }
   }
+
+  createBoxes(state, n, m)
+  return state
 }
 
-function createBoxes(n:number, m:number){
-  const boxes = []
+function createBoxes(state:IState, n:number, m:number){
+  const boxes = state.board.boxes = []
   for (let i = 0; i < n; i++) {
     for (let j = 0; j < m; j++) {
-      boxes.push({
+      const box:IBox = {
         x: i, y: j, 
         terrain: 'grey', 
-        units: i===0&&j===0 ? [{
-            type: 'base', 
-            playerId: 'player1'
-          }] : i===n-1&&j===m-1 ? [{
-            type: 'base', 
-            playerId: 'player2'
-          }] : []
-      })
-    }    
+        units: []
+      }
+      if(i===0&&j===0) {
+        box.units.push({// TODO: dont hardcode the base and properties here !! search in player.unittypes!!!
+          typeId: 'human-base', 
+          playerId: 'player1',
+          state: {
+            damage: 2,
+            speed:0,
+            health: 10,
+            range: 2,
+            territoryRadius: 2
+          }
+        })
+      }
+      if(i===n-1&&j===m-1) {
+        box.units.push({ // TODO: dont hardcode the base and properties here !! search in player.unittypes!!!
+          typeId: 'human-base', 
+          playerId: 'player2',
+          state: {
+            damage: 2,
+            speed:0,
+            health: 10,
+            range: 2,
+            territoryRadius: 2
+          }
+        })
+      }
+      boxes.push(box)
+    }
   }
   return boxes
 }

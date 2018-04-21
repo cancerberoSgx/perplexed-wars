@@ -14,7 +14,13 @@ export class BoardRow extends BaseComponent<{n:number}>  {
       <tr className="BoardRow">
       {
         this.state.board.boxes.filter(b=>b.x===this.props.n).map(b=>
-          <td className="BoardBox" key={b.x+'_'+b.y} onClick={boxClicked} data-x={b.x} data-y={b.y}>{b.terrain} ({b.units.length})</td>
+          <td key={b.x+'_'+b.y}
+            className="BoardBox" // TODO: add visual feeback for getAvailablePlacesFor so user knows where to put unit 
+            onClick={boxClicked} 
+            data-x={b.x} 
+            data-y={b.y}>
+            ({b.units.length})
+          </td>
         )
       }  
       </tr>

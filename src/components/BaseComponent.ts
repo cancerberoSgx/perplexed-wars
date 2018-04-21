@@ -18,7 +18,7 @@ export abstract class BaseComponent<Prop> extends React.Component<Prop, IState>i
     this.storeUsubscribe = store.subscribe(()=>{
       const newState = State.get()
       this.setState(newState)
-      console.log('new state setted', newState.timestamp, this.getComponentName())
+      // console.log('new state setted', newState.timestamp, this.getComponentName())
     })
   }
   public componentWillUnmount(){

@@ -5,7 +5,6 @@ The idea is to provide with a good default experience - but also to provide a fr
 
 TODO
 
+* spells like meteors in kingdom rush
 
-tsc && browserify -p tsify dist/src/index.js -o dist/bundle.js
-
-* revert changes in tslint.json and tsconfig.json - for warnings and validation - no unused variables, etc
+* revert changes in tslint.json and tsconfig.json - for warnings and validation - no unused variables, etc so we validate those lints / errors / warnings
