@@ -2,7 +2,7 @@ import * as React from 'react';
 import './App.css';
 import { IState } from '../model/interfaces';
 import { store } from '../redurcers/store';
-import { State } from '../model/State';
+import { State } from '../model/state';
 import { Unsubscribe } from 'redux';
 
 export interface IBaseComponent {

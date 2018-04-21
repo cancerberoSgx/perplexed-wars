@@ -5,7 +5,7 @@ import { Board } from './Board';
 import { store } from '../redurcers/store';
 import { ACTION_ADD_UNIT_CLICK_BUTTON } from '../redurcers/addNewUnit';
 import { BaseComponent, IBaseComponent } from './BaseComponent';
-import { State } from '../model/State';
+import { State } from '../model/state';
 
 export class App extends BaseComponent<{}> {
   constructor(props:{}){
@@ -21,18 +21,25 @@ export class App extends BaseComponent<{}> {
         <p className="App-intro">
           To get started, edit <code>src/App.tsx</code> and save to reload. Hello
         </p>
-        <Board key={123} />
-        <button onClick={this.clickAddUnitHandler} className={State.getCurrentPlayerUIState(this.state).addUnitButtonPressed ? 'add-unit add-unit-button-pressed' : 'add-unit'} >Add Unit</button>
+        <Board />
+        {
+          State.getCurrentPlayerUIState(this.state).addUnitButtons.map((button,i)=>
+            <button key={i} onClick={addUnitButtonClicked} 
+              className={button.pressed ? 'add-unit add-unit-button-pressed' : 'add-unit'} 
+              data-unit={button.unitTypeId}>add {button.unitTypeId}</button>
+          )
+        }        
       </div>
     );
-  }
-  protected clickAddUnitHandler() {
-    store.dispatch({
-      type: ACTION_ADD_UNIT_CLICK_BUTTON, 
-      unitId: State.get().unitsTypes[0].type
-    })
   }
   public getComponentName(): string {
     return 'App'
   }
+}
+
+function addUnitButtonClicked(e:React.MouseEvent<HTMLElement>) {
+  store.dispatch({
+    type: ACTION_ADD_UNIT_CLICK_BUTTON, 
+    unitId: e.currentTarget.getAttribute('data-unit')
+  })
 }

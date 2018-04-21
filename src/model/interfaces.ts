@@ -1,3 +1,10 @@
+export interface IThing{
+  name?:string
+  description?:string
+  id?: string
+  timestamp?: number
+}
+
 export interface IState extends IThing  {
   board: IBoard
   players?: IPlayer[],
@@ -5,27 +12,12 @@ export interface IState extends IThing  {
   unitsTypes: IUnitType[]
 }
 
-export interface IUnitType extends IThing {
-  type:string
-}
-export interface IThing{
-  name?:string
-  description?:string
-  // key?: number
-  id?: string
-  timestamp?: number
-}
-
-export interface IPlayer extends IThing{
-  isAI?:boolean
-}
 
 export interface IBoard {
   boxes: IBox[]
   n: number
   m: number
 }
-
 export interface IBox extends IThing {
   x:number
   y: number
@@ -34,18 +26,37 @@ export interface IBox extends IThing {
   traspasable?: boolean   
 }
 
+
+
+export interface IPlayer extends IThing{
+  isAI?:boolean
+  unitTypes: string[]
+  color:string
+}
+
+
 export interface IUnit extends IThing{
   type:string
   playerId: string
 }
+export interface IUnitType extends IThing {
+  type: string
+  unitTypeId:string
+  image?: string
+}
+
+
 
 export interface IUIState {
   currentPlayer: string
   playerControls: IPlayerUIState[]
-  // getCurrentPlayerUIState():IPlayerUIState
 }
-
 export interface IPlayerUIState{
-  addUnitButtonPressed: boolean
+  addUnitButtons: IPlayerStateAddUnitButtonState[]
+  // addUnitButtonPressed: boolean
   playerId: string
+}
+export interface IPlayerStateAddUnitButtonState {
+  pressed: boolean
+  unitTypeId: string
 }
