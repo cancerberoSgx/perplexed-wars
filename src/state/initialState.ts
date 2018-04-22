@@ -38,7 +38,7 @@ export function initialState():IState {
           speed: 1,
           health: 2,
           range: 1,
-          territoryRadius: 2
+          territoryRadius: 0
         }
       },
       {
@@ -51,7 +51,7 @@ export function initialState():IState {
           speed: 1,
           health: 2,
           range: 2,
-          territoryRadius: 2
+          territoryRadius: 0
         }
       }
     ],
@@ -103,7 +103,8 @@ export function initialState():IState {
             }
           ]
         }
-      ]
+      ],
+      unitSelection: []
     }
   }
 

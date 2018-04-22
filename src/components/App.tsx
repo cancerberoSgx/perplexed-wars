@@ -15,11 +15,10 @@ export class App extends BaseComponent<{}> {
       <div className="App">
         <header className="App-header">
           <img className="App-title" src={logo} alt="perplexed wars" />
-          <div className="StatusPanel">
-          {!this.state.game.realTime && <button onClick={Game.nextTurn}>Next Turn!</button>}
-          TIME: {this.state.game.time/1000}
-          </div>
         </header>
+        <div className="StatusPanel">
+        {!this.state.game.realTime && <button onClick={Game.nextTurn}>Next Turn!</button>} TIME: {this.state.game.time/1000}
+        </div>
         <UnitsPanel />
         <Board />
       </div>

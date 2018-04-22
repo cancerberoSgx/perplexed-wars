@@ -40,6 +40,9 @@ export function addNewUnit(state:IState, action:IAddUnitAction):IState {
     !!pc.addUnitButtons.find(but=>but.pressed)
   )
 
+  if(!currentPlayer){ // this probably means that user is selecting a unit in the board (didn't previously clicked add-unit button)
+    return state  
+  }
   
   const button = currentPlayer.addUnitButtons.find(b=>b.pressed)
   if(!button) {
@@ -57,6 +60,5 @@ export function addNewUnit(state:IState, action:IAddUnitAction):IState {
       console.log('Cannot add unit there - box is outiside territory')
     }
     s.uiState.playerControls.forEach(pc=>pc.addUnitButtons.forEach(b=>b.pressed=false))
-    // currentPlayer.addUnitButtons.forEach(b=>{b.pressed=false})
   })
 }

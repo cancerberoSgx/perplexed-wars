@@ -16,11 +16,14 @@ export class BoardRow extends BaseComponent<{n:number}>  {
       {
         this.state.board.boxes.filter(b=>b.y===this.props.n).map(b=>
           <td key={b.x+'_'+b.y}
-            className="BoardBox" // TODO: add visual feeback for getAvailablePlacesFor so user knows where to put unit 
+            className={this.state.uiState.unitSelection.find(s=>s.boxId===b.id) ? 'BoardBox selected' : 'BoardBox'}
+            // TODO: add visual feeback for getAvailablePlacesFor so user knows where to put unit 
             onClick={boxClicked} 
             data-x={b.x} 
             data-y={b.y}>
-            <Units units={b.units} box={b} />
+              <Units 
+                units={b.units} 
+                box={b} />
           </td>
         )
       }  

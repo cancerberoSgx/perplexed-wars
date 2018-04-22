@@ -75,6 +75,7 @@ export interface IUnitProperties {
 export interface IUIState {
   currentPlayer: string
   playerControls: IPlayerUIState[]
+  unitSelection: Array<{unitId:string, boxId: string}>
 }
 export interface IPlayerUIState{
   addUnitButtons: IPlayerStateAddUnitButtonState[]
