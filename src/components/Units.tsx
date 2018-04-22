@@ -12,21 +12,31 @@ export class Units extends BaseComponent<{units:IUnit[], box:IBox}>  {
   }
   public render() {
     return (
-      <div key={this.props.box.id} className={this.buildClassName('Units')}> {
+      <div key={this.props.box.id} className={this.buildClassName('Units', this.props.box.id)}> {
         this.props.units.map(unit=> 
           <img 
             key={unit.id} 
             data-unit-id={unit.id}
             src={unit.type.image}
-            className={this.buildClassName('Unit')}
+            className={this.buildClassName('Unit', this.props.box.id, unit.id)}
             onClick={unitClicked}/>
         )
       }
       </div>
     )
   }
-  protected buildClassName(main:string): string {
-    return this.state.uiState.unitSelection.find(s=>s.boxId===this.props.box.id) ? `${main} selected` : `${main}`
+  protected buildClassName(main:string, box:string, unit?:string): string {
+    const classes = [main]
+    if(main==='Units' && this.state.uiState.unitSelection.find(s=>s.boxId===this.props.box.id)){
+      classes.push('selected')
+    }
+    if(main==='Unit' && this.state.uiState.unitAttacks.find(death=>death.attacked===unit)){
+      classes.push('attacked')
+    }
+    if(main==='Unit' && this.state.uiState.unitAttacks.find(death=>death.attacker===unit)){
+      classes.push('attacker')
+    }
+    return classes.join(' ')
   }
 }
 

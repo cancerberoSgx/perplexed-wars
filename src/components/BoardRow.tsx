@@ -28,11 +28,19 @@ export class BoardRow extends BaseComponent<{n:number}>  {
           </td>
         )
       }  
-      </tr>
+      </tr> 
     )
   }
   protected buildClassName(b:IBox):string{
-    return this.state.uiState.unitSelection.find(s=>s.boxId===b.id) ? 'BoardBox selected' : 'BoardBox'
+    const classes = ['BoardBox']
+    if(this.state.uiState.unitSelection.find(s=>s.boxId===b.id)){
+      classes.push('selected')
+    }
+    if(this.state.uiState.unitDeads.find(death=>death.attackedBox===b.id)){
+      classes.push('death')
+      console.log(classes)
+    }
+    return classes.join(' ')
   }
 }
 

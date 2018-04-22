@@ -22,7 +22,7 @@ export class AttackResolver implements IResolver {
         state.uiState.unitAttacks.push({attacked: targetUnit.id, attacker: unit.id, attackedBox: targetBox.id})
         if(targetUnit.state.health<=0) { 
           targetBox.units = targetBox.units.filter(u=>u.id!==targetUnit.id)
-        state.uiState.unitAttacks.push({attacked: targetUnit.id, attacker: unit.id, attackedBox: targetBox.id})
+          state.uiState.unitDeads.push({attacked: targetUnit.id, attacker: unit.id, attackedBox: targetBox.id})
         }
         unit.moved=true
       }

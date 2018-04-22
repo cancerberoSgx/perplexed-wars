@@ -1,8 +1,15 @@
 .Units {
   min-height: 60px;
   min-width: 60px;
+  border: 1px solid white
 }
 .Unit {
   max-height: 60px;
   max-width: 60px;
+}
+.Unit.attacked {
+  border: 1px solid red
+}
+.Unit.attacker {
+  border: 1px solid blue;
 }
