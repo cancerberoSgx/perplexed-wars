@@ -23,9 +23,12 @@ export class State {
     return this.getInstance().stateInternal
   }
   
-  public static getCurrentPlayerUIState(s:IState=this.getInstance().stateInternal):IPlayerUIState{
-    return s.uiState.playerControls.find(c=>c.playerId===s.uiState.currentPlayer) || s.uiState.playerControls[0]
-  }
+  // public static getCurrentPlayerUIState(s:IState=this.getInstance().stateInternal):IPlayerUIState{
+  //   return s.uiState.playerControls.find(c=>c.playerId===s.uiState.currentPlayer) || s.uiState.playerControls[0]
+  // }
+  // public static getFoePlayerUIState(s:IState=this.getInstance().stateInternal):IPlayerUIState{
+  //   return s.uiState.playerControls.find(c=>c.playerId!==s.uiState.currentPlayer) || s.uiState.playerControls[0]
+  // }
   
   public static clone(state:IState):IState{
     const s = clone<IState>(state)

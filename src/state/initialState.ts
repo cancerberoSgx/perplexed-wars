@@ -90,7 +90,16 @@ export function initialState():IState {
         },
         {
           playerId: 'player2', 
-          addUnitButtons: []
+          addUnitButtons:[
+            {
+              unitTypeId: 'footman', 
+              pressed: false
+            }, 
+            {
+              unitTypeId: 'archer', 
+              pressed: false
+            }
+          ]
         }
       ]
     }

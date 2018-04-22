@@ -13,8 +13,7 @@ export class Units extends BaseComponent<{units:IUnit[], box:IBox}>  {
       this.props.units.map(unit=> 
         <img 
           key={unit.id} 
-          src={unit.type.image} 
-          data-id={unit.playerId} 
+          src={unit.type.image}
           className="Unit"/>
       )
       }

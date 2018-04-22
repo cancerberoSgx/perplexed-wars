@@ -11,11 +11,12 @@ export interface IAddUnitAction extends Action{
   many:number
   x:number
   y: number
-  playerId: string
+  // playerId: string
 }
 
 export interface IClickAddUnitButtonAction extends Action{
-  unitId:string
+  unitId:string,
+  playerId: string
 }
 
 export function clickAddNewUnitButton(state:IState, action:IClickAddUnitButtonAction):IState{
@@ -24,7 +25,7 @@ export function clickAddNewUnitButton(state:IState, action:IClickAddUnitButtonAc
     return state
   }
   return State.modify(state, s=>{
-    State.getCurrentPlayerUIState(s).addUnitButtons.forEach(b=>{
+    s.uiState.playerControls.find(pc=>pc.playerId===action.playerId).addUnitButtons.forEach(b=>{
       b.pressed = b.unitTypeId===action.unitId
     })
   })
@@ -35,7 +36,11 @@ export function addNewUnit(state:IState, action:IAddUnitAction):IState {
   if(action.type!==ACTION_ADD_UNIT){
     return state
   }
-  const currentPlayer = State.getCurrentPlayerUIState(state)
+  const currentPlayer = state.uiState.playerControls.find(pc=>
+    !!pc.addUnitButtons.find(but=>but.pressed)
+  )
+
+  
   const button = currentPlayer.addUnitButtons.find(b=>b.pressed)
   if(!button) {
     console.log('No unit selected!')
@@ -51,6 +56,7 @@ export function addNewUnit(state:IState, action:IAddUnitAction):IState {
     else{
       console.log('Cannot add unit there - box is outiside territory')
     }
-    State.getCurrentPlayerUIState(s).addUnitButtons.forEach(b=>b.pressed=false)
+    s.uiState.playerControls.forEach(pc=>pc.addUnitButtons.forEach(b=>b.pressed=false))
+    // currentPlayer.addUnitButtons.forEach(b=>{b.pressed=false})
   })
 }

@@ -10,7 +10,11 @@ export interface IResolver{
   resolve({state, unit, box, player}:{state:IState,unit:IUnit, box:IBox, player:IPlayer}):void
 }
 
+
+  //TODO: victory resolvers
+
+
 export const unitActionResolvers:IResolver[] = [
-  // new AttackResolver(),
+  new AttackResolver(),
   new MoveResolver(),
 ]
