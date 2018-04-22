@@ -5,6 +5,8 @@ The idea is to provide with a good default experience - but also to *provide a f
 
 # TODO
 
+* save as icons of war2 like we did for src/implementations/war2/assets/HumanTownhall.png
+
 * performance - check comments : TODO: make me faster
 
 * gameLoop in general  is very unfair: we are moving/attacking all units of player1 first and then player2's - we should move units in the order they were created !!!
