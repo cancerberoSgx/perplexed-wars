@@ -1,11 +1,10 @@
 import * as React from 'react';
-import { State } from '../state/state';
-import './BoardRow.css';
-import { BaseComponent } from './BaseComponent';
 import { ACTION_ADD_UNIT } from '../reducers/addNewUnit';
 import { store } from '../reducers/store';
+import { IBox } from '../state/interfaces';
+import { BaseComponent } from './BaseComponent';
+import './BoardRow.css';
 import { Units } from './Units';
-import { IBox } from 'state/interfaces';
 
 export class BoardRow extends BaseComponent<{n:number}>  {
   constructor(props:{n:number}){
@@ -38,7 +37,6 @@ export class BoardRow extends BaseComponent<{n:number}>  {
     }
     if(this.state.uiState.unitDeads.find(death=>death.attackedBox===b.id)){
       classes.push('death')
-      console.log(classes)
     }
     return classes.join(' ')
   }
@@ -47,7 +45,7 @@ export class BoardRow extends BaseComponent<{n:number}>  {
 function boxClicked(e:React.MouseEvent<HTMLElement>){
   store.dispatch({
     many: 1, 
-    type: ACTION_ADD_UNIT,
+    type: ACTION_ADD_UNIT,  
     x: parseInt(e.currentTarget.getAttribute('data-x')||'0', 10), 
     y: parseInt(e.currentTarget.getAttribute('data-y')||'0', 10)
   })

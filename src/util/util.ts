@@ -17,30 +17,6 @@ export function getAvailablePlacesFor(playerId: string, state:IState):IBox[]{
     }
   })
   return result
-
-  // const points = []
-  // state.board.boxes.forEach(box=>{
-  //   box.units.forEach(u=>{
-  //     if(u.state.territoryRadius>0 && u.playerId===playerId){ // TODO: we are only doing it when territoryRadius===1. do it when is more
-  //       // result.concat(getUnitsNear({state, unit: u, box, radio: u.state.territoryRadius}).map(({targetUnit, targetBox})=>targetBox))
-  //       // TODO: remove duplicates
-  //       // points.push(box)
-  //       points.push({x: box.x+1, y: box.y})
-  //       points.push({x: box.x-1,y: box.y})
-  //       points.push({x: box.x, y:box.y+1})
-  //       points.push({x: box.x, y:box.y-1})
-  //       if(state.game.allowDiagonal){
-  //         points.push({x: box.x+1, y: box.y+1})
-  //         points.push({x: box.x-1,y: box.y+1})
-  //         points.push({x: box.x+1, y: box.y-1})
-  //         points.push({x: box.x-1,y: box.y-1})
-  //       }
-  //     }
-  //   })
-  // })
-  // return points 
-
-
 }
 
 export function clone<T>(t:T):T{
@@ -83,7 +59,6 @@ export function getUnitsNear({state, unit, box, radio, predicate}:{state:IState,
       }
     })
   )
-  console.log('NEAR', box.x, box.y, radio, result)
   return result;
 }
 

@@ -7,12 +7,13 @@ export function initialState():IState {
   const m=4
   const state:IState = {
     game: {
-      interval: 1000,
+      interval: 4000,
       allowDiagonal: true,
       time: 0,
       realTime: false,
       winner: '', 
-      gameFinish: false
+      gameFinish: false,
+      paused: false
     },
     timestamp: Date.now(),
     unitsTypes: [

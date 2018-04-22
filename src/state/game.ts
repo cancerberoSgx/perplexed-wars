@@ -16,11 +16,12 @@ export class Game{
   }
 
   public start(){
-    if(State.get().game.realTime){
-      this.intervalId = setInterval(()=>{
-        Game.nextTurn()
-      }, State.get().game.interval)
-    }
+   this.nextTurn()
+   if(State.get().game.realTime){
+     this.intervalId = setInterval(()=>{
+       this.nextTurn()
+     }, State.get().game.interval)
+   }
     registerServiceWorker()
   }
 
@@ -28,13 +29,16 @@ export class Game{
     clearInterval(this.intervalId)
   }
 
-  public static nextTurn(): void {
+  public nextTurn(): void {
     if(State.get().game.gameFinish){
       alert('Game finish, winner is '+State.get().game.winner+ '. Bye.')
+      this.stop()
       return 
     }
-    store.dispatch({
-      type: ACTION_GAME_LOOP_INCREMENT_INTERVAL
-    })
+    if(!State.get().game.paused){
+      store.dispatch({
+        type: ACTION_GAME_LOOP_INCREMENT_INTERVAL
+      })
+    }
   }
 }

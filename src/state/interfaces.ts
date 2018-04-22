@@ -21,6 +21,7 @@ export interface IGame extends IThing {
   realTime: boolean
   gameFinish: boolean
   winner: string
+  paused: boolean
 }
 
 
