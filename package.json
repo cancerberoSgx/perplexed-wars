@@ -4,12 +4,9 @@
   "description": "real-time tower-defense-like game but where you decide if attack or defend.",
   "private": true,
   "dependencies": {
-    "immutable": "^3.8.2",
     "pathfinding": "^0.4.18",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
-    "react-redux": "^5.0.7",
-    "react-scripts-ts": "2.15.1",
     "redux": "^4.0.0"
   },
   "scripts": {
@@ -27,6 +24,7 @@
     "@types/react-dom": "^16.0.5",
     "@types/react-redux": "^5.0.16",
     "@types/redux": "^3.6.0",
-    "typescript": "^2.8.1"
+    "typescript": "^2.8.1",
+    "react-scripts-ts": "2.15.1"
   }
 }
