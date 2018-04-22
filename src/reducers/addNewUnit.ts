@@ -32,7 +32,7 @@ export function clickAddNewUnitButton(state:IState, action:IClickAddUnitButtonAc
 }
 
 export function addNewUnit(state:IState, action:IAddUnitAction):IState {
-  state = State.get() // TODO: for some reason state arg is not the last one that's why I need to reasign here
+  state = State.get() 
   if(action.type!==ACTION_ADD_UNIT){
     return state
   }

@@ -7,14 +7,14 @@ import { iterateUnits } from "../util/util";
 export const ACTION_GAME_LOOP_INCREMENT_INTERVAL:string = 'game-loop-increment-interval'
 
 export function gameLoop(state:IState, action:Action):IState{
-  state = State.get() // TODO: for some reason state argument is not the last / updated one - that's why I need to reasign here . Investigate what I'm doing wrong with redux here
+  state = State.get() 
   if(action.type!==ACTION_GAME_LOOP_INCREMENT_INTERVAL){
     return state
   }
-
-  //TODO: this is very unfair: we are moving all units of player1 first and then players's - we should move units in the order they were created !!!
   let winner = null
   let gameFinish = true
+  state.uiState.unitAttacks = []
+  state.uiState.unitDeads = []
   state.players.forEach(player=>{
     gameFinish=true
     iterateUnits(state, (box:IBox, unit:IUnit)=>{

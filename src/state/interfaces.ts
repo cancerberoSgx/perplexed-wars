@@ -52,7 +52,7 @@ export interface IPlayer extends IThing{
 export interface IUnit extends IThing{
   playerId: string
   type: IUnitType
-  moved?:boolean // TODO: we assume unit action points are 1. a feature could be unit.state.actionPoints so it can move/attack several times per "turn"
+  moved?:boolean 
   /**
    * current unit state - based on unittype.properties multiplied by level and spells, etc
    */
@@ -76,6 +76,8 @@ export interface IUIState {
   currentPlayer: string
   playerControls: IPlayerUIState[]
   unitSelection: Array<{unitId:string, boxId: string}>
+  unitAttacks: Array<{attacker: string, attacked: string, attackedBox: string}>
+  unitDeads: Array<{attacker: string, attacked: string, attackedBox: string}>
 }
 export interface IPlayerUIState{
   addUnitButtons: IPlayerStateAddUnitButtonState[]

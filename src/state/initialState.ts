@@ -104,7 +104,9 @@ export function initialState():IState {
           ]
         }
       ],
-      unitSelection: []
+      unitSelection: [],
+      unitAttacks: [],
+      unitDeads: []
     }
   }
 

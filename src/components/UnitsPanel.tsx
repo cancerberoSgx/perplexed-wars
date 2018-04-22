@@ -5,7 +5,6 @@ import { State } from '../state/state';
 import { BaseComponent } from './BaseComponent';
 import './UnitsPanel.css';
 
-          // <span key={'UnitsPanelPlayer'+player.id} className="UnitsPanelPlayer">
 export class UnitsPanel extends BaseComponent<{}> {
   constructor(props:{}){
     super(props)
@@ -19,18 +18,18 @@ export class UnitsPanel extends BaseComponent<{}> {
             pc.addUnitButtons.map((button, i)=>
               <button key={i} 
                 onClick={addUnitButtonClicked} 
-                className={button.pressed ? `add-unit ${button.unitTypeId} pressed` : `add-unit ${button.unitTypeId}`} 
+                className={this.buildClassName(button)} 
                 data-unit={button.unitTypeId}
                 data-player={player.id}>{button.unitTypeId}</button>
             )
           )
-        ) 
+        )
       }
       </div>
     );
   }
-  public getComponentName(): string {
-    return 'UnitsPanel'
+  protected buildClassName(button): string {
+    return button.pressed ? `add-unit ${button.unitTypeId} pressed` : `add-unit ${button.unitTypeId}`
   }
 }
 

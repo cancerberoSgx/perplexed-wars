@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { State } from '../state/state';
 import './BoardRow.css';
-import { BaseComponent, IBaseComponent } from './BaseComponent';
+import { BaseComponent } from './BaseComponent';
 import { ACTION_ADD_UNIT } from '../reducers/addNewUnit';
 import { store } from '../reducers/store';
 import { Units } from './Units';
+import { IBox } from 'state/interfaces';
 
 export class BoardRow extends BaseComponent<{n:number}>  {
   constructor(props:{n:number}){
@@ -15,9 +16,9 @@ export class BoardRow extends BaseComponent<{n:number}>  {
       <tr className="BoardRow">
       {
         this.state.board.boxes.filter(b=>b.y===this.props.n).map(b=>
-          <td key={b.x+'_'+b.y}
-            className={this.state.uiState.unitSelection.find(s=>s.boxId===b.id) ? 'BoardBox selected' : 'BoardBox'}
-            // TODO: add visual feeback for getAvailablePlacesFor so user knows where to put unit 
+          <td 
+            key={b.x+'_'+b.y}
+            className={this.buildClassName(b)}
             onClick={boxClicked} 
             data-x={b.x} 
             data-y={b.y}>
@@ -30,8 +31,8 @@ export class BoardRow extends BaseComponent<{n:number}>  {
       </tr>
     )
   }
-  public getComponentName(): string {
-    return 'BoardRow'
+  protected buildClassName(b:IBox):string{
+    return this.state.uiState.unitSelection.find(s=>s.boxId===b.id) ? 'BoardBox selected' : 'BoardBox'
   }
 }
 

@@ -24,7 +24,4 @@ export class App extends BaseComponent<{}> {
       </div>
     );
   }
-  public getComponentName(): string {
-    return 'App'
-  }
 }

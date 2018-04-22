@@ -5,12 +5,7 @@ import { store } from '../reducers/store';
 import { State } from '../state/state';
 import { Unsubscribe } from 'redux';
 
-export interface IBaseComponent {
-  getComponentName():string
-}
-
-export abstract class BaseComponent<Prop> extends React.Component<Prop, IState>implements IBaseComponent{ 
-  public abstract  getComponentName(): string
+export abstract class BaseComponent<Prop> extends React.Component<Prop, IState>{ 
   public storeUsubscribe: Unsubscribe;
   constructor(props:Prop){
     super(props)

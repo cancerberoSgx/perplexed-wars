@@ -12,21 +12,21 @@ export class Units extends BaseComponent<{units:IUnit[], box:IBox}>  {
   }
   public render() {
     return (
-      <div key={this.props.box.id} className={State.get().uiState.unitSelection.find(s=>s.boxId===this.props.box.id) ? 'Units selected' : 'Units'}> {
-      this.props.units.map(unit=> 
-        <img 
-          key={unit.id} 
-          data-unit-id={unit.id}
-          src={unit.type.image}
-          className={State.get().uiState.unitSelection.find(s=>s.unitId===unit.id) ? 'Unit selected' : 'Unit'}
-          onClick={unitClicked}/>
-      )
+      <div key={this.props.box.id} className={this.buildClassName('Units')}> {
+        this.props.units.map(unit=> 
+          <img 
+            key={unit.id} 
+            data-unit-id={unit.id}
+            src={unit.type.image}
+            className={this.buildClassName('Unit')}
+            onClick={unitClicked}/>
+        )
       }
       </div>
     )
   }
-  public getComponentName(): string {
-    return 'Units'
+  protected buildClassName(main:string): string {
+    return this.state.uiState.unitSelection.find(s=>s.boxId===this.props.box.id) ? `${main} selected` : `${main}`
   }
 }
 
