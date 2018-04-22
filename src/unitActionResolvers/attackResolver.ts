@@ -5,7 +5,7 @@ import { IResolver } from "./unitActionResolvers";
 
 function getUnitsNear({state, unit, box, radio, predicate}:{state:IState, unit:IUnit, box:IBox, radio:number, predicate:(u:IUnit)=>boolean}):Array<{targetUnit:IUnit, targetBox:IBox}> {
   const near = state.board.boxes.filter(b=>Math.abs(b.x-box.x)<=radio && Math.abs(b.y-box.y)<=radio)
-  console.log('FIGHT, near: ', near.length)
+  // console.log('FIGHT, near: ', near.length)
   const result:Array<{targetUnit:IUnit, targetBox:IBox}> = []
   near.forEach(b=>b.units.forEach(u=>{
     if(predicate(u)){

@@ -21,8 +21,6 @@ export class Game{
         Game.nextTurn()
       }, State.get().game.interval)
     }
-
-
     registerServiceWorker()
   }
 
@@ -31,6 +29,10 @@ export class Game{
   }
 
   public static nextTurn(): void {
+    if(State.get().game.gameFinish){
+      alert('Game finish, winner is '+State.get().game.winner+ '. Bye.')
+      return 
+    }
     store.dispatch({
       type: ACTION_GAME_LOOP_INCREMENT_INTERVAL
     })

@@ -9,7 +9,9 @@ export function initialState():IState {
       interval: 1000,
       allowDiagonal: true,
       time: 0,
-      realTime: false
+      realTime: false,
+      winner: '', 
+      gameFinish: false
     },
     timestamp: Date.now(),
     unitsTypes: [

@@ -10,6 +10,9 @@ export class MoveResolver implements IResolver {
       this.finder = new PF.AStarFinder({allowDiagonal: state.game.allowDiagonal});
     }
     const foeBases = findUnit(state, (u)=>u.playerId!==player.id&& u.type.isBase) // TODO: assume 2 players!
+    if(!foeBases||!foeBases.length){ // this probably means game is over
+      return 
+    }
     const foeBaseUnit = foeBases[0].unit
     const foeBaseBox = foeBases[0].box 
     if(!unit.type.isBase && !unit.moved && unit.playerId===player.id) {

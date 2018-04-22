@@ -19,6 +19,8 @@ export interface IGame extends IThing {
   allowDiagonal:boolean
   time: number
   realTime: boolean
+  gameFinish: boolean
+  winner: string
 }
 
 
