@@ -2,8 +2,8 @@ import * as React from 'react';
 import { State } from '../model/state';
 import './BoardRow.css';
 import { BaseComponent, IBaseComponent } from './BaseComponent';
-import { ACTION_ADD_UNIT } from '../redurcers/addNewUnit';
-import { store } from '../redurcers/store';
+import { ACTION_ADD_UNIT } from '../reducers/addNewUnit';
+import { store } from '../reducers/store';
 
 export class BoardRow extends BaseComponent<{n:number}>  {
   constructor(props:{n:number}){

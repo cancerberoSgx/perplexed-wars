@@ -1,6 +1,6 @@
 import { State } from "../model/state";
-import { store } from "../redurcers/store";
-import { ACTION_GAME_LOOP_INCREMENT_INTERVAL } from "../redurcers/gameLoop";
+import { store } from "../reducers/store";
+import { ACTION_GAME_LOOP_INCREMENT_INTERVAL } from "../reducers/gameLoop";
 
 export class Game{
   protected intervalId: NodeJS.Timer

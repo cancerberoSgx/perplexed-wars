@@ -1,7 +1,7 @@
 import * as React from 'react';
 import './App.css';
 import { IState } from '../model/interfaces';
-import { store } from '../redurcers/store';
+import { store } from '../reducers/store';
 import { State } from '../model/state';
 import { Unsubscribe } from 'redux';
 

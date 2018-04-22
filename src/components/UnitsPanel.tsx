@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { State } from '../model/state';
-import { ACTION_ADD_UNIT_CLICK_BUTTON } from '../redurcers/addNewUnit';
-import { store } from '../redurcers/store';
+import { ACTION_ADD_UNIT_CLICK_BUTTON } from '../reducers/addNewUnit';
+import { store } from '../reducers/store';
 import './App.css';
 import { BaseComponent } from './BaseComponent';
 
