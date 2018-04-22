@@ -17,7 +17,9 @@ export class App extends BaseComponent<{}> {
           <img className="App-title" src={logo} alt="perplexed wars" />
         </header>
         <div className="StatusPanel">
-        {!this.state.game.realTime && <button onClick={Game.nextTurn}>Next Turn!</button>} TIME: {this.state.game.time/1000}
+        {!this.state.game.realTime && <button onClick={Game.nextTurn}>Next Turn!</button>} 
+        TIME: {this.state.game.time/1000}
+        GOLD: {this.state.game.time/1000}
         </div>
         <UnitsPanel />
         <Board />

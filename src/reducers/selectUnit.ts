@@ -1,13 +1,13 @@
 import { Action } from "redux";
 import { IState } from "../state/interfaces";
 import { State } from "../state/state";
-import { findUnit } from "util/util";
+import { findUnit } from "../util/util";
 
 export const ACTION_SELECT_UNIT:string = 'select-unit'
 
 export interface ISelectUnitAction extends Action{
   unitId:string
-  union: boolean
+  union: boolean // user is pressing ctrl+click
 }
 
 export function selectUnit(state:IState, action:ISelectUnitAction):IState{

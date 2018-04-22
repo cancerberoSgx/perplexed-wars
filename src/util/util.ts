@@ -1,4 +1,4 @@
-import { IState, IPoint, IBox, IUnit } from "../state/interfaces";
+import { IState, IBox, IUnit } from "../state/interfaces";
 
 export function range(n:number):number[]{
   const a = new Array(n)
@@ -8,20 +8,39 @@ export function range(n:number):number[]{
   return a
 }
 
-export function getAvailablePlacesFor(playerId: string, state:IState):IPoint[]{
-  const points:IPoint[] = []
-  state.board.boxes.forEach(box=>{
-    box.units.forEach(u=>{
-      if(u.state.territoryRadius>0 && u.playerId===playerId){ // TODO: do it right!
-        points.push(box)
-        points.push({x: box.x+1, y: box.y})
-        points.push({x: box.x-1,y: box.y})
-        points.push({x: box.x, y:box.y+1})
-        points.push({x: box.x, y:box.y-1})
-      }
-    })
+export function getAvailablePlacesFor(playerId: string, state:IState):IBox[]{
+  let result:IBox[] = []
+  iterateUnits(state, (box, u)=>{
+    if(u.state.territoryRadius>0 && u.playerId===playerId){     
+      result = result.concat(getBoxesNear({state, box, radio: u.state.territoryRadius, predicate: (b=>true)}))
+      // TODO: remove duplicates
+    }
   })
-  return points
+  return result
+
+  // const points = []
+  // state.board.boxes.forEach(box=>{
+  //   box.units.forEach(u=>{
+  //     if(u.state.territoryRadius>0 && u.playerId===playerId){ // TODO: we are only doing it when territoryRadius===1. do it when is more
+  //       // result.concat(getUnitsNear({state, unit: u, box, radio: u.state.territoryRadius}).map(({targetUnit, targetBox})=>targetBox))
+  //       // TODO: remove duplicates
+  //       // points.push(box)
+  //       points.push({x: box.x+1, y: box.y})
+  //       points.push({x: box.x-1,y: box.y})
+  //       points.push({x: box.x, y:box.y+1})
+  //       points.push({x: box.x, y:box.y-1})
+  //       if(state.game.allowDiagonal){
+  //         points.push({x: box.x+1, y: box.y+1})
+  //         points.push({x: box.x-1,y: box.y+1})
+  //         points.push({x: box.x+1, y: box.y-1})
+  //         points.push({x: box.x-1,y: box.y-1})
+  //       }
+  //     }
+  //   })
+  // })
+  // return points 
+
+
 }
 
 export function clone<T>(t:T):T{
@@ -54,6 +73,25 @@ export function findUnit(state:IState, predicate:(u:IUnit, box:IBox)=>boolean):A
 }
 
 
+export function getUnitsNear({state, unit, box, radio, predicate}:{state:IState, unit:IUnit, box:IBox, radio:number, predicate?:(u:IUnit)=>boolean}):Array<{targetUnit:IUnit, targetBox:IBox}> {
+  const near = state.board.boxes.filter(b=>Math.abs(b.x-box.x)<=radio && Math.abs(b.y-box.y)<=radio)
+  const result:Array<{targetUnit:IUnit, targetBox:IBox}> = []
+  near.forEach(b=>
+    b.units.forEach(u=>{
+      if(!predicate || predicate(u)){
+        result.push({targetUnit: u, targetBox: b})
+      }
+    })
+  )
+  console.log('NEAR', box.x, box.y, radio, result)
+  return result;
+}
+
+export function getBoxesNear({state, box, radio, predicate}:{state:IState, box:IBox, radio:number, predicate?:(b:IBox)=>boolean}):IBox[] {
+  predicate = predicate || (b=>true)
+  return state.board.boxes.filter(b=>Math.abs(b.x-box.x)<=radio && Math.abs(b.y-box.y)<=radio && predicate(b))
+}
+
 
 export function iterateUnits(state:IState, iterator:(box:IBox, unit:IUnit)=>void){
   state.board.boxes.forEach(box=>{
@@ -61,9 +99,4 @@ export function iterateUnits(state:IState, iterator:(box:IBox, unit:IUnit)=>void
       iterator(box, unit)
     })
   })
-}
-
-// declare function copy(s:string):void
-export function copy(s){
-  return (navigator as any).clipboard.writeText(s)
 }

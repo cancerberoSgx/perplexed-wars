@@ -1,4 +1,4 @@
-import { IState, IPoint } from "../state/interfaces";
+import { IState } from "../state/interfaces";
 import { State } from "../state/state";
 import { Action } from "redux";
 import { getAvailablePlacesFor } from "../util/util";
@@ -7,11 +7,10 @@ export const ACTION_ADD_UNIT:string = 'add-unit'
 export const ACTION_ADD_UNIT_CLICK_BUTTON:string = 'add-unit-click-button'
 
 export interface IAddUnitAction extends Action{
-  unitId?:string 
+  unitId:string 
   many:number
   x:number
   y: number
-  // playerId: string
 }
 
 export interface IClickAddUnitButtonAction extends Action{
@@ -20,7 +19,7 @@ export interface IClickAddUnitButtonAction extends Action{
 }
 
 export function clickAddNewUnitButton(state:IState, action:IClickAddUnitButtonAction):IState{
-  state = State.get() // TODO: for some reason state arg is not the last one that's why I need to reasign here
+  state = State.get() 
   if(action.type!==ACTION_ADD_UNIT_CLICK_BUTTON){
     return state
   }

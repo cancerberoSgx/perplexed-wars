@@ -1,6 +1,6 @@
 import { initialState } from "./initialState";
 import { IState, IPlayerUIState, IUnit, IUnitProperties } from "./interfaces";
-import { clone } from "util/util";
+import { clone } from "../util/util";
 
 export class State {
 
@@ -44,7 +44,8 @@ export class State {
       playerId,
       id: `unit-${playerId}-${this.counter++}`,
       timestamp: Date.now(),
-      state: clone(type.properties)
+      state: clone(type.properties),
+      killCount: 0
     }
   }
 

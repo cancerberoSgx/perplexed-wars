@@ -1,9 +1,9 @@
 real-time tower-defense-like game but where you decide if attack or defend. 
 
+The idea is to provide with a good default experience - but also to *provide a framework to easily build similar games*
 
-The idea is to provide with a good default experience - but also to provide a framework to easily build similar games 
 
-TODO
+# TODO
 
 * performance - check comments : TODO: make me faster
 
@@ -24,3 +24,11 @@ TODO
 * click add unit button should sow visual feedback in boxes where the unit can be added (yellowish)
 
 * // TODO: we assume unit action points are 1. a feature could be unit.state.actionPoints so it can move/attack several times per "turn"
+
+* units upgrade into
+
+* terrain ? 
+
+* towers ? 
+
+* resources : we should be resource - agnostic to be a framework. Don't say "gold". There could be N amount of resource types, all with custom names and icons. Custom buildings produce x amount of some resource.

@@ -7,7 +7,7 @@ export interface IThing{
 
 export interface IState extends IThing  {
   board: IBoard
-  players?: IPlayer[]
+  players: IPlayer[]
   uiState: IUIState
   unitsTypes: IUnitType[]
   game: IGame
@@ -30,11 +30,9 @@ export interface IBoard {
   n: number
   m: number
 }
-export interface IPoint {
+export interface IBox extends IThing {
   x:number
   y:number
-}
-export interface IBox extends IThing, IPoint {
   terrain: string
   units: IUnit[]
   traspasable?: boolean   
@@ -56,10 +54,12 @@ export interface IUnit extends IThing{
   /**
    * current unit state - based on unittype.properties multiplied by level and spells, etc
    */
-  state?: IUnitProperties
+  state: IUnitProperties
+  killCount: number
 }
 export interface IUnitType extends IThing {
-  image?: string
+  image: string
+  icon: string
   properties: IUnitProperties
   isBase: boolean
 }
