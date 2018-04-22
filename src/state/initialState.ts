@@ -5,7 +5,6 @@ import { war2ImplementationInitialState } from "../implementations/war2/war2Impl
 
 export const initialState = war2ImplementationInitialState;
 
-
 export function buildUIStatePlayerControls(state:IState){
   state.players.forEach(p=>{
     const playerControl = {playerId: p.id, addUnitButtons: []}

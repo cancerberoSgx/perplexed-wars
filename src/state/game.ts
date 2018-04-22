@@ -2,11 +2,15 @@ import { ACTION_GAME_LOOP_INCREMENT_INTERVAL } from "../reducers/gameLoop";
 import { store } from "../reducers/store";
 import registerServiceWorker from '../registerServiceWorker';
 import { State } from "./state";
+import { EventEmitter } from "events";
 
-export class Game{
+export class Game extends EventEmitter {
   private intervalId: NodeJS.Timer
   private static instance
-  private constructor(){}
+  
+  private constructor(){
+    super()
+  }
   
   public static getInstance():Game{
     if(!this.instance){

@@ -1,7 +1,7 @@
 import { IState, IBox} from "../../state/interfaces";
 import { clone } from "../../util/util";
 import { State } from "../../state/state";
-import { createBoxes, buildUIStatePlayerControls } from "state/initialState";
+import { createBoxes, buildUIStatePlayerControls } from "../../state/initialState";
 import * as HumanTownhall from './assets/HumanTownhall.png'
 
 export function war2ImplementationInitialState():IState {
@@ -31,7 +31,7 @@ export function war2ImplementationInitialState():IState {
           health: 10,
           range: 2,
           territoryRadius: 2
-        }
+        },
       },
       {
         name: 'Great Hall',
@@ -118,13 +118,15 @@ export function war2ImplementationInitialState():IState {
         name: 'seba',
         isAI: false,
         color: 'blue',
-        unitTypes: ['human-base', 'footman', 'elven-archer']
+        unitTypes: ['human-base', 'footman', 'elven-archer'],
+        resources: []
       }, 
       {
         id: 'player2',
         color: 'red',
         isAI: true,
-        unitTypes: ['orc-base', 'grunt', 'troll']
+        unitTypes: ['orc-base', 'grunt', 'troll'],
+        resources: []
       }
     ],
     uiState: {

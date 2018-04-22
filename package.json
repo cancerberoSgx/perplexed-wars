@@ -15,7 +15,9 @@
     "test": "react-scripts-ts test --env=jsdom",
     "eject": "react-scripts-ts eject",
     "lint": "tslint src/**/*.ts",
-    "lint-fix": "tslint --fix src/**/*.ts"
+    "lint-fix": "tslint --fix src/**/*.ts",
+    "tsc": "rm -rf types build && tsc",
+    "doc": "rm -rf types build docs && tsc && typedoc --options typedoc.ts"
   },
   "devDependencies": {
     "@types/jest": "^22.2.3",
@@ -24,7 +26,8 @@
     "@types/react-dom": "^16.0.5",
     "@types/react-redux": "^5.0.16",
     "@types/redux": "^3.6.0",
-    "typescript": "^2.8.1",
-    "react-scripts-ts": "2.15.1"
+    "react-scripts-ts": "2.15.1",
+    "typedoc": "^0.11.1",
+    "typescript": "^2.8.1"
   }
 }
