@@ -7,11 +7,19 @@ export interface IThing{
 
 export interface IState extends IThing  {
   board: IBoard
-  players?: IPlayer[],
+  players?: IPlayer[]
   uiState: IUIState
   unitsTypes: IUnitType[]
-  time: number
+  game: IGame
 }
+
+
+export interface IGame extends IThing {
+  interval: number,
+  allowDiagonal:boolean,
+  time: number,
+}
+
 
 
 export interface IBoard {
@@ -39,7 +47,6 @@ export interface IPlayer extends IThing{
 
 
 export interface IUnit extends IThing{
-  // typeId:string
   playerId: string
   type: IUnitType
   moved?:boolean

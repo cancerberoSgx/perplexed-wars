@@ -11,11 +11,6 @@ ReactDOM.render(
   document.getElementById('root') as HTMLElement
 )
 
-const game = new Game({
-  interval: 1000
-})
-game.start()
-// setTimeout(() => {
-//   game.stop()
-// }, 20000);
+new Game().start()  
+
 registerServiceWorker()

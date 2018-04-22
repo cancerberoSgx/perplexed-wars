@@ -62,3 +62,8 @@ export function iterateUnits(state:IState, iterator:(box:IBox, unit:IUnit)=>void
     })
   })
 }
+
+// declare function copy(s:string):void
+export function copy(s){
+  return (navigator as any).clipboard.writeText(s)
+}

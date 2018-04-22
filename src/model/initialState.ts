@@ -1,12 +1,16 @@
 import { IState, IBox} from "./interfaces";
-import { clone } from "util/util";
+import { clone } from "../util/util";
 
 export function initialState():IState {
-  const n=14
-  const m=4
+  const n=5
+  const m=3
   const state:IState = {
+    game: {
+      interval: 1000,
+      allowDiagonal: true,
+      time: 0
+    },
     timestamp: Date.now(),
-    time: 0,
     unitsTypes: [
       {
         name: 'Town Hall',
