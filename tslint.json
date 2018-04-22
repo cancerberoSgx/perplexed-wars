@@ -16,6 +16,7 @@
     "no-debugger": false,
     "comment-format": false,
     "no-unused-variable": false,
-    "no-unused-expression": false
+    "no-unused-expression": false,
+    "no-empty": false
   }
 }

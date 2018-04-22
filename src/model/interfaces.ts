@@ -15,9 +15,10 @@ export interface IState extends IThing  {
 
 
 export interface IGame extends IThing {
-  interval: number,
-  allowDiagonal:boolean,
-  time: number,
+  interval: number
+  allowDiagonal:boolean
+  time: number
+  realTime: boolean
 }
 
 
@@ -49,7 +50,7 @@ export interface IPlayer extends IThing{
 export interface IUnit extends IThing{
   playerId: string
   type: IUnitType
-  moved?:boolean
+  moved?:boolean // TODO: we assume unit action points are 1. a feature could be unit.state.actionPoints so it can move/attack several times per "turn"
   /**
    * current unit state - based on unittype.properties multiplied by level and spells, etc
    */

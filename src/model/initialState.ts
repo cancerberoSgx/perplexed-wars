@@ -8,7 +8,8 @@ export function initialState():IState {
     game: {
       interval: 1000,
       allowDiagonal: true,
-      time: 0
+      time: 0,
+      realTime: true
     },
     timestamp: Date.now(),
     unitsTypes: [
@@ -104,20 +105,24 @@ function createBoxes(state:IState, n:number, m:number){
   for (let i = 0; i < n; i++) {
     for (let j = 0; j < m; j++) {
       const box:IBox = {
-        x: i, y: j, 
+        x: i, 
+        y: j, 
         terrain: 'grey', 
-        units: []
+        units: [],
+        id: `box-${i}-${j}`
       }
       if(i===0&&j===0) {
         box.units.push({
           playerId: 'player1',
           type: state.unitsTypes.find(ut=>ut.id==='human-base'),
+          id: 'player1-base',
           state: clone(state.unitsTypes.find(ut=>ut.id==='human-base').properties)
         })
       }
       if(i===n-1&&j===m-1) {
         box.units.push({
           playerId: 'player2',
+          id: 'player2-base',
           type: state.unitsTypes.find(ut=>ut.id==='human-base'),
           state: clone(state.unitsTypes.find(ut=>ut.id==='human-base').properties)
         })
