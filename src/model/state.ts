@@ -4,6 +4,7 @@ import { clone } from "util/util";
 
 export class State {
 
+  private static counter: number = 0;
   private stateInternal: IState;
   private static instance: State;
 
@@ -41,11 +42,13 @@ export class State {
   }
 
   public static newUnit(state:IState, typeId: string, playerId: string): IUnit {
+    const type = state.unitsTypes.find(ut=>ut.id===typeId)
     return {
-      typeId,
+      type,
       playerId,
+      id: `unit-${playerId}-${this.counter++}`,
       timestamp: Date.now(),
-      state: clone<IUnitProperties>(state.unitsTypes.find(u=>u.id===typeId).properties)
+      state: clone(type.properties)
     }
   }
 

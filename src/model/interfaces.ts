@@ -10,6 +10,7 @@ export interface IState extends IThing  {
   players?: IPlayer[],
   uiState: IUIState
   unitsTypes: IUnitType[]
+  time: number
 }
 
 
@@ -23,8 +24,6 @@ export interface IPoint {
   y:number
 }
 export interface IBox extends IThing, IPoint {
-  // x:number
-  // y: number
   terrain: string
   units: IUnit[]
   traspasable?: boolean   
@@ -40,18 +39,19 @@ export interface IPlayer extends IThing{
 
 
 export interface IUnit extends IThing{
-  typeId:string
+  // typeId:string
   playerId: string
+  type: IUnitType
+  moved?:boolean
   /**
    * current unit state - based on unittype.properties multiplied by level and spells, etc
    */
   state?: IUnitProperties
 }
 export interface IUnitType extends IThing {
-  // type: string
-  // unitTypeId:string
   image?: string
   properties: IUnitProperties
+  isBase: boolean
 }
 export interface IUnitProperties {
   damage: number

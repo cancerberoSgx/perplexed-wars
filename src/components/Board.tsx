@@ -12,7 +12,7 @@ export class Board extends BaseComponent<{}> implements IBaseComponent {
       <table className="Board">
         <tbody>
         {
-          range(this.state.board.n).map(n=>
+          range(this.state.board.m).map(n=>
             <BoardRow key={n} n={n}/>
           )
         }

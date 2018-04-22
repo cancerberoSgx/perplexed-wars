@@ -15,6 +15,7 @@ export class App extends BaseComponent<{}> {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Perplexed Wars</h1>
+          <p>TIME: {this.state.time/1000}</p>
         </header>
         <p className="App-intro">
           To get started, edit <code>src/App.tsx</code> and save to reload. Hello

@@ -1,15 +1,18 @@
 import { IState, IBox} from "./interfaces";
+import { clone } from "util/util";
 
 export function initialState():IState {
   const n=14
-  const m=12
-  const state = {
+  const m=4
+  const state:IState = {
     timestamp: Date.now(),
+    time: 0,
     unitsTypes: [
       {
         name: 'Town Hall',
         image: 'https://d1u5p3l4wpay3k.cloudfront.net/wowpedia/a/a5/HumanTownhall.gif',
         id: 'human-base',
+        isBase: true,
         properties: {
           damage: 2,
           speed:0,
@@ -22,6 +25,7 @@ export function initialState():IState {
         name: 'Footman',
         image: 'https://d1u5p3l4wpay3k.cloudfront.net/wowpedia/5/53/HumanFootman.gif',
         id: 'footman',
+        isBase: false,
         properties: {
           damage: 1,
           speed: 1,
@@ -34,6 +38,7 @@ export function initialState():IState {
         name: 'archer',
         image: 'https://d1u5p3l4wpay3k.cloudfront.net/wowpedia/4/4d/ElfArcher.gif',
         id: 'archer',
+        isBase: false,
         properties: {
           damage: 1,
           speed: 1,
@@ -100,29 +105,17 @@ function createBoxes(state:IState, n:number, m:number){
         units: []
       }
       if(i===0&&j===0) {
-        box.units.push({// TODO: dont hardcode the base and properties here !! search in player.unittypes!!!
-          typeId: 'human-base', 
+        box.units.push({
           playerId: 'player1',
-          state: {
-            damage: 2,
-            speed:0,
-            health: 10,
-            range: 2,
-            territoryRadius: 2
-          }
+          type: state.unitsTypes.find(ut=>ut.id==='human-base'),
+          state: clone(state.unitsTypes.find(ut=>ut.id==='human-base').properties)
         })
       }
       if(i===n-1&&j===m-1) {
-        box.units.push({ // TODO: dont hardcode the base and properties here !! search in player.unittypes!!!
-          typeId: 'human-base', 
+        box.units.push({
           playerId: 'player2',
-          state: {
-            damage: 2,
-            speed:0,
-            health: 10,
-            range: 2,
-            territoryRadius: 2
-          }
+          type: state.unitsTypes.find(ut=>ut.id==='human-base'),
+          state: clone(state.unitsTypes.find(ut=>ut.id==='human-base').properties)
         })
       }
       boxes.push(box)
