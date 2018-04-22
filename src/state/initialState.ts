@@ -3,8 +3,8 @@ import { clone } from "../util/util";
 import { State } from "./state";
 
 export function initialState():IState {
-  const n=6
-  const m=4
+  const n=15
+  const m=10
   const state:IState = {
     game: {
       interval: 4000,
@@ -63,7 +63,7 @@ export function initialState():IState {
       {
         name: 'Elven Archer',
         image: 'https://d1u5p3l4wpay3k.cloudfront.net/wowpedia/4/4d/ElfArcher.gif', 
-        icon: 'https://wow.gamepedia.com/File:Aface.gif',
+        icon: 'https://d1u5p3l4wpay3k.cloudfront.net/wowpedia/4/4f/Aface.gif?version=237897e7775651612b874e7d7ec5f7d8',
         id: 'elven-archer',
         isBase: false,
         properties: {

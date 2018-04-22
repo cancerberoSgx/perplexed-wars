@@ -15,29 +15,35 @@ export class App extends BaseComponent<{}> {
   }
   public render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img className="App-title" src={logo} alt="perplexed wars" />
+
+      <div className="container-fluid App">
+        <header className="App-header row">
+
+          <div className="col-4">
+            <img className="App-logo" src={logo} alt="perplexed wars" />
+          </div>
+
+          <div className="StatusPanel col-8">
+            {!this.state.game.realTime && <span><button onClick={Game.getInstance().nextTurn}>Next Turn!</button></span>}
+
+            <span><input type="checkbox" checked={this.state.game.realTime} onChange={realTimeChanged}/> Real Time? </span>
+
+            <span><input type="checkbox" checked={this.state.game.allowDiagonal} onChange={allowDiagonalChanged}/>Allow Diagonals</span>
+
+            {this.state.game.realTime && <span><input type="checkbox" checked={this.state.game.paused} onChange={pauseClicked} /> Paused  </span>}
+
+            {this.state.game.realTime && <span>Interval: <input type="number" onChange={changeInterval} defaultValue={this.state.game.interval+''}/></span>}
+
+
+            <div>TIME: {this.state.game.time/1000} </div>
+          </div>  
+        
         </header>
-        <div className="StatusPanel">
-
-        TIME: {this.state.game.time/1000} &nbsp;
-        {/* GOLD: {this.state.game.time/1000} &nbsp; */}
-
-        {!this.state.game.realTime && <button onClick={Game.getInstance().nextTurn}>Next Turn!</button>}  &nbsp
-        
-        <input type="checkbox" {...this.state.game.realTime?'checked':''} onChange={realTimeChanged}/> Real Time? &nbsp;
-
-        <input type="checkbox" {...this.state.game.allowDiagonal?'checked':''} onChange={allowDiagonalChanged}/>Allow Diagonals &nbsp;
-
-        <input type="checkbox" {...this.state.game.paused?'checked' : ''} onChange={pauseClicked} /> Paused  &nbsp;
-        
-        {<span>Interval: <input type="number" onChange={changeInterval} defaultValue={this.state.game.interval+''}/></span>}
-
-        </div>
         <UnitsPanel />
         <Board />
-      </div>
+      {/* </div> */}
+
+</div>
     );
   }
 }
@@ -45,7 +51,7 @@ export class App extends BaseComponent<{}> {
 
 function changeInterval(e:React.ChangeEvent<HTMLInputElement>){
   const interval = parseInt(e.currentTarget.value, 10)
-  if(interval>200) {
+  if(interval>200) { // TODO: validation and throttle
     store.dispatch({
       type: ACTION_CHANGE_GAME_SETTINGS,
       interval

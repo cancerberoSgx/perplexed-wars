@@ -1,5 +1,8 @@
 .App-header {
-  text-align: center;
+  /* text-align: center; */
   background-color:#1498d5;
   color: white;
+}
+.App-logo{
+  line-break: auto;
 }
