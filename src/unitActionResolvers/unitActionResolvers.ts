@@ -1,4 +1,4 @@
-import { IState, IUnit, IBox, IPlayer } from "../model/interfaces";
+import { IState, IUnit, IBox, IPlayer } from "../state/interfaces";
 import { MoveResolver } from "./moveResolver";
 import { AttackResolver } from "./attackResolver";
 

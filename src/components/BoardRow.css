@@ -1,6 +1,13 @@
 .BoardBox{
-  border: 2px solid #ededed;
-  padding: 0;
-  margin: 0;
+  vertical-align: middle;
+  text-align: center;
   cursor: pointer;
+  border-bottom: 1px solid #ededed;
+  border-right: 1px solid #ededed;
+}
+
+.BoardBox * {
+  vertical-align: middle !important;
+  margin: auto;
+  padding: 0
 }

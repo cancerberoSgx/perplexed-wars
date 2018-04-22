@@ -1,8 +1,8 @@
 import * as React from 'react';
 import './App.css';
-import { IState } from '../model/interfaces';
+import { IState } from '../state/interfaces';
 import { store } from '../reducers/store';
-import { State } from '../model/state';
+import { State } from '../state/state';
 import { Unsubscribe } from 'redux';
 
 export interface IBaseComponent {

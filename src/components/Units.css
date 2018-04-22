@@ -1,4 +1,8 @@
 .Units {
-  min-height: 100px;
-  min-width: 150px;
+  min-height: 60px;
+  min-width: 60px;
+}
+.Unit {
+  max-height: 60px;
+  max-width: 60px;
 }

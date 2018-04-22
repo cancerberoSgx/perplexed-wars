@@ -1,11 +1,13 @@
-import { State } from "../model/state";
-import { store } from "../reducers/store";
 import { ACTION_GAME_LOOP_INCREMENT_INTERVAL } from "../reducers/gameLoop";
+import { store } from "../reducers/store";
+import registerServiceWorker from '../registerServiceWorker';
+import { State } from "./state";
 
 export class Game{
   private intervalId: NodeJS.Timer
-
   private static instance
+  private constructor(){}
+  
   public static getInstance():Game{
     if(!this.instance){
       this.instance=new Game()
@@ -19,6 +21,9 @@ export class Game{
         Game.nextTurn()
       }, State.get().game.interval)
     }
+
+
+    registerServiceWorker()
   }
 
   public stop(): any {

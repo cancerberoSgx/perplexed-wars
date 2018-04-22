@@ -1,22 +1,5 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 80px;
-}
-
 .App-header {
-  background-color: #222;
-  height: 100px;
-  padding: 20px;
+  text-align: center;
+  background-color:#1498d5;
   color: white;
-}
-
-.App-title {
-  font-size: 1.5em;
-}
-
-.add-unit.pressed {
-  border: 2px solid pink;
 }

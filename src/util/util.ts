@@ -1,4 +1,4 @@
-import { IState, IPoint, IBox, IUnit } from "../model/interfaces";
+import { IState, IPoint, IBox, IUnit } from "../state/interfaces";
 
 export function range(n:number):number[]{
   const a = new Array(n)

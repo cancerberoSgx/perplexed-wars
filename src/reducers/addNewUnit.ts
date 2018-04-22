@@ -1,5 +1,5 @@
-import { IState, IPoint } from "../model/interfaces";
-import { State } from "../model/state";
+import { IState, IPoint } from "../state/interfaces";
+import { State } from "../state/state";
 import { Action } from "redux";
 import { getAvailablePlacesFor } from "../util/util";
 

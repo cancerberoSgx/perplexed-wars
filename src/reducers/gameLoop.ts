@@ -1,6 +1,6 @@
 import { Action } from "redux";
-import { IState, IBox, IUnit, IPlayer } from "../model/interfaces";
-import { State } from "../model/state";
+import { IState, IBox, IUnit, IPlayer } from "../state/interfaces";
+import { State } from "../state/state";
 import { getAvailablePlacesFor, getPathMatrix, findUnit, iterateUnits, copy } from "../util/util";
 import { IResolver, unitActionResolvers } from "../unitActionResolvers/unitActionResolvers";
 import { MoveResolver } from "../unitActionResolvers/moveResolver";

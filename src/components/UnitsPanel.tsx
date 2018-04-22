@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { State } from '../model/state';
 import { ACTION_ADD_UNIT_CLICK_BUTTON } from '../reducers/addNewUnit';
 import { store } from '../reducers/store';
-import './App.css';
+import { State } from '../state/state';
 import { BaseComponent } from './BaseComponent';
+import './UnitsPanel.css';
 
 export class UnitsPanel extends BaseComponent<{}> {
   constructor(props:{}){

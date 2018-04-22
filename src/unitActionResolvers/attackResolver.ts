@@ -1,5 +1,5 @@
 import { IResolver} from "./unitActionResolvers";
-import { IBox, IUnit , IState , IPlayer} from "../model/interfaces";
+import { IBox, IUnit , IState , IPlayer} from "../state/interfaces";
 import { findUnit, getPathMatrix } from "../util/util";
 import * as PF from 'pathfinding'
 

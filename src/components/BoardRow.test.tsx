@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { BoardRow } from './BoardRow';
-import { State } from '../model/state';
+import { State } from '../state/state';
 
 it('BoardRow renders without crashing', () => {
   const parent = document.createElement('tbody');

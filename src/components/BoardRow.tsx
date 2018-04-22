@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { State } from '../model/state';
+import { State } from '../state/state';
 import './BoardRow.css';
 import { BaseComponent, IBaseComponent } from './BaseComponent';
 import { ACTION_ADD_UNIT } from '../reducers/addNewUnit';
