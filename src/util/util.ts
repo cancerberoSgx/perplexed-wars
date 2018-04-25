@@ -1,4 +1,4 @@
-import { IState, IBox, IUnit } from "../state/interfaces";
+import { IState, IBox, IUnit, IPlayer } from "../state/interfaces";
 
 export function range(n:number):number[]{
   const a = new Array(n)
@@ -73,5 +73,15 @@ export function iterateUnits(state:IState, iterator:(box:IBox, unit:IUnit)=>void
     box.units.forEach(unit=>{
       iterator(box, unit)
     })
+  })
+}
+
+
+export function sanitizeState(state:IState){
+  state.unitsTypes.forEach(ut=>{
+    ut.unitShouldAttack=info=>true
+    ut.unitShouldMove=info=>true
+    ut.stateModifiers = []
+    ut.buildCondition = (player:IPlayer)=>true
   })
 }

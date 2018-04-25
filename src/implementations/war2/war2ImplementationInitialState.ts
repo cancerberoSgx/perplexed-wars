@@ -1,18 +1,18 @@
 import { IState, IBox} from "../../state/interfaces";
-import { clone } from "../../util/util";
+import { clone, sanitizeState } from "../../util/util";
 import { State } from "../../state/state";
 import { createBoxes, buildUIStatePlayerControls } from "../../state/initialState";
-import * as HumanTownhall from './assets/HumanTownhall.gif'
+import * as HumanTownHall from './assets/HumanTownhall.gif'
 
 export function war2ImplementationInitialState():IState {
   const n=15
   const m=10
   const state:IState = {
     game: {
-      interval: 4000,
+      interval: 1000,
       allowDiagonal: true,
       time: 0,
-      realTime: false,
+      realTime: true,
       winner: '', 
       gameFinish: false,
       paused: false
@@ -21,8 +21,8 @@ export function war2ImplementationInitialState():IState {
     unitsTypes: [
       {
         name: 'Town Hall',
-        image: HumanTownhall,
-        icon: HumanTownhall,
+        image: HumanTownHall,
+        icon: HumanTownHall,
         id: 'human-base',
         isBase: true,
         properties: {
@@ -31,7 +31,7 @@ export function war2ImplementationInitialState():IState {
           health: 10,
           range: 2,
           territoryRadius: 2
-        },
+        }
       },
       {
         name: 'Great Hall',
@@ -138,7 +138,9 @@ export function war2ImplementationInitialState():IState {
     }
   }
 
+  sanitizeState(state)
   createBoxes(state, n, m, 'human-base', 'orc-base')
   buildUIStatePlayerControls(state)
+
   return state
 }

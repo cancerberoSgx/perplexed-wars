@@ -2,6 +2,7 @@ import { IResolver} from "./unitActionResolvers";
 import { IBox, IUnit , IState , IPlayer} from "../state/interfaces";
 import { findUnit, getPathMatrix } from "../util/util";
 import * as PF from 'pathfinding'
+import { Game } from "../state/game";
 
 export class MoveResolver implements IResolver {
   private finder: any;
@@ -15,7 +16,8 @@ export class MoveResolver implements IResolver {
     }
     const foeBaseUnit = foeBases[0].unit
     const foeBaseBox = foeBases[0].box 
-    if(!unit.type.isBase && !unit.moved && unit.playerId===player.id) {
+    if(!unit.type.isBase && unit.state.speed!==0 && !unit.moved && unit.playerId===player.id && 
+      unit.type.unitShouldMove({unit, box})) {
       const matrix = getPathMatrix(state)
       const grid = new PF.Grid(matrix);
       const path:number[][] = this.finder.findPath(box.x, box.y, foeBaseBox.x, foeBaseBox.y, grid);
@@ -26,6 +28,9 @@ export class MoveResolver implements IResolver {
           newBox.units.push(unit) // add to new box
           unit.moved=true
         }
+      }
+      else{
+        // TODO: if there is no path, we should still try to move the unit. Issue. if I block the two base - no unit moves no matter that all lthe board is free
       }
     }
   }

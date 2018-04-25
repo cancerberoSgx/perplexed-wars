@@ -7,7 +7,6 @@ dist
 /coverage
 
 # production
-/build
 
 # misc
 .DS_Store
@@ -26,4 +25,3 @@ yarn-error.log*
 # !types/src/util
 
 types
-docs

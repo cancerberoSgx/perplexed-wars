@@ -46,8 +46,6 @@ export class State {
       timestamp: Date.now(),
       state: clone(type.properties),
       killCount: 0,
-      buildCondition: (player:IPlayer, s:IState)=>true,
-      stateModifiers: []
     }
   }
 

@@ -5,7 +5,7 @@ import { getUnitsNear } from "../util/util";
 
 export class AttackResolver implements IResolver {
   public resolve({state, unit, box, player}:{state:IState,unit:IUnit, box:IBox, player:IPlayer}):void {
-    if(!unit.type.isBase && !unit.moved && unit.playerId===player.id){
+    if(!unit.moved && unit.playerId===player.id){
       const unitsNear = getUnitsNear({state, unit, box, radio: unit.state.range, predicate:u=>u.playerId!==player.id})
       if(unitsNear && unitsNear.length){
         const {targetUnit, targetBox} = unitsNear[0]
