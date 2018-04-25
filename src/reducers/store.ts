@@ -9,5 +9,4 @@ export const allReducers = combineReducers({
   addNewUnit, clickAddNewUnitButton, gameLoop, selectUnit, changeGameSettings
 })
 
-
 export const store:Store = createStore(allReducers)

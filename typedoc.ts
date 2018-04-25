@@ -1,19 +1,20 @@
 module.exports = {
   src: [
-    './types/reducers',
+    // './types/reducers',
     './types/state',
-    './types/unitActionResolvers',
-    './types/util',
+    // './types/unitActionResolvers',
+    // './types/util',
     // './node_modules/@types/node/index.d.ts',  
     // './node_modules/redux/index.d.ts'
   ],
   "mode": 'file',
   'includeDeclarations': true,
-  'tsconfig': 'tsconfig.json',
+  'tsconfig': 'tsconfig_for_typedoc.json',
   'out': './docs',
   'excludePrivate': true,
   'excludeProtected': true,
   'excludeExternals': true,
   'readme': 'README.md',
-  'name': 'perplexed-wars'
+  'name': 'perplexed-wars',
+  "ignoreCompilerErrors": true
 }

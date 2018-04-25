@@ -3,7 +3,7 @@ import { IBox, IState, IUnit } from "../state/interfaces";
 import { State } from "../state/state";
 import { unitActionResolvers } from "../unitActionResolvers/unitActionResolvers";
 import { iterateUnits } from "../util/util";
-import { Game } from "state/game";
+import { Game } from "../state/game";
 
 export const ACTION_GAME_LOOP_INCREMENT_INTERVAL:string = 'game-loop-increment-interval'
 

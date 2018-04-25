@@ -3,8 +3,9 @@ import { store } from "../reducers/store";
 import registerServiceWorker from '../registerServiceWorker';
 import { State } from "./state";
 import { EventEmitter } from "events";
+import { IGameFramework } from "./IGameFramework";
 
-export class Game extends EventEmitter {
+export class Game extends EventEmitter implements IGameFramework {
   private intervalId: NodeJS.Timer
   private static instance
   
@@ -45,4 +46,5 @@ export class Game extends EventEmitter {
       })
     }
   }
+
 }

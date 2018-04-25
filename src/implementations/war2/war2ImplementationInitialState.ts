@@ -2,7 +2,7 @@ import { IState, IBox} from "../../state/interfaces";
 import { clone } from "../../util/util";
 import { State } from "../../state/state";
 import { createBoxes, buildUIStatePlayerControls } from "../../state/initialState";
-import * as HumanTownhall from './assets/HumanTownhall.png'
+import * as HumanTownhall from './assets/HumanTownhall.gif'
 
 export function war2ImplementationInitialState():IState {
   const n=15

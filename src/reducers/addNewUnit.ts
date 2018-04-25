@@ -1,7 +1,8 @@
-import { IState } from "../state/interfaces";
+import { IState, IUnit } from "../state/interfaces";
 import { State } from "../state/state";
 import { Action } from "redux";
 import { getAvailablePlacesFor } from "../util/util";
+import { Game } from "../state/game";
 
 export const ACTION_ADD_UNIT:string = 'add-unit'
 export const ACTION_ADD_UNIT_CLICK_BUTTON:string = 'add-unit-click-button'
@@ -53,7 +54,10 @@ export function addNewUnit(state:IState, action:IAddUnitAction):IState {
     const box = s.board.boxes.find(b=>b.x===action.x && b.y===action.y)
     const availablePlaces = getAvailablePlacesFor(currentPlayer.playerId, state)
     if(box!==undefined && availablePlaces.find(p=>p.x===action.x&& p.y===action.y)) {
-      box.units.push(State.newUnit(state, action.unitId, currentPlayer.playerId))
+      Game.getInstance().emit('before-add-unit-successfully', {action, player: currentPlayer, box})
+      const newUnit:IUnit = State.newUnit(state, action.unitId, currentPlayer.playerId)
+      box.units.push(newUnit)
+      Game.getInstance().emit('after-add-unit', {newUnit, action, player: currentPlayer, box})
     }
     else{
       console.log('Cannot add unit there - box is outiside territory')

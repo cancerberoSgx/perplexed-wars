@@ -18,6 +18,7 @@
     "no-unused-variable": false,
     "no-unused-expression": false,
     "no-empty": false,
-    "only-arrow-functions": false
+    "only-arrow-functions": false,
+    "interface-name": false
   }
 }
