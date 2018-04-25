@@ -81,6 +81,8 @@ export interface IResource extends IThing {
    * the cumulative resource value for this turn. When the turn ends, [[thisTurnValue]] is summed to [[value]] and reseted to 0
    */
   thisTurnValue: number
+  /** by default a resource will increase something per turn without having to happen anything... */
+  defaultValuePerTurn: number
   icon: string
 }
 

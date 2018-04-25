@@ -80,10 +80,10 @@
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="iunittypebehavior.html#buildcondition" class="tsd-kind-icon">build<wbr>Condition</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="iunittypebehavior.html#id" class="tsd-kind-icon">id</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="iunittypebehavior.html#statemodifiers" class="tsd-kind-icon">state<wbr>Modifiers</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="iunittypebehavior.html#unitshouldattack" class="tsd-kind-icon">unit<wbr>Should<wbr>Attack</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="iunittypebehavior.html#unitshouldmove" class="tsd-kind-icon">unit<wbr>Should<wbr>Move</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="iunittypebehavior.html#unittypeid" class="tsd-kind-icon">unit<wbr>Type<wbr>Id</a></li>
 							</ul>
 						</section>
 					</div>
@@ -110,7 +110,7 @@
 						<ul class="tsd-parameters">
 							<li class="tsd-parameter-siganture">
 								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property tsd-is-not-exported">
-									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>player<span class="tsd-signature-symbol">: </span><a href="iplayer.html" class="tsd-signature-type">IPlayer</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>player<span class="tsd-signature-symbol">: </span><a href="iplayer.html" class="tsd-signature-type">IPlayer</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="buildconditionresult.html" class="tsd-signature-type">BuildConditionResult</a></li>
 								</ul>
 								<ul class="tsd-descriptions">
 									<li class="tsd-description">
@@ -120,12 +120,22 @@
 												<h5>player: <a href="iplayer.html" class="tsd-signature-type">IPlayer</a></h5>
 											</li>
 										</ul>
-										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+										<h4 class="tsd-returns-title">Returns <a href="buildconditionresult.html" class="tsd-signature-type">BuildConditionResult</a></h4>
 									</li>
 								</ul>
 							</li>
 						</ul>
 					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="id" class="tsd-anchor"></a>
+					<h3>id</h3>
+					<div class="tsd-signature tsd-kind-icon">id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in behavior-interfaces.d.ts:9</li>
+						</ul>
+					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="statemodifiers" class="tsd-anchor"></a>
@@ -243,16 +253,6 @@
 						</ul>
 					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="unittypeid" class="tsd-anchor"></a>
-					<h3>unit<wbr>Type<wbr>Id</h3>
-					<div class="tsd-signature tsd-kind-icon">unit<wbr>Type<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in behavior-interfaces.d.ts:9</li>
-						</ul>
-					</aside>
-				</section>
 			</section>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
@@ -288,6 +288,9 @@
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="beforeunitselectionevent.html" class="tsd-kind-icon">Before<wbr>Unit<wbr>Selection<wbr>Event</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="buildconditionresult.html" class="tsd-kind-icon">Build<wbr>Condition<wbr>Result</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="ibehavior.html" class="tsd-kind-icon">IBehavior</a>
@@ -346,6 +349,9 @@
 								<a href="iunittypebehavior.html#buildcondition" class="tsd-kind-icon">build<wbr>Condition</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="iunittypebehavior.html#id" class="tsd-kind-icon">id</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="iunittypebehavior.html#statemodifiers" class="tsd-kind-icon">state<wbr>Modifiers</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
@@ -353,9 +359,6 @@
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="iunittypebehavior.html#unitshouldmove" class="tsd-kind-icon">unit<wbr>Should<wbr>Move</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="iunittypebehavior.html#unittypeid" class="tsd-kind-icon">unit<wbr>Type<wbr>Id</a>
 							</li>
 						</ul>
 					</li>

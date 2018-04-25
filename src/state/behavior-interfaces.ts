@@ -11,7 +11,7 @@ export interface IBehavior {
 
 export interface IUnitTypeBehavior {
 
-  unitTypeId: string
+  id: string
 
   /**
    * 
@@ -30,7 +30,7 @@ export interface IUnitTypeBehavior {
   /**
    * for example: player.resources.find(r=>r.name==='gold').value>50 && player=>player.resources.find(r=>r.name==='gold')
    */
-  buildCondition: (player:IPlayer)=>boolean//
+  buildCondition: (player:IPlayer)=>BuildConditionResult
 
   /**
    * Units are the only agent (besides the user when it buys) that can modify the [[IState]] instance. They can modify the [[IResource.thisTurnValue]] or even other units state. 
@@ -47,7 +47,10 @@ export interface IUnitTypeBehavior {
 
 }
 
-
+export interface BuildConditionResult {
+  canBuild: boolean
+  whyNot?: string
+}
 
 /**
  * affect the state somehow, at some moment (events?). events are defined byb the framework (implementors cannot define new events)

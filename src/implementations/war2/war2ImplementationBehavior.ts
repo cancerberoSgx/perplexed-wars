@@ -4,17 +4,13 @@ import { war2ImplementationInitialState } from "./war2ImplementationInitialState
 export function war2ImplementationBehavior():IBehavior {
   const initialState = war2ImplementationInitialState()
   const result:IBehavior = {
-    unitTypes: [
-    ]
-  }
-  initialState.unitsTypes.forEach((ut)=>{
-    result.unitTypes.push({
-      unitTypeId: ut.id,
+    unitTypes: initialState.unitsTypes.map<IUnitTypeBehavior>(ut=>({
+      id: ut.id,
       unitShouldMove: ()=>true,
       unitShouldAttack: ()=>true,
-      buildCondition: ()=>true,
+      buildCondition: ()=>({canBuild: true}),
       stateModifiers: []
-    })
-  })
+    }))
+  }
   return result;
 }

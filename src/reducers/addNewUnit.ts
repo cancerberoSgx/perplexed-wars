@@ -3,6 +3,7 @@ import { State } from "../state/state";
 import { Action } from "redux";
 import { getAvailablePlacesFor, newUnit as makeUnit } from "../util/util";
 import { Game } from "../state/game";
+import { Behavior } from "../state/behavior";
 
 export const ACTION_ADD_UNIT:string = 'add-unit'
 export const ACTION_ADD_UNIT_CLICK_BUTTON:string = 'add-unit-click-button'
@@ -22,6 +23,11 @@ export interface IClickAddUnitButtonAction extends Action{
 export function clickAddNewUnitButton(state:IState, action:IClickAddUnitButtonAction):IState{
   state = State.get() 
   if(action.type!==ACTION_ADD_UNIT_CLICK_BUTTON){
+    return state
+  }
+  const buildCondition = Behavior.get().unitTypes.find(ut=>ut.id===action.unitId).buildCondition(state.players.find(p=>p.id===action.playerId))
+  if(!buildCondition.canBuild){
+    alert('Cannot build unit, reason: '+buildCondition.whyNot)
     return state
   }
   return State.modify(state, s=>{
