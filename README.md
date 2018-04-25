@@ -13,7 +13,11 @@ npm run doc
 
 # API docs
 
-https://cancerberosgx.github.io/perplexed-wars/docs/interfaces/istate.html
+https://cancerberosgx.github.io/perplexed-wars/docs/
+
+# Current implementation demo (WIP)
+
+https://cancerberosgx.github.io/perplexed-wars/build/
 
 
 # Features
