@@ -77,11 +77,12 @@ export function iterateUnits(state:IState, iterator:(box:IBox, unit:IUnit)=>void
 }
 
 
-export function sanitizeState(state:IState){
-  state.unitsTypes.forEach(ut=>{
-    ut.unitShouldAttack=info=>true
-    ut.unitShouldMove=info=>true
-    ut.stateModifiers = []
-    ut.buildCondition = (player:IPlayer)=>true
-  })
-}
+// export function sanitizeState(state:IState){
+//   // console.log(sanitizeState)
+//   state.unitsTypes.forEach(ut=>{
+//     ut.unitShouldAttack=(info=>true)
+//     ut.unitShouldMove=(info=>true)
+//     ut.stateModifiers = []
+//     ut.buildCondition = (player=>true)
+//   })
+// }

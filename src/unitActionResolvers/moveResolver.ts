@@ -16,8 +16,8 @@ export class MoveResolver implements IResolver {
     }
     const foeBaseUnit = foeBases[0].unit
     const foeBaseBox = foeBases[0].box 
-    if(!unit.type.isBase && unit.state.speed!==0 && !unit.moved && unit.playerId===player.id && 
-      unit.type.unitShouldMove({unit, box})) {
+    if(!unit.type.isBase && unit.state.speed!==0 && !unit.moved && unit.playerId===player.id /* && 
+    unit.type.unitShouldMove({unit, box})*/) {
       const matrix = getPathMatrix(state)
       const grid = new PF.Grid(matrix);
       const path:number[][] = this.finder.findPath(box.x, box.y, foeBaseBox.x, foeBaseBox.y, grid);

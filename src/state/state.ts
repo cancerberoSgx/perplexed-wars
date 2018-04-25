@@ -39,6 +39,7 @@ export class State {
 
   public static newUnit(state:IState, typeId: string, playerId: string): IUnit {
     const type = state.unitsTypes.find(ut=>ut.id===typeId)
+    debugger;
     return {
       type,
       playerId,
