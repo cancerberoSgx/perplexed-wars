@@ -18,8 +18,11 @@
     "lint": "tslint src/**/*.ts",
     "lint-fix": "tslint --fix src/**/*.ts",
     "tsc": "tsc --project tsconfig_for_typedoc.json",
+    "tsc-watch": "tsc --project tsconfig_for_typedoc.json --watch",
     "doc": "tsc --project tsconfig_for_typedoc.json && typedoc --options typedoc.ts",
-    "clean": "rm -rf node_modules types docs build"
+    "clean": "rm -rf types docs build",
+    "all": "npm run clean; npm run tsc; npm run doc; npm run build",
+    "test-clone": "rm -rf ../perplexed-wars-test; mkdir ../perplexed-wars-test; cd ../perplexed-wars-test; git clone ../perplexed-wars/.git;  cd perplexed-wars ; npm install ; npm test"
   },
   "devDependencies": {
     "@types/jest": "^22.2.3",

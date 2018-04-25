@@ -98,13 +98,11 @@
 					<aside class="tsd-sources">
 						<ul>
 							<li>Defined in behavior-interfaces.d.ts:25</li>
-							<li>Defined in behavior.d.ts:18</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>for example: player.resources.find(r=&gt;r.name===&#39;gold&#39;).value&gt;50 &amp;&amp; player=&gt;player.resources.find(r=&gt;r.name===&#39;gold&#39;)
-							for example: player.resources.find(r=&gt;r.name===&#39;gold&#39;).value&gt;50 &amp;&amp; player=&gt;player.resources.find(r=&gt;r.name===&#39;gold&#39;)</p>
+							<p>for example: player.resources.find(r=&gt;r.name===&#39;gold&#39;).value&gt;50 &amp;&amp; player=&gt;player.resources.find(r=&gt;r.name===&#39;gold&#39;)</p>
 						</div>
 					</div>
 					<div class="tsd-type-declaration">
@@ -132,25 +130,16 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="statemodifiers" class="tsd-anchor"></a>
 					<h3>state<wbr>Modifiers</h3>
-					<div class="tsd-signature tsd-kind-icon">state<wbr>Modifiers<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">IStateModifier</span><span class="tsd-signature-symbol">[]</span></div>
+					<div class="tsd-signature tsd-kind-icon">state<wbr>Modifiers<span class="tsd-signature-symbol">:</span> <a href="istatemodifier.html" class="tsd-signature-type">IStateModifier</a><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
 							<li>Defined in behavior-interfaces.d.ts:37</li>
-							<li>Defined in behavior.d.ts:30</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Units are the only agent (besides the user when it buys) that can modify the <a href="istate.html">IState</a> instance. They can modify the <a href="iresource.html#thisturnvalue">IResource.thisTurnValue</a> or even other units state.
-							Units are the only agent (besides the user when it buys) that can modify the <a href="istate.html">IState</a> instance. They can modify the <a href="iresource.html#thisturnvalue">IResource.thisTurnValue</a> or even other units state.</p>
+							<p>Units are the only agent (besides the user when it buys) that can modify the <a href="istate.html">IState</a> instance. They can modify the <a href="iresource.html#thisturnvalue">IResource.thisTurnValue</a> or even other units state.</p>
 						</div>
-						<p>units / buildings can modify the state of the game, Examples:
-							a &quot;caravan&quot; unit can generate +5 gold per turn.
-							a fremen unit will produce +10 of &quot;water&quot; when killing an organic unit
-							a bank building will multiply by 50% all the gold produced in a turn. on(after-end-of-turn, count player.units.find(bank) )
-							a kamikaze unit will damage +40 units that are up to 3 boxes near him when it dies. on(after-unit-die, if (unit is .kanikaze) foePlayer.units.near(kamikaze).foreach.health-=40
-							a dock building will make destructors and battleships units 40% cheaper. (  on(before-unit-create, (if(player.buildings.find(docker)){fi unit created is battl or desc then - substract 40%})=&gt;{}))
-						So stateModifiers for a particular event, will behave like &quot;PluginContainer&quot; in order respecting defined prioerities,</p>
 						<p>units / buildings can modify the state of the game, Examples:
 							a &quot;caravan&quot; unit can generate +5 gold per turn.
 							a fremen unit will produce +10 of &quot;water&quot; when killing an organic unit
@@ -167,13 +156,11 @@
 					<aside class="tsd-sources">
 						<ul>
 							<li>Defined in behavior-interfaces.d.ts:21</li>
-							<li>Defined in behavior.d.ts:14</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>same logic as <a href="iunittypebehavior.html#unitshouldmove">unitShouldMove</a> but for attacking
-							same logic as <a href="iunittypebehavior.html#unitshouldmove">unitShouldMove</a> but for attacking</p>
+							<p>same logic as <a href="iunittypebehavior.html#unitshouldmove">unitShouldMove</a> but for attacking</p>
 						</div>
 					</div>
 					<div class="tsd-type-declaration">
@@ -213,16 +200,11 @@
 					<aside class="tsd-sources">
 						<ul>
 							<li>Defined in behavior-interfaces.d.ts:17</li>
-							<li>Defined in behavior.d.ts:10</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
 							<p>before automatically moving a unit, the framework ask its type if it&#39;s OK so unit type definition can customize how it moves.
-								For allow the framework to automatically move the unit, return true (default)
-								For moving to a custom box return that box. Notice that implementers are responsible of respecting the game rules (for example cannot move to a non-traspasable box
-								For not moving at all, just return the same box argument.
-								before automatically moving a unit, the framework ask its type if it&#39;s OK so unit type definition can customize how it moves.
 								For allow the framework to automatically move the unit, return true (default)
 								For moving to a custom box return that box. Notice that implementers are responsible of respecting the game rules (for example cannot move to a non-traspasable box
 							For not moving at all, just return the same box argument.</p>
@@ -268,7 +250,6 @@
 					<aside class="tsd-sources">
 						<ul>
 							<li>Defined in behavior-interfaces.d.ts:9</li>
-							<li>Defined in behavior.d.ts:3</li>
 						</ul>
 					</aside>
 				</section>
@@ -284,6 +265,9 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-class">
+						<a href="../classes/behavior.html" class="tsd-kind-icon">Behavior</a>
+					</li>
 					<li class=" tsd-kind-class">
 						<a href="../classes/game.html" class="tsd-kind-icon">Game</a>
 					</li>
@@ -391,15 +375,6 @@
 					</li>
 					<li class=" tsd-kind-event">
 						<a href="../globals.html#beforeunitselection" class="tsd-kind-icon">before<wbr>Unit<wbr>Selection</a>
-					</li>
-					<li class=" tsd-kind-variable">
-						<a href="../globals.html#initialstate" class="tsd-kind-icon">initial<wbr>State</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="../globals.html#builduistateplayercontrols" class="tsd-kind-icon">buildUIState<wbr>Player<wbr>Controls</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="../globals.html#createboxes" class="tsd-kind-icon">create<wbr>Boxes</a>
 					</li>
 				</ul>
 			</nav>

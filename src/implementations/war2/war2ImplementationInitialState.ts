@@ -1,7 +1,6 @@
 import { IState, IBox} from "../../state/state-interfaces";
-// import { sanitizeState } from "../../util/util";
 import { State } from "../../state/state";
-import { createBoxes, buildUIStatePlayerControls } from "../../state/initialState";
+import { createBoxes, buildUIStatePlayerControls } from "../../util/util";
 import * as HumanTownHall from './assets/HumanTownhall.gif'
 
 export function war2ImplementationInitialState():IState {
@@ -138,7 +137,6 @@ export function war2ImplementationInitialState():IState {
     }
   }
 
-  // sanitizeState(state)
   createBoxes(state, n, m, 'human-base', 'orc-base')
   buildUIStatePlayerControls(state)
 

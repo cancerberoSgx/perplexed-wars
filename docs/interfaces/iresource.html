@@ -68,22 +68,8 @@
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
 						<p><a href="iplayer.html">IPlayer</a> is associated with resources. Each player can have different list of resource definitions
-							<a href="iunit.html">IUnit</a> are associated with resources also since the predicate <a href="iunittypebehavior.html#buildcondition">buildCondition</a> is based on the resources the player has (in part). For example, I need 50 gold in order to build a soldier. <a href="iresource.html#value">IResource.value</a>.
-							<a href="iplayer.html">IPlayer</a> is associated with resources. Each player can have different list of resource definitions
-							<a href="iunit.html">IUnit</a> are associated with resources also since the predicate <a href="iunittypebehavior.html#buildcondition">buildCondition</a> is based on the resources the player has (in part). For example, I need 50 gold in order to build a soldier. <a href="iresource.html#value">IResource.value</a>.
-							<a href="iplayer.html">IPlayer</a> is associated with resources. Each player can have different list of resource definitions
 						<a href="iunit.html">IUnit</a> are associated with resources also since the predicate <a href="iunittypebehavior.html#buildcondition">buildCondition</a> is based on the resources the player has (in part). For example, I need 50 gold in order to build a soldier. <a href="iresource.html#value">IResource.value</a>.</p>
 					</div>
-					<p><a href="iresource.html#value">IResource.value</a> can only be modified at the following moments:</p>
-					<ul>
-						<li>when the turn ends : we sum all events that give net gold that happened in the turn (like enemy unit kills, gold per turn, etc),*  , and then multiply it with possible factors (like bank before)</li>
-						<li>when user build/buy something. we cannot wait til the end of the turn - we must subtract money in that exact moment when the unit/building is created.</li>
-					</ul>
-					<p><a href="iresource.html#value">IResource.value</a> can only be modified at the following moments:</p>
-					<ul>
-						<li>when the turn ends : we sum all events that give net gold that happened in the turn (like enemy unit kills, gold per turn, etc),*  , and then multiply it with possible factors (like bank before)</li>
-						<li>when user build/buy something. we cannot wait til the end of the turn - we must subtract money in that exact moment when the unit/building is created.</li>
-					</ul>
 					<p><a href="iresource.html#value">IResource.value</a> can only be modified at the following moments:</p>
 					<ul>
 						<li>when the turn ends : we sum all events that give net gold that happened in the turn (like enemy unit kills, gold per turn, etc),*  , and then multiply it with possible factors (like bank before)</li>
@@ -96,12 +82,6 @@
 				<ul class="tsd-hierarchy">
 					<li>
 						<a href="ithing.html" class="tsd-signature-type">IThing</a>
-					</li>
-					<li>
-						<span class="tsd-signature-type">IThing</span>
-					</li>
-					<li>
-						<span class="tsd-signature-type">IThing</span>
 						<ul class="tsd-hierarchy">
 							<li>
 								<span class="target">IResource</span>
@@ -117,12 +97,12 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite tsd-is-inherited"><a href="iresource.html#description" class="tsd-kind-icon">description</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="iresource.html#description" class="tsd-kind-icon">description</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="iresource.html#icon" class="tsd-kind-icon">icon</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite tsd-is-inherited"><a href="iresource.html#id" class="tsd-kind-icon">id</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite tsd-is-inherited"><a href="iresource.html#name" class="tsd-kind-icon">name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="iresource.html#id" class="tsd-kind-icon">id</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="iresource.html#name" class="tsd-kind-icon">name</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="iresource.html#thisturnvalue" class="tsd-kind-icon">this<wbr>Turn<wbr>Value</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite tsd-is-inherited"><a href="iresource.html#timestamp" class="tsd-kind-icon">timestamp</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="iresource.html#timestamp" class="tsd-kind-icon">timestamp</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="iresource.html#value" class="tsd-kind-icon">value</a></li>
 							</ul>
 						</section>
@@ -131,13 +111,12 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite tsd-is-inherited">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="description" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> description</h3>
 					<div class="tsd-signature tsd-kind-icon">description<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="ithing.html">IThing</a>.<a href="ithing.html#description">description</a></p>
-						<p>Overrides IThing.description</p>
 						<ul>
 							<li>Defined in state-interfaces.d.ts:3</li>
 						</ul>
@@ -150,30 +129,26 @@
 					<aside class="tsd-sources">
 						<ul>
 							<li>Defined in state-interfaces.d.ts:70</li>
-							<li>Defined in asdinterfaces.d.ts:70</li>
-							<li>Defined in interfaces.d.ts:70</li>
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite tsd-is-inherited">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="id" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> id</h3>
 					<div class="tsd-signature tsd-kind-icon">id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="ithing.html">IThing</a>.<a href="ithing.html#id">id</a></p>
-						<p>Overrides IThing.id</p>
 						<ul>
 							<li>Defined in state-interfaces.d.ts:4</li>
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite tsd-is-inherited">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="name" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> name</h3>
 					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="ithing.html">IThing</a>.<a href="ithing.html#name">name</a></p>
-						<p>Overrides IThing.name</p>
 						<ul>
 							<li>Defined in state-interfaces.d.ts:2</li>
 						</ul>
@@ -186,25 +161,20 @@
 					<aside class="tsd-sources">
 						<ul>
 							<li>Defined in state-interfaces.d.ts:69</li>
-							<li>Defined in asdinterfaces.d.ts:69</li>
-							<li>Defined in interfaces.d.ts:69</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>the cumulative resource value for this turn. When the turn ends, <a href="iresource.html#thisturnvalue">thisTurnValue</a> is summed to <a href="iresource.html#value">value</a> and reseted to 0
-								the cumulative resource value for this turn. When the turn ends, <a href="iresource.html#thisturnvalue">thisTurnValue</a> is summed to <a href="iresource.html#value">value</a> and reseted to 0
-							the cumulative resource value for this turn. When the turn ends, <a href="iresource.html#thisturnvalue">thisTurnValue</a> is summed to <a href="iresource.html#value">value</a> and reseted to 0</p>
+							<p>the cumulative resource value for this turn. When the turn ends, <a href="iresource.html#thisturnvalue">thisTurnValue</a> is summed to <a href="iresource.html#value">value</a> and reseted to 0</p>
 						</div>
 					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite tsd-is-inherited">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="timestamp" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> timestamp</h3>
 					<div class="tsd-signature tsd-kind-icon">timestamp<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="ithing.html">IThing</a>.<a href="ithing.html#timestamp">timestamp</a></p>
-						<p>Overrides IThing.timestamp</p>
 						<ul>
 							<li>Defined in state-interfaces.d.ts:5</li>
 						</ul>
@@ -217,15 +187,11 @@
 					<aside class="tsd-sources">
 						<ul>
 							<li>Defined in state-interfaces.d.ts:65</li>
-							<li>Defined in asdinterfaces.d.ts:65</li>
-							<li>Defined in interfaces.d.ts:65</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Current player&#39;s value - when he buy something the resources are extracted from this value
-								Current player&#39;s value - when he buy something the resources are extracted from this value
-							Current player&#39;s value - when he buy something the resources are extracted from this value</p>
+							<p>Current player&#39;s value - when he buy something the resources are extracted from this value</p>
 						</div>
 					</div>
 				</section>
@@ -241,6 +207,9 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-class">
+						<a href="../classes/behavior.html" class="tsd-kind-icon">Behavior</a>
+					</li>
 					<li class=" tsd-kind-class">
 						<a href="../classes/game.html" class="tsd-kind-icon">Game</a>
 					</li>
@@ -291,22 +260,22 @@
 					<li class="current tsd-kind-interface">
 						<a href="iresource.html" class="tsd-kind-icon">IResource</a>
 						<ul>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite tsd-is-inherited">
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 								<a href="iresource.html#description" class="tsd-kind-icon">description</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="iresource.html#icon" class="tsd-kind-icon">icon</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite tsd-is-inherited">
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 								<a href="iresource.html#id" class="tsd-kind-icon">id</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite tsd-is-inherited">
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 								<a href="iresource.html#name" class="tsd-kind-icon">name</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="iresource.html#thisturnvalue" class="tsd-kind-icon">this<wbr>Turn<wbr>Value</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite tsd-is-inherited">
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 								<a href="iresource.html#timestamp" class="tsd-kind-icon">timestamp</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
@@ -354,15 +323,6 @@
 					</li>
 					<li class=" tsd-kind-event">
 						<a href="../globals.html#beforeunitselection" class="tsd-kind-icon">before<wbr>Unit<wbr>Selection</a>
-					</li>
-					<li class=" tsd-kind-variable">
-						<a href="../globals.html#initialstate" class="tsd-kind-icon">initial<wbr>State</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="../globals.html#builduistateplayercontrols" class="tsd-kind-icon">buildUIState<wbr>Player<wbr>Controls</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="../globals.html#createboxes" class="tsd-kind-icon">create<wbr>Boxes</a>
 					</li>
 				</ul>
 			</nav>

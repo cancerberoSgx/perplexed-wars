@@ -86,3 +86,54 @@ export function iterateUnits(state:IState, iterator:(box:IBox, unit:IUnit)=>void
 //     ut.buildCondition = (player=>true)
 //   })
 // }
+
+
+
+
+// utilities for poblate the initial state data:
+export function buildUIStatePlayerControls(state:IState){
+  state.players.forEach(p=>{
+    const playerControl = {playerId: p.id, addUnitButtons: []}
+    p.unitTypes.forEach(unitType=>{
+      playerControl.addUnitButtons.push({unitTypeId: unitType, pressed: false})
+    })
+    state.uiState.playerControls.push(playerControl)
+  })
+}
+export function createBoxes(state:IState, n:number, m:number, player0BaseId:string, player1BaseId:string){
+  const boxes = state.board.boxes = []
+  for (let i = 0; i < n; i++) {
+    for (let j = 0; j < m; j++) {
+      const box:IBox = {
+        x: i, 
+        y: j, 
+        terrain: 'grey', 
+        units: [],
+        id: `box-${i}-${j}`
+      }
+      if(i===0&&j===0) {
+        box.units.push(newUnit(state, player0BaseId, state.players[0].id))
+      }
+      if(i===n-1&&j===m-1) {
+        box.units.push(newUnit(state, player1BaseId, state.players[1].id))  
+      }
+      boxes.push(box)
+    }
+  }
+  return boxes
+}
+
+
+let newUnitCounter: number = 0;
+
+export function newUnit(state:IState, typeId: string, playerId: string): IUnit {
+  const type = state.unitsTypes.find(ut=>ut.id===typeId)
+  return {
+    type,
+    playerId,
+    id: `unit-${playerId}-${newUnitCounter++}`,
+    timestamp: Date.now(),
+    state: clone(type.properties),
+    killCount: 0,
+  }
+}

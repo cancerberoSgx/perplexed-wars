@@ -1,10 +1,11 @@
-import { initialState } from "./initialState";
 import { IState, IPlayerUIState, IUnit, IUnitProperties, IPlayer } from "./state-interfaces";
 import { clone } from "../util/util";
+import { war2ImplementationInitialState } from "../implementations/war2/war2ImplementationInitialState";
+
+const initialState = war2ImplementationInitialState;
 
 export class State {
 
-  private static counter: number = 0;
   private stateInternal: IState;
   private static instance: State;
 
@@ -36,18 +37,4 @@ export class State {
     this.getInstance().stateInternal = c
     return c
   }
-
-  public static newUnit(state:IState, typeId: string, playerId: string): IUnit {
-    const type = state.unitsTypes.find(ut=>ut.id===typeId)
-    debugger;
-    return {
-      type,
-      playerId,
-      id: `unit-${playerId}-${this.counter++}`,
-      timestamp: Date.now(),
-      state: clone(type.properties),
-      killCount: 0,
-    }
-  }
-
 }

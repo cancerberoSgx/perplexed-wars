@@ -1,7 +1,7 @@
 import { IState, IUnit } from "../state/state-interfaces";
 import { State } from "../state/state";
 import { Action } from "redux";
-import { getAvailablePlacesFor } from "../util/util";
+import { getAvailablePlacesFor, newUnit as makeUnit } from "../util/util";
 import { Game } from "../state/game";
 
 export const ACTION_ADD_UNIT:string = 'add-unit'
@@ -55,7 +55,7 @@ export function addNewUnit(state:IState, action:IAddUnitAction):IState {
     const availablePlaces = getAvailablePlacesFor(currentPlayer.playerId, state)
     if(box!==undefined && availablePlaces.find(p=>p.x===action.x&& p.y===action.y)) {
       Game.getInstance().emit('beforeAddUnitSuccess', {action, player: currentPlayer, box})
-      const newUnit:IUnit = State.newUnit(state, action.unitId, currentPlayer.playerId)
+      const newUnit:IUnit = makeUnit(state, action.unitId, currentPlayer.playerId)
       box.units.push(newUnit)
       Game.getInstance().emit('afterAddUnit', {newUnit, action, player: currentPlayer, box})
     }
