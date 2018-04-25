@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { store } from '../reducers/store';
 import { ACTION_SELECT_UNIT } from '../reducers/selectUnit';
-import { IBox, IUnit } from '../state/interfaces';
+import { IBox, IUnit } from '../state/state-interfaces';
 import { State } from '../state/state';
 import { BaseComponent } from './BaseComponent';
 import './Units.css';

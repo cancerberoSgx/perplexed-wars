@@ -11,3 +11,5 @@ ReactDOM.render(
 )
 
 Game.getInstance().start()  
+
+Game.getInstance().on('beforeAddUnitSuccess', ()=>{console.log('beforeAddUnitSuccess')})

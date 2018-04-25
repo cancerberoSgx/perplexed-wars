@@ -1,5 +1,5 @@
 import { Action } from "redux";
-import { IState } from "../state/interfaces";
+import { IState } from "../state/state-interfaces";
 import { State } from "../state/state";
 import { findUnit } from "../util/util";
 import { Game } from "../state/game";
@@ -17,11 +17,11 @@ export function selectUnit(state:IState, action:ISelectUnitAction):IState{
     return state
   }
   return State.modify(state, s=>{
-    Game.getInstance().emit('before-unit-selected', {selection: s.uiState.unitSelection, action})
+    Game.getInstance().emit('beforeUnitSelection', {selection: s.uiState.unitSelection, action})
     const results = findUnit(s, unit=>unit.id===action.unitId).map(r=>({unitId: r.unit.id, boxId: r.box.id}))
     const previousSelection = s.uiState.unitSelection
     s.uiState.unitSelection = action.union ? s.uiState.unitSelection.concat(results) : results
-    Game.getInstance().emit('after-unit-selected', {selection: s.uiState.unitSelection, previousSelection, action})
+    Game.getInstance().emit('afterUnitSelection', {selection: s.uiState.unitSelection, previousSelection, action})
   })
 }
 

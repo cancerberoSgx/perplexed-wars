@@ -1,5 +1,5 @@
 import { Action } from "redux";
-import { IBox, IState, IUnit } from "../state/interfaces";
+import { IBox, IState, IUnit } from "../state/state-interfaces";
 import { State } from "../state/state";
 import { unitActionResolvers } from "../unitActionResolvers/unitActionResolvers";
 import { iterateUnits } from "../util/util";

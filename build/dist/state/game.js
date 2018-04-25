@@ -13,9 +13,8 @@ import { store } from "../reducers/store";
 import registerServiceWorker from '../registerServiceWorker';
 import { State } from "./state";
 import { EventEmitter } from "events";
-// import { IGameFramework } from "./IGameFramework";
 var Game = /** @class */ (function (_super) {
-    __extends(Game, _super); /* implements IGameFramework*/
+    __extends(Game, _super);
     function Game() {
         return _super.call(this) || this;
     }
@@ -51,6 +50,6 @@ var Game = /** @class */ (function (_super) {
         }
     };
     return Game;
-}(EventEmitter /* implements IGameFramework*/));
+}(EventEmitter));
 export { Game };
 //# sourceMappingURL=game.js.map

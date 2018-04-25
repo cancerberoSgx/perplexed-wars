@@ -1,4 +1,4 @@
-import { IState, IBox} from "./interfaces";
+import { IState, IBox} from "./state-interfaces";
 // import { clone } from "../util/util";
 import { State } from "./state";
 import { war2ImplementationInitialState } from "../implementations/war2/war2ImplementationInitialState";

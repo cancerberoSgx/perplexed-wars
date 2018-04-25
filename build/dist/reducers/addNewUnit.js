@@ -27,7 +27,7 @@ export function addNewUnit(state, action) {
     }
     var button = currentPlayer.addUnitButtons.find(function (b) { return b.pressed; });
     if (!button) {
-        console.log('No unit selected!');
+        alert('No unit selected!');
         return state;
     }
     action.unitId = action.unitId || button.unitTypeId;
@@ -35,13 +35,13 @@ export function addNewUnit(state, action) {
         var box = s.board.boxes.find(function (b) { return b.x === action.x && b.y === action.y; });
         var availablePlaces = getAvailablePlacesFor(currentPlayer.playerId, state);
         if (box !== undefined && availablePlaces.find(function (p) { return p.x === action.x && p.y === action.y; })) {
-            Game.getInstance().emit('before-add-unit-successfully', { action: action, player: currentPlayer, box: box });
+            Game.getInstance().emit('beforeAddUnitSuccess', { action: action, player: currentPlayer, box: box });
             var newUnit = State.newUnit(state, action.unitId, currentPlayer.playerId);
             box.units.push(newUnit);
-            Game.getInstance().emit('after-add-unit', { newUnit: newUnit, action: action, player: currentPlayer, box: box });
+            Game.getInstance().emit('afterAddUnit', { newUnit: newUnit, action: action, player: currentPlayer, box: box });
         }
         else {
-            console.log('Cannot add unit there - box is outiside territory');
+            alert('Cannot add unit there - box is outside territory');
         }
         s.uiState.playerControls.forEach(function (pc) { return pc.addUnitButtons.forEach(function (b) { return b.pressed = false; }); });
     });

@@ -1,5 +1,5 @@
 import { initialState } from "./initialState";
-import { IState, IPlayerUIState, IUnit, IUnitProperties, IPlayer } from "./interfaces";
+import { IState, IPlayerUIState, IUnit, IUnitProperties, IPlayer } from "./state-interfaces";
 import { clone } from "../util/util";
 
 export class State {

@@ -3,7 +3,7 @@ import {addNewUnit, clickAddNewUnitButton} from './addNewUnit'
 import {gameLoop} from './gameLoop'
 import {selectUnit} from './selectUnit'
 import {changeGameSettings} from './changeGameSettings'
-import {IState} from '../state/interfaces'
+import {IState} from '../state/state-interfaces'
 
 export const allReducers = combineReducers({
   addNewUnit, clickAddNewUnitButton, gameLoop, selectUnit, changeGameSettings

@@ -19,6 +19,7 @@
     "no-unused-expression": false,
     "no-empty": false,
     "only-arrow-functions": false,
-    "interface-name": false
+    "interface-name": false,
+    "adjacent-overload-signatures": false
   }
 }

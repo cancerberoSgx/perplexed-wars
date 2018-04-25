@@ -8,11 +8,11 @@ export function selectUnit(state, action) {
         return state;
     }
     return State.modify(state, function (s) {
-        Game.getInstance().emit('before-unit-selected', { selection: s.uiState.unitSelection, action: action });
+        Game.getInstance().emit('beforeUnitSelection', { selection: s.uiState.unitSelection, action: action });
         var results = findUnit(s, function (unit) { return unit.id === action.unitId; }).map(function (r) { return ({ unitId: r.unit.id, boxId: r.box.id }); });
         var previousSelection = s.uiState.unitSelection;
         s.uiState.unitSelection = action.union ? s.uiState.unitSelection.concat(results) : results;
-        Game.getInstance().emit('after-unit-selected', { selection: s.uiState.unitSelection, previousSelection: previousSelection, action: action });
+        Game.getInstance().emit('afterUnitSelection', { selection: s.uiState.unitSelection, previousSelection: previousSelection, action: action });
     });
 }
 //# sourceMappingURL=selectUnit.js.map

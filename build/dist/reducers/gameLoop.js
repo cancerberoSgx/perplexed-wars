@@ -32,7 +32,7 @@ export function gameLoop(state, action) {
         if (winner) {
             s.game.gameFinish = true;
             s.game.winner = winner;
-            Game.getInstance().emit('before-game-finish', { winner: winner });
+            Game.getInstance().emit('beforeGameFinish', { winner: winner });
         }
         s.game.time = s.game.time + s.game.interval;
     });

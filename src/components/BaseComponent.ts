@@ -1,6 +1,6 @@
 import * as React from 'react';
 import './App.css';
-import { IState } from '../state/interfaces';
+import { IState } from '../state/state-interfaces';
 import { store } from '../reducers/store';
 import { State } from '../state/state';
 import { Unsubscribe } from 'redux';

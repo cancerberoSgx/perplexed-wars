@@ -1,4 +1,4 @@
-import { IBox, IPlayer, IState, IUnit } from "../state/interfaces";
+import { IBox, IPlayer, IState, IUnit } from "../state/state-interfaces";
 import { IResolver } from "./unitActionResolvers";
 import { getUnitsNear } from "../util/util";
 

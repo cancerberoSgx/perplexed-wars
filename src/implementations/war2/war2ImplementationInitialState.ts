@@ -1,4 +1,4 @@
-import { IState, IBox} from "../../state/interfaces";
+import { IState, IBox} from "../../state/state-interfaces";
 // import { sanitizeState } from "../../util/util";
 import { State } from "../../state/state";
 import { createBoxes, buildUIStatePlayerControls } from "../../state/initialState";

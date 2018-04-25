@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ACTION_ADD_UNIT } from '../reducers/addNewUnit';
 import { store } from '../reducers/store';
-import { IBox } from '../state/interfaces';
+import { IBox } from '../state/state-interfaces';
 import { BaseComponent } from './BaseComponent';
 import './BoardRow.css';
 import { Units } from './Units';

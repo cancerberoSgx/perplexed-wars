@@ -1,4 +1,4 @@
-import { IState, IBox, IUnit, IPlayer } from "../state/interfaces";
+import { IState, IBox, IUnit, IPlayer } from "../state/state-interfaces";
 
 export function range(n:number):number[]{
   const a = new Array(n)

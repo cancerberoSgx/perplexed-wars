@@ -1,4 +1,4 @@
-import { IState, IUnit } from "../state/interfaces";
+import { IState, IUnit } from "../state/state-interfaces";
 import { State } from "../state/state";
 import { Action } from "redux";
 import { getAvailablePlacesFor } from "../util/util";
@@ -46,7 +46,7 @@ export function addNewUnit(state:IState, action:IAddUnitAction):IState {
   
   const button = currentPlayer.addUnitButtons.find(b=>b.pressed)
   if(!button) {
-    console.log('No unit selected!')
+    alert('No unit selected!')
     return state
   }
   action.unitId = action.unitId||button.unitTypeId
@@ -54,13 +54,13 @@ export function addNewUnit(state:IState, action:IAddUnitAction):IState {
     const box = s.board.boxes.find(b=>b.x===action.x && b.y===action.y)
     const availablePlaces = getAvailablePlacesFor(currentPlayer.playerId, state)
     if(box!==undefined && availablePlaces.find(p=>p.x===action.x&& p.y===action.y)) {
-      Game.getInstance().emit('before-add-unit-successfully', {action, player: currentPlayer, box})
+      Game.getInstance().emit('beforeAddUnitSuccess', {action, player: currentPlayer, box})
       const newUnit:IUnit = State.newUnit(state, action.unitId, currentPlayer.playerId)
       box.units.push(newUnit)
-      Game.getInstance().emit('after-add-unit', {newUnit, action, player: currentPlayer, box})
+      Game.getInstance().emit('afterAddUnit', {newUnit, action, player: currentPlayer, box})
     }
     else{
-      console.log('Cannot add unit there - box is outiside territory')
+      alert('Cannot add unit there - box is outside territory')
     }
     s.uiState.playerControls.forEach(pc=>pc.addUnitButtons.forEach(b=>b.pressed=false))
   })

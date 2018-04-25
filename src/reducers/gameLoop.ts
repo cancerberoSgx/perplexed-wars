@@ -1,5 +1,5 @@
 import { Action } from "redux";
-import { IBox, IState, IUnit } from "../state/interfaces";
+import { IBox, IState, IUnit, IPlayer } from "../state/state-interfaces";
 import { State } from "../state/state";
 import { unitActionResolvers } from "../unitActionResolvers/unitActionResolvers";
 import { iterateUnits } from "../util/util";
@@ -12,7 +12,7 @@ export function gameLoop(state:IState, action:Action):IState{
   if(action.type!==ACTION_GAME_LOOP_INCREMENT_INTERVAL){
     return state
   }
-  let winner = null
+  let winner:string = null
   let gameFinish = true
   state.uiState.unitAttacks = []
   state.uiState.unitDeads = []
@@ -36,7 +36,7 @@ export function gameLoop(state:IState, action:Action):IState{
     if(winner){
       s.game.gameFinish = true
       s.game.winner = winner
-      Game.getInstance().emit('before-game-finish', {winner})
+      Game.getInstance().emit('beforeGameFinish', {winner})
     }
     s.game.time = s.game.time+s.game.interval
   })
