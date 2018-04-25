@@ -17,8 +17,8 @@
     "eject": "react-scripts-ts eject",
     "lint": "tslint src/**/*.ts",
     "lint-fix": "tslint --fix src/**/*.ts",
-    "tsc": "rm -rf types docs && tsc --project tsconfig_for_typedoc.json",
-    "doc": "rm -rf types docs && tsc --project tsconfig_for_typedoc.json && typedoc --options typedoc.ts",
+    "tsc": "tsc --project tsconfig_for_typedoc.json",
+    "doc": "tsc --project tsconfig_for_typedoc.json && typedoc --options typedoc.ts",
     "clean": "rm -rf node_modules types docs build"
   },
   "devDependencies": {

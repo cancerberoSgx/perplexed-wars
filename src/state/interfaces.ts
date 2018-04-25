@@ -9,7 +9,7 @@ export interface IState extends IThing  {
   board: IBoard
   players: IPlayer[]
   uiState: IUIState
-  unitsTypes: IUnitType[]
+  unitsTypes: UnitType[]
   game: IGame
 }
 
@@ -52,7 +52,7 @@ export interface IPlayer extends IThing{
  */
 export interface IUnit extends IThing{
   playerId: string
-  type: IUnitType
+  type: UnitType
   moved?:boolean 
   /**
    * current unit state - based on unittype.properties multiplied by level and spells, etc
@@ -91,7 +91,7 @@ export interface IResource extends IThing {
 //   modifier: (state:IState)=>void
 // }
 
-export interface IUnitType extends IThing {
+export interface UnitType extends IThing {
   image: string
   icon: string
   properties: IUnitProperties

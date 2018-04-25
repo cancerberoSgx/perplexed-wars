@@ -1,0 +1,5 @@
+// // behavior
+
+// export interface UnitTypeBehavior {
+
+// }
