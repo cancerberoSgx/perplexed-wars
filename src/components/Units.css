@@ -13,3 +13,6 @@
 .Unit.attacker {
   border: 1px solid blue;
 }
+.unit-health {
+  position: absolute;
+}

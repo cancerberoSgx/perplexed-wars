@@ -1,4 +1,4 @@
-import { IPlayer, IBox, IState } from "./state-interfaces";
+import { IPlayer, IBox, IState, IThing } from "./state-interfaces";
 
 // // behavior - because all concepts defined in interface.ts cannot contain methods - are used only for state and data-only cloned we need to put behavior in other entities.
 
@@ -44,7 +44,6 @@ export interface IUnitTypeBehavior {
    * So stateModifiers for a particular event, will behave like "PluginContainer" in order respecting defined prioerities, 
    */
   stateModifiers: IStateModifier[]
-
 }
 
 export interface BuildConditionResult {
@@ -55,7 +54,7 @@ export interface BuildConditionResult {
 /**
  * affect the state somehow, at some moment (events?). events are defined byb the framework (implementors cannot define new events)
  */
-export interface IStateModifier {
+export interface IStateModifier extends IThing {
   priority: number
   eventName: string
   modifier: (state:IState)=>void

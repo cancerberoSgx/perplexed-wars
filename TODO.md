@@ -46,3 +46,6 @@
 
 
 * resources : we should be resource - agnostic to be a framework. Don't say "gold". There could be N amount of resource types, all with custom names and icons. Custom buildings produce x amount of some resource.
+
+
+ * we could make unitTypes more agnostic, like resources. currently e are hardcoding this:  damage: 9,     speed: 1,       health: 60,        range: 1,     territoryRadius: 0 we could make user-defined those... 

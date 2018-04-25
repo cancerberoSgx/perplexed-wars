@@ -14,12 +14,14 @@ export class Units extends BaseComponent<{units:IUnit[], box:IBox}>  {
     return (
       <div key={this.props.box.id} className={this.buildClassName('Units', this.props.box.id)}> {
         this.props.units.map(unit=> 
+          <div key={unit.id}  className="unit-container">
           <img 
-            key={unit.id} 
             data-unit-id={unit.id}
             src={unit.type.image}
             className={this.buildClassName('Unit', this.props.box.id, unit.id)}
             onClick={unitClicked}/>
+          <span className="unit-health">{unit.state.health}</span>
+          </div>
         )
       }
       </div>
@@ -39,7 +41,9 @@ export class Units extends BaseComponent<{units:IUnit[], box:IBox}>  {
     return classes.join(' ')
   }
 }
+function printHealth(unit){
 
+}
 function unitClicked(e:React.MouseEvent<HTMLElement>){
   store.dispatch({
     type: ACTION_SELECT_UNIT,

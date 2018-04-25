@@ -17,6 +17,8 @@ export function war2ImplementationInitialState():IState {
       paused: false
     },
     timestamp: Date.now(),
+
+    // unit values were taking almost exactly as in https://wow.gamepedia.com/Warcraft_II_units#Footman_.2F_Grunt
     unitsTypes: [
       {
         name: 'Town Hall',
@@ -25,9 +27,9 @@ export function war2ImplementationInitialState():IState {
         id: 'human-base',
         isBase: true,
         properties: {
-          damage: 2,
+          damage: 18,
           speed:0,
-          health: 10,
+          health: 1200,
           range: 2,
           territoryRadius: 2
         }
@@ -39,10 +41,10 @@ export function war2ImplementationInitialState():IState {
         id: 'orc-base',
         isBase: true,
         properties: {
-          damage: 2,
+          damage: 18,
           speed:0,
-          health: 10,
-          range: 3,
+          health: 1200,
+          range: 2,
           territoryRadius: 2
         }
       },
@@ -54,9 +56,9 @@ export function war2ImplementationInitialState():IState {
         id: 'footman',
         isBase: false,
         properties: {
-          damage: 1,
+          damage: 9,
           speed: 1,
-          health: 3,
+          health: 60,
           range: 1,
           territoryRadius: 0
         }
@@ -68,10 +70,10 @@ export function war2ImplementationInitialState():IState {
         id: 'elven-archer',
         isBase: false,
         properties: {
-          damage: 1,
+          damage: 9+6,
           speed: 1,
-          health: 2,
-          range: 2,
+          health: 50,
+          range: 4,
           territoryRadius: 0
         }
       },
@@ -83,9 +85,9 @@ export function war2ImplementationInitialState():IState {
         id: 'grunt',
         isBase: false,
         properties: {
-          damage: 1,
+          damage: 9,
           speed: 1,
-          health: 3,
+          health: 60,
           range: 1,
           territoryRadius: 0
         }
@@ -97,10 +99,10 @@ export function war2ImplementationInitialState():IState {
         id: 'troll',
         isBase: false,
         properties: {
-          damage: 1,
+          damage: 9+6,
           speed: 1,
-          health: 2,
-          range: 2,
+          health: 50,
+          range: 4,
           territoryRadius: 0
         }
       }
@@ -114,18 +116,37 @@ export function war2ImplementationInitialState():IState {
     players:[
       {
         id: 'player1',
-        name: 'seba',
+        name: 'Seba',
         isAI: false,
         color: 'blue',
         unitTypes: ['human-base', 'footman', 'elven-archer'],
-        resources: []
+        resources: [
+          {
+            id: 'gold',
+            name: 'gold',
+            defaultValuePerTurn: 200,
+            value: 1200,
+            thisTurnValue: 0,
+            icon: ''
+          }
+        ]
       }, 
       {
         id: 'player2',
+        name: 'Data',
         color: 'red',
         isAI: true,
         unitTypes: ['orc-base', 'grunt', 'troll'],
-        resources: []
+        resources: [
+          {
+            id: 'gold',
+            name: 'gold',
+            defaultValuePerTurn: 200,
+            value: 1200,
+            thisTurnValue: 0,
+            icon: ''
+          }
+        ]
       }
     ],
     uiState: {
