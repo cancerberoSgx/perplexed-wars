@@ -8,3 +8,6 @@ defined the first events in IGameFramework - but not sure if they should be even
 adding unit w control wont reset the add button 
 
 0.0.2
+
+dont buy if you dont have money
+cancelable events for IStateModifiers

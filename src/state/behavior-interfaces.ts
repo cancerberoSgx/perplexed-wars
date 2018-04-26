@@ -1,5 +1,5 @@
 import { IPlayer, IBox, IState, IThing } from "./state-interfaces";
-import { Events, BeforeUnitSelectionEvent, AfterUnitSelectionEvent, beforeUnitSelection, afterAddUnit, GameFrameworkEvent } from "./IGameFramework";
+import { Events, BeforeUnitSelectionEvent, AfterUnitSelectionEvent, beforeUnitSelection, afterAddUnit, GameFrameworkEvent, beforeAddUnitSuccess, afterUnitSelection } from "./IGameFramework";
 
 // // behavior - because all concepts defined in interface.ts cannot contain methods - are used only for state and data-only cloned we need to put behavior in other entities.
 
@@ -75,33 +75,25 @@ export interface BuildConditionResult {
   whyNot?: string
 }
 
-// export interface IAbstractStateModifier extends IThing {
-
-//   modifier: (eventName: string, handler: (state:IState, handler :any)=>void)=>void
-// }
-/**
- * affect the state somehow, at some moment (events?). events are defined byb the framework (implementors cannot define new events)
- */
-// export interface IStateModifier extends IThing {
-//   priority?: number
-//   /** constants defined in [[IGameFraework]] */
-//   eventName: Events.EVENT_BEFORE_UNIT_SELECTION|Events.EVENT_AFTER_ADD_UNIT
-//   modifier(eventName: Events.EVENT_BEFORE_UNIT_SELECTION, handler: typeof beforeUnitSelection):void
-//   modifier(eventName: Events.EVENT_AFTER_ADD_UNIT, handler: typeof afterAddUnit):void
-//   // ,
-
-//   // modifier(eventName: 'asd', handler: typeof beforeUnitSelection):void
-//   // modifier(eventName: Events.EVENT_AFTER_ADD_UNIT, handler: typeof afterAddUnit):void
-//   //TODO: others
-// }
-
 export interface IStateModifier extends IThing {
   priority?: number
-  /** constants defined in [[IGameFraework]] */
-  eventName: any//Events.EVENT_AFTER_ADD_UNIT|Events.EVENT_BEFORE_UNIT_SELECTION
+  eventName: any
   modifier(event: GameFrameworkEvent):void
 }
 export interface IStateModifierAfterAddUnit extends IStateModifier {
   eventName: Events.EVENT_AFTER_ADD_UNIT
   modifier: typeof afterAddUnit
+}
+export interface IStateModifierBeforeAddUnitSuccess extends IStateModifier {
+  eventName: Events.EVENT_BEFORE_ADD_UNIT_SUCCESS
+  modifier: typeof beforeAddUnitSuccess
+}
+
+export interface IStateModifierBeforeUnitSelection extends IStateModifier {
+  eventName: Events.EVENT_BEFORE_UNIT_SELECTION
+  modifier: typeof beforeUnitSelection
+}
+export interface IStateModifierAfterUnitSelection extends IStateModifier {
+  eventName: Events.EVENT_AFTER_UNIT_SELECTION
+  modifier: typeof afterUnitSelection
 }

@@ -68,7 +68,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<a href="gameframeworkevent.html" class="tsd-signature-type">GameFrameworkEvent</a>
+						<a href="gameframeworkcancelableevent.html" class="tsd-signature-type">GameFrameworkCancelableEvent</a>
 						<ul class="tsd-hierarchy">
 							<li>
 								<span class="target">BeforeAddUnitSuccessEvent</span>
@@ -86,6 +86,7 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="beforeaddunitsuccessevent.html#action" class="tsd-kind-icon">action</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="beforeaddunitsuccessevent.html#box" class="tsd-kind-icon">box</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="beforeaddunitsuccessevent.html#cancelcallback" class="tsd-kind-icon">cancel<wbr>Callback</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="beforeaddunitsuccessevent.html#player" class="tsd-kind-icon">player</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="beforeaddunitsuccessevent.html#state" class="tsd-kind-icon">state</a></li>
 							</ul>
@@ -101,7 +102,7 @@
 					<div class="tsd-signature tsd-kind-icon">action<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">IAddUnitAction</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in IGameFramework.d.ts:68</li>
+							<li>Defined in IGameFramework.d.ts:72</li>
 						</ul>
 					</aside>
 				</section>
@@ -111,9 +112,46 @@
 					<div class="tsd-signature tsd-kind-icon">box<span class="tsd-signature-symbol">:</span> <a href="ibox.html" class="tsd-signature-type">IBox</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in IGameFramework.d.ts:70</li>
+							<li>Defined in IGameFramework.d.ts:74</li>
 						</ul>
 					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="cancelcallback" class="tsd-anchor"></a>
+					<h3>cancel<wbr>Callback</h3>
+					<div class="tsd-signature tsd-kind-icon">cancel<wbr>Callback<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="gameframeworkcancelableevent.html">GameFrameworkCancelableEvent</a>.<a href="gameframeworkcancelableevent.html#cancelcallback">cancelCallback</a></p>
+						<ul>
+							<li>Defined in IGameFramework.d.ts:39</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>the agent triggering the event can pass a callback funcion and if any listener cancel it (synchronously) emitter can decide to cancel the whole action. This is only for BEFORE_* events</p>
+						</div>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-siganture">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property tsd-is-not-exported">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>reason<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>reason: <span class="tsd-signature-type">string</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="player" class="tsd-anchor"></a>
@@ -121,7 +159,7 @@
 					<div class="tsd-signature tsd-kind-icon">player<span class="tsd-signature-symbol">:</span> <a href="iplayeruistate.html" class="tsd-signature-type">IPlayerUIState</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in IGameFramework.d.ts:69</li>
+							<li>Defined in IGameFramework.d.ts:73</li>
 						</ul>
 					</aside>
 				</section>
@@ -177,6 +215,9 @@
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="beforeaddunitsuccessevent.html#box" class="tsd-kind-icon">box</a>
 							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="beforeaddunitsuccessevent.html#cancelcallback" class="tsd-kind-icon">cancel<wbr>Callback</a>
+							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="beforeaddunitsuccessevent.html#player" class="tsd-kind-icon">player</a>
 							</li>
@@ -195,6 +236,9 @@
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="buildconditionresult.html" class="tsd-kind-icon">Build<wbr>Condition<wbr>Result</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="gameframeworkcancelableevent.html" class="tsd-kind-icon">Game<wbr>Framework<wbr>Cancelable<wbr>Event</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="gameframeworkevent.html" class="tsd-kind-icon">Game<wbr>Framework<wbr>Event</a>
@@ -237,6 +281,15 @@
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="istatemodifierafteraddunit.html" class="tsd-kind-icon">IState<wbr>Modifier<wbr>After<wbr>Add<wbr>Unit</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="istatemodifierafterunitselection.html" class="tsd-kind-icon">IState<wbr>Modifier<wbr>After<wbr>Unit<wbr>Selection</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="istatemodifierbeforeaddunitsuccess.html" class="tsd-kind-icon">IState<wbr>Modifier<wbr>Before<wbr>Add<wbr>Unit<wbr>Success</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="istatemodifierbeforeunitselection.html" class="tsd-kind-icon">IState<wbr>Modifier<wbr>Before<wbr>Unit<wbr>Selection</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="istatemodifierbehavior.html" class="tsd-kind-icon">IState<wbr>Modifier<wbr>Behavior</a>

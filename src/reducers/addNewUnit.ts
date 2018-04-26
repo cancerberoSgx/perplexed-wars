@@ -72,16 +72,27 @@ export function addNewUnit(state:IState, action:IAddUnitAction):IState {
     const box = s.board.boxes.find(b=>b.x===action.x && b.y===action.y)
     const availablePlaces = getAvailablePlacesFor(playerUi.playerId, state)
     if(box!==undefined && availablePlaces.find(p=>p.x===action.x&& p.y===action.y)) {
-      Game.getInstance().emit(Events.EVENT_BEFORE_ADD_UNIT_SUCCESS, {action, player: playerUi, box, state})
+      let cancelledReason:string
+        Game.getInstance().emit(Events.EVENT_BEFORE_ADD_UNIT_SUCCESS, {action, player: playerUi, box, state, cancelCallback: (reason:string)=>{
+          cancelledReason = reason
+          }
+        })
+      if(cancelledReason) {
+        alert('Cannot comply: '+ cancelledReason)
+        return s
+      }
       const unit:IUnit = newUnit(state, action.unitId, playerUi.playerId)
+      
       box.units.push(unit)
       if(!action.ctrlKey){
         s.uiState.playerControls.forEach(pc=>pc.addUnitButtons.forEach(b=>b.pressed=false))
       }
       Game.getInstance().emit(Events.EVENT_AFTER_ADD_UNIT, {newUnit: unit, action, player: playerUi, box, state})
+      return s
     }
     else {
       alert('Cannot add unit there - box is outside territory')
+      return s
     }
   })
 }

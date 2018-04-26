@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>IPlayer | perplexed-wars</title>
+	<title>IStateModifierAfterUnitSelection | perplexed-wars</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -54,10 +54,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="iplayer.html">IPlayer</a>
+					<a href="istatemodifierafterunitselection.html">IStateModifierAfterUnitSelection</a>
 				</li>
 			</ul>
-			<h1>Interface IPlayer</h1>
+			<h1>Interface IStateModifierAfterUnitSelection</h1>
 		</div>
 	</div>
 </header>
@@ -68,10 +68,10 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<a href="ithing.html" class="tsd-signature-type">IThing</a>
+						<a href="istatemodifier.html" class="tsd-signature-type">IStateModifier</a>
 						<ul class="tsd-hierarchy">
 							<li>
-								<span class="target">IPlayer</span>
+								<span class="target">IStateModifierAfterUnitSelection</span>
 							</li>
 						</ul>
 					</li>
@@ -84,15 +84,14 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="iplayer.html#color" class="tsd-kind-icon">color</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="iplayer.html#custom" class="tsd-kind-icon">custom</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="iplayer.html#description" class="tsd-kind-icon">description</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="iplayer.html#id" class="tsd-kind-icon">id</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="iplayer.html#isai" class="tsd-kind-icon">isAI</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="iplayer.html#name" class="tsd-kind-icon">name</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="iplayer.html#resources" class="tsd-kind-icon">resources</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="iplayer.html#timestamp" class="tsd-kind-icon">timestamp</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="iplayer.html#unittypes" class="tsd-kind-icon">unit<wbr>Types</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="istatemodifierafterunitselection.html#custom" class="tsd-kind-icon">custom</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="istatemodifierafterunitselection.html#description" class="tsd-kind-icon">description</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite"><a href="istatemodifierafterunitselection.html#eventname" class="tsd-kind-icon">event<wbr>Name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="istatemodifierafterunitselection.html#id" class="tsd-kind-icon">id</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite"><a href="istatemodifierafterunitselection.html#modifier" class="tsd-kind-icon">modifier</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="istatemodifierafterunitselection.html#name" class="tsd-kind-icon">name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="istatemodifierafterunitselection.html#priority" class="tsd-kind-icon">priority</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="istatemodifierafterunitselection.html#timestamp" class="tsd-kind-icon">timestamp</a></li>
 							</ul>
 						</section>
 					</div>
@@ -100,16 +99,6 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="color" class="tsd-anchor"></a>
-					<h3>color</h3>
-					<div class="tsd-signature tsd-kind-icon">color<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in state-interfaces.d.ts:39</li>
-						</ul>
-					</aside>
-				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="custom" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> custom</h3>
@@ -137,6 +126,17 @@
 						</ul>
 					</aside>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite">
+					<a name="eventname" class="tsd-anchor"></a>
+					<h3>event<wbr>Name</h3>
+					<div class="tsd-signature tsd-kind-icon">event<wbr>Name<span class="tsd-signature-symbol">:</span> <a href="../enums/events.html#event_after_unit_selection" class="tsd-signature-type">EVENT_AFTER_UNIT_SELECTION</a></div>
+					<aside class="tsd-sources">
+						<p>Overrides <a href="istatemodifier.html">IStateModifier</a>.<a href="istatemodifier.html#eventname">eventName</a></p>
+						<ul>
+							<li>Defined in behavior-interfaces.d.ts:82</li>
+						</ul>
+					</aside>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="id" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> id</h3>
@@ -148,13 +148,14 @@
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="isai" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> isAI</h3>
-					<div class="tsd-signature tsd-kind-icon">isAI<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite">
+					<a name="modifier" class="tsd-anchor"></a>
+					<h3>modifier</h3>
+					<div class="tsd-signature tsd-kind-icon">modifier<span class="tsd-signature-symbol">:</span> <a href="../globals.html#afterunitselection" class="tsd-signature-type">afterUnitSelection</a></div>
 					<aside class="tsd-sources">
+						<p>Overrides <a href="istatemodifier.html">IStateModifier</a>.<a href="istatemodifier.html#modifier">modifier</a></p>
 						<ul>
-							<li>Defined in state-interfaces.d.ts:37</li>
+							<li>Defined in behavior-interfaces.d.ts:83</li>
 						</ul>
 					</aside>
 				</section>
@@ -169,13 +170,14 @@
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="resources" class="tsd-anchor"></a>
-					<h3>resources</h3>
-					<div class="tsd-signature tsd-kind-icon">resources<span class="tsd-signature-symbol">:</span> <a href="iresource.html" class="tsd-signature-type">IResource</a><span class="tsd-signature-symbol">[]</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="priority" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> priority</h3>
+					<div class="tsd-signature tsd-kind-icon">priority<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
+						<p>Inherited from <a href="istatemodifier.html">IStateModifier</a>.<a href="istatemodifier.html#priority">priority</a></p>
 						<ul>
-							<li>Defined in state-interfaces.d.ts:40</li>
+							<li>Defined in behavior-interfaces.d.ts:65</li>
 						</ul>
 					</aside>
 				</section>
@@ -187,16 +189,6 @@
 						<p>Inherited from <a href="ithing.html">IThing</a>.<a href="ithing.html#timestamp">timestamp</a></p>
 						<ul>
 							<li>Defined in state-interfaces.d.ts:5</li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="unittypes" class="tsd-anchor"></a>
-					<h3>unit<wbr>Types</h3>
-					<div class="tsd-signature tsd-kind-icon">unit<wbr>Types<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in state-interfaces.d.ts:38</li>
 						</ul>
 					</aside>
 				</section>
@@ -263,42 +255,9 @@
 					<li class=" tsd-kind-interface">
 						<a href="igameframework.html" class="tsd-kind-icon">IGame<wbr>Framework</a>
 					</li>
-				</ul>
-				<ul class="current">
-					<li class="current tsd-kind-interface">
+					<li class=" tsd-kind-interface">
 						<a href="iplayer.html" class="tsd-kind-icon">IPlayer</a>
-						<ul>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="iplayer.html#color" class="tsd-kind-icon">color</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-								<a href="iplayer.html#custom" class="tsd-kind-icon">custom</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-								<a href="iplayer.html#description" class="tsd-kind-icon">description</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-								<a href="iplayer.html#id" class="tsd-kind-icon">id</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="iplayer.html#isai" class="tsd-kind-icon">isAI</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-								<a href="iplayer.html#name" class="tsd-kind-icon">name</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="iplayer.html#resources" class="tsd-kind-icon">resources</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-								<a href="iplayer.html#timestamp" class="tsd-kind-icon">timestamp</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="iplayer.html#unittypes" class="tsd-kind-icon">unit<wbr>Types</a>
-							</li>
-						</ul>
 					</li>
-				</ul>
-				<ul class="after-current">
 					<li class=" tsd-kind-interface">
 						<a href="iplayerbehavior.html" class="tsd-kind-icon">IPlayer<wbr>Behavior</a>
 					</li>
@@ -320,9 +279,39 @@
 					<li class=" tsd-kind-interface">
 						<a href="istatemodifierafteraddunit.html" class="tsd-kind-icon">IState<wbr>Modifier<wbr>After<wbr>Add<wbr>Unit</a>
 					</li>
-					<li class=" tsd-kind-interface">
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-interface">
 						<a href="istatemodifierafterunitselection.html" class="tsd-kind-icon">IState<wbr>Modifier<wbr>After<wbr>Unit<wbr>Selection</a>
+						<ul>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="istatemodifierafterunitselection.html#custom" class="tsd-kind-icon">custom</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="istatemodifierafterunitselection.html#description" class="tsd-kind-icon">description</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite">
+								<a href="istatemodifierafterunitselection.html#eventname" class="tsd-kind-icon">event<wbr>Name</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="istatemodifierafterunitselection.html#id" class="tsd-kind-icon">id</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite">
+								<a href="istatemodifierafterunitselection.html#modifier" class="tsd-kind-icon">modifier</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="istatemodifierafterunitselection.html#name" class="tsd-kind-icon">name</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="istatemodifierafterunitselection.html#priority" class="tsd-kind-icon">priority</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="istatemodifierafterunitselection.html#timestamp" class="tsd-kind-icon">timestamp</a>
+							</li>
+						</ul>
 					</li>
+				</ul>
+				<ul class="after-current">
 					<li class=" tsd-kind-interface">
 						<a href="istatemodifierbeforeaddunitsuccess.html" class="tsd-kind-icon">IState<wbr>Modifier<wbr>Before<wbr>Add<wbr>Unit<wbr>Success</a>
 					</li>

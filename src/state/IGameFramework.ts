@@ -46,6 +46,12 @@ export declare function beforeUnitSelection(event: BeforeUnitSelectionEvent):voi
 export interface GameFrameworkEvent {
   state:IState // this is more for the user that is using our own handlers and its StateModifiers need access to the whole thing 
 }
+export interface GameFrameworkCancelableEvent extends GameFrameworkEvent {
+  /** the agent triggering the event can pass a callback funcion and if any listener cancel it (synchronously) emitter can decide to cancel the whole action. This is only for BEFORE_* events */
+  cancelCallback: (reason:string)=>void
+}
+
+
 export interface BeforeUnitSelectionEvent extends GameFrameworkEvent {
   selection: Array<{
       unitId: string;
@@ -79,7 +85,7 @@ export interface  AfterUnitSelectionEvent  extends GameFrameworkEvent  {
  * @event
  */
 export declare function beforeAddUnitSuccess(event: BeforeAddUnitSuccessEvent):void;
-export interface BeforeAddUnitSuccessEvent extends GameFrameworkEvent  {
+export interface BeforeAddUnitSuccessEvent extends GameFrameworkCancelableEvent  {
   action: IAddUnitAction;
   player: IPlayerUIState;
   box: IBox;

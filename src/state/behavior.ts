@@ -26,5 +26,11 @@ export class Behavior {
         Game.getInstance().on(mod.eventName, mod.modifier)
       })
     })
+    this.instance.players.forEach(p=>{
+      p.stateModifiers.forEach(mod=>{
+        Game.getInstance().on(mod.eventName, mod.modifier)
+      })
+    })
+
   }
 }
