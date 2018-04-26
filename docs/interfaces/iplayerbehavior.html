@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>IBehavior | perplexed-wars</title>
+	<title>IPlayerBehavior | perplexed-wars</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -54,10 +54,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="ibehavior.html">IBehavior</a>
+					<a href="iplayerbehavior.html">IPlayerBehavior</a>
 				</li>
 			</ul>
-			<h1>Interface IBehavior</h1>
+			<h1>Interface IPlayerBehavior</h1>
 		</div>
 	</div>
 </header>
@@ -67,7 +67,7 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>This is like IState but for behaviors, the root node</p>
+						<p>define behavior at the player level. For example global conditions for victory...</p>
 					</div>
 				</div>
 			</section>
@@ -75,7 +75,12 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">IBehavior</span>
+						<a href="istatemodifierbehavior.html" class="tsd-signature-type">IStateModifierBehavior</a>
+						<ul class="tsd-hierarchy">
+							<li>
+								<span class="target">IPlayerBehavior</span>
+							</li>
+						</ul>
 					</li>
 				</ul>
 			</section>
@@ -86,8 +91,8 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="ibehavior.html#players" class="tsd-kind-icon">players</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="ibehavior.html#unittypes" class="tsd-kind-icon">unit<wbr>Types</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="iplayerbehavior.html#id" class="tsd-kind-icon">id</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite"><a href="iplayerbehavior.html#statemodifiers" class="tsd-kind-icon">state<wbr>Modifiers</a></li>
 							</ul>
 						</section>
 					</div>
@@ -95,35 +100,32 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="players" class="tsd-anchor"></a>
-					<h3>players</h3>
-					<div class="tsd-signature tsd-kind-icon">players<span class="tsd-signature-symbol">:</span> <a href="iplayerbehavior.html" class="tsd-signature-type">IPlayerBehavior</a><span class="tsd-signature-symbol">[]</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="id" class="tsd-anchor"></a>
+					<h3>id</h3>
+					<div class="tsd-signature tsd-kind-icon">id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
+						<p>Inherited from <a href="istatemodifierbehavior.html">IStateModifierBehavior</a>.<a href="istatemodifierbehavior.html#id">id</a></p>
 						<ul>
-							<li>Defined in behavior-interfaces.d.ts:14</li>
+							<li>Defined in behavior-interfaces.d.ts:33</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>state modifiers and behavior definers at the unit level</p>
+							<p>the id of the referenced unit type or Player or whatever (<a href="iunit.html">IUnit</a>)</p>
 						</div>
 					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="unittypes" class="tsd-anchor"></a>
-					<h3>unit<wbr>Types</h3>
-					<div class="tsd-signature tsd-kind-icon">unit<wbr>Types<span class="tsd-signature-symbol">:</span> <a href="iunittypebehavior.html" class="tsd-signature-type">IUnitTypeBehavior</a><span class="tsd-signature-symbol">[]</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite">
+					<a name="statemodifiers" class="tsd-anchor"></a>
+					<h3>state<wbr>Modifiers</h3>
+					<div class="tsd-signature tsd-kind-icon">state<wbr>Modifiers<span class="tsd-signature-symbol">:</span> <a href="istatemodifier.html" class="tsd-signature-type">IStateModifier</a><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
+						<p>Overrides <a href="istatemodifierbehavior.html">IStateModifierBehavior</a>.<a href="istatemodifierbehavior.html#statemodifiers">stateModifiers</a></p>
 						<ul>
-							<li>Defined in behavior-interfaces.d.ts:10</li>
+							<li>Defined in behavior-interfaces.d.ts:18</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>state modifiers and behavior definers at the unit level</p>
-						</div>
-					</div>
 				</section>
 			</section>
 		</div>
@@ -170,21 +172,9 @@
 					<li class=" tsd-kind-interface">
 						<a href="gameframeworkevent.html" class="tsd-kind-icon">Game<wbr>Framework<wbr>Event</a>
 					</li>
-				</ul>
-				<ul class="current">
-					<li class="current tsd-kind-interface">
+					<li class=" tsd-kind-interface">
 						<a href="ibehavior.html" class="tsd-kind-icon">IBehavior</a>
-						<ul>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="ibehavior.html#players" class="tsd-kind-icon">players</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="ibehavior.html#unittypes" class="tsd-kind-icon">unit<wbr>Types</a>
-							</li>
-						</ul>
 					</li>
-				</ul>
-				<ul class="after-current">
 					<li class=" tsd-kind-interface">
 						<a href="iboard.html" class="tsd-kind-icon">IBoard</a>
 					</li>
@@ -200,9 +190,21 @@
 					<li class=" tsd-kind-interface">
 						<a href="iplayer.html" class="tsd-kind-icon">IPlayer</a>
 					</li>
-					<li class=" tsd-kind-interface">
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-interface">
 						<a href="iplayerbehavior.html" class="tsd-kind-icon">IPlayer<wbr>Behavior</a>
+						<ul>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="iplayerbehavior.html#id" class="tsd-kind-icon">id</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite">
+								<a href="iplayerbehavior.html#statemodifiers" class="tsd-kind-icon">state<wbr>Modifiers</a>
+							</li>
+						</ul>
 					</li>
+				</ul>
+				<ul class="after-current">
 					<li class=" tsd-kind-interface">
 						<a href="iplayerstateaddunitbuttonstate.html" class="tsd-kind-icon">IPlayer<wbr>State<wbr>Add<wbr>Unit<wbr>Button<wbr>State</a>
 					</li>

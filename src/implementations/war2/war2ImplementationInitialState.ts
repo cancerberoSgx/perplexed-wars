@@ -2,7 +2,18 @@ import { IState, IBox} from "../../state/state-interfaces";
 import { State } from "../../state/state";
 import { createBoxes, buildUIStatePlayerControls } from "../../util/util";
 import * as HumanTownHall from './assets/HumanTownhall.gif'
-import * as gold from './assets/gold.gif'
+import * as goldIcon from './assets/gold.gif'
+import * as lumberIcon from './assets/lumber.gif'
+import * as foodIcon from './assets/lumber.gif'
+
+export enum RESOURCE_ID {  lumber='lumber', gold='gold', food='food' }
+export interface War2UnitCost {
+  resourceId: RESOURCE_ID,
+  value: number
+}
+export interface War2PlayerCustom {
+  cost: War2UnitCost[]
+}
 
 export function war2ImplementationInitialState():IState {
   const n=15
@@ -62,6 +73,9 @@ export function war2ImplementationInitialState():IState {
           health: 60,
           range: 1,
           territoryRadius: 0
+        },
+        custom: {
+          cost: [{resourceId: RESOURCE_ID.gold, value: 600}, {resourceId: 'food', value: 1} ]
         }
       },
       {
@@ -76,6 +90,13 @@ export function war2ImplementationInitialState():IState {
           health: 50,
           range: 3,
           territoryRadius: 0
+        },
+        custom: {
+          cost: [
+            {resourceId: RESOURCE_ID.gold, value: 500, food: 1}, 
+            {resourceId: 'lumber', value: 50}, 
+            {resourceId: 'food', value: 1} 
+          ]
         }
       },
 
@@ -91,6 +112,12 @@ export function war2ImplementationInitialState():IState {
           health: 60,
           range: 1,
           territoryRadius: 0
+        },
+        custom: {
+          cost: [
+            {resourceId: RESOURCE_ID.gold, value: 600}, 
+            {resourceId: 'food', value: 1} 
+          ]
         }
       },
       {
@@ -105,6 +132,13 @@ export function war2ImplementationInitialState():IState {
           health: 50,
           range: 3,
           territoryRadius: 0
+        },
+        custom: {
+          cost: [
+            {resourceId: RESOURCE_ID.gold, value: 500}, 
+            {resourceId: RESOURCE_ID.food, value: 1}, 
+            {resourceId: 'lumber', value: 50} 
+          ]
         }
       }
 
@@ -123,12 +157,20 @@ export function war2ImplementationInitialState():IState {
         unitTypes: ['human-base', 'footman', 'elven-archer'],
         resources: [
           {
-            id: 'gold',
-            name: 'gold',
-            defaultValuePerTurn: 200,
-            value: 1200,
+            id: RESOURCE_ID.gold,
+            name: RESOURCE_ID.gold,
+            defaultValuePerTurn: 100,
+            value: 900,
             thisTurnValue: 0,
-            icon: gold
+            icon: goldIcon
+          },
+          {
+            id: 'lumber',
+            name: 'lumber',
+            defaultValuePerTurn: 20,
+            value: 100,
+            thisTurnValue: 0,
+            icon: lumberIcon
           }
         ]
       }, 
@@ -140,12 +182,28 @@ export function war2ImplementationInitialState():IState {
         unitTypes: ['orc-base', 'grunt', 'troll'],
         resources: [
           {
-            id: 'gold',
-            name: 'gold',
-            defaultValuePerTurn: 200,
-            value: 1200,
+            id: RESOURCE_ID.gold,
+            name: RESOURCE_ID.gold,
+            defaultValuePerTurn: 100,
+            value: 900,
             thisTurnValue: 0,
-            icon: gold
+            icon: goldIcon
+          },
+          {
+            id: 'lumber',
+            name: 'lumber',
+            defaultValuePerTurn: 20,
+            value: 100,
+            thisTurnValue: 0,
+            icon: lumberIcon
+          },
+          {
+            id: 'food',
+            name: 'food',
+            defaultValuePerTurn: 1,
+            value: 4,
+            thisTurnValue: 0,
+            icon: foodIcon
           }
         ]
       }

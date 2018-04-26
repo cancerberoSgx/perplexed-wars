@@ -3,6 +3,8 @@ export interface IThing{
   description?:string
   id?: string
   timestamp?: number
+  /** so users can include additional information. They implement almost everything and probably can put more data for easy edition  */
+  custom?: any
 }
 
 export interface IState extends IThing  {

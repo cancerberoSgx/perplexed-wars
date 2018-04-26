@@ -3,11 +3,14 @@
 
  * urgent. make helpers for lal the .finds, .filter etccthat are in the code. Make SuperState that wrapps the State instance with helpers!! if notm refactoring will be crazys. We might even improve performance by cahing some stuff that doesnt change like payers, resources, unittypes, techs, etc, unittypebehavior
 
-# TODO
-
 * clicking add unit with control i cannot cancel if I regret - for untoggle i need to add a unit. implement: click on a active button deactivate it.
 
 * forbid text selection in the board with css
+
+# TODO
+
+ * build time of units ??!!
+
 
 
 * save as png icons of war2 like we did for src/implementations/war2/assets/HumanTownhall.png
