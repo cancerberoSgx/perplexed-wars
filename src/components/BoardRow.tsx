@@ -47,6 +47,7 @@ function boxClicked(e:React.MouseEvent<HTMLElement>){
     many: 1, 
     type: ACTION_ADD_UNIT,  
     x: parseInt(e.currentTarget.getAttribute('data-x')||'0', 10), 
-    y: parseInt(e.currentTarget.getAttribute('data-y')||'0', 10)
+    y: parseInt(e.currentTarget.getAttribute('data-y')||'0', 10),
+    ctrlKey: e.ctrlKey
   })
 }

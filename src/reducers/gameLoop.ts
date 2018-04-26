@@ -1,9 +1,12 @@
 import { Action } from "redux";
-import { IBox, IState, IUnit, IPlayer } from "../state/state-interfaces";
-import { State } from "../state/state";
-import { unitActionResolvers } from "../unitActionResolvers/unitActionResolvers";
-import { iterateUnits } from "../util/util";
+import { playerEndOfTurnResolvers } from "../resolvers/playerEndOfTurnResolvers";
+import { unitActionResolvers } from "../resolvers/unitActionResolvers";
 import { Game } from "../state/game";
+import { State } from "../state/state";
+import { IBox, IState, IUnit } from "../state/state-interfaces";
+import { iterateUnits } from "../util/util";
+
+
 
 export const ACTION_GAME_LOOP_INCREMENT_INTERVAL:string = 'game-loop-increment-interval'
 
@@ -15,7 +18,7 @@ export const ACTION_GAME_LOOP_INCREMENT_INTERVAL:string = 'game-loop-increment-i
  * @param action 
  */
 export function gameLoop(state:IState, action:Action):IState{
-  state = State.get() 
+  state = state || State.get() 
   if(action.type!==ACTION_GAME_LOOP_INCREMENT_INTERVAL){
     return state
   }
@@ -38,9 +41,13 @@ export function gameLoop(state:IState, action:Action):IState{
     iterateUnits(state, (box:IBox, unit:IUnit)=>{
       unit.moved=false
     })
+
+    playerEndOfTurnResolvers.forEach(resolver=>{
+      resolver.resolve(({player, state}))
+    })
   })
 
-  return State.modify(state, s=>{
+  return State.modify(state, s=>{//TOOD: I think everything should be inside this!
     if(winner){
       s.game.gameFinish = true
       s.game.winner = winner

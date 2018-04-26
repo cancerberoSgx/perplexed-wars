@@ -14,10 +14,10 @@ export class UnitsPanel extends BaseComponent<{}> {
     return (
       <div className="UnitsPanel row">
       {
-        State.get().players.map(player=>
+        this.state.players.map(player=>
           <div key={'player_div_'+player.id} className="col-6">
             <PlayerResources player={player}/>
-            <ul key={'player_ul_'+player.id}>{State.get().uiState.playerControls.filter(c=>c.playerId===player.id).map(pc=>
+            <ul key={'player_ul_'+player.id}>{this.state.uiState.playerControls.filter(c=>c.playerId===player.id).map(pc=>
               pc.addUnitButtons.map((button, i)=>
                 <li key={'player_'+player.id+'_button_'+i}>
                 <button key={i}
@@ -25,8 +25,11 @@ export class UnitsPanel extends BaseComponent<{}> {
                   onClick={addUnitButtonClicked} 
                   className={this.buildClassName(button)} 
                   data-unit={button.unitTypeId}
-                  data-player={player.id}><img className="icon" src={getUnit(button.unitTypeId).icon} />{getUnit(button.unitTypeId).name}</button>
-                </li>
+                  data-player={player.id}>
+                  <img className="icon" src={getUnit(button.unitTypeId, this.state).icon} />
+                  {getUnit(button.unitTypeId, this.state).name}
+                </button>
+              </li>
               )
             )}
             </ul> 
@@ -45,8 +48,8 @@ export class UnitsPanel extends BaseComponent<{}> {
   }
 }
 
-function getUnit(id){
-return State.get().unitsTypes.find(ut=>ut.id===id)
+function getUnit(id, state){
+return state.unitsTypes.find(ut=>ut.id===id)
 }
 function addUnitButtonClicked(e:React.MouseEvent<HTMLElement>) {
   store.dispatch({

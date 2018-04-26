@@ -1,10 +1,10 @@
 import { IBox, IPlayer, IState, IUnit } from "../state/state-interfaces";
-import { IResolver } from "./unitActionResolvers";
+import { IUnitActionResolver, IUnitActionResolverData } from "./unitActionResolvers";
 import { getUnitsNear } from "../util/util";
 
 
-export class AttackResolver implements IResolver {
-  public resolve({state, unit, box, player}:{state:IState,unit:IUnit, box:IBox, player:IPlayer}):void {
+export class AttackResolver implements IUnitActionResolver {
+  public resolve({state, unit, box, player}:IUnitActionResolverData):void {
     if(!unit.moved && unit.playerId===player.id){
       const unitsNear = getUnitsNear({state, unit, box, radio: unit.state.range, predicate:u=>u.playerId!==player.id})
       if(unitsNear && unitsNear.length){

@@ -1,4 +1,6 @@
+# ISSUES
 
+* clicking add unit with control i cannot cancel if I regret - for untoggle i need to add a unit. implement: click on a active button deactivate it.
 
 # TODO
 

@@ -1,9 +1,7 @@
 import { Action } from "redux";
-import { IBox, IState, IUnit } from "../state/state-interfaces";
-import { State } from "../state/state";
-import { unitActionResolvers } from "../unitActionResolvers/unitActionResolvers";
-import { iterateUnits } from "../util/util";
 import { Game } from "../state/game";
+import { State } from "../state/state";
+import { IState } from "../state/state-interfaces";
 
 export const ACTION_CHANGE_GAME_SETTINGS:string = 'change-game-settings'
 export interface IChangeGameSettingsAction extends Action {
@@ -13,7 +11,7 @@ export interface IChangeGameSettingsAction extends Action {
   allowDiagonal?:boolean
 }
 export function changeGameSettings(state:IState, action:IChangeGameSettingsAction):IState{
-  state = State.get() 
+  state = state || State.get() 
   if(action.type!==ACTION_CHANGE_GAME_SETTINGS){
     return state
   }

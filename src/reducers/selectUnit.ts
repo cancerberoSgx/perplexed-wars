@@ -12,7 +12,7 @@ export interface ISelectUnitAction extends Action{
 }
 
 export function selectUnit(state:IState, action:ISelectUnitAction):IState{
-  state = State.get()
+  state = state || State.get() 
   if(action.type!==ACTION_SELECT_UNIT){
     return state
   }

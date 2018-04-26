@@ -31,10 +31,17 @@ export class State {
   }
 
   public static modify( state:IState, modify:(state:IState)=>void):IState{
-    const c = this.clone(state)
-    c.timestamp = Date.now()
-    modify(c)
-    this.getInstance().stateInternal = c
-    return c
+    // cloning so we dont mutate!
+    // const c = this.clone(state)
+    // c.timestamp = Date.now()
+    // modify(c)
+    // this.getInstance().stateInternal = c
+    // return c
+
+    // without cloning!
+    state.timestamp = Date.now()
+    modify(state)
+    this.getInstance().stateInternal = state
+    return state
   }
 }

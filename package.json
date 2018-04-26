@@ -1,6 +1,6 @@
 {
   "name": "perplexed-wars",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "real-time tower-defense-like game but where you decide if attack or defend.",
   "private": true,
   "dependencies": {

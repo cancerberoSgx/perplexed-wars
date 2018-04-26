@@ -1,7 +1,7 @@
 import { IState, IUnit } from "../state/state-interfaces";
 import { State } from "../state/state";
 import { Action } from "redux";
-import { getAvailablePlacesFor, newUnit as makeUnit } from "../util/util";
+import { getAvailablePlacesFor, newUnit } from "../util/util";
 import { Game } from "../state/game";
 import { Behavior } from "../state/behavior";
 
@@ -13,6 +13,8 @@ export interface IAddUnitAction extends Action{
   many:number
   x:number
   y: number
+  /** means user ctrl-click for adding the unit - in that case we wont turn off the add-unit-buttons */
+  ctrlKey:boolean
 }
 
 export interface IClickAddUnitButtonAction extends Action{
@@ -21,7 +23,7 @@ export interface IClickAddUnitButtonAction extends Action{
 }
 
 export function clickAddNewUnitButton(state:IState, action:IClickAddUnitButtonAction):IState{
-  state = State.get() 
+  state = state || State.get() 
   if(action.type!==ACTION_ADD_UNIT_CLICK_BUTTON){
     return state
   }
@@ -64,9 +66,12 @@ export function addNewUnit(state:IState, action:IAddUnitAction):IState {
     const availablePlaces = getAvailablePlacesFor(currentPlayer.playerId, state)
     if(box!==undefined && availablePlaces.find(p=>p.x===action.x&& p.y===action.y)) {
       Game.getInstance().emit('beforeAddUnitSuccess', {action, player: currentPlayer, box})
-      const newUnit:IUnit = makeUnit(state, action.unitId, currentPlayer.playerId)
-      box.units.push(newUnit)
-      Game.getInstance().emit('afterAddUnit', {newUnit, action, player: currentPlayer, box})
+      const unit:IUnit = newUnit(state, action.unitId, currentPlayer.playerId)
+      box.units.push(unit)
+      if(!action.ctrlKey){
+        s.uiState.playerControls.forEach(pc=>pc.addUnitButtons.forEach(b=>b.pressed=false))
+      }
+      Game.getInstance().emit('afterAddUnit', {newUnit: unit, action, player: currentPlayer, box})
     }
     else{
       alert('Cannot add unit there - box is outside territory')

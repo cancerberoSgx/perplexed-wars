@@ -31,7 +31,7 @@ export function war2ImplementationInitialState():IState {
           damage: 18,
           speed:0,
           health: 1200,
-          range: 2,
+          range: 3,
           territoryRadius: 2
         }
       },
@@ -45,7 +45,7 @@ export function war2ImplementationInitialState():IState {
           damage: 18,
           speed:0,
           health: 1200,
-          range: 2,
+          range: 3,
           territoryRadius: 2
         }
       },
@@ -74,7 +74,7 @@ export function war2ImplementationInitialState():IState {
           damage: 9+6,
           speed: 1,
           health: 50,
-          range: 4,
+          range: 3,
           territoryRadius: 0
         }
       },
@@ -103,7 +103,7 @@ export function war2ImplementationInitialState():IState {
           damage: 9+6,
           speed: 1,
           health: 50,
-          range: 4,
+          range: 3,
           territoryRadius: 0
         }
       }

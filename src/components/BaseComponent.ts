@@ -6,11 +6,11 @@ import { State } from '../state/state';
 import { Unsubscribe } from 'redux';
 
 export abstract class BaseComponent<Prop> extends React.Component<Prop, IState>{ 
-  public storeUsubscribe: Unsubscribe;
+  public storeUnsubscribe: Unsubscribe;
   constructor(props:Prop){
     super(props)
     this.state = State.get()
-    this.storeUsubscribe = store.subscribe(()=>{
+    this.storeUnsubscribe = store.subscribe(()=>{
       this.setState(State.get())
     })
   }
@@ -18,6 +18,8 @@ export abstract class BaseComponent<Prop> extends React.Component<Prop, IState>{
     if(super.componentWillUnmount!==undefined){
       super.componentWillUnmount()
     }
-    this.storeUsubscribe()
+    this.storeUnsubscribe()
   }  
 }
+
+//storeUnsubscribe
