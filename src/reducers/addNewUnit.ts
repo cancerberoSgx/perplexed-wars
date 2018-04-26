@@ -31,6 +31,9 @@ export function clickAddNewUnitButton(state:IState, action:IClickAddUnitButtonAc
     return state
   }
   return State.modify(state, s=>{
+    // turn all buttons off
+    s.uiState.playerControls.forEach(pc=>pc.addUnitButtons.forEach(b=>b.pressed=false))
+
     s.uiState.playerControls.find(pc=>pc.playerId===action.playerId).addUnitButtons.forEach(b=>{
       b.pressed = b.unitTypeId===action.unitId
     })
@@ -68,6 +71,5 @@ export function addNewUnit(state:IState, action:IAddUnitAction):IState {
     else{
       alert('Cannot add unit there - box is outside territory')
     }
-    s.uiState.playerControls.forEach(pc=>pc.addUnitButtons.forEach(b=>b.pressed=false))
   })
 }

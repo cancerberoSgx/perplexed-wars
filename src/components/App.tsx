@@ -40,14 +40,22 @@ export class App extends BaseComponent<{}> {
         
         </header>
         <UnitsPanel />
-        <Board />
-      {/* </div> */}
 
-</div>
+        <Board />
+        
+      {/* <div className="line" style={lineStyle()} /> */}
+      </div>
     );
   }
 }
 
+// import { LineCss } from '../implementations/war2/LineCss';
+// function lineStyle():any{
+//   const styles = (LineCss as any).forPointsWithStroke({x: 50, y: 50}, {x: 120, y: 223}, 4)
+//   const result = {width: styles.width, height: styles.height,  top: styles.top, left: styles.left, transform: `rotate(${styles.degrees}deg)`, border: 'solid'}
+//   // console.log(styles , result)  
+//   return result;
+// }
 
 function changeInterval(e:React.ChangeEvent<HTMLInputElement>){
   const interval = parseInt(e.currentTarget.value, 10)

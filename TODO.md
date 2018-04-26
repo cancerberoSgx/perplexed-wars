@@ -40,7 +40,7 @@
 
 * sound ? when unit attack / is attacked. When building is selected
 
-* attack / attacked / move visual feedback should be providen by implementors. 
+* attack / attacked / move visual feedback should be providen by implementors. Investigated LineCss - check LineCss.ts file and commented code in App.tsx
 
 * unit building requirement : for being able to build a unit some condition must happen - not only gold. 
 

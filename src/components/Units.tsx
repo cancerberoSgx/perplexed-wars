@@ -41,9 +41,7 @@ export class Units extends BaseComponent<{units:IUnit[], box:IBox}>  {
     return classes.join(' ')
   }
 }
-function printHealth(unit){
 
-}
 function unitClicked(e:React.MouseEvent<HTMLElement>){
   store.dispatch({
     type: ACTION_SELECT_UNIT,

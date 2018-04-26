@@ -2,6 +2,7 @@ import { IState, IBox} from "../../state/state-interfaces";
 import { State } from "../../state/state";
 import { createBoxes, buildUIStatePlayerControls } from "../../util/util";
 import * as HumanTownHall from './assets/HumanTownhall.gif'
+import * as gold from './assets/gold.gif'
 
 export function war2ImplementationInitialState():IState {
   const n=15
@@ -127,7 +128,7 @@ export function war2ImplementationInitialState():IState {
             defaultValuePerTurn: 200,
             value: 1200,
             thisTurnValue: 0,
-            icon: ''
+            icon: gold
           }
         ]
       }, 
@@ -144,7 +145,7 @@ export function war2ImplementationInitialState():IState {
             defaultValuePerTurn: 200,
             value: 1200,
             thisTurnValue: 0,
-            icon: ''
+            icon: gold
           }
         ]
       }
