@@ -8,7 +8,7 @@ export class PlayerEndOfTurnResourceResolver implements PlayerEndOfTurnResolver 
     // at this moment, all player [[IStateModifier]] should have been already executed, so [[thisTurnValue]] is the final one. We just sum and reset
     player.resources.forEach(resource=>{
 
-    console.log('resource +' +resource.name + ' player '+player.name + resource.thisTurnValue)
+    // console.log('resource +' +resource.name + ' player '+player.name + resource.thisTurnValue)
       resource.value+=resource.thisTurnValue
       // we start the new turn with the default value per turn
       resource.thisTurnValue = resource.defaultValuePerTurn

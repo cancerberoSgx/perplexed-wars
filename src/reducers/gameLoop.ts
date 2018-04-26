@@ -5,6 +5,7 @@ import { Game } from "../state/game";
 import { State } from "../state/state";
 import { IBox, IState, IUnit } from "../state/state-interfaces";
 import { iterateUnits } from "../util/util";
+import { Events } from "../state/IGameFramework";
 
 
 
@@ -51,7 +52,7 @@ export function gameLoop(state:IState, action:Action):IState{
     if(winner){
       s.game.gameFinish = true
       s.game.winner = winner
-      Game.getInstance().emit('beforeGameFinish', {winner})
+      Game.getInstance().emit(Events.EVENT_BEFORE_GAME_FINISH, {winner, state})
     }
     s.game.time = s.game.time+s.game.interval
   })

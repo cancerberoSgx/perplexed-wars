@@ -1,17 +1,53 @@
 import { IPlayer, IBox, IState, IThing } from "./state-interfaces";
+import { Events, BeforeUnitSelectionEvent, AfterUnitSelectionEvent, beforeUnitSelection, afterAddUnit, GameFrameworkEvent } from "./IGameFramework";
 
 // // behavior - because all concepts defined in interface.ts cannot contain methods - are used only for state and data-only cloned we need to put behavior in other entities.
 
 /**
  * This is like IState but for behaviors, the root node
  */
-export interface IBehavior {
-  unitTypes: IUnitTypeBehavior[]
+export interface IBehavior{
+  /**
+   * state modifiers and behavior definers at the unit level
+   */
+  unitTypes: IUnitTypeBehavior[],
+  /**
+   * state modifiers and behavior definers at the unit level
+   */
+  players: IPlayerBehavior[]
 }
 
-export interface IUnitTypeBehavior {
 
+/** define behavior at the player level. For example global conditions for victory... */
+export interface IPlayerBehavior extends IStateModifierBehavior{
+  stateModifiers: IStateModifier[]
+}
+
+/**
+ * Units and Players can modify the [[IState]] instance. They can modify the [[IResource.thisTurnValue]] , board, and other units. 
+ * 
+ * units / buildings can modify the state of the game, Examples: 
+ * a "caravan" unit can generate +5 gold per turn. 
+ * a fremen unit will produce +10 of "water" when killing an organic unit
+ * a bank building will multiply by 50% all the gold produced in a turn. on(after-end-of-turn, count player.units.find(bank) )
+ * a kamikaze unit will damage +40 units that are up to 3 boxes near him when it dies. on(after-unit-die, if (unit is .kanikaze) foePlayer.units.near(kamikaze).foreach.health-=40
+ * a dock building will make destructors and battleships units 40% cheaper. (  on(before-unit-create, (if(player.buildings.find(docker)){fi unit created is battl or desc then - substract 40%})=>{}))
+ * So stateModifiers for a particular event, will behave like "PluginContainer" in order respecting defined prioerities, 
+ */
+export interface IStateModifierBehavior {
+  /** the id of the referenced unit type or Player or whatever ([[IUnit]]) */
   id: string
+  /**
+   * each of this modifiers will end up in a subscription in the game and notified when requested event happen so they have the chance to modify the state somehow
+   */
+  stateModifiers: IStateModifier[]
+}
+
+/**
+ * Define some behavior at the unit level type and unit instance level. For example, can a player buy a unit, should the unit move or attack etc
+ */
+export interface IUnitTypeBehavior extends IStateModifierBehavior{
+
 
   /**
    * 
@@ -32,18 +68,6 @@ export interface IUnitTypeBehavior {
    */
   buildCondition: (player:IPlayer)=>BuildConditionResult
 
-  /**
-   * Units are the only agent (besides the user when it buys) that can modify the [[IState]] instance. They can modify the [[IResource.thisTurnValue]] or even other units state. 
-   * 
-   * units / buildings can modify the state of the game, Examples: 
-   * a "caravan" unit can generate +5 gold per turn. 
-   * a fremen unit will produce +10 of "water" when killing an organic unit
-   * a bank building will multiply by 50% all the gold produced in a turn. on(after-end-of-turn, count player.units.find(bank) )
-   * a kamikaze unit will damage +40 units that are up to 3 boxes near him when it dies. on(after-unit-die, if (unit is .kanikaze) foePlayer.units.near(kamikaze).foreach.health-=40
-   * a dock building will make destructors and battleships units 40% cheaper. (  on(before-unit-create, (if(player.buildings.find(docker)){fi unit created is battl or desc then - substract 40%})=>{}))
-   * So stateModifiers for a particular event, will behave like "PluginContainer" in order respecting defined prioerities, 
-   */
-  stateModifiers: IStateModifier[]
 }
 
 export interface BuildConditionResult {
@@ -51,11 +75,33 @@ export interface BuildConditionResult {
   whyNot?: string
 }
 
+// export interface IAbstractStateModifier extends IThing {
+
+//   modifier: (eventName: string, handler: (state:IState, handler :any)=>void)=>void
+// }
 /**
  * affect the state somehow, at some moment (events?). events are defined byb the framework (implementors cannot define new events)
  */
+// export interface IStateModifier extends IThing {
+//   priority?: number
+//   /** constants defined in [[IGameFraework]] */
+//   eventName: Events.EVENT_BEFORE_UNIT_SELECTION|Events.EVENT_AFTER_ADD_UNIT
+//   modifier(eventName: Events.EVENT_BEFORE_UNIT_SELECTION, handler: typeof beforeUnitSelection):void
+//   modifier(eventName: Events.EVENT_AFTER_ADD_UNIT, handler: typeof afterAddUnit):void
+//   // ,
+
+//   // modifier(eventName: 'asd', handler: typeof beforeUnitSelection):void
+//   // modifier(eventName: Events.EVENT_AFTER_ADD_UNIT, handler: typeof afterAddUnit):void
+//   //TODO: others
+// }
+
 export interface IStateModifier extends IThing {
-  priority: number
-  eventName: string
-  modifier: (state:IState)=>void
+  priority?: number
+  /** constants defined in [[IGameFraework]] */
+  eventName: any//Events.EVENT_AFTER_ADD_UNIT|Events.EVENT_BEFORE_UNIT_SELECTION
+  modifier(event: GameFrameworkEvent):void
+}
+export interface IStateModifierAfterAddUnit extends IStateModifier {
+  eventName: Events.EVENT_AFTER_ADD_UNIT
+  modifier: typeof afterAddUnit
 }

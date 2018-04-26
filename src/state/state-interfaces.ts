@@ -91,8 +91,6 @@ export interface IUnitType extends IThing {
   icon: string
   properties: IUnitProperties
   isBase: boolean
-
-
 }
 export interface IUnitProperties {
   damage: number

@@ -1,33 +1,39 @@
 import { ISelectUnitAction } from "../reducers/selectUnit";
 import { IAddUnitAction } from "../reducers/addNewUnit";
-// import { IPlayerUIState, IBox } from "./interfaces";
 import { EventEmitter } from "events";
-import { IPlayerUIState, IBox, IUnit } from "./state-interfaces";
+import { IPlayerUIState, IBox, IUnit, IState } from "./state-interfaces";
+
+export enum Events {
+  EVENT_BEFORE_UNIT_SELECTION = 'beforeUnitSelection',
+  EVENT_AFTER_UNIT_SELECTION = 'afterUnitSelection',
+  EVENT_BEFORE_ADD_UNIT_SUCCESS = 'beforeAddUnitSuccess',
+  EVENT_AFTER_ADD_UNIT = 'afterAddUnit',
+  EVENT_BEFORE_GAME_FINISH = 'beforeGameFinish',
+  
+}
 
 export interface IGameFramework extends EventEmitter{
   start():void
   stop():void
   nextTurn():void
 
-  on(eventName: 'beforeUnitSelection', eventHandler: typeof beforeUnitSelection): this;  
-  emit(eventName: 'beforeUnitSelection', data: BeforeUnitSelectionEvent): this;  
+  on(eventName: Events.EVENT_BEFORE_UNIT_SELECTION, eventHandler: typeof beforeUnitSelection): this;  
+  emit(eventName: Events.EVENT_BEFORE_UNIT_SELECTION, data: BeforeUnitSelectionEvent): this;  
 
-  on(eventName: 'afterUnitSelection', eventHandler: typeof afterUnitSelection): this;  
-  emit(eventName: 'afterUnitSelection', data: AfterUnitSelectionEvent): boolean;  
+  on(eventName: Events.EVENT_AFTER_UNIT_SELECTION, eventHandler: typeof afterUnitSelection): this;  
+  emit(eventName: Events.EVENT_AFTER_UNIT_SELECTION, data: AfterUnitSelectionEvent): boolean;  
   
 
-  on(eventName: 'beforeAddUnitSuccess', eventHandler: typeof beforeAddUnitSuccess): this;  
-  emit(eventName: 'beforeAddUnitSuccess', data: BeforeAddUnitSuccessEvent): boolean;  
+  on(eventName: Events.EVENT_BEFORE_ADD_UNIT_SUCCESS, eventHandler: typeof beforeAddUnitSuccess): this;  
+  emit(eventName: Events.EVENT_BEFORE_ADD_UNIT_SUCCESS, data: BeforeAddUnitSuccessEvent): boolean;  
    
 
-  on(eventName: 'afterAddUnit', eventHandler: typeof afterAddUnit): this;  
-  emit(eventName: 'afterAddUnit', data: AfterAddUnitEvent): boolean;  
+  on(eventName: Events.EVENT_AFTER_ADD_UNIT, eventHandler: typeof afterAddUnit): this;  
+  emit(eventName: Events.EVENT_AFTER_ADD_UNIT, data: AfterAddUnitEvent): boolean;  
 
 
-  on(eventName: 'beforeGameFinish', eventHandler: typeof beforeGameFinish): this;  
-  emit(eventName: 'beforeGameFinish', data: BeforeGameFinishEvent): boolean;  
-
-
+  on(eventName: Events.EVENT_BEFORE_GAME_FINISH, eventHandler: typeof beforeGameFinish): this;  
+  emit(eventName: Events.EVENT_BEFORE_GAME_FINISH, data: BeforeGameFinishEvent): boolean;  
 }
 
 /**
@@ -37,8 +43,10 @@ export interface IGameFramework extends EventEmitter{
  */
 export declare function beforeUnitSelection(event: BeforeUnitSelectionEvent):void;
 
-
-export interface BeforeUnitSelectionEvent {
+export interface GameFrameworkEvent {
+  state:IState // this is more for the user that is using our own handlers and its StateModifiers need access to the whole thing 
+}
+export interface BeforeUnitSelectionEvent extends GameFrameworkEvent {
   selection: Array<{
       unitId: string;
       boxId: string;
@@ -53,7 +61,7 @@ export interface BeforeUnitSelectionEvent {
  */
 export declare function afterUnitSelection(event: AfterUnitSelectionEvent):void;
 
-export interface  AfterUnitSelectionEvent  {
+export interface  AfterUnitSelectionEvent  extends GameFrameworkEvent  {
   selection: Array<{
       unitId: string;
       boxId: string;
@@ -71,7 +79,7 @@ export interface  AfterUnitSelectionEvent  {
  * @event
  */
 export declare function beforeAddUnitSuccess(event: BeforeAddUnitSuccessEvent):void;
-export interface BeforeAddUnitSuccessEvent {
+export interface BeforeAddUnitSuccessEvent extends GameFrameworkEvent  {
   action: IAddUnitAction;
   player: IPlayerUIState;
   box: IBox;
@@ -82,7 +90,7 @@ export interface BeforeAddUnitSuccessEvent {
  * @event
  */
 export declare function afterAddUnit(event: AfterAddUnitEvent):void;
-export interface AfterAddUnitEvent {
+export interface AfterAddUnitEvent extends GameFrameworkEvent  {
   action: IAddUnitAction;
   newUnit: IUnit
   player: IPlayerUIState;
@@ -98,7 +106,7 @@ export interface AfterAddUnitEvent {
  * @event
  */
 export declare function beforeGameFinish(event: BeforeGameFinishEvent):void;
-export interface BeforeGameFinishEvent {
+export interface BeforeGameFinishEvent extends GameFrameworkEvent  {
   /** id of the winner player */
   winner: string
 }

@@ -24,6 +24,7 @@ export class App extends BaseComponent<{}> {
           </div>
 
           <div className="StatusPanel col-8">
+            <p><a href="https://github.com/cancerberoSgx/perplexed-wars">Project home</a></p>
             {!this.state.game.realTime && <span><button onClick={Game.getInstance().nextTurn}>Next Turn!</button></span>}
 
             <span><input type="checkbox" checked={this.state.game.realTime} onChange={realTimeChanged}/> Real Time? </span>

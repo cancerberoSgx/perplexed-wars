@@ -19,6 +19,10 @@ https://cancerberosgx.github.io/perplexed-wars/docs/
 
 https://cancerberosgx.github.io/perplexed-wars/build/
 
+# Project home
+
+[https://github.com/cancerberoSgx/perplexed-wars](https://github.com/cancerberoSgx/perplexed-wars)
+
 
 # Features
 The default implementation is based on Warcraft 2 but definition of units, resources, buildings, etc are configurable. 
