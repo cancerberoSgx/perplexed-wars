@@ -92,7 +92,7 @@ export interface IUnitType extends IThing {
   image: string
   icon: string
   properties: IUnitProperties
-  isBase: boolean
+  isBase?: boolean
 }
 export interface IUnitProperties {
   damage: number

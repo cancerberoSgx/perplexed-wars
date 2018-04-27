@@ -99,7 +99,7 @@ function buildUnitBehaviors() {
             const playerResource = player.resources.find(r=>r.id===cost.resourceId)
             return playerResource && playerResource.value < cost.value
           })
-          return  {canBuild: !notEnough, reason:' You cannot build that - not enough resources'} // TODO: inform which resources and how much is missing
+          return  {canBuild: !notEnough, whyNot:' You cannot build that - not enough resources'} // TODO: inform which resources and how much is missing
         }
       },
       stateModifiers: [

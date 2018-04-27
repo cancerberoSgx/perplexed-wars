@@ -1,11 +1,17 @@
 {
-  "extends": ["tslint:recommended", "tslint-react", "tslint-config-prettier"],
+  "extends": ["tslint-config-standard", "tslint-react"],
   "linterOptions": {
     "exclude": [
+      "src/components/*",
       "config/**/*.js",
-      "node_modules/**/*.ts"
+      "node_modules/**/*.ts",
+      "build",
+      "public",
+      "docs"
     ]
   },
+  "defaultSeverity": "warning",
+  
   "rules": {
     "object-literal-sort-keys": false,
     "jsx-no-lambda": false,

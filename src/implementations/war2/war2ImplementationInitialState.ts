@@ -1,9 +1,13 @@
 import { IState } from "../../state/state-interfaces";
-import { buildUIStatePlayerControls, createBoxes } from "../../util/util";
+import { buildUIStatePlayerControls, createBoxes, clone } from "../../util/util";
 import * as HumanTownHall from './assets/HumanTownhall.gif';
 import * as goldIcon from './assets/gold.gif';
-import * as foodIcon from './assets/lumber.gif';
+import * as foodIcon from './assets/food.png';
 import * as lumberIcon from './assets/lumber.gif';
+import * as humanFarm from './assets/HumanFarm.gif';
+import * as orcFarm from './assets/OrcFarm.gif';
+import * as humanTower1 from './assets/HumanTower1.gif';
+import * as orcTower1 from './assets/OrcTower1.gif';
 
 export enum RESOURCE_ID { lumber = 'lumber', gold = 'gold', food = 'food' }
 export interface War2UnitCost {
@@ -18,12 +22,38 @@ export interface War2PlayerCustom {
 export function war2ImplementationInitialState(): IState {
   const n = 15
   const m = 10
+
+  // resources are the same for both "races"
+  const resources = [{
+    id: RESOURCE_ID.gold,
+    name: RESOURCE_ID.gold,
+    defaultValuePerTurn: 10,
+    value: 900,
+    thisTurnValue: 0,
+    icon: goldIcon
+  },
+  {
+    id: RESOURCE_ID.lumber,
+    name: RESOURCE_ID.lumber,
+    defaultValuePerTurn: 2,
+    value: 300,
+    thisTurnValue: 0,
+    icon: lumberIcon
+  },
+  {
+    id: RESOURCE_ID.food,
+    name: RESOURCE_ID.food,
+    defaultValuePerTurn: 0,
+    value: 4,
+    thisTurnValue: 0,
+    icon: foodIcon
+  }]
   const state: IState = {
     game: {
       interval: 1000,
       allowDiagonal: true,
       time: 0,
-      realTime: true,
+      realTime: false,
       winner: '',
       gameFinish: false,
       paused: false
@@ -47,6 +77,46 @@ export function war2ImplementationInitialState(): IState {
         }
       },
       {
+        name: 'Farm',
+        image: humanFarm,
+        icon: humanFarm,
+        id: 'humanFarm',
+        properties: {
+          damage: 0,
+          speed: 0,
+          health: 400,
+          range: 0,
+          territoryRadius: 0
+        },
+        custom: {
+          cost: [
+            { resourceId: RESOURCE_ID.gold, value: 500 },
+            { resourceId: RESOURCE_ID.food, value: -4 },
+            { resourceId: RESOURCE_ID.lumber, value: 250 }
+          ]
+        }
+      },
+      {
+        name: 'Scout Tower',
+        image: humanTower1,
+        icon: humanTower1,
+        id: 'humanTower1',
+        properties: {
+          damage: 10,
+          speed: 0,
+          health: 100,
+          range: 3,
+          territoryRadius: 1
+        },
+        custom: {
+          cost: [
+            { resourceId: RESOURCE_ID.gold, value: 550 },
+            { resourceId: RESOURCE_ID.food, value: 0 },
+            { resourceId: RESOURCE_ID.lumber, value: 200 }
+          ]
+        }
+      },
+      {
         name: 'Great Hall',
         image: 'https://d1u5p3l4wpay3k.cloudfront.net/wowpedia/e/e0/OrcTownhall.gif',
         icon: 'https://d1u5p3l4wpay3k.cloudfront.net/wowpedia/e/e0/OrcTownhall.gif',
@@ -60,13 +130,52 @@ export function war2ImplementationInitialState(): IState {
           territoryRadius: 2
         }
       },
+      {
+        name: 'Pig Farm',
+        image: orcFarm,
+        icon: orcFarm,
+        id: 'orcFarm',
+        properties: {
+          damage: 0,
+          speed: 0,
+          health: 400,
+          range: 0,
+          territoryRadius: 0
+        },
+        custom: {
+          cost: [
+            { resourceId: RESOURCE_ID.gold, value: 500 },
+            { resourceId: RESOURCE_ID.food, value: -4 },
+            { resourceId: RESOURCE_ID.lumber, value: 250 }
+          ]
+        }
+      },
+      {
+        name: 'Watch Tower',
+        image: orcTower1,
+        icon: orcTower1,
+        id: 'orcTower1',
+        properties: {
+          damage: 10,
+          speed: 0,
+          health: 100,
+          range: 3,
+          territoryRadius: 1
+        },
+        custom: {
+          cost: [
+            { resourceId: RESOURCE_ID.gold, value: 550 },
+            { resourceId: RESOURCE_ID.food, value: 0 },
+            { resourceId: RESOURCE_ID.lumber, value: 200 }
+          ]
+        }
+      },
 
       {
         name: 'Footman',
         image: 'https://d1u5p3l4wpay3k.cloudfront.net/wowpedia/5/53/HumanFootman.gif',
         icon: 'https://d1u5p3l4wpay3k.cloudfront.net/wowpedia/9/9d/Foot.gif',
         id: 'footman',
-        isBase: false,
         properties: {
           damage: 9,
           speed: 1,
@@ -75,7 +184,10 @@ export function war2ImplementationInitialState(): IState {
           territoryRadius: 0
         },
         custom: {
-          cost: [{ resourceId: RESOURCE_ID.gold, value: 600 }, { resourceId: 'food', value: 1 }]
+          cost: [
+            { resourceId: RESOURCE_ID.gold, value: 600 },
+            { resourceId: RESOURCE_ID.food, value: 1 }
+          ]
         }
       },
       {
@@ -94,12 +206,11 @@ export function war2ImplementationInitialState(): IState {
         custom: {
           cost: [
             { resourceId: RESOURCE_ID.gold, value: 500, food: 1 },
-            { resourceId: 'lumber', value: 50 },
-            { resourceId: 'food', value: 1 }
+            { resourceId: RESOURCE_ID.lumber, value: 50 },
+            { resourceId: RESOURCE_ID.food, value: 1 }
           ]
         }
       },
-
       {
         name: 'Grunt',
         image: 'https://d1u5p3l4wpay3k.cloudfront.net/wowpedia/c/cc/OrcGrunt.gif',
@@ -116,7 +227,7 @@ export function war2ImplementationInitialState(): IState {
         custom: {
           cost: [
             { resourceId: RESOURCE_ID.gold, value: 600 },
-            { resourceId: 'food', value: 1 }
+            { resourceId: RESOURCE_ID.food, value: 1 }
           ]
         }
       },
@@ -137,7 +248,7 @@ export function war2ImplementationInitialState(): IState {
           cost: [
             { resourceId: RESOURCE_ID.gold, value: 500 },
             { resourceId: RESOURCE_ID.food, value: 1 },
-            { resourceId: 'lumber', value: 50 }
+            { resourceId: RESOURCE_ID.lumber, value: 50 }
           ]
         }
       }
@@ -154,58 +265,16 @@ export function war2ImplementationInitialState(): IState {
         name: 'Seba',
         isAI: false,
         color: 'blue',
-        unitTypes: ['human-base', 'footman', 'elven-archer'],
-        resources: [
-          {
-            id: RESOURCE_ID.gold,
-            name: RESOURCE_ID.gold,
-            defaultValuePerTurn: 100,
-            value: 900,
-            thisTurnValue: 0,
-            icon: goldIcon
-          },
-          {
-            id: 'lumber',
-            name: 'lumber',
-            defaultValuePerTurn: 20,
-            value: 100,
-            thisTurnValue: 0,
-            icon: lumberIcon
-          }
-        ]
+        unitTypes: ['human-base', 'humanFarm', 'humanTower1', 'footman', 'elven-archer'],
+        resources: clone(resources)
       },
       {
         id: 'data_simple_1',
         name: 'Data',
         color: 'red',
         isAI: true,
-        unitTypes: ['orc-base', 'grunt', 'troll'],
-        resources: [
-          {
-            id: RESOURCE_ID.gold,
-            name: RESOURCE_ID.gold,
-            defaultValuePerTurn: 100,
-            value: 900,
-            thisTurnValue: 0,
-            icon: goldIcon
-          },
-          {
-            id: 'lumber',
-            name: 'lumber',
-            defaultValuePerTurn: 20,
-            value: 100,
-            thisTurnValue: 0,
-            icon: lumberIcon
-          },
-          {
-            id: 'food',
-            name: 'food',
-            defaultValuePerTurn: 1,
-            value: 4,
-            thisTurnValue: 0,
-            icon: foodIcon
-          }
-        ]
+        unitTypes: ['orc-base', 'orcFarm', 'orcTower1', 'grunt', 'troll'],
+        resources: clone(resources)
       }
     ],
     uiState: {

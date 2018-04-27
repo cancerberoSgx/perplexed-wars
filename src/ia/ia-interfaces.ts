@@ -8,3 +8,9 @@ export interface IA extends IThing {
   yourTurn(state: IState)
 
 }
+
+
+
+interface IAData { 
+  unitResourceGiver: Array<{resource:string, unit:string}>
+}
