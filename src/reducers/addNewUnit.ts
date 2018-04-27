@@ -4,6 +4,8 @@ import { Game } from '../state/game'
 import { State } from '../state/state'
 import { IState, IUnit } from '../state/state-interfaces'
 import { getAvailablePlacesFor, newUnit } from '../util/util'
+import { StateAccessHelper } from 'state/StateAccessHelper'
+import { GameUIStateHelper } from 'state/GameUIStateHelper'
 
 export const ACTION_ADD_UNIT_CLICK_BUTTON: string = 'add-unit-click-button'
 
@@ -22,8 +24,8 @@ export function clickAddNewUnitButton(state: IState, action: IClickAddUnitButton
     // reset current selection first (excluding the target button)
     s.uiState.playerControls.forEach(pc => pc.addUnitButtons.forEach(b => !b.pressed && (b.pressed = false)))
     s.uiState.unitSelection = []
-
-    if (s.players.find(p => p.id === action.playerId).isAI) { // human toggle ia unit buttons
+    const H = StateAccessHelper.get(s)
+    if (H.player(action.playerId).isAI) { // human toggle ia unit buttons
       return
     }
 
@@ -34,6 +36,8 @@ export function clickAddNewUnitButton(state: IState, action: IClickAddUnitButton
 
     s.uiState.unitTypeSelection = s.unitsTypes.find(u => u.id === action.unitId && !!addUnitButtons.find(b => b.pressed && b.unitTypeId === action.unitId))
 
+    GameUIStateHelper.setAddUnitChildButtons(s)// TODO: not here - in selectunit!
+    
     // TODO: trigger event afterUnitTypeSelected
   })
 }

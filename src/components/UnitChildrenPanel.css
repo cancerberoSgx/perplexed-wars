@@ -1,15 +1,20 @@
-.UnitSelectionInfo {
+.UnitChildrenPanel {
   position: absolute;
   border-radius: 10px;
-  right: 0px;
-  bottom: 0px;
+  /* right: 50%;
+  bottom: 50%; */
   background: #999999;
   opacity: 0.8; 
-  max-width: 30%;
-  max-height: 30%;
+  /* max-width: 30%;
+  max-height: 30%; */
+  
 }
 
-
+.UnitChildrenPanel:after {
+  content: "";
+  display: table;
+  clear: both;
+}
 /* .UnitSelectionInfo.is-pointer-down {
   background: #09F;
 }

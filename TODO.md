@@ -1,5 +1,7 @@
 # ISSUES
 
+ * IState:unitsTypes - es unitTypes sin s
+
  * human can add IA units
 
  * urgent. make helpers for lal the .finds, .filter etccthat are in the code. Make SuperState that wrapps the State instance with helpers!! if notm refactoring will be crazys. We might even improve performance by cahing some stuff that doesnt change like payers, resources, unittypes, techs, etc, unittypebehavior

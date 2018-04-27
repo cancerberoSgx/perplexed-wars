@@ -4,6 +4,7 @@ import { State } from '../state/state'
 import { findUnit } from '../util/util'
 import { Game } from '../state/game'
 import { Events } from '../state/IGameFramework'
+import { GameUIStateHelper } from 'state/GameUIStateHelper'
 
 export const ACTION_SELECT_UNIT: string = 'select-unit'
 
@@ -23,11 +24,13 @@ export function selectUnit(state: IState, action: ISelectUnitAction): IState {
       action, state: s, 
     })
     const results = findUnit(s, unit => unit.id === action.unitId)// .map(r => ({ unitId: r.unit.id, boxId: r.box.id, uni }))
+
     const previousSelection = s.uiState.unitSelection
     s.uiState.unitSelection = action.union ? s.uiState.unitSelection.concat(results) : results
     Game.getInstance().emit(Events.EVENT_AFTER_UNIT_SELECTION, { 
       selection: s.uiState.unitSelection, 
       previousSelection, action, state: s, 
     })
+    GameUIStateHelper.setAddUnitChildButtons(s)   
   })
 }

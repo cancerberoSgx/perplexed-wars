@@ -15,7 +15,8 @@ export class UnitSelectionInfo extends BaseComponent<{unitTypeSelection: IUnitTy
       const selected = this.props.unitSelection[0]
       return (
         <Draggable handle=".UnitSelectionInfo">
-        <table className="UnitSelectionInfo"><tbody>
+        <table className="UnitSelectionInfo" ><tbody>
+        <tr><td></td><td>{'<<drag me>>'}</td></tr>
         <tr><td>Name: </td><td><img src={selected.unit.type.icon}/>{selected.unit.type.name}</td></tr>
         <tr><td>Health: </td><td>{selected.unit.state.health} / {selected.unit.type.properties.health}</td></tr>
         <tr><td>Kill count: </td><td>{selected.unit.killCount}</td></tr>
@@ -29,6 +30,7 @@ export class UnitSelectionInfo extends BaseComponent<{unitTypeSelection: IUnitTy
       return (
           <Draggable handle=".UnitSelectionInfo">
             <table className="UnitSelectionInfo"><tbody>
+              <tr><td></td><td>{'<<drag me>>'}</td></tr>
               <tr><td>Name</td><td><img src={this.props.unitTypeSelection.icon}/>{this.props.unitTypeSelection.name}</td></tr>
               <tr><td>Damage</td><td>{this.props.unitTypeSelection.properties.damage}</td></tr>
               <tr><td>Health</td><td>{this.props.unitTypeSelection.properties.health}</td></tr>

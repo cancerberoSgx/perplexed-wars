@@ -9,6 +9,7 @@ import { store } from '../reducers/store'
 import { State } from '../state/state'
 import { ACTION_CHANGE_GAME_SETTINGS, IChangeGameSettingsAction } from '../reducers/changeGameSettings'
 import { UnitSelectionInfo } from './UnitSelectionInfo'
+import { UnitChildrenPanel } from './UnitChildrenPanel'
 
 export class App extends BaseComponent<{}> {
   constructor(props:{}) {
@@ -43,6 +44,7 @@ export class App extends BaseComponent<{}> {
         </header>
 
         <UnitSelectionInfo unitSelection={this.state.uiState.unitSelection} unitTypeSelection={this.state.uiState.unitTypeSelection}/>
+        
         
         <UnitsPanel />
 

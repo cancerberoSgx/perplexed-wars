@@ -10,6 +10,15 @@ import * as humanTower1 from './assets/HumanTower1.gif'
 import * as orcTower1 from './assets/OrcTower1.gif'
 import * as goldMine from './assets/goldMine.gif'
 import * as orcGreatHall from './assets/orcGreatHall.gif'
+import * as humanBlacksmith from './assets/HumanBlacksmith.gif'
+import * as orcBlacksmith from './assets/OrcBlacksmith.gif'
+
+import * as footman from './assets/footman.gif'
+import * as footmanIcon from './assets/footmanIcon.gif'
+
+import * as humanBlacksmithDamageUpgrade1 from './assets/humanBlacksmithDamageUpgrade1.png'
+
+
 
 
 const n = 15
@@ -68,26 +77,11 @@ export function war2ImplementationInitialState(): IState {
     // unit values were taking almost exactly as in https://wow.gamepedia.com/Warcraft_II_units#Footman_.2F_Grunt
     unitsTypes: [
       {
-        name: 'Town Hall',
-        image: HumanTownHall,
-        icon: HumanTownHall,
-        id: 'human-base',
-        description: `The Town Hall serves as a center for the community and commerce of the various towns and military outposts in Lordaeron. As the chief economic building in any settlement, these sites are equipped to process vital resources such as lumber and gold. The steady stream of peasants, who laboriously harvest and transport resources, makes for constant activity near the Town Hall. The training that Peasants require to assist in the growth of their community is also given here.`,
-        isBase: true,
-        properties: {
-          damage: 0,
-          speed: 0,
-          health: 1200 * 1.2,
-          range: 0,
-          territoryRadius: 2,
-        },
-      },
-      {
         name: 'Gold Mine',
         image: goldMine,
         icon: goldMine,
         id: 'goldMine',
-        description: `Gives +${goldDefaultValuePerTurn} gold per turn. Mined from the rich earth of Azeroth and Lordaeron, this precious metal is commonly used in exchange for goods and services. As a rare substance that is always in short supply, Gold must be dug out from the rock and soil within established Gold Mines. Many of these Mines were abandoned when the Orc raids began and the workers fled for their very lives. Since the beginning of the War, these sites are frequently operated while under the protection of military forces`,
+        description: `Gives +${goldDefaultValuePerTurn} gold per turn. Mined from the rich earth of Azeroth and Lordaeron, this precious metal is commonly used in exchange for goods and services.`,
         properties: {
           damage: 0,
           speed: 0,
@@ -104,17 +98,32 @@ export function war2ImplementationInitialState(): IState {
         },
       },
       {
+        name: 'Town Hall',
+        image: HumanTownHall,
+        icon: HumanTownHall,
+        id: 'human-base',
+        description: `If killed you loose the game. The Town Hall serves as a center for the community and commerce of the various towns and military outposts in Lordaeron.`,
+        isBase: true,
+        properties: {
+          damage: 0,
+          speed: 0,
+          health: 1200 * 1.2,
+          range: 0,
+          territoryRadius: 2,
+        },
+      },
+      {
         name: 'Farm',
         image: humanFarm,
         icon: humanFarm,
         id: 'humanFarm',
-        description: `Feeds ${foodDefaultValue} units. Farms are a vital part of the many communities in Lordaeron. Producing various grains and foodstuffs, Farms not only generate sustenance for peasants and workers, but for the armies as well. The overall amount of food produced from a town's Farms is vital to the number of new workers or soldiers that the community can accommodate. It is imperative that this production be monitored at all times, so that the population remains well fed and the town runs smoothly`,
+        description: `Feeds ${foodDefaultValue} units. Farms are a vital part of the many communities in Lordaeron. Producing various grains and foodstuffs, Farms not only generate sustenance for peasants and workers, but for the armies as well. `,
         properties: {
           damage: 0,
           speed: 0,
           health: 400 * 1.2,
           range: 0,
-          territoryRadius: 0,
+          territoryRadius: 1,
         },
         custom: {
           cost: [
@@ -129,7 +138,7 @@ export function war2ImplementationInitialState(): IState {
         image: humanTower1,
         icon: humanTower1,
         id: 'humanTower1',
-        description: 'Scout Towers are tall, sturdy structures constructed to guard the borders of many settlements. From these sites, the defenders of Lordaeron can spot enemy troops from high above, making it difficult for the Orcs to launch surprise attacks. Their presence in the wildlands assures the swift deployment of our armies to meet any Orc incursion. These Towers may be outfitted with either deadly bolts that can pierce targets on land, sea and air, or with great cannon that while powerful, cannot attack threats from above.',
+        description: 'Scout Towers are tall, sturdy structures constructed to guard the borders of many settlements.',
         properties: {
           damage: 10,
           speed: 0,
@@ -139,9 +148,52 @@ export function war2ImplementationInitialState(): IState {
         },
         custom: {
           cost: [
-            { resourceId: RESOURCE_ID.gold, value: 550 },
+            { resourceId: RESOURCE_ID.gold, value: 800 },
             { resourceId: RESOURCE_ID.food, value: 0 },
-            { resourceId: RESOURCE_ID.lumber, value: 200 },
+            { resourceId: RESOURCE_ID.lumber, value: 450 },
+          ],
+        },
+      },
+      {// TODO: icons upgrades from here: https://wow.gamepedia.com/Footman_(Warcraft_III)#Upgrades
+        name: 'Blacksmith',
+        image: humanBlacksmith,
+        icon: humanBlacksmith,
+        id: 'humanBlacksmith',
+        description: `Infantry upgrades. Blacksmiths are an important part of many settlements dependent on military protection. While the metals that they forge are a vital component in the construction of advanced buildings, they are especially known for their skill at weapon-crafting and armoring `,
+        properties: {
+          damage: 0,
+          speed: 0,
+          health: 775 * 1.2,
+          range: 0,
+          territoryRadius: 1,
+        },
+        custom: {
+          cost: [
+            { resourceId: RESOURCE_ID.gold, value: 800 },
+            { resourceId: RESOURCE_ID.food, value: 0 },
+            { resourceId: RESOURCE_ID.lumber, value: 450 },
+          ],
+        },
+      },
+      {
+        name: 'Upgrade Unit Damage Level 1',
+        image: humanBlacksmithDamageUpgrade1,
+        icon: humanBlacksmithDamageUpgrade1,
+        id: 'humanBlacksmithDamageUpgrade1',
+        description: `+2 damage to all units`,
+        childOf: ['humanBlacksmith'],
+        properties: {
+          damage: 0,
+          speed: 0,
+          health: 0, // meaning cannot be built in the board physically
+          range: 0,
+          territoryRadius: 0,
+        },
+        custom: {
+          cost: [
+            { resourceId: RESOURCE_ID.gold, value: 800 },
+            { resourceId: RESOURCE_ID.food, value: 0 },
+            { resourceId: RESOURCE_ID.lumber, value: 0 },
           ],
         },
       },
@@ -151,7 +203,7 @@ export function war2ImplementationInitialState(): IState {
         icon: orcGreatHall,
         id: 'orc-base',
         isBase: true,
-        description: `This structure serves many purposes, such as being the gathering place and command center, for most Orcish settlements. Unfit for battle, the lowly Peons are trained here to perform the menial tasks of construction, repair and harvesting. This is also where vital raw materials are gathered to be processed and then distributed. The Great Hall is always a source of fevered activity as the laboring Peons work to please their overseers. When settlements achieve greater prosperity and require stronger defenses, the Great Hall can be reinforced to become a Stronghold`,
+        description: `If killed you loose the game. This structure serves many purposes, such as being the gathering place and command center, for most Orcish settlements. `,
         properties: {
           damage: 0,
           speed: 0,
@@ -165,7 +217,7 @@ export function war2ImplementationInitialState(): IState {
         image: orcFarm,
         icon: orcFarm,
         id: 'orcFarm',
-        description: `Feeds ${foodDefaultValue} units. Farms are a vital part of the many communities in Lordaeron. Producing various grains and foodstuffs, Farms not only generate sustenance for peasants and workers, but for the armies as well. The overall amount of food produced from a town's Farms is vital to the number of new workers or soldiers that the community can accommodate. It is imperative that this production be monitored at all times, so that the population remains well fed and the town runs smoothly`,
+        description: `Feeds ${foodDefaultValue} units. Farms are a vital part of the many communities in Lordaeron. Producing various grains and foodstuffs, Farms not only generate sustenance for peasants and workers, but for the armies as well.`,
         properties: {
           damage: 0,
           speed: 0,
@@ -182,11 +234,32 @@ export function war2ImplementationInitialState(): IState {
         },
       },
       {
+        name: 'Blacksmith',
+        image: orcBlacksmith,
+        icon: orcBlacksmith,
+        id: 'orcBlacksmith',
+        description: `Infantry upgrades. The Orcs that live and work in the Blacksmith shops are veteran warriors themselves. Understanding the value of strong steel, they are always developing new techniques and methods to improve their weapons or upgrade the quality of their armor. `,
+        properties: {
+          damage: 0,
+          speed: 0,
+          health: 775 * 1.2,
+          range: 0,
+          territoryRadius: 1,
+        },
+        custom: {
+          cost: [
+            { resourceId: RESOURCE_ID.gold, value: 500 },
+            { resourceId: RESOURCE_ID.food, value: 0 },
+            { resourceId: RESOURCE_ID.lumber, value: 250 },
+          ],
+        },
+      },
+      {
         name: 'Watch Tower',
         image: orcTower1,
         icon: orcTower1,
         id: 'orcTower1',
-        description:`Rising high above the treeline, Watch Towers resemble primitive huts laced with animal bones and giant tusks of every kind. These insubstantial - but highly useful - lookout posts are ideal for spotting the cowardly and deceitful Human forces from above, making them a desired part of any Orcish settlement's defenses. These emplacements may be upgraded to loose deadly projectiles upon any approaching enemies, or to rain explosive death down upon their foes on land and sea..`,
+        description:`Rising high above the treeline, Watch Towers resemble primitive huts laced with animal bones and giant tusks of every kind. `,
         properties: {
           damage: 10,
           speed: 0,
@@ -205,10 +278,10 @@ export function war2ImplementationInitialState(): IState {
 
       {
         name: 'Footman',
-        image: 'https://d1u5p3l4wpay3k.cloudfront.net/wowpedia/5/53/HumanFootman.gif',
-        icon: 'https://d1u5p3l4wpay3k.cloudfront.net/wowpedia/9/9d/Foot.gif',
+        image: footman,
+        icon: footmanIcon,
         id: 'footman',
-        description: `Footmen are the initial line of defense against the Horde. Arrayed in hardened steel armor, they courageously wield broadsword and shield in hand-to-hand combat against their vile Orcish foes. The valorous Footmen are ever-prepared to heed the call to arms`,
+        description: `Footmen are the initial line of defense against the Horde. Arrayed in hardened steel armor, they courageously wield broadsword and shield in hand-to-hand combat against their vile Orcish foes.`,
         properties: {
           damage: 9,
           speed: 1,
@@ -229,7 +302,7 @@ export function war2ImplementationInitialState(): IState {
         icon: 'https://d1u5p3l4wpay3k.cloudfront.net/wowpedia/4/4f/Aface.gif?version=237897e7775651612b874e7d7ec5f7d8',
         id: 'elven-archer',
         isBase: false,
-        description: `Out of the mysterious forests of Quel'thalas come the Elven Archers to aid the Alliance in its darkest hour. Descendants of the elder race of Lordaeron, these sylvan woodsmen are unmatched in their use of the bow. Unencumbered by helm or heavy armor, Archers are keen of eye and fleet of foot. These Elves have long been embroiled in a bloody conflict with the hated Trolls of Lordaeron and are swift to let loose a rain of arrows upon any foe, including those that attack from the skies above`, 
+        description: `Out of the mysterious forests of Quel'thalas come the Elven Archers to aid the Alliance in its darkest hour.`, 
         properties: {
           damage: 9,
           speed: 1,
@@ -251,7 +324,7 @@ export function war2ImplementationInitialState(): IState {
         icon: 'https://d1u5p3l4wpay3k.cloudfront.net/wowpedia/e/e0/Grunt.gif',
         id: 'grunt',
         isBase: false,
-        description: `Those Orcs who distinguish themselves enough in the arts of war to be trained as Grunts epitomize the merciless spirit of the Horde. Equipped with mighty axes and battle-worn armor, they are prepared to fight to the death. Devoted to the Horde and to their clans, the Grunt lusts for battle - wanting nothing more than to wade into the field of carnage and die a bloody death surrounded by the bodies of his fallen enemies`,
+        description: `Those Orcs who distinguish themselves enough in the arts of war to be trained as Grunts epitomize the merciless spirit of the Horde. `,
         properties: {
           damage: 9,
           speed: 1,
@@ -272,7 +345,7 @@ export function war2ImplementationInitialState(): IState {
         icon: 'https://d1u5p3l4wpay3k.cloudfront.net/wowpedia/3/31/Axe.gif',
         id: 'troll',
         isBase: false,
-        description: `The Trolls of Lordaeron have suffered ages of attrition at the hands of the Humans, Dwarves, and Elves. The appearance of the Orcish Horde has given them the opportunity to ally themselves with kindred spirits with whom they can seek revenge upon their many enemies. More agile than the brutish Orcs, Trolls employ throwing axes - along with a cunning attack and retreat stratagem - to assail their foes. This combination of speed, range and the ability to bring down threats from above makes them a valuable addition to the Orcish Horde`,
+        description: `ore agile than the brutish Orcs, Trolls employ throwing axes - along with a cunning attack and retreat stratagem - to assail their foes. `,
         properties: {
           damage: 9,
           speed: 1,
@@ -301,7 +374,7 @@ export function war2ImplementationInitialState(): IState {
         name: 'Seba',
         isAI: false,
         color: 'blue',
-        unitTypes: ['human-base', 'goldMine', 'humanFarm', 'humanTower1', 'footman', 'elven-archer'],
+        unitTypes: ['human-base', 'goldMine', 'humanFarm', 'humanBlacksmith', 'humanBlacksmithDamageUpgrade1', 'humanTower1', 'footman', 'elven-archer'],
         resources: clone(resources),
       },
       {
@@ -309,7 +382,7 @@ export function war2ImplementationInitialState(): IState {
         name: 'Data',
         color: 'red',
         isAI: true,
-        unitTypes: ['orc-base', 'goldMine', 'orcFarm', 'orcTower1', 'grunt', 'troll'],
+        unitTypes: ['orc-base', 'goldMine', 'orcFarm', 'orcTower1', 'humanBlacksmith', 'grunt', 'troll'],
         resources: clone(resources),
       },
     ],

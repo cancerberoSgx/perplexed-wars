@@ -1,9 +1,4 @@
-.add-unit.pressed {
-  border: 2px solid pink;
-}
-.UnitsPanel .icon{
-  width: 36px;
-}
+
 .UnitsPanel li {
   display: inline;
 }

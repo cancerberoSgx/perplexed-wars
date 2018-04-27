@@ -1,0 +1,18 @@
+
+
+.UnitTypeButton {
+  display: inline;
+  padding: 10px;
+}
+
+.UnitTypeButton>.add-unit{
+  border:2px solid #6d6d6d;
+  cursor: pointer;
+}
+
+.UnitTypeButton .add-unit.pressed {
+  border: 2px solid pink;
+}
+.UnitTypeButton .icon{
+  width: 36px;
+}

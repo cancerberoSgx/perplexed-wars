@@ -15,9 +15,9 @@ export class StateAccessHelper {
   }
 
   public static get (state?, behavior?): StateAccessHelper {
-    if (!this.instance) {
-      this.instance = new StateAccessHelper(state, behavior)
-    }
+    // if (!this.instance) {
+    this.instance = new StateAccessHelper(state, behavior)
+    // }
     return this.instance
   }
 

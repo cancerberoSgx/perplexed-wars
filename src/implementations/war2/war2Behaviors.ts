@@ -96,8 +96,7 @@ function getPlayerBehaviors() {
         const unitType = event.attacked.type
         const cost = unitType.custom && (unitType.custom as War2PlayerCustom).cost
         const resource = event.state.players.find(p => p.id === event.attacked.playerId).resources.find(r => r.id === RESOURCE_ID.food)
-        // debugger
-        resource.value += cost.find(c => c.resourceId === RESOURCE_ID.food).value
+        resource.value += ((cost || []).find(c => c.resourceId === RESOURCE_ID.food) || {}as any).value || 0
       },
     }
 

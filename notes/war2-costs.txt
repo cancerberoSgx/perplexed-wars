@@ -1,0 +1,593 @@
+
+
+WARCRAFT 2 Unoffical strategy guide
+===================================
+
+
+Author: EZRhino
+
+Tools:  Warcraft II
+        Blizzard Entertainment, Copyright (c) 1995
+
+Contents:
+
+1. Building your base
+   1.1 Building costs
+   1.2 Unit costs
+   1.3 Suggested build order
+
+2. Upgrading
+   2.1 Upgrade table
+   2.2 Halls
+   2.3 Lumber Mill
+   2.4 Blacksmith
+   2.5 Foundry
+   2.6 Oil Refinery
+   2.7 Church/Altar of Storms
+   2.8 Mage Tower/Temple of the Damned
+
+3. Using magic
+   3.1 Paladins/Ogre Mages
+   3.2 Mages/Death Knights
+   3.3 Suggested spells to use
+
+4. Land campaigns
+   4.1 Defense
+   4.2 Offense
+
+5. Sea campaigns
+   5.1 Defense
+   5.2 Offense
+
+6. Playing against the CPU
+
+7. Playing against friends
+
+
+1. Building your base
+=====================
+
+
+   1.1 Building costs
+   ------------------
+
+   Listed is a quick reference table of the various costs of buildings.
+
+   HUMAN Building     ORC Building         Gold    Lumber    Oil
+
+   Town Hall          Great Hall           1200     800        0
+   Keep               Stronghold           2000    1000      200
+   Castle             Fortress             2500    1200      500
+   Farm               Pig Farm              500     250        0
+   Elven Lumber Mill  Troll Lumber Mill     600     450        0
+   Barracks           Barracks              700     450        0
+   Blacksmith         Blacksmith            800     450      100
+   Scout Tower        Watch Tower           550     200        0
+   Guard Tower        Guard Tower           500     150        0
+   Cannon Tower       Cannon Tower         1000     300        0
+   Shipyard           Shipyard              800     450        0
+   Oil Platform       Oil Platform          700     450        0
+   Foundary           Foundary              700     400      400
+   Refinery           Refinery              800     350      200
+   Stables            Ogre Mound           1000     300        0
+   Gnomish Inventor   Goblin Alchemist     1000     400        0
+   Church             Altar of Storms       900     500        0
+   Mage Tower         Temple of the Damned 1000     400        0
+   Gryphon Aviary     Dragon Roost         1000     400        0
+
+
+
+   1.2 Unit costs
+   --------------
+
+   Listed is a quick reference table of the various costs of units.
+
+   HUMAN Unit         ORC Unit             Gold    Lumber    Oil
+
+   Peasant            Peon                  400       0        0
+   Footman            Grunt                 600       0        0
+   Elven Archer       Troll Axethrower      500      50        0
+   Elven Ranger       Troll Beserker        500      50        0
+   Balista            Catapult              900     300        0
+   Knight             Ogre                  800     100        0
+   Paladin            Ogre-Mage             800     100        0
+   Mage               Death Knight         1200       0        0
+   Dwarven Demo Squad Goblin Sappers        700     250        0
+   Oil Tanker         Oil Tanker            400     200        0
+   Transport          Transport             600     200      500
+   Destroyer          Destroyer             700     350      700
+   Battleship         Juggernaught         1000     500     1000
+   Gnomish Submarine  Giant Turtle          800     150      900
+   Gnomish Flying Ma  Goblin Zeppelin       500     100        0
+   Gryphon Rider      Dragon               2500       0        0
+
+
+   1.3 Suggested build order
+   -------------------------
+
+   In most games you start with only one Peasant/Peon. You
+   obviously need to first build a Town Hall/Great Hall.
+   Follow this by a farm. Once your Peasant/Peon (Pe) finishes
+   building the farm, click on your Hall and produce a second
+   (Pe). Make the first (Pe) build a second farm. Get your second
+   (Pe) to build a barracks. Produce your 3rd, 4th, 5th (Pe).
+
+   Below is a summary of the order I would build items:
+
+   *** Note: This assumes your initial resources are normal or
+             set to high. For low resource settings you need to
+             build Hall, Farm, harvest gold, produce Pe 2, harvest
+             more gold, produce Pe 3, harvest gold, build farm 2.
+
+   (Pe 1) Build Hall
+   Hall [produce Pe 2]
+   (Pe 1) Build Farm
+   Hall [produce Pe 3]
+   (Pe 2) Build Farm2
+   (Pe 1) Build Barracks
+   (Pe 3) Build Blacksmith
+   Hall [produce Pe 4]
+   (Pe 2) Harvest Gold
+   (Pe 4) Build Lumber Mill
+   Hall [produce Pe 5]
+   Barracks [produce Grunt 1]
+   Blacksmith [upgrade Shield Strength]
+   (Pe 1) Harvest Lumber
+   (Pe 3) Harvest Lumber
+   (Pe 4) Harvest Gold
+   (Pe 5) Harvest Gold
+
+   This order should get your war-machine up and running smoothly.
+   Keep producing (Pe) to harvest gold and lumber so that these
+   resources are coming in very quickly. Spend as soon as you can
+   on upgrades for your troops. Also build 2-4 more farms as your
+   number of people grow. As soon as you can afford to, upgrade
+   your Hall for the gold bonus and new buildings that become
+   available.
+   Your choice of buildings now largely depends on your overall
+   strategy as you should by now have a steady flow of incoming
+   resources. Again upgrade your Hall for the third time to gain
+   the bonuses plus gain access to the most advanced buildings and
+   units.
+
+
+2. Upgrading
+============
+
+   2.1 Upgrade table
+   -----------------
+
+   HUMAN Building     ORC Building         Requires
+
+   Town Hall          Great Hall           -
+   Keep               Stronghold           Town Hall/Great Hall + Barracks
+   Castle             Fortress             Keep/Stronghold + Blacksmith + Stables/Ogre Mound
+   Farm               Pig Farm             - 
+   Elven Lumber Mill  Troll Lumber Mill    - 
+   Barracks           Barracks             -
+   Blacksmith         Blacksmith           - 
+   Scout Tower        Watch Tower          - 
+   Guard Tower        Guard Tower          Lumber Mill 
+   Cannon Tower       Cannon Tower         Blacksmith
+   Shipyard           Shipyard             Lumber Mill
+   Oil Platform       Oil Platform         Shipyard (Oil Tanker)
+   Foundary           Foundary             Shipyard
+   Refinery           Refinery             Shipyard
+   Stables            Ogre Mound           Keep/Stronghold
+   Gnomish Inventor   Goblin Alchemist     Keep/Stronghold
+   Church             Altar of Storms      Castle/Fortress
+   Mage Tower         Temple of the Damned Castle/Fortress
+   Gryphon Aviary     Dragon Roost         Castle/Fortress
+
+
+   HUMAN Unit         ORC Unit             Requires
+
+   Peasant            Peon                 Town Hall/Great Hall 
+   Footman            Grunt                Barracks 
+   Elven Archer       Troll Axethrower     Lumber Mill 
+   Elven Ranger       Troll Beserker       Keep/Stronghold (upgrade troop) 
+   Balista            Catapult             Blacksmith 
+   Knight             Ogre                 Stables/Ogre Mound 
+   Paladin            Ogre-Mage            Church/Altar of Storms (upgrade troop) 
+   Mage               Death Knight         Mage Tower/Temple of the Damned
+   Dwarven Demo Squad Goblin Sappers       Gnomish Inventor/Goblin Alchemist
+   Oil Tanker         Oil Tanker           Shipyard
+   Transport          Transport            Shipyard + Foundry
+   Destroyer          Destroyer            Shipyard
+   Battleship         Juggernaught         Shipyard + Foundry
+   Gnomish Submarine  Giant Turtle         Shipyard + Gnomish Inventor/Goblin Alchemist
+   Gnomish Flying Ma  Goblin Zeppelin      Gnomish Inventor/Goblin Alchemist
+   Gryphon Rider      Dragon               Gryphon Aviary/Dragon Roost
+
+
+   2.2 Halls
+   ---------
+
+   Building a Keep/Stronghold yields a gold bonus of +10.
+   Building a Castle/Fortress yields a gold bonus of +20.
+
+
+   2.3 Lumber Mill
+   ---------------
+
+   Building a Lumber Mill yields a lumber bonus of +25.
+   It also allows you to upgrade your Archers/Axethrowers:
+   
+   Upgrade                  Effect      Gold    Lumber    Oil
+
+   Arrow/Spear Strength 1   Damage +1    300       300      0
+   Arrow/Spear Strength 2   Damage +1    900       500      0
+
+   Once you have a Keep (human) you can conduct 
+   Elven Ranger Training    Rangers     1500         0      0
+   Research Longbow         Range +1    2000         0      0
+   Ranger Scouting          Sight: 9    1500         0      0
+   Ranger Marksmanship      Damage +3   2500         0      0
+
+   Once you have a Stronghold (orc) you can conduct 
+   Troll Berserker Training Berserkers  1500         0      0
+   Research Lighter Axes    Range +1    2000         0      0
+   Beserker Scouting        Sight: 9    1500         0      0
+   Beserker Regeneration    Recovery    3000         0      0
+
+
+   2.4 Blacksmith
+   --------------
+
+   Building a Blacksmith allows you to upgrade your troop attack and
+   defence values:
+
+   Upgrade                  Effect      Gold    Lumber    Oil
+
+   (human)
+   Sword Strength 1         Damage +2    800         0      0
+   Sword Strength 2         Damage +2   2400         0      0
+   Shield Strength 1        Armor +2     300       300      0
+   Shield Strength 2        Armor +2     900       500      0
+   Upgrade Ballista 1       Damage +15  1500         0      0
+   Upgrade Ballista 2       Damage +15  4000         0      0
+
+   (orc)
+   Axe Strength 1           Damage +2    500       100      0
+   Axe Strength 2           Damage +2   1500       300      0
+   Shield Strength 1        Armor +2     300       300      0
+   Shield Strength 2        Armor +2     900       500      0
+   Upgrade Catapult 1       Damage +15  1500         0      0
+   Upgrade Catapult 2       Damage +15  4000         0      0
+
+
+   2.5 Foundry
+   -----------
+
+   Building a foundry allows you to upgrade your fleet of ships:
+
+   Upgrade                  Effect      Gold    Lumber    Oil
+
+   Ship Attack 1            Damage +5    700       100   1000
+   Ship Attack 2            Damage +5   2000       250   3000
+   Ship Armor 1             Armor +5     500       500      0
+   Ship Armor 2             Armor +5    1500       900      0
+
+
+
+   2.6 Oil Refinery
+   ----------------
+
+   Building an oil refinery yields an oil bonus of +25.
+
+
+   2.7 Church/Altar of Storms
+   --------------------------
+
+   Building a Church/Altar of Storms allows you to upgrade your
+   Knights to Paladins or your Ogres to Ogre-Mages. Furthermore you
+   can research magic spells for these upgraded troops:
+
+   Paladin Spell    Effect                Mana  Gold    Lumber    Oil
+
+   Holy Vision      Reveal portion of map   70     0         0      0
+   Healing          Heals for 6 mana/HP      6  1000         0      0
+   Exorcism         Attacks Death Knights    4  2000         0      0
+
+
+   Ogre-Mage Spell  Effect                Mana  Gold    Lumber    Oil
+
+   Eye of Kilrogg   Reveal portion of map   70     0         0      0
+   Bloodlust        Increases hits          50  1000         0      0
+   Runes            Invisible traps        200  1000         0      0
+
+
+
+   2.8 Mage Tower/Temple of the Damnned
+   ------------------------------------
+
+   Mage Spell          Effect                 Mana  Gold    Lumber    Oil
+
+   Lightning Attack    Normal attack             0     0         0      0
+   Fireball            Ranged attack           100     0         0      0
+   Slow                Slows target             50   500         0      0
+   Flame Shield        Circle of flame          80  1000         0      0
+   Invisibility        Unit invisible          200  2500         0      0
+   Polymorph           Unit becomes a critter  200  2000         0      0
+   Blizzard            Area destruction         25  2000         0      0
+
+
+   Death Knight Spell  Effect                 Mana  Gold    Lumber    Oil
+
+   Touch of Darkness   Normal attack             0     0         0      0
+   Death Coil          Life Drain              100     0         0      0
+   Haste               Speeds target            50   500         0      0
+   Raise Dead          Turn dead into skeletons 50  1500         0      0
+   Whirlwind           Vortex of destruction   100  1500         0      0
+   Unholy Armor        Invulnerabilty          100  2500         0      0
+   Death and Decay     Area destruction         25  2000         0      0
+
+
+3. Using magic
+==============
+
+   3.1 Paladins/Ogre Mages
+   -----------------------
+
+   Playing as humans you should upgrade your Knights to Paladins
+   as soon as possible. The only useful spell is healing but it is
+   impossible to cast in the heat of battle. Much better when your
+   troops are recovering between attacks. Healing is mana expensive
+   so I don't really rate it highly. Exorcism at first glance appears
+   to be a totally useless spell. However, it should be used aggressively
+   against Death Knights since it will nearly kill them outright from
+   a long range.
+
+   Playing as orcs you should upgrade your Ogres to Ogre-Mages
+   as soon as possible. Bloodlust is a great spell to use before
+   you launch an attack. Ensure you have a group of ogre-mages
+   then bloodlust all your troops and send them on the offensive.
+   Runes are magical traps that once cast will explode anything that
+   walks into its path. Use them in narrow passes where you expect
+   the enemy to send its troops through. Alternatively you can take
+   advantage of the ogre-mage's long range of casting by sneeking up
+   to the enemy whilst keeping out of sight, then casting runes close
+   to the enemy horde. Move toward the enemy and lure them into the
+   trap.
+
+
+   3.2 Mages/Death Knights
+   -----------------------
+
+   Mages can use fireball on enemy's from long distance. It is mana
+   expensive and not very effective. Slow is a defensive spell which
+   you would use against fast moving troops such as ogres or against
+   catapults to limit their damage potential. Flame Shield is an
+   excellent spell to use against a group of enemy troops. Cast on
+   a central target who will burn its neighbours. This causes confusion
+   and a scattering of troops, damage or death is a bonus. Then send in
+   your troops to attack them. Invisibility works best when cast upon
+   other mages. Use it to move them close to an enemy base and cause some
+   devestation. Also cast it on a fast troop (Knight) to scout the enemy camp.
+   However, I would usually use a Flying Machine for that purpose. By far the
+   funniest spell is polymorph. Watch as a powerful troops gets transformed
+   into a critter. It is also a very sneaky attack as the enemy has no warning.
+   For pure devestation cast blizzard. Combine the mage's long range and
+   the blizzard damage you can reduce defences to ruins. Ensure that your
+   mage(s) are fully mana charged.
+
+   Death Knights who are low on mana should cast death coil on the enemy
+   to life drain their target. Cast haste on attacking troops to inflict
+   more hits. For fun caste haste on peons so they fetch gold or harvest
+   lumber in turbo mode. Raise dead is not a spell I find useful. You
+   simply don't have time to calmly ressurect a skeleton army during a
+   battle. Even the CPU never uses it. To cause confusion cast a few
+   whirlwinds in the midst of a packed defence or enemy base. Whirlwinds
+   also affect ships and flying creatures. Unholy armor halves the target's
+   hit points in exchange for temporary invulnerability. Not used that often
+   since it's effect is not long lasting. Use Death and Decay on enemy
+   buildings to reduce them to rubble. Just as for blizzard make sure
+   your Death Knights are fully mana charged.
+
+
+   3.3 Suggested spells to use
+   ---------------------------
+
+   Playing as humans use your Paladins to heal your strong offensive
+   troops usually other Paladins. Ballistas cannot be healed. The
+   hated Death Knights should be despatched with Exorcism. Mages should
+   be armed with Polymorph and Blizzard. Slow is worthless. Flame Shield
+   can be useful against groups of troops but otherwise not worth
+   researching. Invisibility is not very useful since mages have a long
+   range anyway so can attack and run off. Use you mages for sneak attacks
+   to occupy the enemy. Create six or more mages to set up a chain of
+   attack and allowing them to recharge their mana. Avoid getting your
+   mages too close to the enemy as they are defensively weak.
+
+   Playing as orcs use your Ogre-Mages to Bloodlust all troops before
+   launching an attack. Set runes where you expect the enemy to follow
+   you. For your Death Knights cast Haste on bloodlusted troops for
+   a fierce attack. Cast whirlwinds on ships or stacks of gryphons or
+   dragons. These slow moving units will probably die. For variation
+   cast Death Coil from long range to steal back hit points. Don't
+   bother researching Raise Dead or Unholy Armor. Use Death and Decay
+   on enemy towers and buildings.
+
+
+4. Land campaigns
+=================
+
+   These are maps which are landlocked or consist of rivers crossed
+   by bridges. These are maps in which no shipyards are built.
+
+   4.1 Defense
+   -----------
+
+   Always use your terrain to your advantage. For example use forest
+   around your base as a natural 'wall'. After initially building
+   base try to explore your immediate area with a few troops. Work out
+   possible entry points into your base. Use 'choke' points (constricted
+   areas) to your advantage by securing these areas with ground troops.
+   Above all try to locate a second and third goldmine and spread your
+   base out over many areas (if the map is large enough). it is harder
+   to target your base if it is in more than one place. You can also
+   launch attacks from different bases. Upgrade you ground troop levels.
+   Build towers and upgrade them to guard or cannon towers. Place these
+   towers near important buildings and around your base. Guard towers
+   are effective against ground troops (especially Bomb Squads and Sappers)
+   and against air attacks from Gryphons/Dragons. Upgrade to cannon towers
+   to kill the other ground troops. I don't worry too much about placement
+   of troops. Just build lots of them. It is sensible to place archers
+   or axethrowers behind stronger defensive units such as knights or ogres.
+   Protect your slow moving ballistas or catapults. Build archers or
+   axethrowers and upgrade them totally to fend off gryphon or dragon
+   attacks. Don't bunch your archers/axethrowers against an attacking
+   group of gryphons/dragons to avoid cumulative damage. Guard towers
+   are also highly effective against air attacks.
+
+
+   4.2 Offense
+   -----------
+
+   Once you have a decent defence you should seek out ways of destroying
+   the enemy. Often the enemy builds a Hall close to a second goldmine
+   and has peasants fetching gold from it. Quite often this second base is
+   undefended so attack these first to slow the enemy's gold production
+   and to gain easy kills.
+
+   To attack the main base use your flying maching/zeppelin to scout
+   out the base. If at all possible try to avoid being detected whilst
+   scouting (not easy) so as to not alert the enemy as to your plans.
+   Search for unguarded areas or weaknesses in the defence. Note where
+   the enemy is strong or troops are gathered. Use mages/death knights
+   to attack groups of troops or undefended buildings. Target towers
+   initially. Soften up the enemy base by constantly causing disruption
+   and forcing the enemy to repair structures. If there are few towers
+   and archers/axethrowers left, use gryphons/dragons to safely attack
+   the remaining ground troops. You will not suffer casualties. Otherwise
+   send in a horde of 16 or more strong ground troops to storm the base.
+   Target remaining ground troops and towers. Then once the base is
+   defenceless raze the barracks first. Then optionally mage tower or
+   temple of the damned. Hunt down all remaining peasants/peons (should
+   be plenty of these). Then concentrate on the Castle/Fortress.
+
+
+5. Sea campaigns
+================
+
+These are maps with large expanses of water. Land is mostly
+separated into islands.
+
+   5.1 Defense
+   -----------
+
+   Since you are on islands it is prudent to build away from the
+   shoreline to avoid getting bombarded from the sea vessels. However,
+   do build cannon towers on your shore to detect and attack incoming
+   ships. Also build 3-4 ballistas/catapults to deal with ships. Be
+   wary of enemy transports landing on your island. Therefore ensure
+   you have sufficient ground troops to repulse such attacks. Send your
+   flying machine/zeppelin on scouting missions. They also can see
+   submarines which will otherwise bombard your ships and sea buildings.
+   Your own submarines will detect enemy subs too. Protect your oil
+   platforms by stationing battleships/juggernauts with a flying machine
+   overhead to prevent submarine sneak attacks. Try to get off your island
+   and build a second base if at all possible. Gold again could be the key.
+
+
+   5.2 Offense
+   -----------
+
+   Planning an effective attack is difficult as in my opinion islands
+   favour the defender. As in the land campaign use flying scouts to
+   work out the best method of attack. Use 3 or more transports to unload
+   18 (or more) tough ground troops simultaneously and go for mass
+   slaughter. You might just win. If the target island is big try to land
+   a mixture of troops and peasants/peons on it. Build a barracks or
+   any other buildings of your choice on the same island as your enemy!
+   Then build up a task force to send against the unsuspecting enemy.
+
+   Another method is to rule the seas. To do this you will need a good
+   size fleet of ships. Also build gryphons/dragons. Target destroyers
+   first as they are the only ships which can kill your air units. Then
+   you can sink the rest. Alternatively, sink all enemy submarines and
+   destroy all enemy flying machine/zeppelins. Send a lone submarine to
+   sink all the other hapless sea vessels. Once you control the waves
+   bombard the shipyard first and then any other coastal structures.
+   Beware of towers though. To despatch these concentrate en masse on
+   each tower in turn to minimise casualties. Finally land troops via
+   transports and do a combined ground and air attack.
+
+6. Playing against the CPU
+==========================
+
+In multiplayer games against computer controlled opponents you
+have to build adequate defences. The computer player builds up
+its base very much quicker than you. However, it attacks as soon as
+it has troops. One big attack would probably finish you but that
+never happens ... Instead expect one lone soldier to attack your
+base. The next attack consists of 3-5 soldiers. By now the CPU is
+upgrading its troop levels too. Expect level 3 troops against your
+level 1.
+
+So how do you win? Try to copy the CPU tactics. Assume you both
+start with one peasant/peon only. All build Hall, one farm.
+The CPU player builds a second farm then a lumber mill (presume for
+lumber prodiction bonus). Followed by a barracks and blacksmith.
+Meantime it is churning out peasants/peons by the ton. Resources are
+pouring in. Troops are built and sent towards you. All you have to do
+is build a barracks and blacksmith after your initial hall and farm.
+Build extra farms to support your peasants/peons and soldiers. Use
+your barracks to exclusively produce footmen/grunts. Forget archers
+or axethrowers as they die too quickly and waste time and money. Five
+to six footmen/grunts should defned your base nicely. Upgrade them to
+level 5 as soon as possible. Build 2 towers flanking your soldiers.
+Upgrade them to cannon towers. The CPU hates towers and in a blind
+frenzy attacks these first sustaining damage in the process. Your
+footmen/grunts get first strike capability against the attackers
+and suffer minimal damage.
+
+This set up should defend against most CPU initial attacks. Upgrade
+to stronger troops such as knights and ogres. Now build archers or
+axethrowers to defend against air attacks. Try to stop the CPU
+player from expanding. The sheer number of peasants/peons it produces
+means that it exhausts its first goldmine before you do. It also
+has spent most of it attacking you. If you can curb its search for
+more mines then you have won. Build walls to block off goldmines, the
+CPU never directly attacks walls. Don't be tempted to place towers
+inside of the wall as it encourages the CPU to attack the towers
+with ballistas/catapults or magic which can destroy your wall in the
+process.
+
+In summary the CPU attacks constantly at the beginning - so defend
+well. Once you survive the initial onslaught you win by default.
+
+
+7. Playing against friends
+==========================
+
+I use the word 'friends' in its loosest sense. Human players (non CPU)
+show greater tactical ability. The best advice is to defend well using
+the tactics described earlier. Then consider attacking options. Much
+of your strategy will depend on several factors:
+
+* Number of players
+* Teamwork or deathplay (everyone for themselves)
+* Skill of your opponents
+* Favoured tactics of your opponents
+* Your initial location
+* Scenario selected
+
+If you are feeling bold attack early with ground troops. Your base
+would only consist of a Hall, some farms, barracks, blacksmith,
+lumber mill. Your opponents won't be expecting such an attack and
+(hopefully) be caught offguard. It is risky since you must win that
+battle. If your attack is repulsed your base is now lightly defended
+and prone to a counter attack.
+
+Which race shall I play, Humans or Orcs? Personally I favour orcs
+for their attack-orientated spells (Haste, Bloodlust). Axethrower
+regeneration means that you can defend against air attacks
+indefinitely without the logistic headache of healing each troop.
+Also they burp and fart and have been given a bad press in the past.
+Orcs rule!
+
+Good luck with your campaigns and remember this: be WarCrafty.
+
+
+

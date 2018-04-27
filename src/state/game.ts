@@ -7,11 +7,12 @@ import { IA } from '../ia/ia-interfaces'
 import { StateAccessHelper } from './StateAccessHelper'
 import { IPlayer } from './state-interfaces'
 import { Behavior } from './behavior'
+import { GameUIStateHelper } from './GameUIStateHelper'
 
 /**
  * responsible of the game life cycle mostly about turn and dispatching action [[ACTION_GAME_LOOP_INCREMENT_INTERVAL]]
- *
- * usage: `Game.getInstance()` which returns [[IGameFramework]]
+ *  It dialogues with implementor on start to let him modify the state and then instantiate this UI related elements in IState
+ * usage: `Game.getInstance()` which returns [[IGameFramework]] - for this is supported by [[UIStatePlayerControls]]
  */
 export class Game extends EventEmitter implements IGameFramework {
   private static instance
@@ -35,21 +36,9 @@ export class Game extends EventEmitter implements IGameFramework {
       if (!Behavior.get().gameBehaviors || !Behavior.get().gameBehaviors.length) {
         this.on(Events.EVENT_BEFORE_GAME_STARTS, (e) => {e.ready()})
       }
-      state.uiState = state.uiState ||  { 
-        currentPlayer: state.players.find(p => !p.isAI).id,
-        playerControls: [],
-        unitSelection: [],
-        unitAttacks: [],
-        unitDeads: [],
-      }
+      GameUIStateHelper.initializeUIState(state)
       this.emit(Events.EVENT_BEFORE_GAME_STARTS, {state, ready: () => {
-        state.players.forEach(p => {
-          const playerControl = { playerId: p.id, addUnitButtons: [] }
-          p.unitTypes.forEach(unitType => {
-            playerControl.addUnitButtons.push({ unitTypeId: unitType, pressed: false })
-          })
-          state.uiState.playerControls.push(playerControl)
-        })
+        GameUIStateHelper.setupPlayerControls(state)
         this.emit(Events.EVENT_AFTER_GAME_STARTS, { state })
         this.resume()
       }})

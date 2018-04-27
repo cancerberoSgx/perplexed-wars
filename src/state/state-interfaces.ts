@@ -91,6 +91,10 @@ export interface IUnitType extends IThing {
   isBase?: boolean
   /** if implemetators want to show extra properties when user select units in the UnitSelection panel he ca add them here. The value is html string */
   extraDescriptionProperties?: {key: string, value: string}[]
+  /** if this value is set, then the unit wont be shown in the unit panel first level , but just wneh you click a parent unit. clicking a parent unit has different effect: it will show a second container with children unit buttons inside. */
+  childOf?: string[]
+  // /** filled automatically by the framework - implementos just fill childOf */
+  // _children?: string[]
 }
 export interface IUnitProperties {
   damage: number
@@ -110,12 +114,15 @@ export interface IUIState {
 }
 export interface IPlayerUIState {
   addUnitButtons: IPlayerStateAddUnitButtonState[]
+  /** if user clicks button of a parent unit type then child ids go here */
+  addUnitChildButtons?: string[]
   playerId: string
-  availablePlaces?: IBox[]
+  availablePlaces?: IBox[] 
 }
 export interface IPlayerStateAddUnitButtonState {
   pressed: boolean
   unitTypeId: string
+  isPrimary: boolean
 }
 export interface IUnitSelectionInfo {
   unit: IUnit// : string,
