@@ -1,9 +1,9 @@
 module.exports = {
   src: [
-    // './types/reducers',
+    './types/reducers',
     './types/state',
     // './types/unitActionResolvers',
-    // './types/util',
+    './types/util',
     // './node_modules/@types/node/index.d.ts',  
     // './node_modules/redux/index.d.ts'
   ],

@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>AfterUnitSelectionEvent | perplexed-wars</title>
+	<title>ITurnEndAction | perplexed-wars</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -54,33 +54,21 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="afterunitselectionevent.html">AfterUnitSelectionEvent</a>
+					<a href="iturnendaction.html">ITurnEndAction</a>
 				</li>
 			</ul>
-			<h1>Interface AfterUnitSelectionEvent</h1>
+			<h1>Interface ITurnEndAction</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<section class="tsd-panel tsd-comment">
-				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p>triggered after user selected a unit</p>
-					</div>
-				</div>
-			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<a href="gameframeworkevent.html" class="tsd-signature-type">GameFrameworkEvent</a>
-						<ul class="tsd-hierarchy">
-							<li>
-								<span class="target">AfterUnitSelectionEvent</span>
-							</li>
-						</ul>
+						<span class="target">ITurnEndAction</span>
 					</li>
 				</ul>
 			</section>
@@ -91,10 +79,7 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="afterunitselectionevent.html#action" class="tsd-kind-icon">action</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="afterunitselectionevent.html#previousselection" class="tsd-kind-icon">previous<wbr>Selection</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="afterunitselectionevent.html#selection" class="tsd-kind-icon">selection</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="afterunitselectionevent.html#state" class="tsd-kind-icon">state</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="iturnendaction.html#type" class="tsd-kind-icon">type</a></li>
 							</ul>
 						</section>
 					</div>
@@ -103,43 +88,12 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="action" class="tsd-anchor"></a>
-					<h3>action</h3>
-					<div class="tsd-signature tsd-kind-icon">action<span class="tsd-signature-symbol">:</span> <a href="iselectunitaction.html" class="tsd-signature-type">ISelectUnitAction</a></div>
+					<a name="type" class="tsd-anchor"></a>
+					<h3>type</h3>
+					<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"game-loop-increment-interval"</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in state/IGameFramework.d.ts:91</li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="previousselection" class="tsd-anchor"></a>
-					<h3>previous<wbr>Selection</h3>
-					<div class="tsd-signature tsd-kind-icon">previous<wbr>Selection<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">&gt;</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in state/IGameFramework.d.ts:92</li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="selection" class="tsd-anchor"></a>
-					<h3>selection</h3>
-					<div class="tsd-signature tsd-kind-icon">selection<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">&gt;</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in state/IGameFramework.d.ts:87</li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-					<a name="state" class="tsd-anchor"></a>
-					<h3>state</h3>
-					<div class="tsd-signature tsd-kind-icon">state<span class="tsd-signature-symbol">:</span> <a href="istate.html" class="tsd-signature-type">IState</a></div>
-					<aside class="tsd-sources">
-						<p>Inherited from <a href="gameframeworkevent.html">GameFrameworkEvent</a>.<a href="gameframeworkevent.html#state">state</a></p>
-						<ul>
-							<li>Defined in state/IGameFramework.d.ts:59</li>
+							<li>Defined in reducers/gameLoop.d.ts:5</li>
 						</ul>
 					</aside>
 				</section>
@@ -158,19 +112,10 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface">
-						<a href="afterunitselectionevent.html" class="tsd-kind-icon">After<wbr>Unit<wbr>Selection<wbr>Event</a>
+						<a href="iturnendaction.html" class="tsd-kind-icon">ITurn<wbr>End<wbr>Action</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="afterunitselectionevent.html#action" class="tsd-kind-icon">action</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="afterunitselectionevent.html#previousselection" class="tsd-kind-icon">previous<wbr>Selection</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="afterunitselectionevent.html#selection" class="tsd-kind-icon">selection</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-								<a href="afterunitselectionevent.html#state" class="tsd-kind-icon">state</a>
+								<a href="iturnendaction.html#type" class="tsd-kind-icon">type</a>
 							</li>
 						</ul>
 					</li>

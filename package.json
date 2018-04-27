@@ -19,7 +19,7 @@
     "lint-fix": "tslint --fix src/**/*.ts",
     "tsc": "tsc --project tsconfig_for_typedoc.json",
     "tsc-watch": "tsc --project tsconfig_for_typedoc.json --watch",
-    "doc": "tsc --project tsconfig_for_typedoc.json && typedoc --options typedoc.ts",
+    "doc": "tsc --project tsconfig_for_typedoc.json && typedoc --options typedoc.ts --plugin typedoc-plugin-as-member-of",
     "clean": "rm -rf types docs build",
     "all": "npm run clean; npm run tsc; npm run doc; npm run build",
     "test-clone": "rm -rf ../perplexed-wars-test; mkdir ../perplexed-wars-test; cd ../perplexed-wars-test; git clone ../perplexed-wars/.git;  cd perplexed-wars ; npm install ; npm test"
@@ -33,7 +33,7 @@
     "@types/redux": "^3.6.0",
     "react-scripts-ts": "2.15.1",
     "typedoc": "^0.11.1",
-    "typedoc-plugin-as-member-of": "^1.0.1",
+    "typedoc-plugin-as-member-of": "^1.0.2",
     "typescript": "^2.8.1"
   }
 }
