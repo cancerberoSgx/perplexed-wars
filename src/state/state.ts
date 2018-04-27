@@ -13,7 +13,8 @@ export class State {
     this.stateInternal = initialState()
   } 
   
-  public static getInstance():State {
+  public static getInstance(): State {
+    // debugger;
     if(!this.instance){
       this.instance = new State()
     }

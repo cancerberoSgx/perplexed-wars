@@ -1,7 +1,11 @@
 import { IUnitTypeBehavior, IBehavior, IPlayerBehavior, IStateModifierAfterAddUnit, IStateModifierBeforeAddUnitSuccess } from "../../state/behavior-interfaces";
 import { war2ImplementationInitialState, War2PlayerCustom } from "./war2ImplementationInitialState";
 import { Events, afterAddUnit, AfterUnitSelectionEvent, AfterAddUnitEvent, BeforeAddUnitSuccessEvent } from "../../state/IGameFramework";
-import { IState } from "../../state/state-interfaces";
+import { IState, IPlayer } from "../../state/state-interfaces";
+import { SimpleIa1 } from "../../ia/simpleIa1";
+import { Game } from "../../state/game";
+import { IA } from "../../ia/ia-interfaces";
+import { StateAccessHelper } from "../../state/StateAccessHelper";
 
 /** build all the behavior (state modifiers) if war2 impl */
 export function war2ImplementationBehavior():IBehavior {
@@ -15,7 +19,11 @@ function buildPlayerBehaviors(){
 
   // heads up! this variable is the initial state and obsolete - we only read unit types ids that we know doesn't change
   const initialState = war2ImplementationInitialState()
-  const playerBehaviors = initialState.players.map<IPlayerBehavior>(p=>({id: p.id, stateModifiers: []}))
+  const playerBehaviors = initialState.players.map<IPlayerBehavior>(p => ({
+    id: p.id,
+    stateModifiers: [],
+    ia: p.isAI ? new SimpleIa1() : undefined
+  }))
 
   playerBehaviors.forEach(playerBehavior=>{
     const checkEnoughMoney:IStateModifierBeforeAddUnitSuccess = {
@@ -43,6 +51,8 @@ function buildPlayerBehaviors(){
   })
   return playerBehaviors
 }
+
+
 function buildUnitBehaviors() {
   // heads up! this variable is the initial state and obsolete - we only read unit types ids that we know doesn't change
   const initialState = war2ImplementationInitialState()
@@ -74,13 +84,22 @@ function buildUnitBehaviors() {
       id: unitBehavior.id,
       unitShouldMove: ()=>true,
       unitShouldAttack: ()=>true,
-      buildCondition: ()=>{
+      buildCondition: (player:IPlayer)=>{
         if(unitBehavior.isBase){
             return {canBuild: false, whyNot: `Only one base allowed in this game`}
         }
-        // else if(){} TODO: do I have sufficient resources ?
-        else{ 
-          return  {canBuild: true}
+        // const unitType = event.state.unitsTypes.find(ut=>ut.id===event.action.unitId)
+       
+
+        else { // do I have sufficient resources ?
+          
+          const unitType = StateAccessHelper.get().unitType(unitBehavior.id)
+          const resourceCost = unitType.custom && (unitType.custom as War2PlayerCustom).cost
+          const notEnough = resourceCost.find(cost=>{
+            const playerResource = player.resources.find(r=>r.id===cost.resourceId)
+            return playerResource && playerResource.value < cost.value
+          })
+          return  {canBuild: !notEnough, reason:' You cannot build that - not enough resources'} // TODO: inform which resources and how much is missing
         }
       },
       stateModifiers: [
@@ -90,5 +109,7 @@ function buildUnitBehaviors() {
 
     unitBehaviors.push(utb)
   });
+
+
   return unitBehaviors
 }

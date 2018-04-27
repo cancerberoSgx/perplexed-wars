@@ -61,26 +61,26 @@ export class App extends BaseComponent<{}> {
 function changeInterval(e:React.ChangeEvent<HTMLInputElement>){
   const interval = parseInt(e.currentTarget.value, 10)
   if(interval>200) { // TODO: validation and throttle
-    store.dispatch({
+    store().dispatch({
       type: ACTION_CHANGE_GAME_SETTINGS,
       interval
     }as IChangeGameSettingsAction)
   }
 }
 function allowDiagonalChanged(e:React.ChangeEvent<HTMLInputElement>){
-  store.dispatch({
+  store().dispatch({
     type: ACTION_CHANGE_GAME_SETTINGS,
     allowDiagonal: !State.get().game.allowDiagonal
   }as IChangeGameSettingsAction)
 }
 function realTimeChanged(e:React.ChangeEvent<HTMLInputElement>){
-  store.dispatch({
+  store().dispatch({
     type: ACTION_CHANGE_GAME_SETTINGS,
     realTime: !!e.currentTarget.checked
   }as IChangeGameSettingsAction)
 }
 function pauseClicked(e:React.ChangeEvent<HTMLInputElement>){
-  store.dispatch({
+  store().dispatch({
     type: ACTION_CHANGE_GAME_SETTINGS,
     paused: !State.get().game.paused
   }as IChangeGameSettingsAction)

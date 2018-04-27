@@ -5,12 +5,15 @@ import { Game } from "../state/game";
 import { State } from "../state/state";
 import { IBox, IState, IUnit } from "../state/state-interfaces";
 import { iterateUnits } from "../util/util";
-import { Events } from "../state/IGameFramework";
+import { Events, BeforeTurnEndEvent } from "../state/IGameFramework";
 
 
 
-export const ACTION_GAME_LOOP_INCREMENT_INTERVAL:string = 'game-loop-increment-interval'
+export const ACTION_GAME_LOOP_INCREMENT_INTERVAL:'game-loop-increment-interval' = 'game-loop-increment-interval'
 
+export interface ITurnEndAction {
+  type: 'game-loop-increment-interval'
+}
 /**
  * This is the most important reducer, actionated fromm the game loop (setinterval that is on [[Game]]). 
  * It's responsible of incrementing the game.time but before that it will call each unintActionResolvers (responsible of unit movement / attack) and game-level and player-level resolvers like the resourceResolver in charge of sum each player's [[IResource.thisTurnValue]] to the total value. 
@@ -23,6 +26,9 @@ export function gameLoop(state:IState, action:Action):IState{
   if(action.type!==ACTION_GAME_LOOP_INCREMENT_INTERVAL){
     return state
   }
+
+  Game.getInstance().emit(Events.EVENT_BEFORE_TURN_END, {state, action} as BeforeTurnEndEvent)
+
   let winner:string = null
   let gameFinish = true
   state.uiState.unitAttacks = []
@@ -46,6 +52,7 @@ export function gameLoop(state:IState, action:Action):IState{
     playerEndOfTurnResolvers.forEach(resolver=>{
       resolver.resolve(({player, state}))
     })
+
   })
 
   return State.modify(state, s=>{//TOOD: I think everything should be inside this!
@@ -54,7 +61,10 @@ export function gameLoop(state:IState, action:Action):IState{
       s.game.winner = winner
       Game.getInstance().emit(Events.EVENT_BEFORE_GAME_FINISH, {winner, state})
     }
-    s.game.time = s.game.time+s.game.interval
+    else{
+      s.game.time = s.game.time+s.game.interval
+      Game.getInstance().emit(Events.EVENT_AFTER_TURN_END, {action, state})
+    }
   })
 }
 

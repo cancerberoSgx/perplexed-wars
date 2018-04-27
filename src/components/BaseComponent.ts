@@ -10,7 +10,7 @@ export abstract class BaseComponent<Prop> extends React.Component<Prop, IState>{
   constructor(props:Prop){
     super(props)
     this.state = State.get()
-    this.storeUnsubscribe = store.subscribe(()=>{
+    this.storeUnsubscribe = store().subscribe(()=>{
       this.setState(State.get())
     })
   }

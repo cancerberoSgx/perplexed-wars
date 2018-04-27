@@ -1,12 +1,11 @@
-import { IState, IBox} from "../../state/state-interfaces";
-import { State } from "../../state/state";
-import { createBoxes, buildUIStatePlayerControls } from "../../util/util";
-import * as HumanTownHall from './assets/HumanTownhall.gif'
-import * as goldIcon from './assets/gold.gif'
-import * as lumberIcon from './assets/lumber.gif'
-import * as foodIcon from './assets/lumber.gif'
+import { IState } from "../../state/state-interfaces";
+import { buildUIStatePlayerControls, createBoxes } from "../../util/util";
+import * as HumanTownHall from './assets/HumanTownhall.gif';
+import * as goldIcon from './assets/gold.gif';
+import * as foodIcon from './assets/lumber.gif';
+import * as lumberIcon from './assets/lumber.gif';
 
-export enum RESOURCE_ID {  lumber='lumber', gold='gold', food='food' }
+export enum RESOURCE_ID { lumber = 'lumber', gold = 'gold', food = 'food' }
 export interface War2UnitCost {
   resourceId: RESOURCE_ID,
   value: number
@@ -15,16 +14,17 @@ export interface War2PlayerCustom {
   cost: War2UnitCost[]
 }
 
-export function war2ImplementationInitialState():IState {
-  const n=15
-  const m=10
-  const state:IState = {
+
+export function war2ImplementationInitialState(): IState {
+  const n = 15
+  const m = 10
+  const state: IState = {
     game: {
       interval: 1000,
       allowDiagonal: true,
       time: 0,
       realTime: true,
-      winner: '', 
+      winner: '',
       gameFinish: false,
       paused: false
     },
@@ -40,7 +40,7 @@ export function war2ImplementationInitialState():IState {
         isBase: true,
         properties: {
           damage: 18,
-          speed:0,
+          speed: 0,
           health: 1200,
           range: 3,
           territoryRadius: 2
@@ -54,7 +54,7 @@ export function war2ImplementationInitialState():IState {
         isBase: true,
         properties: {
           damage: 18,
-          speed:0,
+          speed: 0,
           health: 1200,
           range: 3,
           territoryRadius: 2
@@ -64,7 +64,7 @@ export function war2ImplementationInitialState():IState {
       {
         name: 'Footman',
         image: 'https://d1u5p3l4wpay3k.cloudfront.net/wowpedia/5/53/HumanFootman.gif',
-        icon: 'https://d1u5p3l4wpay3k.cloudfront.net/wowpedia/9/9d/Foot.gif',        
+        icon: 'https://d1u5p3l4wpay3k.cloudfront.net/wowpedia/9/9d/Foot.gif',
         id: 'footman',
         isBase: false,
         properties: {
@@ -75,17 +75,17 @@ export function war2ImplementationInitialState():IState {
           territoryRadius: 0
         },
         custom: {
-          cost: [{resourceId: RESOURCE_ID.gold, value: 600}, {resourceId: 'food', value: 1} ]
+          cost: [{ resourceId: RESOURCE_ID.gold, value: 600 }, { resourceId: 'food', value: 1 }]
         }
       },
       {
         name: 'Elven Archer',
-        image: 'https://d1u5p3l4wpay3k.cloudfront.net/wowpedia/4/4d/ElfArcher.gif', 
+        image: 'https://d1u5p3l4wpay3k.cloudfront.net/wowpedia/4/4d/ElfArcher.gif',
         icon: 'https://d1u5p3l4wpay3k.cloudfront.net/wowpedia/4/4f/Aface.gif?version=237897e7775651612b874e7d7ec5f7d8',
         id: 'elven-archer',
         isBase: false,
         properties: {
-          damage: 9+6,
+          damage: 9 + 6,
           speed: 1,
           health: 50,
           range: 3,
@@ -93,9 +93,9 @@ export function war2ImplementationInitialState():IState {
         },
         custom: {
           cost: [
-            {resourceId: RESOURCE_ID.gold, value: 500, food: 1}, 
-            {resourceId: 'lumber', value: 50}, 
-            {resourceId: 'food', value: 1} 
+            { resourceId: RESOURCE_ID.gold, value: 500, food: 1 },
+            { resourceId: 'lumber', value: 50 },
+            { resourceId: 'food', value: 1 }
           ]
         }
       },
@@ -115,8 +115,8 @@ export function war2ImplementationInitialState():IState {
         },
         custom: {
           cost: [
-            {resourceId: RESOURCE_ID.gold, value: 600}, 
-            {resourceId: 'food', value: 1} 
+            { resourceId: RESOURCE_ID.gold, value: 600 },
+            { resourceId: 'food', value: 1 }
           ]
         }
       },
@@ -127,7 +127,7 @@ export function war2ImplementationInitialState():IState {
         id: 'troll',
         isBase: false,
         properties: {
-          damage: 9+6,
+          damage: 9 + 6,
           speed: 1,
           health: 50,
           range: 3,
@@ -135,9 +135,9 @@ export function war2ImplementationInitialState():IState {
         },
         custom: {
           cost: [
-            {resourceId: RESOURCE_ID.gold, value: 500}, 
-            {resourceId: RESOURCE_ID.food, value: 1}, 
-            {resourceId: 'lumber', value: 50} 
+            { resourceId: RESOURCE_ID.gold, value: 500 },
+            { resourceId: RESOURCE_ID.food, value: 1 },
+            { resourceId: 'lumber', value: 50 }
           ]
         }
       }
@@ -145,10 +145,10 @@ export function war2ImplementationInitialState():IState {
 
     ],
     board: {
-      n, m, 
+      n, m,
       boxes: []
     },
-    players:[
+    players: [
       {
         id: 'player1',
         name: 'Seba',
@@ -173,9 +173,9 @@ export function war2ImplementationInitialState():IState {
             icon: lumberIcon
           }
         ]
-      }, 
+      },
       {
-        id: 'player2',
+        id: 'data_simple_1',
         name: 'Data',
         color: 'red',
         isAI: true,

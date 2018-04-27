@@ -49,10 +49,11 @@ export class UnitsPanel extends BaseComponent<{}> {
 }
 
 function getUnit(id, state){
-return state.unitsTypes.find(ut=>ut.id===id)
+  return state.unitsTypes.find(ut=>ut.id===id)
 }
+
 function addUnitButtonClicked(e:React.MouseEvent<HTMLElement>) {
-  store.dispatch({
+  store().dispatch({
     type: ACTION_ADD_UNIT_CLICK_BUTTON, 
     unitId: e.currentTarget.getAttribute('data-unit'),
     playerId: e.currentTarget.getAttribute('data-player')

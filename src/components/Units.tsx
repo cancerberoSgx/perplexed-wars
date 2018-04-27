@@ -43,7 +43,7 @@ export class Units extends BaseComponent<{units:IUnit[], box:IBox}>  {
 }
 
 function unitClicked(e:React.MouseEvent<HTMLElement>){
-  store.dispatch({
+  store().dispatch({
     type: ACTION_SELECT_UNIT,
     unitId: e.currentTarget.getAttribute('data-unit-id'),
     union: e.ctrlKey

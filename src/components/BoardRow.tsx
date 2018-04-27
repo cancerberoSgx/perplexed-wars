@@ -43,7 +43,7 @@ export class BoardRow extends BaseComponent<{n:number}>  {
 }
 
 function boxClicked(e:React.MouseEvent<HTMLElement>){
-  store.dispatch({
+  store().dispatch({
     many: 1, 
     type: ACTION_ADD_UNIT,  
     x: parseInt(e.currentTarget.getAttribute('data-x')||'0', 10), 

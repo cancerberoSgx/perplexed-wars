@@ -1,5 +1,6 @@
 import { IPlayer, IBox, IState, IThing } from "./state-interfaces";
 import { Events, BeforeUnitSelectionEvent, AfterUnitSelectionEvent, beforeUnitSelection, afterAddUnit, GameFrameworkEvent, beforeAddUnitSuccess, afterUnitSelection } from "./IGameFramework";
+import { IA } from "ia/ia-interfaces";
 
 // // behavior - because all concepts defined in interface.ts cannot contain methods - are used only for state and data-only cloned we need to put behavior in other entities.
 
@@ -18,9 +19,10 @@ export interface IBehavior{
 }
 
 
-/** define behavior at the player level. For example global conditions for victory... */
+/** define behavior at the player level. For example global conditions for victory... some things that can be done with IUnitBehavior also can be done with IPlayerBehavior and makes more sense because of preformance. ie. instead of many listeners - just one listener that iterates. example: if a unit can be bougth */
 export interface IPlayerBehavior extends IStateModifierBehavior{
   stateModifiers: IStateModifier[]
+  ia?:IA
 }
 
 /**
@@ -50,11 +52,12 @@ export interface IUnitTypeBehavior extends IStateModifierBehavior{
 
 
   /**
-   * 
    * before automatically moving a unit, the framework ask its type if it's OK so unit type definition can customize how it moves. 
    * For allow the framework to automatically move the unit, return true (default)
    * For moving to a custom box return that box. Notice that implementers are responsible of respecting the game rules (for example cannot move to a non-traspasable box
    * For not moving at all, just return the same box argument. 
+   * 
+   * Note: this is not about IA, this is about unit movement policy. Remember units movement and attack arer automatically users, including IA cannot decide anything about it. 
    */
   unitShouldMove: ({unit:IUnit, box: IBox})=>IBox|true
 
@@ -64,6 +67,7 @@ export interface IUnitTypeBehavior extends IStateModifierBehavior{
   unitShouldAttack: ({unit:IUnit, box: IBox})=>boolean
 
   /**
+   * can the player build this unit at this moment ? (ie has sufficiente resources ? )
    * for example: player.resources.find(r=>r.name==='gold').value>50 && player=>player.resources.find(r=>r.name==='gold')
    */
   buildCondition: (player:IPlayer)=>BuildConditionResult
