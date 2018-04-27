@@ -4,8 +4,8 @@ import { Game } from '../state/game'
 import { State } from '../state/state'
 import { IState, IUnit } from '../state/state-interfaces'
 import { getAvailablePlacesFor, newUnit } from '../util/util'
-import { StateAccessHelper } from 'state/StateAccessHelper'
-import { GameUIStateHelper } from 'state/GameUIStateHelper'
+import { StateAccessHelper } from '../state/StateAccessHelper'
+import { GameUIStateHelper } from '../state/GameUIStateHelper'
 
 export const ACTION_ADD_UNIT_CLICK_BUTTON: string = 'add-unit-click-button'
 

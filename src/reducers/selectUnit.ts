@@ -4,7 +4,7 @@ import { State } from '../state/state'
 import { findUnit } from '../util/util'
 import { Game } from '../state/game'
 import { Events } from '../state/IGameFramework'
-import { GameUIStateHelper } from 'state/GameUIStateHelper'
+import { GameUIStateHelper } from '../state/GameUIStateHelper'
 
 export const ACTION_SELECT_UNIT: string = 'select-unit'
 
