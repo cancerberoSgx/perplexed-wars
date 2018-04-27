@@ -4,6 +4,7 @@ import { EventEmitter } from 'events'
 import { IPlayerUIState, IBox, IUnit, IState, IPlayer, IUnitSelectionInfo } from './state-interfaces'
 import { IA } from '../ia/ia-interfaces'
 import { ITurnEndAction } from 'reducers/gameLoop'
+import { IUnitActionResolverData } from 'resolvers/unitActionResolvers'
 
 export enum Events {
   EVENT_BEFORE_UNIT_SELECTION = 'beforeUnitSelection',
@@ -15,6 +16,7 @@ export enum Events {
   EVENT_AFTER_TURN_END = 'afterTurnEnd',
   EVENT_BEFORE_GAME_STARTS = 'beforeGameStarts',
   EVENT_AFTER_GAME_STARTS = 'afterGameStart',
+  EVENT_AFTER_UNIT_DIE = 'afterUnitDie',
 
 }
 
@@ -55,9 +57,13 @@ export interface IGameFramework extends EventEmitter {
   on (eventName: Events.EVENT_BEFORE_GAME_STARTS, eventHandler: typeof beforeGameStarts): this
   emit (eventName: Events.EVENT_BEFORE_GAME_STARTS, data: BeforeGameStartsEvent): boolean
 
-
   on (eventName: Events.EVENT_AFTER_GAME_STARTS, eventHandler: typeof afterGameStarts): this
   emit (eventName: Events.EVENT_AFTER_GAME_STARTS, data: AfterGameStartsEvent): boolean
+
+  on (eventName: Events.EVENT_AFTER_UNIT_DIE, eventHandler: typeof afterUnitDie): this
+  emit (eventName: Events.EVENT_AFTER_UNIT_DIE, data: AfterUnitDieEvent): boolean
+  
+
   
 }
 
@@ -67,11 +73,26 @@ export interface IGameFramework extends EventEmitter {
  * @event
  */
 export declare function afterTurnEnd(event: AfterTurnEndEvent): void
-
 /** triggered just before turn ends (units didn't moved yet) */
 export interface AfterTurnEndEvent extends GameFrameworkEvent {
   action: ITurnEndAction
 }
+
+
+
+/**
+ * Triggered after a unit die and is removed from the board
+ * @asMemberOf IGameFramework
+ * @event
+ */
+export declare function afterUnitDie(event: AfterUnitDieEvent): void
+/** Triggered after a unit die and is removed from the board */
+export interface AfterUnitDieEvent extends GameFrameworkEvent {
+  attacked: IUnit, attackedBox: IBox, attacker: IUnit, 
+  attackerBox: IBox, attackerPlayer: IPlayer
+}
+
+
 /**
  * Triggered just before turn is about to end (units didn't moved yet)
  * @asMemberOf IGameFramework

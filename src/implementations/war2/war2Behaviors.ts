@@ -1,6 +1,6 @@
-import { IUnitTypeBehavior, IBehavior, IPlayerBehavior, IStateModifierAfterAddUnit, IStateModifierBeforeAddUnitSuccess, BuildConditionResultMissing, IGameBehavior, IStateModifierBehavior } from '../../state/behavior-interfaces'
-import { war2ImplementationInitialState, War2PlayerCustom } from './war2ImplementationInitialState'
-import { Events, afterAddUnit, AfterUnitSelectionEvent, AfterAddUnitEvent, BeforeAddUnitSuccessEvent, BeforeGameStartsEvent } from '../../state/IGameFramework'
+import { IUnitTypeBehavior, IBehavior, IPlayerBehavior, IStateModifierAfterAddUnit, IStateModifierBeforeAddUnitSuccess, BuildConditionResultMissing, IGameBehavior, IStateModifierBehavior, IStateModifier } from '../../state/behavior-interfaces'
+import { war2ImplementationInitialState, War2PlayerCustom, RESOURCE_ID } from './war2State'
+import { Events, afterAddUnit, AfterUnitSelectionEvent, AfterAddUnitEvent, BeforeAddUnitSuccessEvent, BeforeGameStartsEvent, AfterUnitDieEvent } from '../../state/IGameFramework'
 import { IState, IPlayer } from '../../state/state-interfaces'
 import { SimpleIa1 } from '../../ia/simpleIa1'
 import { Game } from '../../state/game'
@@ -17,6 +17,7 @@ export function war2ImplementationBehavior(): IBehavior {
   }
 }
 
+
 function initialGamePrompt(state:IState) {
   if (isDevelopment) {
     return 
@@ -31,6 +32,9 @@ function initialGamePrompt(state:IState) {
     human.unitTypes = iaOriginalUnits
   }
 }
+
+
+
 let gameBehaviors:IGameBehavior[]
 function getGameBehaviors(): IGameBehavior[] {
   if (gameBehaviors) {
@@ -50,6 +54,8 @@ function getGameBehaviors(): IGameBehavior[] {
   })
   return gameBehaviors
 }
+
+
 
 
 let playerBehaviors 
@@ -81,29 +87,24 @@ function getPlayerBehaviors() {
         }
       },
     }
-    playerBehavior.stateModifiers.push(checkEnoughMoney)
-  })
-  return playerBehaviors
-}
-
-let unitBehaviors: IUnitTypeBehavior[]
-
-function getUnitBehaviors() {
-  if (unitBehaviors) {
-    return unitBehaviors
-  }
-  // heads up! this variable is the initial state and obsolete - we only read unit types ids that we know doesn't change
-  const initialState = war2ImplementationInitialState()
-
-  unitBehaviors = []
-
-  // Note: we are adding a listener for each unit type - we could do differently and add only one listener to the user and check every unit type there.
-  initialState.unitsTypes.forEach(unitBehavior => {
+    const librateFoodWhenUniDieModifier:IStateModifier = {
+      eventName: Events.EVENT_AFTER_UNIT_DIE,
+      modifier: (event: AfterUnitDieEvent) => {
+        if (event.attacked.playerId !== playerBehavior.id) {
+          return
+        }
+        const unitType = event.attacked.type
+        const cost = unitType.custom && (unitType.custom as War2PlayerCustom).cost
+        const resource = event.state.players.find(p => p.id === event.attacked.playerId).resources.find(r => r.id === RESOURCE_ID.food)
+        // debugger
+        resource.value += cost.find(c => c.resourceId === RESOURCE_ID.food).value
+      },
+    }
 
     const chargeNewUnitModifier: IStateModifierAfterAddUnit = {
       eventName: Events.EVENT_AFTER_ADD_UNIT,
       modifier: (event: AfterAddUnitEvent) => {
-        if (unitBehavior.id !== event.newUnit.type.id) {
+        if (event.player.playerId !== playerBehavior.id) {
           return
         }
         const resourceCost = event.newUnit.type.custom && (event.newUnit.type.custom as War2PlayerCustom).cost
@@ -117,6 +118,26 @@ function getUnitBehaviors() {
         })
       },
     }
+
+    playerBehavior.stateModifiers.push(checkEnoughMoney, librateFoodWhenUniDieModifier, chargeNewUnitModifier)
+  })
+  return playerBehaviors
+}
+
+let unitBehaviors: IUnitTypeBehavior[]
+
+function getUnitBehaviors() {
+  if (unitBehaviors) {
+    return unitBehaviors
+  }
+  // heads up! this variable is the initial state and obsolete - we only read unit types ids that we know doesn't change
+  const state = war2ImplementationInitialState()
+
+  unitBehaviors = []
+
+  // Note: we are adding a listener for each unit type - we could do differently and add only one listener to the user and check every unit type there.
+  state.unitsTypes.forEach(unitBehavior => {
+
     const utb: IUnitTypeBehavior = {
       id: unitBehavior.id,
       unitShouldMove: () => true,
@@ -140,15 +161,13 @@ function getUnitBehaviors() {
           }
           return false
         })
-
         return {
           canBuild: !notEnough, 
           whyNot: 'Not enough resources. ' + (resourceMissing.length ? ('Missing: ' + resourceMissing.map(rm => rm.missing + ' of ' + rm.resourceId)) : ''),  
         } 
-        
       },
       stateModifiers: [
-        chargeNewUnitModifier,
+        
       ],
     }
 

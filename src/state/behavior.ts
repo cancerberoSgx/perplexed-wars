@@ -1,5 +1,5 @@
 import { IBehavior } from './behavior-interfaces'
-import { war2ImplementationBehavior } from '../implementations/war2/war2ImplementationBehavior'
+import { war2ImplementationBehavior } from '../implementations/war2/war2Behaviors'
 import { Game } from './game'
 
 const getDefaultBehavior = war2ImplementationBehavior

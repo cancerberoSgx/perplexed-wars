@@ -1,6 +1,6 @@
 import { IState, IPlayerUIState, IUnit, IUnitProperties, IPlayer } from './state-interfaces'
 import { clone } from '../util/util'
-import { war2ImplementationInitialState } from '../implementations/war2/war2ImplementationInitialState'
+import { war2ImplementationInitialState } from '../implementations/war2/war2State'
 
 const initialState = war2ImplementationInitialState
 
