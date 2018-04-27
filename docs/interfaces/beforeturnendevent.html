@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>GameFrameworkEvent | perplexed-wars</title>
+	<title>BeforeTurnEndEvent | perplexed-wars</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -54,39 +54,31 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="gameframeworkevent.html">GameFrameworkEvent</a>
+					<a href="beforeturnendevent.html">BeforeTurnEndEvent</a>
 				</li>
 			</ul>
-			<h1>Interface GameFrameworkEvent</h1>
+			<h1>Interface BeforeTurnEndEvent</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>triggered just before turn ends (units didn&#39;t moved yet)</p>
+					</div>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">GameFrameworkEvent</span>
+						<a href="gameframeworkcancelableevent.html" class="tsd-signature-type">GameFrameworkCancelableEvent</a>
 						<ul class="tsd-hierarchy">
 							<li>
-								<a href="afterturnendevent.html" class="tsd-signature-type">AfterTurnEndEvent</a>
-							</li>
-							<li>
-								<a href="gameframeworkcancelableevent.html" class="tsd-signature-type">GameFrameworkCancelableEvent</a>
-							</li>
-							<li>
-								<a href="beforeunitselectionevent.html" class="tsd-signature-type">BeforeUnitSelectionEvent</a>
-							</li>
-							<li>
-								<a href="afterunitselectionevent.html" class="tsd-signature-type">AfterUnitSelectionEvent</a>
-							</li>
-							<li>
-								<a href="afteraddunitevent.html" class="tsd-signature-type">AfterAddUnitEvent</a>
-							</li>
-							<li>
-								<a href="beforegamefinishevent.html" class="tsd-signature-type">BeforeGameFinishEvent</a>
+								<span class="target">BeforeTurnEndEvent</span>
 							</li>
 						</ul>
 					</li>
@@ -99,7 +91,9 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="gameframeworkevent.html#state" class="tsd-kind-icon">state</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="beforeturnendevent.html#action" class="tsd-kind-icon">action</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="beforeturnendevent.html#cancelcallback" class="tsd-kind-icon">cancel<wbr>Callback</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="beforeturnendevent.html#state" class="tsd-kind-icon">state</a></li>
 							</ul>
 						</section>
 					</div>
@@ -108,10 +102,58 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="action" class="tsd-anchor"></a>
+					<h3>action</h3>
+					<div class="tsd-signature tsd-kind-icon">action<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ITurnEndAction</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in IGameFramework.d.ts:56</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="cancelcallback" class="tsd-anchor"></a>
+					<h3>cancel<wbr>Callback</h3>
+					<div class="tsd-signature tsd-kind-icon">cancel<wbr>Callback<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="gameframeworkcancelableevent.html">GameFrameworkCancelableEvent</a>.<a href="gameframeworkcancelableevent.html#cancelcallback">cancelCallback</a></p>
+						<ul>
+							<li>Defined in IGameFramework.d.ts:63</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>the agent triggering the event can pass a callback funcion and if any listener cancel it (synchronously) emitter can decide to cancel the whole action. This is only for BEFORE_* events</p>
+						</div>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-siganture">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property tsd-is-not-exported">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>reason<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>reason: <span class="tsd-signature-type">string</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="state" class="tsd-anchor"></a>
 					<h3>state</h3>
 					<div class="tsd-signature tsd-kind-icon">state<span class="tsd-signature-symbol">:</span> <a href="istate.html" class="tsd-signature-type">IState</a></div>
 					<aside class="tsd-sources">
+						<p>Inherited from <a href="gameframeworkevent.html">GameFrameworkEvent</a>.<a href="gameframeworkevent.html#state">state</a></p>
 						<ul>
 							<li>Defined in IGameFramework.d.ts:59</li>
 						</ul>
@@ -132,10 +174,16 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface">
-						<a href="gameframeworkevent.html" class="tsd-kind-icon">Game<wbr>Framework<wbr>Event</a>
+						<a href="beforeturnendevent.html" class="tsd-kind-icon">Before<wbr>Turn<wbr>End<wbr>Event</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="gameframeworkevent.html#state" class="tsd-kind-icon">state</a>
+								<a href="beforeturnendevent.html#action" class="tsd-kind-icon">action</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="beforeturnendevent.html#cancelcallback" class="tsd-kind-icon">cancel<wbr>Callback</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="beforeturnendevent.html#state" class="tsd-kind-icon">state</a>
 							</li>
 						</ul>
 					</li>

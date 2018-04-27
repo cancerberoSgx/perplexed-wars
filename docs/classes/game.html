@@ -64,6 +64,14 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>responsible of the game life cycle mostly about turn and dispatching action [[ACTION_GAME_LOOP_INCREMENT_INTERVAL]]</p>
+					</div>
+					<p>usage: <code>Game.getInstance()</code> which returns <a href="../interfaces/igameframework.html">IGameFramework</a></p>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
@@ -75,6 +83,12 @@
 							</li>
 						</ul>
 					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel">
+				<h3>Implements</h3>
+				<ul class="tsd-hierarchy">
+					<li><a href="../interfaces/igameframework.html" class="tsd-signature-type">IGameFramework</a></li>
 				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
@@ -96,6 +110,7 @@
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited"><a href="game.html#getmaxlisteners" class="tsd-kind-icon">get<wbr>Max<wbr>Listeners</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited"><a href="game.html#listenercount" class="tsd-kind-icon">listener<wbr>Count</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited"><a href="game.html#listeners" class="tsd-kind-icon">listeners</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="game.html#log" class="tsd-kind-icon">log</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="game.html#nextturn" class="tsd-kind-icon">next<wbr>Turn</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited"><a href="game.html#on" class="tsd-kind-icon">on</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited"><a href="game.html#once" class="tsd-kind-icon">once</a></li>
@@ -121,6 +136,7 @@
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> default<wbr>Max<wbr>Listeners</h3>
 					<div class="tsd-signature tsd-kind-icon">default<wbr>Max<wbr>Listeners<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
+						<p>Implementation of <a href="../interfaces/igameframework.html">IGameFramework</a>.<a href="../interfaces/igameframework.html#defaultmaxlisteners">defaultMaxListeners</a></p>
 						<p>Inherited from EventEmitter.defaultMaxListeners</p>
 						<ul>
 							<li>Defined in /home/sg/git/perplexed-wars/node_modules/@types/node/index.d.ts:918</li>
@@ -213,6 +229,7 @@
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/igameframework.html">IGameFramework</a>.<a href="../interfaces/igameframework.html#eventnames">eventNames</a></p>
 								<p>Inherited from EventEmitter.eventNames</p>
 								<p>Overrides EventEmitter.eventNames</p>
 								<ul>
@@ -232,6 +249,7 @@
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/igameframework.html">IGameFramework</a>.<a href="../interfaces/igameframework.html#getmaxlisteners">getMaxListeners</a></p>
 								<p>Inherited from EventEmitter.getMaxListeners</p>
 								<p>Overrides EventEmitter.getMaxListeners</p>
 								<ul>
@@ -251,6 +269,7 @@
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/igameframework.html">IGameFramework</a>.<a href="../interfaces/igameframework.html#listenercount">listenerCount</a></p>
 								<p>Inherited from EventEmitter.listenerCount</p>
 								<p>Overrides EventEmitter.listenerCount</p>
 								<ul>
@@ -276,6 +295,7 @@
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/igameframework.html">IGameFramework</a>.<a href="../interfaces/igameframework.html#listeners">listeners</a></p>
 								<p>Inherited from EventEmitter.listeners</p>
 								<p>Overrides EventEmitter.listeners</p>
 								<ul>
@@ -293,6 +313,29 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="log" class="tsd-anchor"></a>
+					<h3>log</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">log<span class="tsd-signature-symbol">(</span>log<span class="tsd-signature-symbol">: </span><a href="../interfaces/log.html" class="tsd-signature-type">Log</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in game.d.ts:17</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>log: <a href="../interfaces/log.html" class="tsd-signature-type">Log</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="nextturn" class="tsd-anchor"></a>
 					<h3>next<wbr>Turn</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
@@ -301,8 +344,9 @@
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/igameframework.html">IGameFramework</a>.<a href="../interfaces/igameframework.html#nextturn">nextTurn</a></p>
 								<ul>
-									<li>Defined in game.d.ts:11</li>
+									<li>Defined in game.d.ts:16</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -502,6 +546,7 @@
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/igameframework.html">IGameFramework</a>.<a href="../interfaces/igameframework.html#rawlisteners">rawListeners</a></p>
 								<p>Inherited from EventEmitter.rawListeners</p>
 								<p>Overrides EventEmitter.rawListeners</p>
 								<ul>
@@ -527,6 +572,7 @@
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/igameframework.html">IGameFramework</a>.<a href="../interfaces/igameframework.html#removealllisteners">removeAllListeners</a></p>
 								<p>Inherited from EventEmitter.removeAllListeners</p>
 								<p>Overrides EventEmitter.removeAllListeners</p>
 								<ul>
@@ -598,6 +644,7 @@
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/igameframework.html">IGameFramework</a>.<a href="../interfaces/igameframework.html#setmaxlisteners">setMaxListeners</a></p>
 								<p>Inherited from EventEmitter.setMaxListeners</p>
 								<p>Overrides EventEmitter.setMaxListeners</p>
 								<ul>
@@ -623,8 +670,9 @@
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/igameframework.html">IGameFramework</a>.<a href="../interfaces/igameframework.html#start">start</a></p>
 								<ul>
-									<li>Defined in game.d.ts:9</li>
+									<li>Defined in game.d.ts:14</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -640,8 +688,9 @@
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/igameframework.html">IGameFramework</a>.<a href="../interfaces/igameframework.html#stop">stop</a></p>
 								<ul>
-									<li>Defined in game.d.ts:10</li>
+									<li>Defined in game.d.ts:15</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
@@ -658,7 +707,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in game.d.ts:8</li>
+									<li>Defined in game.d.ts:13</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <a href="../interfaces/igameframework.html" class="tsd-signature-type">IGameFramework</a></h4>
@@ -674,6 +723,7 @@
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/igameframework.html">IGameFramework</a>.<a href="../interfaces/igameframework.html#listenercount-1">listenerCount</a></p>
 								<p>Inherited from EventEmitter.listenerCount</p>
 								<ul>
 									<li>Defined in /home/sg/git/perplexed-wars/node_modules/@types/node/index.d.ts:917</li>
@@ -704,12 +754,6 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-enum">
-						<a href="../enums/events.html" class="tsd-kind-icon">Events</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="behavior.html" class="tsd-kind-icon">Behavior</a>
-					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-class">
@@ -735,6 +779,9 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited">
 								<a href="game.html#listeners" class="tsd-kind-icon">listeners</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="game.html#log" class="tsd-kind-icon">log</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="game.html#nextturn" class="tsd-kind-icon">next<wbr>Turn</a>
@@ -779,117 +826,6 @@
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-class">
-						<a href="state.html" class="tsd-kind-icon">State</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/afteraddunitevent.html" class="tsd-kind-icon">After<wbr>Add<wbr>Unit<wbr>Event</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/afterunitselectionevent.html" class="tsd-kind-icon">After<wbr>Unit<wbr>Selection<wbr>Event</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/beforeaddunitsuccessevent.html" class="tsd-kind-icon">Before<wbr>Add<wbr>Unit<wbr>Success<wbr>Event</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/beforegamefinishevent.html" class="tsd-kind-icon">Before<wbr>Game<wbr>Finish<wbr>Event</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/beforeunitselectionevent.html" class="tsd-kind-icon">Before<wbr>Unit<wbr>Selection<wbr>Event</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/buildconditionresult.html" class="tsd-kind-icon">Build<wbr>Condition<wbr>Result</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/gameframeworkcancelableevent.html" class="tsd-kind-icon">Game<wbr>Framework<wbr>Cancelable<wbr>Event</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/gameframeworkevent.html" class="tsd-kind-icon">Game<wbr>Framework<wbr>Event</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/ibehavior.html" class="tsd-kind-icon">IBehavior</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/iboard.html" class="tsd-kind-icon">IBoard</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/ibox.html" class="tsd-kind-icon">IBox</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/igame.html" class="tsd-kind-icon">IGame</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/igameframework.html" class="tsd-kind-icon">IGame<wbr>Framework</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/iplayer.html" class="tsd-kind-icon">IPlayer</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/iplayerbehavior.html" class="tsd-kind-icon">IPlayer<wbr>Behavior</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/iplayerstateaddunitbuttonstate.html" class="tsd-kind-icon">IPlayer<wbr>State<wbr>Add<wbr>Unit<wbr>Button<wbr>State</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/iplayeruistate.html" class="tsd-kind-icon">IPlayerUIState</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/iresource.html" class="tsd-kind-icon">IResource</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/istate.html" class="tsd-kind-icon">IState</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/istatemodifier.html" class="tsd-kind-icon">IState<wbr>Modifier</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/istatemodifierafteraddunit.html" class="tsd-kind-icon">IState<wbr>Modifier<wbr>After<wbr>Add<wbr>Unit</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/istatemodifierafterunitselection.html" class="tsd-kind-icon">IState<wbr>Modifier<wbr>After<wbr>Unit<wbr>Selection</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/istatemodifierbeforeaddunitsuccess.html" class="tsd-kind-icon">IState<wbr>Modifier<wbr>Before<wbr>Add<wbr>Unit<wbr>Success</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/istatemodifierbeforeunitselection.html" class="tsd-kind-icon">IState<wbr>Modifier<wbr>Before<wbr>Unit<wbr>Selection</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/istatemodifierbehavior.html" class="tsd-kind-icon">IState<wbr>Modifier<wbr>Behavior</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/ithing.html" class="tsd-kind-icon">IThing</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/iuistate.html" class="tsd-kind-icon">IUIState</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/iunit.html" class="tsd-kind-icon">IUnit</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/iunitproperties.html" class="tsd-kind-icon">IUnit<wbr>Properties</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/iunittype.html" class="tsd-kind-icon">IUnit<wbr>Type</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/iunittypebehavior.html" class="tsd-kind-icon">IUnit<wbr>Type<wbr>Behavior</a>
-					</li>
-					<li class=" tsd-kind-event">
-						<a href="../globals.html#afteraddunit" class="tsd-kind-icon">after<wbr>Add<wbr>Unit</a>
-					</li>
-					<li class=" tsd-kind-event">
-						<a href="../globals.html#afterunitselection" class="tsd-kind-icon">after<wbr>Unit<wbr>Selection</a>
-					</li>
-					<li class=" tsd-kind-event">
-						<a href="../globals.html#beforeaddunitsuccess" class="tsd-kind-icon">before<wbr>Add<wbr>Unit<wbr>Success</a>
-					</li>
-					<li class=" tsd-kind-event">
-						<a href="../globals.html#beforegamefinish" class="tsd-kind-icon">before<wbr>Game<wbr>Finish</a>
-					</li>
-					<li class=" tsd-kind-event">
-						<a href="../globals.html#beforeunitselection" class="tsd-kind-icon">before<wbr>Unit<wbr>Selection</a>
-					</li>
 				</ul>
 			</nav>
 		</div>

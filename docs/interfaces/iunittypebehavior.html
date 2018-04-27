@@ -109,12 +109,13 @@
 					<div class="tsd-signature tsd-kind-icon">build<wbr>Condition<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in behavior-interfaces.d.ts:58</li>
+							<li>Defined in behavior-interfaces.d.ts:62</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>for example: player.resources.find(r=&gt;r.name===&#39;gold&#39;).value&gt;50 &amp;&amp; player=&gt;player.resources.find(r=&gt;r.name===&#39;gold&#39;)</p>
+							<p>can the player build this unit at this moment ? (ie has sufficiente resources ? )
+							for example: player.resources.find(r=&gt;r.name===&#39;gold&#39;).value&gt;50 &amp;&amp; player=&gt;player.resources.find(r=&gt;r.name===&#39;gold&#39;)</p>
 						</div>
 					</div>
 					<div class="tsd-type-declaration">
@@ -146,7 +147,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="istatemodifierbehavior.html">IStateModifierBehavior</a>.<a href="istatemodifierbehavior.html#id">id</a></p>
 						<ul>
-							<li>Defined in behavior-interfaces.d.ts:33</li>
+							<li>Defined in behavior-interfaces.d.ts:35</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -162,7 +163,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="istatemodifierbehavior.html">IStateModifierBehavior</a>.<a href="istatemodifierbehavior.html#statemodifiers">stateModifiers</a></p>
 						<ul>
-							<li>Defined in behavior-interfaces.d.ts:37</li>
+							<li>Defined in behavior-interfaces.d.ts:39</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -177,7 +178,7 @@
 					<div class="tsd-signature tsd-kind-icon">unit<wbr>Should<wbr>Attack<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in behavior-interfaces.d.ts:54</li>
+							<li>Defined in behavior-interfaces.d.ts:57</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -221,7 +222,7 @@
 					<div class="tsd-signature tsd-kind-icon">unit<wbr>Should<wbr>Move<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in behavior-interfaces.d.ts:50</li>
+							<li>Defined in behavior-interfaces.d.ts:53</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -231,6 +232,7 @@
 								For moving to a custom box return that box. Notice that implementers are responsible of respecting the game rules (for example cannot move to a non-traspasable box
 							For not moving at all, just return the same box argument.</p>
 						</div>
+						<p>Note: this is not about IA, this is about unit movement policy. Remember units movement and attack arer automatically users, including IA cannot decide anything about it.</p>
 					</div>
 					<div class="tsd-type-declaration">
 						<h4>Type declaration</h4>
@@ -277,108 +279,6 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-enum">
-						<a href="../enums/events.html" class="tsd-kind-icon">Events</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="../classes/behavior.html" class="tsd-kind-icon">Behavior</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="../classes/game.html" class="tsd-kind-icon">Game</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="../classes/state.html" class="tsd-kind-icon">State</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="afteraddunitevent.html" class="tsd-kind-icon">After<wbr>Add<wbr>Unit<wbr>Event</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="afterunitselectionevent.html" class="tsd-kind-icon">After<wbr>Unit<wbr>Selection<wbr>Event</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="beforeaddunitsuccessevent.html" class="tsd-kind-icon">Before<wbr>Add<wbr>Unit<wbr>Success<wbr>Event</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="beforegamefinishevent.html" class="tsd-kind-icon">Before<wbr>Game<wbr>Finish<wbr>Event</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="beforeunitselectionevent.html" class="tsd-kind-icon">Before<wbr>Unit<wbr>Selection<wbr>Event</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="buildconditionresult.html" class="tsd-kind-icon">Build<wbr>Condition<wbr>Result</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="gameframeworkcancelableevent.html" class="tsd-kind-icon">Game<wbr>Framework<wbr>Cancelable<wbr>Event</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="gameframeworkevent.html" class="tsd-kind-icon">Game<wbr>Framework<wbr>Event</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="ibehavior.html" class="tsd-kind-icon">IBehavior</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="iboard.html" class="tsd-kind-icon">IBoard</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="ibox.html" class="tsd-kind-icon">IBox</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="igame.html" class="tsd-kind-icon">IGame</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="igameframework.html" class="tsd-kind-icon">IGame<wbr>Framework</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="iplayer.html" class="tsd-kind-icon">IPlayer</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="iplayerbehavior.html" class="tsd-kind-icon">IPlayer<wbr>Behavior</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="iplayerstateaddunitbuttonstate.html" class="tsd-kind-icon">IPlayer<wbr>State<wbr>Add<wbr>Unit<wbr>Button<wbr>State</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="iplayeruistate.html" class="tsd-kind-icon">IPlayerUIState</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="iresource.html" class="tsd-kind-icon">IResource</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="istate.html" class="tsd-kind-icon">IState</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="istatemodifier.html" class="tsd-kind-icon">IState<wbr>Modifier</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="istatemodifierafteraddunit.html" class="tsd-kind-icon">IState<wbr>Modifier<wbr>After<wbr>Add<wbr>Unit</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="istatemodifierafterunitselection.html" class="tsd-kind-icon">IState<wbr>Modifier<wbr>After<wbr>Unit<wbr>Selection</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="istatemodifierbeforeaddunitsuccess.html" class="tsd-kind-icon">IState<wbr>Modifier<wbr>Before<wbr>Add<wbr>Unit<wbr>Success</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="istatemodifierbeforeunitselection.html" class="tsd-kind-icon">IState<wbr>Modifier<wbr>Before<wbr>Unit<wbr>Selection</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="istatemodifierbehavior.html" class="tsd-kind-icon">IState<wbr>Modifier<wbr>Behavior</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="ithing.html" class="tsd-kind-icon">IThing</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="iuistate.html" class="tsd-kind-icon">IUIState</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="iunit.html" class="tsd-kind-icon">IUnit</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="iunitproperties.html" class="tsd-kind-icon">IUnit<wbr>Properties</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="iunittype.html" class="tsd-kind-icon">IUnit<wbr>Type</a>
-					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface">
@@ -403,21 +303,6 @@
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-event">
-						<a href="../globals.html#afteraddunit" class="tsd-kind-icon">after<wbr>Add<wbr>Unit</a>
-					</li>
-					<li class=" tsd-kind-event">
-						<a href="../globals.html#afterunitselection" class="tsd-kind-icon">after<wbr>Unit<wbr>Selection</a>
-					</li>
-					<li class=" tsd-kind-event">
-						<a href="../globals.html#beforeaddunitsuccess" class="tsd-kind-icon">before<wbr>Add<wbr>Unit<wbr>Success</a>
-					</li>
-					<li class=" tsd-kind-event">
-						<a href="../globals.html#beforegamefinish" class="tsd-kind-icon">before<wbr>Game<wbr>Finish</a>
-					</li>
-					<li class=" tsd-kind-event">
-						<a href="../globals.html#beforeunitselection" class="tsd-kind-icon">before<wbr>Unit<wbr>Selection</a>
-					</li>
 				</ul>
 			</nav>
 		</div>

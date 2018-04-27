@@ -77,6 +77,12 @@
 					</li>
 				</ul>
 			</section>
+			<section class="tsd-panel">
+				<h3>Implemented by</h3>
+				<ul class="tsd-hierarchy">
+					<li><a href="../classes/game.html" class="tsd-signature-type">Game</a></li>
+				</ul>
+			</section>
 			<section class="tsd-panel-group tsd-index-group">
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
@@ -96,6 +102,7 @@
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-overwrite tsd-is-inherited"><a href="igameframework.html#getmaxlisteners" class="tsd-kind-icon">get<wbr>Max<wbr>Listeners</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-overwrite tsd-is-inherited"><a href="igameframework.html#listenercount" class="tsd-kind-icon">listener<wbr>Count</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-overwrite tsd-is-inherited"><a href="igameframework.html#listeners" class="tsd-kind-icon">listeners</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="igameframework.html#log" class="tsd-kind-icon">log</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="igameframework.html#nextturn" class="tsd-kind-icon">next<wbr>Turn</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-overwrite"><a href="igameframework.html#on" class="tsd-kind-icon">on</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-overwrite tsd-is-inherited"><a href="igameframework.html#once" class="tsd-kind-icon">once</a></li>
@@ -179,18 +186,20 @@
 					<a name="emit" class="tsd-anchor"></a>
 					<h3>emit</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-overwrite">
-						<li class="tsd-signature tsd-kind-icon">emit<span class="tsd-signature-symbol">(</span>eventName<span class="tsd-signature-symbol">: </span><a href="../enums/events.html#event_before_unit_selection" class="tsd-signature-type">EVENT_BEFORE_UNIT_SELECTION</a>, data<span class="tsd-signature-symbol">: </span><a href="beforeunitselectionevent.html" class="tsd-signature-type">BeforeUnitSelectionEvent</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
+						<li class="tsd-signature tsd-kind-icon">emit<span class="tsd-signature-symbol">(</span>eventName<span class="tsd-signature-symbol">: </span><a href="../enums/events.html#event_before_unit_selection" class="tsd-signature-type">EVENT_BEFORE_UNIT_SELECTION</a>, data<span class="tsd-signature-symbol">: </span><a href="beforeunitselectionevent.html" class="tsd-signature-type">BeforeUnitSelectionEvent</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
 						<li class="tsd-signature tsd-kind-icon">emit<span class="tsd-signature-symbol">(</span>eventName<span class="tsd-signature-symbol">: </span><a href="../enums/events.html#event_after_unit_selection" class="tsd-signature-type">EVENT_AFTER_UNIT_SELECTION</a>, data<span class="tsd-signature-symbol">: </span><a href="afterunitselectionevent.html" class="tsd-signature-type">AfterUnitSelectionEvent</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
 						<li class="tsd-signature tsd-kind-icon">emit<span class="tsd-signature-symbol">(</span>eventName<span class="tsd-signature-symbol">: </span><a href="../enums/events.html#event_before_add_unit_success" class="tsd-signature-type">EVENT_BEFORE_ADD_UNIT_SUCCESS</a>, data<span class="tsd-signature-symbol">: </span><a href="beforeaddunitsuccessevent.html" class="tsd-signature-type">BeforeAddUnitSuccessEvent</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
 						<li class="tsd-signature tsd-kind-icon">emit<span class="tsd-signature-symbol">(</span>eventName<span class="tsd-signature-symbol">: </span><a href="../enums/events.html#event_after_add_unit" class="tsd-signature-type">EVENT_AFTER_ADD_UNIT</a>, data<span class="tsd-signature-symbol">: </span><a href="afteraddunitevent.html" class="tsd-signature-type">AfterAddUnitEvent</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
 						<li class="tsd-signature tsd-kind-icon">emit<span class="tsd-signature-symbol">(</span>eventName<span class="tsd-signature-symbol">: </span><a href="../enums/events.html#event_before_game_finish" class="tsd-signature-type">EVENT_BEFORE_GAME_FINISH</a>, data<span class="tsd-signature-symbol">: </span><a href="beforegamefinishevent.html" class="tsd-signature-type">BeforeGameFinishEvent</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+						<li class="tsd-signature tsd-kind-icon">emit<span class="tsd-signature-symbol">(</span>eventName<span class="tsd-signature-symbol">: </span><a href="../enums/events.html#event_before_turn_end" class="tsd-signature-type">EVENT_BEFORE_TURN_END</a>, data<span class="tsd-signature-symbol">: </span><a href="beforeturnendevent.html" class="tsd-signature-type">BeforeTurnEndEvent</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+						<li class="tsd-signature tsd-kind-icon">emit<span class="tsd-signature-symbol">(</span>eventName<span class="tsd-signature-symbol">: </span><a href="../enums/events.html#event_after_turn_end" class="tsd-signature-type">EVENT_AFTER_TURN_END</a>, data<span class="tsd-signature-symbol">: </span><a href="afterturnendevent.html" class="tsd-signature-type">AfterTurnEndEvent</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Overrides EventEmitter.emit</p>
 								<ul>
-									<li>Defined in IGameFramework.d.ts:18</li>
+									<li>Defined in IGameFramework.d.ts:24</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -202,13 +211,13 @@
 									<h5>data: <a href="beforeunitselectionevent.html" class="tsd-signature-type">BeforeUnitSelectionEvent</a></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
 						</li>
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Overrides EventEmitter.emit</p>
 								<ul>
-									<li>Defined in IGameFramework.d.ts:20</li>
+									<li>Defined in IGameFramework.d.ts:26</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -226,7 +235,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides EventEmitter.emit</p>
 								<ul>
-									<li>Defined in IGameFramework.d.ts:22</li>
+									<li>Defined in IGameFramework.d.ts:28</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -244,7 +253,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides EventEmitter.emit</p>
 								<ul>
-									<li>Defined in IGameFramework.d.ts:24</li>
+									<li>Defined in IGameFramework.d.ts:30</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -262,7 +271,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides EventEmitter.emit</p>
 								<ul>
-									<li>Defined in IGameFramework.d.ts:26</li>
+									<li>Defined in IGameFramework.d.ts:32</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -272,6 +281,42 @@
 								</li>
 								<li>
 									<h5>data: <a href="beforegamefinishevent.html" class="tsd-signature-type">BeforeGameFinishEvent</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Overrides EventEmitter.emit</p>
+								<ul>
+									<li>Defined in IGameFramework.d.ts:34</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>eventName: <a href="../enums/events.html#event_before_turn_end" class="tsd-signature-type">EVENT_BEFORE_TURN_END</a></h5>
+								</li>
+								<li>
+									<h5>data: <a href="beforeturnendevent.html" class="tsd-signature-type">BeforeTurnEndEvent</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Overrides EventEmitter.emit</p>
+								<ul>
+									<li>Defined in IGameFramework.d.ts:36</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>eventName: <a href="../enums/events.html#event_after_turn_end" class="tsd-signature-type">EVENT_AFTER_TURN_END</a></h5>
+								</li>
+								<li>
+									<h5>data: <a href="afterturnendevent.html" class="tsd-signature-type">AfterTurnEndEvent</a></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
@@ -367,6 +412,29 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
+					<a name="log" class="tsd-anchor"></a>
+					<h3>log</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
+						<li class="tsd-signature tsd-kind-icon">log<span class="tsd-signature-symbol">(</span>log<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in IGameFramework.d.ts:22</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>log: <span class="tsd-signature-type">any</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
 					<a name="nextturn" class="tsd-anchor"></a>
 					<h3>next<wbr>Turn</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
@@ -376,9 +444,14 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in IGameFramework.d.ts:16</li>
+									<li>Defined in IGameFramework.d.ts:21</li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>implements next turn (setInterval / setTimeout)  accordingly to [[IGame.isRealTime]] and <a href="igame.html#interval">IGame.interval</a></p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
@@ -392,13 +465,15 @@
 						<li class="tsd-signature tsd-kind-icon">on<span class="tsd-signature-symbol">(</span>eventName<span class="tsd-signature-symbol">: </span><a href="../enums/events.html#event_before_add_unit_success" class="tsd-signature-type">EVENT_BEFORE_ADD_UNIT_SUCCESS</a>, eventHandler<span class="tsd-signature-symbol">: </span><a href="../globals.html#beforeaddunitsuccess" class="tsd-signature-type">beforeAddUnitSuccess</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
 						<li class="tsd-signature tsd-kind-icon">on<span class="tsd-signature-symbol">(</span>eventName<span class="tsd-signature-symbol">: </span><a href="../enums/events.html#event_after_add_unit" class="tsd-signature-type">EVENT_AFTER_ADD_UNIT</a>, eventHandler<span class="tsd-signature-symbol">: </span><a href="../globals.html#afteraddunit" class="tsd-signature-type">afterAddUnit</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
 						<li class="tsd-signature tsd-kind-icon">on<span class="tsd-signature-symbol">(</span>eventName<span class="tsd-signature-symbol">: </span><a href="../enums/events.html#event_before_game_finish" class="tsd-signature-type">EVENT_BEFORE_GAME_FINISH</a>, eventHandler<span class="tsd-signature-symbol">: </span><a href="../globals.html#beforegamefinish" class="tsd-signature-type">beforeGameFinish</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
+						<li class="tsd-signature tsd-kind-icon">on<span class="tsd-signature-symbol">(</span>eventName<span class="tsd-signature-symbol">: </span><a href="../enums/events.html#event_before_turn_end" class="tsd-signature-type">EVENT_BEFORE_TURN_END</a>, eventHandler<span class="tsd-signature-symbol">: </span><a href="../globals.html#beforeturnend" class="tsd-signature-type">beforeTurnEnd</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
+						<li class="tsd-signature tsd-kind-icon">on<span class="tsd-signature-symbol">(</span>eventName<span class="tsd-signature-symbol">: </span><a href="../enums/events.html#event_after_turn_end" class="tsd-signature-type">EVENT_AFTER_TURN_END</a>, eventHandler<span class="tsd-signature-symbol">: </span><a href="../globals.html#afterturnend" class="tsd-signature-type">afterTurnEnd</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Overrides EventEmitter.on</p>
 								<ul>
-									<li>Defined in IGameFramework.d.ts:17</li>
+									<li>Defined in IGameFramework.d.ts:23</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -416,7 +491,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides EventEmitter.on</p>
 								<ul>
-									<li>Defined in IGameFramework.d.ts:19</li>
+									<li>Defined in IGameFramework.d.ts:25</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -434,7 +509,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides EventEmitter.on</p>
 								<ul>
-									<li>Defined in IGameFramework.d.ts:21</li>
+									<li>Defined in IGameFramework.d.ts:27</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -452,7 +527,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides EventEmitter.on</p>
 								<ul>
-									<li>Defined in IGameFramework.d.ts:23</li>
+									<li>Defined in IGameFramework.d.ts:29</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -470,7 +545,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides EventEmitter.on</p>
 								<ul>
-									<li>Defined in IGameFramework.d.ts:25</li>
+									<li>Defined in IGameFramework.d.ts:31</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -480,6 +555,42 @@
 								</li>
 								<li>
 									<h5>eventHandler: <a href="../globals.html#beforegamefinish" class="tsd-signature-type">beforeGameFinish</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4>
+						</li>
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Overrides EventEmitter.on</p>
+								<ul>
+									<li>Defined in IGameFramework.d.ts:33</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>eventName: <a href="../enums/events.html#event_before_turn_end" class="tsd-signature-type">EVENT_BEFORE_TURN_END</a></h5>
+								</li>
+								<li>
+									<h5>eventHandler: <a href="../globals.html#beforeturnend" class="tsd-signature-type">beforeTurnEnd</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4>
+						</li>
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Overrides EventEmitter.on</p>
+								<ul>
+									<li>Defined in IGameFramework.d.ts:35</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>eventName: <a href="../enums/events.html#event_after_turn_end" class="tsd-signature-type">EVENT_AFTER_TURN_END</a></h5>
+								</li>
+								<li>
+									<h5>eventHandler: <a href="../globals.html#afterturnend" class="tsd-signature-type">afterTurnEnd</a></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4>
@@ -755,9 +866,14 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in IGameFramework.d.ts:14</li>
+									<li>Defined in IGameFramework.d.ts:18</li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>starts the game</p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
@@ -772,7 +888,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in IGameFramework.d.ts:15</li>
+									<li>Defined in IGameFramework.d.ts:19</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -818,54 +934,6 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-enum">
-						<a href="../enums/events.html" class="tsd-kind-icon">Events</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="../classes/behavior.html" class="tsd-kind-icon">Behavior</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="../classes/game.html" class="tsd-kind-icon">Game</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="../classes/state.html" class="tsd-kind-icon">State</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="afteraddunitevent.html" class="tsd-kind-icon">After<wbr>Add<wbr>Unit<wbr>Event</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="afterunitselectionevent.html" class="tsd-kind-icon">After<wbr>Unit<wbr>Selection<wbr>Event</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="beforeaddunitsuccessevent.html" class="tsd-kind-icon">Before<wbr>Add<wbr>Unit<wbr>Success<wbr>Event</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="beforegamefinishevent.html" class="tsd-kind-icon">Before<wbr>Game<wbr>Finish<wbr>Event</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="beforeunitselectionevent.html" class="tsd-kind-icon">Before<wbr>Unit<wbr>Selection<wbr>Event</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="buildconditionresult.html" class="tsd-kind-icon">Build<wbr>Condition<wbr>Result</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="gameframeworkcancelableevent.html" class="tsd-kind-icon">Game<wbr>Framework<wbr>Cancelable<wbr>Event</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="gameframeworkevent.html" class="tsd-kind-icon">Game<wbr>Framework<wbr>Event</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="ibehavior.html" class="tsd-kind-icon">IBehavior</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="iboard.html" class="tsd-kind-icon">IBoard</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="ibox.html" class="tsd-kind-icon">IBox</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="igame.html" class="tsd-kind-icon">IGame</a>
-					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface">
@@ -891,6 +959,9 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-overwrite tsd-is-inherited">
 								<a href="igameframework.html#listeners" class="tsd-kind-icon">listeners</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-interface">
+								<a href="igameframework.html#log" class="tsd-kind-icon">log</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface">
 								<a href="igameframework.html#nextturn" class="tsd-kind-icon">next<wbr>Turn</a>
@@ -932,75 +1003,6 @@
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-interface">
-						<a href="iplayer.html" class="tsd-kind-icon">IPlayer</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="iplayerbehavior.html" class="tsd-kind-icon">IPlayer<wbr>Behavior</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="iplayerstateaddunitbuttonstate.html" class="tsd-kind-icon">IPlayer<wbr>State<wbr>Add<wbr>Unit<wbr>Button<wbr>State</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="iplayeruistate.html" class="tsd-kind-icon">IPlayerUIState</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="iresource.html" class="tsd-kind-icon">IResource</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="istate.html" class="tsd-kind-icon">IState</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="istatemodifier.html" class="tsd-kind-icon">IState<wbr>Modifier</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="istatemodifierafteraddunit.html" class="tsd-kind-icon">IState<wbr>Modifier<wbr>After<wbr>Add<wbr>Unit</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="istatemodifierafterunitselection.html" class="tsd-kind-icon">IState<wbr>Modifier<wbr>After<wbr>Unit<wbr>Selection</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="istatemodifierbeforeaddunitsuccess.html" class="tsd-kind-icon">IState<wbr>Modifier<wbr>Before<wbr>Add<wbr>Unit<wbr>Success</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="istatemodifierbeforeunitselection.html" class="tsd-kind-icon">IState<wbr>Modifier<wbr>Before<wbr>Unit<wbr>Selection</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="istatemodifierbehavior.html" class="tsd-kind-icon">IState<wbr>Modifier<wbr>Behavior</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="ithing.html" class="tsd-kind-icon">IThing</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="iuistate.html" class="tsd-kind-icon">IUIState</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="iunit.html" class="tsd-kind-icon">IUnit</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="iunitproperties.html" class="tsd-kind-icon">IUnit<wbr>Properties</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="iunittype.html" class="tsd-kind-icon">IUnit<wbr>Type</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="iunittypebehavior.html" class="tsd-kind-icon">IUnit<wbr>Type<wbr>Behavior</a>
-					</li>
-					<li class=" tsd-kind-event">
-						<a href="../globals.html#afteraddunit" class="tsd-kind-icon">after<wbr>Add<wbr>Unit</a>
-					</li>
-					<li class=" tsd-kind-event">
-						<a href="../globals.html#afterunitselection" class="tsd-kind-icon">after<wbr>Unit<wbr>Selection</a>
-					</li>
-					<li class=" tsd-kind-event">
-						<a href="../globals.html#beforeaddunitsuccess" class="tsd-kind-icon">before<wbr>Add<wbr>Unit<wbr>Success</a>
-					</li>
-					<li class=" tsd-kind-event">
-						<a href="../globals.html#beforegamefinish" class="tsd-kind-icon">before<wbr>Game<wbr>Finish</a>
-					</li>
-					<li class=" tsd-kind-event">
-						<a href="../globals.html#beforeunitselection" class="tsd-kind-icon">before<wbr>Unit<wbr>Selection</a>
-					</li>
 				</ul>
 			</nav>
 		</div>

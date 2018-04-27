@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>GameFrameworkEvent | perplexed-wars</title>
+	<title>Log | perplexed-wars</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -54,10 +54,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="gameframeworkevent.html">GameFrameworkEvent</a>
+					<a href="log.html">Log</a>
 				</li>
 			</ul>
-			<h1>Interface GameFrameworkEvent</h1>
+			<h1>Interface Log</h1>
 		</div>
 	</div>
 </header>
@@ -68,27 +68,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">GameFrameworkEvent</span>
-						<ul class="tsd-hierarchy">
-							<li>
-								<a href="afterturnendevent.html" class="tsd-signature-type">AfterTurnEndEvent</a>
-							</li>
-							<li>
-								<a href="gameframeworkcancelableevent.html" class="tsd-signature-type">GameFrameworkCancelableEvent</a>
-							</li>
-							<li>
-								<a href="beforeunitselectionevent.html" class="tsd-signature-type">BeforeUnitSelectionEvent</a>
-							</li>
-							<li>
-								<a href="afterunitselectionevent.html" class="tsd-signature-type">AfterUnitSelectionEvent</a>
-							</li>
-							<li>
-								<a href="afteraddunitevent.html" class="tsd-signature-type">AfterAddUnitEvent</a>
-							</li>
-							<li>
-								<a href="beforegamefinishevent.html" class="tsd-signature-type">BeforeGameFinishEvent</a>
-							</li>
-						</ul>
+						<span class="target">Log</span>
 					</li>
 				</ul>
 			</section>
@@ -99,7 +79,8 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="gameframeworkevent.html#state" class="tsd-kind-icon">state</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="log.html#message" class="tsd-kind-icon">message</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="log.html#type" class="tsd-kind-icon">type</a></li>
 							</ul>
 						</section>
 					</div>
@@ -108,12 +89,22 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="state" class="tsd-anchor"></a>
-					<h3>state</h3>
-					<div class="tsd-signature tsd-kind-icon">state<span class="tsd-signature-symbol">:</span> <a href="istate.html" class="tsd-signature-type">IState</a></div>
+					<a name="message" class="tsd-anchor"></a>
+					<h3>message</h3>
+					<div class="tsd-signature tsd-kind-icon">message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in IGameFramework.d.ts:59</li>
+							<li>Defined in IGameFramework.d.ts:131</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="type" class="tsd-anchor"></a>
+					<h3>type</h3>
+					<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"internal"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"warning"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"error"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"tip"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"help"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"internalerror"</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in IGameFramework.d.ts:132</li>
 						</ul>
 					</aside>
 				</section>
@@ -132,10 +123,13 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface">
-						<a href="gameframeworkevent.html" class="tsd-kind-icon">Game<wbr>Framework<wbr>Event</a>
+						<a href="log.html" class="tsd-kind-icon">Log</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="gameframeworkevent.html#state" class="tsd-kind-icon">state</a>
+								<a href="log.html#message" class="tsd-kind-icon">message</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="log.html#type" class="tsd-kind-icon">type</a>
 							</li>
 						</ul>
 					</li>
