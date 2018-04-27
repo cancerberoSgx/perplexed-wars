@@ -22,13 +22,13 @@ export class SimpleIa1 implements IA {
   public yourTurn (state: IState) {
     const s: StateAccessHelper = StateAccessHelper.get()
     const player = s.player(this.id)
-    const playerUnits = s.playerUnitTypes(this.id)
+    // const playerUnits = s.playerUnitTypes(this.id)
 
     let c: BuildConditionResult
     // order by health
     const strongCanBuy = s.playerUnitTypes(this.id).concat() // clone the array we dont want to modify it!
       .sort((a,b) => a.properties.health < b.properties.health ? -1 : 1) // units ordered by health
-      .find(u => !u.isBase && u.properties.damage > 0 && (c = s.unitBehavior(u.id).buildCondition(player)) && c.canBuild) //first that we can buy
+      .find(u => !u.isBase && u.properties.damage > 0 && (c = s.unitBehavior(u.id).buildCondition(player)) && c.canBuild) // first that we can buy
 
     if (!strongCanBuy) {
       return

@@ -53,7 +53,7 @@ export function gameLoop (state: IState, action: Action): IState {
 
   })
 
-  return State.modify(state, s => {//TOOD: I think everything should be inside this!
+  return State.modify(state, s => {// TOOD: I think everything should be inside this!
     if (winner) {
       s.game.gameFinish = true
       s.game.winner = winner

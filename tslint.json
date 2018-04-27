@@ -1,5 +1,5 @@
 {
-  "extends": ["tslint-config-standard", "tslint-react"],
+  "extends": ["tslint-config-airbnb", "tslint-react"],
   "linterOptions": {
     "exclude": [
       "src/components/*",
@@ -13,19 +13,5 @@
   "defaultSeverity": "error",
   
   "rules": {
-    "object-literal-sort-keys": false,
-    "jsx-no-lambda": false,
-    "no-console": false,
-    "ordered-imports": false,
-    "member-ordering": false,
-    "max-classes-per-file": false,
-    "no-debugger": false,
-    "comment-format": false,
-    "no-unused-variable": false,
-    "no-unused-expression": false,
-    "no-empty": false,
-    "only-arrow-functions": false,
-    "interface-name": false,
-    "adjacent-overload-signatures": false
   }
 }

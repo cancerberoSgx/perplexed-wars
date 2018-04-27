@@ -5,17 +5,14 @@ import { IBehavior, IUnitTypeBehavior } from './behavior-interfaces'
 
 export class StateAccessHelper {
 
+  private static instance: StateAccessHelper
   private behavior: IBehavior
   private state: IState
 
   constructor (state?: IState, behavior?: IBehavior) {
-    // debugger
     this.state = state || State.get()
     this.behavior = behavior || Behavior.get()
-    // this.behavior = behavior
   }
-
-  private static instance: StateAccessHelper
 
   public static get (state?, behavior?): StateAccessHelper {
     if (!this.instance) {

@@ -8,7 +8,7 @@ export class MoveResolver implements IUnitActionResolver {
   private finder: any
   public resolve ({ state, unit, box, player }: IUnitActionResolverData): void {
     if (!this.finder) {
-      this.finder = new PF.AStarFinder({ allowDiagonal: state.game.allowDiagonal })
+      this.finder = new PF.AStarFinder({ allowDiagonal: state.game.allowDiagonal ? 1 : 0 })
     }
     const foeBases = findUnit(state, (u) => u.playerId !== player.id && u.type.isBase)
     if (!foeBases || !foeBases.length) { // this probably means game is over

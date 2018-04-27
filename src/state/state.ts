@@ -6,15 +6,14 @@ const initialState = war2ImplementationInitialState
 
 export class State {
 
-  private stateInternal: IState
   private static instance: State
+  private stateInternal: IState
 
   private constructor () {
     this.stateInternal = initialState()
   }
 
   public static getInstance (): State {
-    // debugger;
     if (!this.instance) {
       this.instance = new State()
     }

@@ -9,6 +9,6 @@ export interface IA extends IThing {
 
 }
 
-interface IAData {
-  unitResourceGiver: Array<{resource: string, unit: string}>
-}
+// interface IAData {
+//   unitResourceGiver: Array<{resource: string, unit: string}>
+// }

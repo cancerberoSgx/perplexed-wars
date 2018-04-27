@@ -15,17 +15,13 @@ import { Behavior } from './behavior'
  */
 export class Game extends EventEmitter implements IGameFramework {
 
-  // private iaPlayers: IA[] = [];
-  private intervalId: NodeJS.Timer
   private static instance
+  private intervalId: NodeJS.Timer
 
   private constructor () {
     super()
   }
 
-  // public  getIaFor(playerId: string): IA {
-  //   return this.iaPlayers.find(ia=>ia.id===playerId)
-  // }
   public static getInstance (): IGameFramework {
     if (!this.instance) {
       this.instance = new Game()
@@ -44,7 +40,7 @@ export class Game extends EventEmitter implements IGameFramework {
 
   public stop (): any {
     clearInterval(this.intervalId)
-    //TODO: trigger event game stopped
+    // TODO: trigger event game stopped
   }
 
   public nextTurn (): void {
@@ -62,14 +58,6 @@ export class Game extends EventEmitter implements IGameFramework {
 
     }
   }
-
-  // public registerIAPlayer(ia: IA): void {
-  //   debugger;
-  //   const p = StateAccessHelper.get().player(ia.id)
-  //   if(p && p.isAI && p.id===ia.id){
-  //     this.iaPlayers.push(ia)
-  //   }
-  // }
 
   public log (log: Log): void {
     console.log(log.message)
