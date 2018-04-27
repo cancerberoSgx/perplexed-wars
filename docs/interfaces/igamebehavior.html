@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>IStateModifierBeforeAddUnitSuccess | perplexed-wars</title>
+	<title>IGameBehavior | perplexed-wars</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -54,24 +54,31 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="istatemodifierbeforeaddunitsuccess.html">IStateModifierBeforeAddUnitSuccess</a>
+					<a href="igamebehavior.html">IGameBehavior</a>
 				</li>
 			</ul>
-			<h1>Interface IStateModifierBeforeAddUnitSuccess</h1>
+			<h1>Interface IGameBehavior</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>game- level behaviors, for example, when the game starts it could ask the user to prompt for name and choose the race so the implementation have the change to assign the correct race to the human player</p>
+					</div>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<a href="istatemodifier.html" class="tsd-signature-type">IStateModifier</a>
+						<a href="istatemodifierbehavior.html" class="tsd-signature-type">IStateModifierBehavior</a>
 						<ul class="tsd-hierarchy">
 							<li>
-								<span class="target">IStateModifierBeforeAddUnitSuccess</span>
+								<span class="target">IGameBehavior</span>
 							</li>
 						</ul>
 					</li>
@@ -81,116 +88,49 @@
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
-						<section class="tsd-index-section ">
+						<section class="tsd-index-section tsd-is-inherited">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="istatemodifierbeforeaddunitsuccess.html#custom" class="tsd-kind-icon">custom</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="istatemodifierbeforeaddunitsuccess.html#description" class="tsd-kind-icon">description</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite"><a href="istatemodifierbeforeaddunitsuccess.html#eventname" class="tsd-kind-icon">event<wbr>Name</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="istatemodifierbeforeaddunitsuccess.html#id" class="tsd-kind-icon">id</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite"><a href="istatemodifierbeforeaddunitsuccess.html#modifier" class="tsd-kind-icon">modifier</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="istatemodifierbeforeaddunitsuccess.html#name" class="tsd-kind-icon">name</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="istatemodifierbeforeaddunitsuccess.html#priority" class="tsd-kind-icon">priority</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="istatemodifierbeforeaddunitsuccess.html#timestamp" class="tsd-kind-icon">timestamp</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="igamebehavior.html#id" class="tsd-kind-icon">id</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="igamebehavior.html#statemodifiers" class="tsd-kind-icon">state<wbr>Modifiers</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group ">
+			<section class="tsd-panel-group tsd-member-group tsd-is-inherited">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-					<a name="custom" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> custom</h3>
-					<div class="tsd-signature tsd-kind-icon">custom<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<a name="id" class="tsd-anchor"></a>
+					<h3>id</h3>
+					<div class="tsd-signature tsd-kind-icon">id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="ithing.html">IThing</a>.<a href="ithing.html#custom">custom</a></p>
+						<p>Inherited from <a href="istatemodifierbehavior.html">IStateModifierBehavior</a>.<a href="istatemodifierbehavior.html#id">id</a></p>
 						<ul>
-							<li>Defined in state/state-interfaces.d.ts:7</li>
+							<li>Defined in state/behavior-interfaces.d.ts:42</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>so users can include additional information. They implement almost everything and probably can put more data for easy edition</p>
+							<p>the id of the referenced unit type or Player or whatever (<a href="iunit.html">IUnit</a>)</p>
 						</div>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-					<a name="description" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> description</h3>
-					<div class="tsd-signature tsd-kind-icon">description<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="statemodifiers" class="tsd-anchor"></a>
+					<h3>state<wbr>Modifiers</h3>
+					<div class="tsd-signature tsd-kind-icon">state<wbr>Modifiers<span class="tsd-signature-symbol">:</span> <a href="istatemodifier.html" class="tsd-signature-type">IStateModifier</a><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="ithing.html">IThing</a>.<a href="ithing.html#description">description</a></p>
+						<p>Inherited from <a href="istatemodifierbehavior.html">IStateModifierBehavior</a>.<a href="istatemodifierbehavior.html#statemodifiers">stateModifiers</a></p>
 						<ul>
-							<li>Defined in state/state-interfaces.d.ts:3</li>
+							<li>Defined in state/behavior-interfaces.d.ts:46</li>
 						</ul>
 					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite">
-					<a name="eventname" class="tsd-anchor"></a>
-					<h3>event<wbr>Name</h3>
-					<div class="tsd-signature tsd-kind-icon">event<wbr>Name<span class="tsd-signature-symbol">:</span> <a href="../enums/events.html#event_before_add_unit_success" class="tsd-signature-type">EVENT_BEFORE_ADD_UNIT_SUCCESS</a></div>
-					<aside class="tsd-sources">
-						<p>Overrides <a href="istatemodifier.html">IStateModifier</a>.<a href="istatemodifier.html#eventname">eventName</a></p>
-						<ul>
-							<li>Defined in state/behavior-interfaces.d.ts:90</li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-					<a name="id" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> id</h3>
-					<div class="tsd-signature tsd-kind-icon">id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<p>Inherited from <a href="ithing.html">IThing</a>.<a href="ithing.html#id">id</a></p>
-						<ul>
-							<li>Defined in state/state-interfaces.d.ts:4</li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite">
-					<a name="modifier" class="tsd-anchor"></a>
-					<h3>modifier</h3>
-					<div class="tsd-signature tsd-kind-icon">modifier<span class="tsd-signature-symbol">:</span> <a href="igameframework.html#beforeaddunitsuccess" class="tsd-signature-type">beforeAddUnitSuccess</a></div>
-					<aside class="tsd-sources">
-						<p>Overrides <a href="istatemodifier.html">IStateModifier</a>.<a href="istatemodifier.html#modifier">modifier</a></p>
-						<ul>
-							<li>Defined in state/behavior-interfaces.d.ts:91</li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-					<a name="name" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> name</h3>
-					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<p>Inherited from <a href="ithing.html">IThing</a>.<a href="ithing.html#name">name</a></p>
-						<ul>
-							<li>Defined in state/state-interfaces.d.ts:2</li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-					<a name="priority" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> priority</h3>
-					<div class="tsd-signature tsd-kind-icon">priority<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
-					<aside class="tsd-sources">
-						<p>Inherited from <a href="istatemodifier.html">IStateModifier</a>.<a href="istatemodifier.html#priority">priority</a></p>
-						<ul>
-							<li>Defined in state/behavior-interfaces.d.ts:81</li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-					<a name="timestamp" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> timestamp</h3>
-					<div class="tsd-signature tsd-kind-icon">timestamp<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
-					<aside class="tsd-sources">
-						<p>Inherited from <a href="ithing.html">IThing</a>.<a href="ithing.html#timestamp">timestamp</a></p>
-						<ul>
-							<li>Defined in state/state-interfaces.d.ts:5</li>
-						</ul>
-					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>each of this modifiers will end up in a subscription in the game and notified when requested event happen so they have the chance to modify the state somehow</p>
+						</div>
+					</div>
 				</section>
 			</section>
 		</div>
@@ -207,31 +147,13 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface">
-						<a href="istatemodifierbeforeaddunitsuccess.html" class="tsd-kind-icon">IState<wbr>Modifier<wbr>Before<wbr>Add<wbr>Unit<wbr>Success</a>
+						<a href="igamebehavior.html" class="tsd-kind-icon">IGame<wbr>Behavior</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-								<a href="istatemodifierbeforeaddunitsuccess.html#custom" class="tsd-kind-icon">custom</a>
+								<a href="igamebehavior.html#id" class="tsd-kind-icon">id</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-								<a href="istatemodifierbeforeaddunitsuccess.html#description" class="tsd-kind-icon">description</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite">
-								<a href="istatemodifierbeforeaddunitsuccess.html#eventname" class="tsd-kind-icon">event<wbr>Name</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-								<a href="istatemodifierbeforeaddunitsuccess.html#id" class="tsd-kind-icon">id</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite">
-								<a href="istatemodifierbeforeaddunitsuccess.html#modifier" class="tsd-kind-icon">modifier</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-								<a href="istatemodifierbeforeaddunitsuccess.html#name" class="tsd-kind-icon">name</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-								<a href="istatemodifierbeforeaddunitsuccess.html#priority" class="tsd-kind-icon">priority</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-								<a href="istatemodifierbeforeaddunitsuccess.html#timestamp" class="tsd-kind-icon">timestamp</a>
+								<a href="igamebehavior.html#statemodifiers" class="tsd-kind-icon">state<wbr>Modifiers</a>
 							</li>
 						</ul>
 					</li>

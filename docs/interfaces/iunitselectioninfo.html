@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>GameFrameworkEvent | perplexed-wars</title>
+	<title>IUnitSelectionInfo | perplexed-wars</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -54,10 +54,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="gameframeworkevent.html">GameFrameworkEvent</a>
+					<a href="iunitselectioninfo.html">IUnitSelectionInfo</a>
 				</li>
 			</ul>
-			<h1>Interface GameFrameworkEvent</h1>
+			<h1>Interface IUnitSelectionInfo</h1>
 		</div>
 	</div>
 </header>
@@ -68,33 +68,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">GameFrameworkEvent</span>
-						<ul class="tsd-hierarchy">
-							<li>
-								<a href="afterturnendevent.html" class="tsd-signature-type">AfterTurnEndEvent</a>
-							</li>
-							<li>
-								<a href="aftergamestartsevent.html" class="tsd-signature-type">AfterGameStartsEvent</a>
-							</li>
-							<li>
-								<a href="beforegamestartsevent.html" class="tsd-signature-type">BeforeGameStartsEvent</a>
-							</li>
-							<li>
-								<a href="gameframeworkcancelableevent.html" class="tsd-signature-type">GameFrameworkCancelableEvent</a>
-							</li>
-							<li>
-								<a href="beforeunitselectionevent.html" class="tsd-signature-type">BeforeUnitSelectionEvent</a>
-							</li>
-							<li>
-								<a href="afterunitselectionevent.html" class="tsd-signature-type">AfterUnitSelectionEvent</a>
-							</li>
-							<li>
-								<a href="afteraddunitevent.html" class="tsd-signature-type">AfterAddUnitEvent</a>
-							</li>
-							<li>
-								<a href="beforegamefinishevent.html" class="tsd-signature-type">BeforeGameFinishEvent</a>
-							</li>
-						</ul>
+						<span class="target">IUnitSelectionInfo</span>
 					</li>
 				</ul>
 			</section>
@@ -105,7 +79,8 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="gameframeworkevent.html#state" class="tsd-kind-icon">state</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="iunitselectioninfo.html#boxid" class="tsd-kind-icon">box<wbr>Id</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="iunitselectioninfo.html#unitid" class="tsd-kind-icon">unit<wbr>Id</a></li>
 							</ul>
 						</section>
 					</div>
@@ -114,12 +89,22 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="state" class="tsd-anchor"></a>
-					<h3>state</h3>
-					<div class="tsd-signature tsd-kind-icon">state<span class="tsd-signature-symbol">:</span> <a href="istate.html" class="tsd-signature-type">IState</a></div>
+					<a name="boxid" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> box<wbr>Id</h3>
+					<div class="tsd-signature tsd-kind-icon">box<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in state/IGameFramework.d.ts:85</li>
+							<li>Defined in state/state-interfaces.d.ts:116</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="unitid" class="tsd-anchor"></a>
+					<h3>unit<wbr>Id</h3>
+					<div class="tsd-signature tsd-kind-icon">unit<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in state/state-interfaces.d.ts:115</li>
 						</ul>
 					</aside>
 				</section>
@@ -138,10 +123,13 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface">
-						<a href="gameframeworkevent.html" class="tsd-kind-icon">Game<wbr>Framework<wbr>Event</a>
+						<a href="iunitselectioninfo.html" class="tsd-kind-icon">IUnit<wbr>Selection<wbr>Info</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="gameframeworkevent.html#state" class="tsd-kind-icon">state</a>
+								<a href="iunitselectioninfo.html#boxid" class="tsd-kind-icon">box<wbr>Id</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="iunitselectioninfo.html#unitid" class="tsd-kind-icon">unit<wbr>Id</a>
 							</li>
 						</ul>
 					</li>

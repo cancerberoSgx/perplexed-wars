@@ -86,6 +86,7 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="ibehavior.html#gamebehaviors" class="tsd-kind-icon">game<wbr>Behaviors</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="ibehavior.html#players" class="tsd-kind-icon">players</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="ibehavior.html#unittypes" class="tsd-kind-icon">unit<wbr>Types</a></li>
 							</ul>
@@ -95,6 +96,21 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="gamebehaviors" class="tsd-anchor"></a>
+					<h3>game<wbr>Behaviors</h3>
+					<div class="tsd-signature tsd-kind-icon">game<wbr>Behaviors<span class="tsd-signature-symbol">:</span> <a href="igamebehavior.html" class="tsd-signature-type">IGameBehavior</a><span class="tsd-signature-symbol">[]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in state/behavior-interfaces.d.ts:17</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>important: is mandatory that, if there are any gameBehaviors registered, they call the [[]] at least one game behavior that calls the ready callback is present, if not the game never starts.</p>
+						</div>
+					</div>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="players" class="tsd-anchor"></a>
 					<h3>players</h3>
@@ -142,6 +158,9 @@
 					<li class="current tsd-kind-interface">
 						<a href="ibehavior.html" class="tsd-kind-icon">IBehavior</a>
 						<ul>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="ibehavior.html#gamebehaviors" class="tsd-kind-icon">game<wbr>Behaviors</a>
+							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="ibehavior.html#players" class="tsd-kind-icon">players</a>
 							</li>

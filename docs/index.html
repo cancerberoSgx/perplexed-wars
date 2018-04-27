@@ -62,22 +62,37 @@
 	<div class="row">
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
-				<p>real-time tower-defense-like game but where you decide if attack or defend. </p>
-				<p>The idea is to provide with a good default experience - but also to <em>provide a framework to easily build similar games</em></p>
-				<h1 id="run">Run</h1>
-				<pre><code class="lang-sh">npm run start
-npm run build
-npm <span class="hljs-built_in">test</span> 
-npm run doc
-</code></pre>
-				<h1 id="api-docs">API docs</h1>
-				<p><a href="https://cancerberosgx.github.io/perplexed-wars/docs/">https://cancerberosgx.github.io/perplexed-wars/docs/</a></p>
-				<h1 id="current-implementation-demo-wip-">Current implementation demo (WIP)</h1>
+				<p>Framework to build tower-defense-like games but where you decide if attack or defend. </p>
+				<p><strong>Work in progress</strong></p>
+				<h1 id="current-implementation-reference-wip-">Current implementation reference (WIP)</h1>
+				<p>Based on WarCraft 2</p>
 				<p><a href="https://cancerberosgx.github.io/perplexed-wars/build/">https://cancerberosgx.github.io/perplexed-wars/build/</a></p>
+				<p><a href="https://github.com/cancerberoSgx/perplexed-wars/tree/master/src/implementations/war2">The code</a></p>
 				<h1 id="project-home">Project home</h1>
 				<p><a href="https://github.com/cancerberoSgx/perplexed-wars">https://github.com/cancerberoSgx/perplexed-wars</a></p>
 				<h1 id="features">Features</h1>
-				<p>The default implementation is based on Warcraft 2 but definition of units, resources, buildings, etc are configurable. </p>
+				<ul>
+					<li>WIP</li>
+					<li>units move automatically, user decides what to build</li>
+					<li>Can choose to build towers for economy or units to attack enemy base</li>
+					<li>The default implementation is based on Warcraft 2 but definition of units, resources, buildings, etc are configurable. </li>
+					<li>implementors responsible of defining units, resources, </li>
+					<li>supports real-time or turn based and more settings live</li>
+				</ul>
+				<h1 id="run">Run</h1>
+				<pre><code class="lang-sh">npm install
+npm run start <span class="hljs-comment"># developer mode</span>
+npm run build <span class="hljs-comment"># build production</span>
+npm <span class="hljs-built_in">test</span> <span class="hljs-comment"># run tests</span>
+npm run doc <span class="hljs-comment"># geerate api docs</span>
+</code></pre>
+				<h1 id="api-docs">API docs</h1>
+				<p><a href="https://cancerberosgx.github.io/perplexed-wars/docs/">https://cancerberosgx.github.io/perplexed-wars/docs/</a></p>
+				<p>Implementors must provide:</p>
+				<p>an implementation of this for the state (units, resources, etc): <a href="https://cancerberosgx.github.io/perplexed-wars/docs/interfaces/istate.html">https://cancerberosgx.github.io/perplexed-wars/docs/interfaces/istate.html</a></p>
+				<ul>
+					<li>an implementation of this for the behavior: modifications of the state, rules, etc: <a href="https://cancerberosgx.github.io/perplexed-wars/docs/interfaces/igameframework.html">https://cancerberosgx.github.io/perplexed-wars/docs/interfaces/igameframework.html</a></li>
+				</ul>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
@@ -109,6 +124,9 @@ npm run doc
 						<a href="interfaces/afteraddunitevent.html" class="tsd-kind-icon">After<wbr>Add<wbr>Unit<wbr>Event</a>
 					</li>
 					<li class=" tsd-kind-interface">
+						<a href="interfaces/aftergamestartsevent.html" class="tsd-kind-icon">After<wbr>Game<wbr>Starts<wbr>Event</a>
+					</li>
+					<li class=" tsd-kind-interface">
 						<a href="interfaces/afterturnendevent.html" class="tsd-kind-icon">After<wbr>Turn<wbr>End<wbr>Event</a>
 					</li>
 					<li class=" tsd-kind-interface">
@@ -121,6 +139,9 @@ npm run doc
 						<a href="interfaces/beforegamefinishevent.html" class="tsd-kind-icon">Before<wbr>Game<wbr>Finish<wbr>Event</a>
 					</li>
 					<li class=" tsd-kind-interface">
+						<a href="interfaces/beforegamestartsevent.html" class="tsd-kind-icon">Before<wbr>Game<wbr>Starts<wbr>Event</a>
+					</li>
+					<li class=" tsd-kind-interface">
 						<a href="interfaces/beforeturnendevent.html" class="tsd-kind-icon">Before<wbr>Turn<wbr>End<wbr>Event</a>
 					</li>
 					<li class=" tsd-kind-interface">
@@ -128,6 +149,9 @@ npm run doc
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/buildconditionresult.html" class="tsd-kind-icon">Build<wbr>Condition<wbr>Result</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/buildconditionresultmissing.html" class="tsd-kind-icon">Build<wbr>Condition<wbr>Result<wbr>Missing</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/gameframeworkcancelableevent.html" class="tsd-kind-icon">Game<wbr>Framework<wbr>Cancelable<wbr>Event</a>
@@ -155,6 +179,9 @@ npm run doc
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/igame.html" class="tsd-kind-icon">IGame</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/igamebehavior.html" class="tsd-kind-icon">IGame<wbr>Behavior</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/igameframework.html" class="tsd-kind-icon">IGame<wbr>Framework</a>
@@ -214,6 +241,9 @@ npm run doc
 						<a href="interfaces/iunitproperties.html" class="tsd-kind-icon">IUnit<wbr>Properties</a>
 					</li>
 					<li class=" tsd-kind-interface">
+						<a href="interfaces/iunitselectioninfo.html" class="tsd-kind-icon">IUnit<wbr>Selection<wbr>Info</a>
+					</li>
+					<li class=" tsd-kind-interface">
 						<a href="interfaces/iunittype.html" class="tsd-kind-icon">IUnit<wbr>Type</a>
 					</li>
 					<li class=" tsd-kind-interface">
@@ -237,11 +267,11 @@ npm run doc
 					<li class=" tsd-kind-variable">
 						<a href="globals.html#action_select_unit" class="tsd-kind-icon">ACTION_<wbr>SELECT_<wbr>UNIT</a>
 					</li>
-					<li class=" tsd-kind-function">
-						<a href="globals.html#addnewunit" class="tsd-kind-icon">add<wbr>New<wbr>Unit</a>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#isdevelopment" class="tsd-kind-icon">is<wbr>Development</a>
 					</li>
 					<li class=" tsd-kind-function">
-						<a href="globals.html#builduistateplayercontrols" class="tsd-kind-icon">buildUIState<wbr>Player<wbr>Controls</a>
+						<a href="globals.html#addnewunit" class="tsd-kind-icon">add<wbr>New<wbr>Unit</a>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#changegamesettings" class="tsd-kind-icon">change<wbr>Game<wbr>Settings</a>
