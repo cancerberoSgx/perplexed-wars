@@ -1,6 +1,6 @@
-import { IBehavior } from "./behavior-interfaces";
-import { war2ImplementationBehavior } from "../implementations/war2/war2ImplementationBehavior";
-import { Game } from "./game";
+import { IBehavior } from './behavior-interfaces'
+import { war2ImplementationBehavior } from '../implementations/war2/war2ImplementationBehavior'
+import { Game } from './game'
 
 const getDefaultBehavior = war2ImplementationBehavior
 /**
@@ -8,26 +8,26 @@ const getDefaultBehavior = war2ImplementationBehavior
  * Responsible of registering [[IStateModifier]] provided by the implementations
  */
 export class Behavior {
-  private static instance:IBehavior
+  private static instance: IBehavior
 
-  private constructor(){}
+  private constructor () {}
 
-  public static get():IBehavior{
-    if(!this.instance){
+  public static get (): IBehavior {
+    if (!this.instance) {
       this.instance = getDefaultBehavior()
       this.registerBehaviors()
     }
     return this.instance
   }
 
-  private static registerBehaviors(): void {
-    this.instance.unitTypes.forEach(ut=>{
-      ut.stateModifiers.forEach(mod=>{
+  private static registerBehaviors (): void {
+    this.instance.unitTypes.forEach(ut => {
+      ut.stateModifiers.forEach(mod => {
         Game.getInstance().on(mod.eventName, mod.modifier)
       })
     })
-    this.instance.players.forEach(p=>{
-      p.stateModifiers.forEach(mod=>{
+    this.instance.players.forEach(p => {
+      p.stateModifiers.forEach(mod => {
         Game.getInstance().on(mod.eventName, mod.modifier)
       })
     })

@@ -51,4 +51,3 @@ export class SimpleIa1 implements IA {
 
   }
 }
- 

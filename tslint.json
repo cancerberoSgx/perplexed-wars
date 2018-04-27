@@ -10,7 +10,7 @@
       "docs"
     ]
   },
-  "defaultSeverity": "warning",
+  "defaultSeverity": "error",
   
   "rules": {
     "object-literal-sort-keys": false,

@@ -1,9 +1,9 @@
-import { ISelectUnitAction } from "../reducers/selectUnit";
-import { IAddUnitAction } from "../reducers/addNewUnit";
-import { EventEmitter } from "events";
-import { IPlayerUIState, IBox, IUnit, IState, IPlayer } from "./state-interfaces";
-import { IA } from "../ia/ia-interfaces";
-import { ITurnEndAction } from "reducers/gameLoop";
+import { ISelectUnitAction } from '../reducers/selectUnit'
+import { IAddUnitAction } from '../reducers/addNewUnit'
+import { EventEmitter } from 'events'
+import { IPlayerUIState, IBox, IUnit, IState, IPlayer } from './state-interfaces'
+import { IA } from '../ia/ia-interfaces'
+import { ITurnEndAction } from 'reducers/gameLoop'
 
 export enum Events {
   EVENT_BEFORE_UNIT_SELECTION = 'beforeUnitSelection',
@@ -13,58 +13,50 @@ export enum Events {
   EVENT_BEFORE_GAME_FINISH = 'beforeGameFinish',
   EVENT_BEFORE_TURN_END = 'beforeTurnEnd',
   EVENT_AFTER_TURN_END = 'afterTurnEnd'
-  
+
 }
 
-export interface IGameFramework extends EventEmitter{
+export interface IGameFramework extends EventEmitter {
 
   /** starts the game */
-  start():void
+  start (): void
 
-  stop():void
+  stop (): void
 
   /** implements next turn (setInterval / setTimeout)  accordingly to [[IGame.isRealTime]] and [[IGame.interval]] */
-  nextTurn(): void
-  
-  log(log):void
+  nextTurn (): void
 
+  log (log): void
 
-  
+  on (eventName: Events.EVENT_BEFORE_UNIT_SELECTION, eventHandler: typeof beforeUnitSelection): this
+  emit (eventName: Events.EVENT_BEFORE_UNIT_SELECTION, data: BeforeUnitSelectionEvent): boolean
 
-  on(eventName: Events.EVENT_BEFORE_UNIT_SELECTION, eventHandler: typeof beforeUnitSelection): this;  
-  emit(eventName: Events.EVENT_BEFORE_UNIT_SELECTION, data: BeforeUnitSelectionEvent): boolean;  
+  on (eventName: Events.EVENT_AFTER_UNIT_SELECTION, eventHandler: typeof afterUnitSelection): this
+  emit (eventName: Events.EVENT_AFTER_UNIT_SELECTION, data: AfterUnitSelectionEvent): boolean
 
-  on(eventName: Events.EVENT_AFTER_UNIT_SELECTION, eventHandler: typeof afterUnitSelection): this;  
-  emit(eventName: Events.EVENT_AFTER_UNIT_SELECTION, data: AfterUnitSelectionEvent): boolean;  
-  
+  on (eventName: Events.EVENT_BEFORE_ADD_UNIT_SUCCESS, eventHandler: typeof beforeAddUnitSuccess): this
+  emit (eventName: Events.EVENT_BEFORE_ADD_UNIT_SUCCESS, data: BeforeAddUnitSuccessEvent): boolean
 
-  on(eventName: Events.EVENT_BEFORE_ADD_UNIT_SUCCESS, eventHandler: typeof beforeAddUnitSuccess): this;  
-  emit(eventName: Events.EVENT_BEFORE_ADD_UNIT_SUCCESS, data: BeforeAddUnitSuccessEvent): boolean;  
-   
+  on (eventName: Events.EVENT_AFTER_ADD_UNIT, eventHandler: typeof afterAddUnit): this
+  emit (eventName: Events.EVENT_AFTER_ADD_UNIT, data: AfterAddUnitEvent): boolean
 
-  on(eventName: Events.EVENT_AFTER_ADD_UNIT, eventHandler: typeof afterAddUnit): this;  
-  emit(eventName: Events.EVENT_AFTER_ADD_UNIT, data: AfterAddUnitEvent): boolean;  
+  on (eventName: Events.EVENT_BEFORE_GAME_FINISH, eventHandler: typeof beforeGameFinish): this
+  emit (eventName: Events.EVENT_BEFORE_GAME_FINISH, data: BeforeGameFinishEvent): boolean
 
+  on (eventName: Events.EVENT_BEFORE_TURN_END, eventHandler: typeof beforeTurnEnd): this
+  emit (eventName: Events.EVENT_BEFORE_TURN_END, data: BeforeTurnEndEvent): boolean
 
-  on(eventName: Events.EVENT_BEFORE_GAME_FINISH, eventHandler: typeof beforeGameFinish): this;  
-  emit(eventName: Events.EVENT_BEFORE_GAME_FINISH, data: BeforeGameFinishEvent): boolean;  
-
-  on(eventName: Events.EVENT_BEFORE_TURN_END, eventHandler: typeof beforeTurnEnd): this;  
-  emit(eventName: Events.EVENT_BEFORE_TURN_END, data: BeforeTurnEndEvent): boolean;  
-
-  on(eventName: Events.EVENT_AFTER_TURN_END, eventHandler: typeof afterTurnEnd): this;  
-  emit(eventName: Events.EVENT_AFTER_TURN_END, data: AfterTurnEndEvent): boolean;  
+  on (eventName: Events.EVENT_AFTER_TURN_END, eventHandler: typeof afterTurnEnd): this
+  emit (eventName: Events.EVENT_AFTER_TURN_END, data: AfterTurnEndEvent): boolean
 
 }
-
-
 
 /**
  * Triggered just before turn is about to end (units didn't moved yet)
  * @asMemberOf IGameFramework
  * @event
  */
-export declare function afterTurnEnd(event: AfterTurnEndEvent):void;
+export declare function afterTurnEnd (event: AfterTurnEndEvent): void
 
 /** triggered just before turn ends (units didn't moved yet) */
 export interface AfterTurnEndEvent extends GameFrameworkEvent {
@@ -76,20 +68,19 @@ export interface AfterTurnEndEvent extends GameFrameworkEvent {
  * @asMemberOf IGameFramework
  * @event
  */
-export declare function beforeTurnEnd(event: BeforeTurnEndEvent):void;
+export declare function beforeTurnEnd (event: BeforeTurnEndEvent): void
 
 /** triggered just before turn ends (units didn't moved yet) */
 export interface BeforeTurnEndEvent extends GameFrameworkCancelableEvent {
   action: ITurnEndAction
 }
 
-
 export interface GameFrameworkEvent {
-  state:IState // this is more for the user that is using our own handlers and its StateModifiers need access to the whole thing 
+  state: IState // this is more for the user that is using our own handlers and its StateModifiers need access to the whole thing
 }
 export interface GameFrameworkCancelableEvent extends GameFrameworkEvent {
-  /** the agent triggering the event can pass a callback funcion and if any listener cancel it (synchronously) emitter can decide to cancel the whole action. This is only for BEFORE_* events */
-  cancelCallback: (reason:string)=>void
+  /** the agent triggering the event can pass a callback function and if any listener cancel it (synchronously) emitter can decide to cancel the whole action. This is only for BEFORE_* events */
+  cancelCallback: (reason: string) => void
 }
 
 /**
@@ -97,15 +88,15 @@ export interface GameFrameworkCancelableEvent extends GameFrameworkEvent {
  * @asMemberOf IGameFramework
  * @event
  */
-export declare function beforeUnitSelection(event: BeforeUnitSelectionEvent):void;
+export declare function beforeUnitSelection (event: BeforeUnitSelectionEvent): void
 
 /** triggered just before user select a unit */
 export interface BeforeUnitSelectionEvent extends GameFrameworkEvent {
   selection: Array<{
-      unitId: string;
-      boxId: string;
-  }>;
-  action: ISelectUnitAction;
+    unitId: string;
+    boxId: string;
+  }>
+  action: ISelectUnitAction
 }
 
 /**
@@ -113,13 +104,13 @@ export interface BeforeUnitSelectionEvent extends GameFrameworkEvent {
  * @asMemberOf IGameFramework
  * @event
  */
-export declare function afterUnitSelection(event: AfterUnitSelectionEvent):void;
+export declare function afterUnitSelection (event: AfterUnitSelectionEvent): void
 
 /** triggered after user selected a unit */
-export interface  AfterUnitSelectionEvent  extends GameFrameworkEvent  {
+export interface AfterUnitSelectionEvent extends GameFrameworkEvent {
   selection: Array<{
-      unitId: string;
-      boxId: string;
+    unitId: string;
+    boxId: string;
   }>
   action: ISelectUnitAction
   previousSelection: Array<{
@@ -133,42 +124,37 @@ export interface  AfterUnitSelectionEvent  extends GameFrameworkEvent  {
  * @asMemberOf IGameFramework
  * @event
  */
-export declare function beforeAddUnitSuccess(event: BeforeAddUnitSuccessEvent):void;
-export interface BeforeAddUnitSuccessEvent extends GameFrameworkCancelableEvent  {
-  action: IAddUnitAction;
-  player: IPlayerUIState;
-  box: IBox;
+export declare function beforeAddUnitSuccess (event: BeforeAddUnitSuccessEvent): void
+export interface BeforeAddUnitSuccessEvent extends GameFrameworkCancelableEvent {
+  action: IAddUnitAction
+  player: IPlayerUIState
+  box: IBox
 }
 /**
  * Triggered after a unit was successfully added in the board
  * @asMemberOf IGameFramework
  * @event
  */
-export declare function afterAddUnit(event: AfterAddUnitEvent):void;
-export interface AfterAddUnitEvent extends GameFrameworkEvent  {
-  action: IAddUnitAction;
+export declare function afterAddUnit (event: AfterAddUnitEvent): void
+export interface AfterAddUnitEvent extends GameFrameworkEvent {
+  action: IAddUnitAction
   newUnit: IUnit
-  player: IPlayerUIState;
-  box: IBox;
+  player: IPlayerUIState
+  box: IBox
 }
-
-
-
 
 /**
  * Triggered just before units are going to be added successfully to the board
  * @asMemberOf IGameFramework
  * @event
  */
-export declare function beforeGameFinish(event: BeforeGameFinishEvent):void;
-export interface BeforeGameFinishEvent extends GameFrameworkEvent  {
+export declare function beforeGameFinish (event: BeforeGameFinishEvent): void
+export interface BeforeGameFinishEvent extends GameFrameworkEvent {
   /** id of the winner player */
   winner: string
 }
 
-
-
-export interface Log { 
+export interface Log {
   message: string
-  type: 'internal'|'warning'|'error'|'tip'|'help'|'internalerror'
+  type: 'internal' | 'warning' | 'error' | 'tip' | 'help' | 'internalError'
 }
