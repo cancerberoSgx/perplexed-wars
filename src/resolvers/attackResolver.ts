@@ -1,8 +1,8 @@
 import { IBox, IPlayer, IState, IUnit } from '../state/state-interfaces'
 import { IUnitActionResolver, IUnitActionResolverData } from './unitActionResolvers'
 import { getUnitsNear } from '../util/util'
-import { Game } from 'state/game'
-import { Events } from 'state/IGameFramework'
+import { Game } from '../state/game'
+import { Events } from '../state/IGameFramework'
 
 export class AttackResolver implements IUnitActionResolver {
   public resolve ({ state, unit, box, player }: IUnitActionResolverData): void {

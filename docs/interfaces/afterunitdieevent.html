@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>BeforeGameFinishEvent | perplexed-wars</title>
+	<title>AfterUnitDieEvent | perplexed-wars</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -54,16 +54,23 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="beforegamefinishevent.html">BeforeGameFinishEvent</a>
+					<a href="afterunitdieevent.html">AfterUnitDieEvent</a>
 				</li>
 			</ul>
-			<h1>Interface BeforeGameFinishEvent</h1>
+			<h1>Interface AfterUnitDieEvent</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Triggered after a unit die and is removed from the board</p>
+					</div>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
@@ -71,7 +78,7 @@
 						<a href="gameframeworkevent.html" class="tsd-signature-type">GameFrameworkEvent</a>
 						<ul class="tsd-hierarchy">
 							<li>
-								<span class="target">BeforeGameFinishEvent</span>
+								<span class="target">AfterUnitDieEvent</span>
 							</li>
 						</ul>
 					</li>
@@ -84,8 +91,12 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="beforegamefinishevent.html#state" class="tsd-kind-icon">state</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="beforegamefinishevent.html#winner" class="tsd-kind-icon">winner</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="afterunitdieevent.html#attacked" class="tsd-kind-icon">attacked</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="afterunitdieevent.html#attackedbox" class="tsd-kind-icon">attacked<wbr>Box</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="afterunitdieevent.html#attacker" class="tsd-kind-icon">attacker</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="afterunitdieevent.html#attackerbox" class="tsd-kind-icon">attacker<wbr>Box</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="afterunitdieevent.html#attackerplayer" class="tsd-kind-icon">attacker<wbr>Player</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="afterunitdieevent.html#state" class="tsd-kind-icon">state</a></li>
 							</ul>
 						</section>
 					</div>
@@ -93,6 +104,56 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="attacked" class="tsd-anchor"></a>
+					<h3>attacked</h3>
+					<div class="tsd-signature tsd-kind-icon">attacked<span class="tsd-signature-symbol">:</span> <a href="iunit.html" class="tsd-signature-type">IUnit</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in state/IGameFramework.d.ts:66</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="attackedbox" class="tsd-anchor"></a>
+					<h3>attacked<wbr>Box</h3>
+					<div class="tsd-signature tsd-kind-icon">attacked<wbr>Box<span class="tsd-signature-symbol">:</span> <a href="ibox.html" class="tsd-signature-type">IBox</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in state/IGameFramework.d.ts:67</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="attacker" class="tsd-anchor"></a>
+					<h3>attacker</h3>
+					<div class="tsd-signature tsd-kind-icon">attacker<span class="tsd-signature-symbol">:</span> <a href="iunit.html" class="tsd-signature-type">IUnit</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in state/IGameFramework.d.ts:68</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="attackerbox" class="tsd-anchor"></a>
+					<h3>attacker<wbr>Box</h3>
+					<div class="tsd-signature tsd-kind-icon">attacker<wbr>Box<span class="tsd-signature-symbol">:</span> <a href="ibox.html" class="tsd-signature-type">IBox</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in state/IGameFramework.d.ts:69</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="attackerplayer" class="tsd-anchor"></a>
+					<h3>attacker<wbr>Player</h3>
+					<div class="tsd-signature tsd-kind-icon">attacker<wbr>Player<span class="tsd-signature-symbol">:</span> <a href="iplayer.html" class="tsd-signature-type">IPlayer</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in state/IGameFramework.d.ts:70</li>
+						</ul>
+					</aside>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="state" class="tsd-anchor"></a>
 					<h3>state</h3>
@@ -103,21 +164,6 @@
 							<li>Defined in state/IGameFramework.d.ts:102</li>
 						</ul>
 					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="winner" class="tsd-anchor"></a>
-					<h3>winner</h3>
-					<div class="tsd-signature tsd-kind-icon">winner<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in state/IGameFramework.d.ts:162</li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>id of the winner player</p>
-						</div>
-					</div>
 				</section>
 			</section>
 		</div>
@@ -134,13 +180,25 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface">
-						<a href="beforegamefinishevent.html" class="tsd-kind-icon">Before<wbr>Game<wbr>Finish<wbr>Event</a>
+						<a href="afterunitdieevent.html" class="tsd-kind-icon">After<wbr>Unit<wbr>Die<wbr>Event</a>
 						<ul>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-								<a href="beforegamefinishevent.html#state" class="tsd-kind-icon">state</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="afterunitdieevent.html#attacked" class="tsd-kind-icon">attacked</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="beforegamefinishevent.html#winner" class="tsd-kind-icon">winner</a>
+								<a href="afterunitdieevent.html#attackedbox" class="tsd-kind-icon">attacked<wbr>Box</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="afterunitdieevent.html#attacker" class="tsd-kind-icon">attacker</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="afterunitdieevent.html#attackerbox" class="tsd-kind-icon">attacker<wbr>Box</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="afterunitdieevent.html#attackerplayer" class="tsd-kind-icon">attacker<wbr>Player</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="afterunitdieevent.html#state" class="tsd-kind-icon">state</a>
 							</li>
 						</ul>
 					</li>

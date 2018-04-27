@@ -93,6 +93,7 @@
 								<li class="tsd-kind-event tsd-parent-kind-interface"><a href="igameframework.html#afteraddunit" class="tsd-kind-icon">after<wbr>Add<wbr>Unit</a></li>
 								<li class="tsd-kind-event tsd-parent-kind-interface"><a href="igameframework.html#aftergamestarts" class="tsd-kind-icon">after<wbr>Game<wbr>Starts</a></li>
 								<li class="tsd-kind-event tsd-parent-kind-interface"><a href="igameframework.html#afterturnend" class="tsd-kind-icon">after<wbr>Turn<wbr>End</a></li>
+								<li class="tsd-kind-event tsd-parent-kind-interface"><a href="igameframework.html#afterunitdie" class="tsd-kind-icon">after<wbr>Unit<wbr>Die</a></li>
 								<li class="tsd-kind-event tsd-parent-kind-interface"><a href="igameframework.html#afterunitselection" class="tsd-kind-icon">after<wbr>Unit<wbr>Selection</a></li>
 								<li class="tsd-kind-event tsd-parent-kind-interface"><a href="igameframework.html#beforeaddunitsuccess" class="tsd-kind-icon">before<wbr>Add<wbr>Unit<wbr>Success</a></li>
 								<li class="tsd-kind-event tsd-parent-kind-interface"><a href="igameframework.html#beforegamefinish" class="tsd-kind-icon">before<wbr>Game<wbr>Finish</a></li>
@@ -147,7 +148,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in state/IGameFramework.d.ts:130</li>
+									<li>Defined in state/IGameFramework.d.ts:147</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -180,7 +181,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in state/IGameFramework.d.ts:60</li>
+									<li>Defined in state/IGameFramework.d.ts:77</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -213,7 +214,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in state/IGameFramework.d.ts:50</li>
+									<li>Defined in state/IGameFramework.d.ts:53</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -237,6 +238,39 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-event tsd-parent-kind-interface">
+					<a name="afterunitdie" class="tsd-anchor"></a>
+					<h3>after<wbr>Unit<wbr>Die</h3>
+					<ul class="tsd-signatures tsd-kind-event tsd-parent-kind-interface">
+						<li class="tsd-signature tsd-kind-icon">after<wbr>Unit<wbr>Die<span class="tsd-signature-symbol">(</span>event<span class="tsd-signature-symbol">: </span><a href="afterunitdieevent.html" class="tsd-signature-type">AfterUnitDieEvent</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in state/IGameFramework.d.ts:63</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Triggered after a unit die and is removed from the board</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>asmemberof</dt>
+									<dd><p>IGameFramework</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>event: <a href="afterunitdieevent.html" class="tsd-signature-type">AfterUnitDieEvent</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-event tsd-parent-kind-interface">
 					<a name="afterunitselection" class="tsd-anchor"></a>
 					<h3>after<wbr>Unit<wbr>Selection</h3>
 					<ul class="tsd-signatures tsd-kind-event tsd-parent-kind-interface">
@@ -246,7 +280,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in state/IGameFramework.d.ts:107</li>
+									<li>Defined in state/IGameFramework.d.ts:124</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -279,7 +313,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in state/IGameFramework.d.ts:119</li>
+									<li>Defined in state/IGameFramework.d.ts:136</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -312,7 +346,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in state/IGameFramework.d.ts:142</li>
+									<li>Defined in state/IGameFramework.d.ts:159</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -345,7 +379,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in state/IGameFramework.d.ts:68</li>
+									<li>Defined in state/IGameFramework.d.ts:85</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -378,7 +412,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in state/IGameFramework.d.ts:79</li>
+									<li>Defined in state/IGameFramework.d.ts:96</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -411,7 +445,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in state/IGameFramework.d.ts:96</li>
+									<li>Defined in state/IGameFramework.d.ts:113</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -510,13 +544,14 @@
 						<li class="tsd-signature tsd-kind-icon">emit<span class="tsd-signature-symbol">(</span>eventName<span class="tsd-signature-symbol">: </span><a href="../enums/events.html#event_after_turn_end" class="tsd-signature-type">EVENT_AFTER_TURN_END</a>, data<span class="tsd-signature-symbol">: </span><a href="afterturnendevent.html" class="tsd-signature-type">AfterTurnEndEvent</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
 						<li class="tsd-signature tsd-kind-icon">emit<span class="tsd-signature-symbol">(</span>eventName<span class="tsd-signature-symbol">: </span><a href="../enums/events.html#event_before_game_starts" class="tsd-signature-type">EVENT_BEFORE_GAME_STARTS</a>, data<span class="tsd-signature-symbol">: </span><a href="beforegamestartsevent.html" class="tsd-signature-type">BeforeGameStartsEvent</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
 						<li class="tsd-signature tsd-kind-icon">emit<span class="tsd-signature-symbol">(</span>eventName<span class="tsd-signature-symbol">: </span><a href="../enums/events.html#event_after_game_starts" class="tsd-signature-type">EVENT_AFTER_GAME_STARTS</a>, data<span class="tsd-signature-symbol">: </span><a href="aftergamestartsevent.html" class="tsd-signature-type">AfterGameStartsEvent</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+						<li class="tsd-signature tsd-kind-icon">emit<span class="tsd-signature-symbol">(</span>eventName<span class="tsd-signature-symbol">: </span><a href="../enums/events.html#event_after_unit_die" class="tsd-signature-type">EVENT_AFTER_UNIT_DIE</a>, data<span class="tsd-signature-symbol">: </span><a href="afterunitdieevent.html" class="tsd-signature-type">AfterUnitDieEvent</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Overrides EventEmitter.emit</p>
 								<ul>
-									<li>Defined in state/IGameFramework.d.ts:27</li>
+									<li>Defined in state/IGameFramework.d.ts:28</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -534,7 +569,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides EventEmitter.emit</p>
 								<ul>
-									<li>Defined in state/IGameFramework.d.ts:29</li>
+									<li>Defined in state/IGameFramework.d.ts:30</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -552,7 +587,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides EventEmitter.emit</p>
 								<ul>
-									<li>Defined in state/IGameFramework.d.ts:31</li>
+									<li>Defined in state/IGameFramework.d.ts:32</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -570,7 +605,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides EventEmitter.emit</p>
 								<ul>
-									<li>Defined in state/IGameFramework.d.ts:33</li>
+									<li>Defined in state/IGameFramework.d.ts:34</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -588,7 +623,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides EventEmitter.emit</p>
 								<ul>
-									<li>Defined in state/IGameFramework.d.ts:35</li>
+									<li>Defined in state/IGameFramework.d.ts:36</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -606,7 +641,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides EventEmitter.emit</p>
 								<ul>
-									<li>Defined in state/IGameFramework.d.ts:37</li>
+									<li>Defined in state/IGameFramework.d.ts:38</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -624,7 +659,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides EventEmitter.emit</p>
 								<ul>
-									<li>Defined in state/IGameFramework.d.ts:39</li>
+									<li>Defined in state/IGameFramework.d.ts:40</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -642,7 +677,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides EventEmitter.emit</p>
 								<ul>
-									<li>Defined in state/IGameFramework.d.ts:41</li>
+									<li>Defined in state/IGameFramework.d.ts:42</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -660,7 +695,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides EventEmitter.emit</p>
 								<ul>
-									<li>Defined in state/IGameFramework.d.ts:43</li>
+									<li>Defined in state/IGameFramework.d.ts:44</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -670,6 +705,24 @@
 								</li>
 								<li>
 									<h5>data: <a href="aftergamestartsevent.html" class="tsd-signature-type">AfterGameStartsEvent</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Overrides EventEmitter.emit</p>
+								<ul>
+									<li>Defined in state/IGameFramework.d.ts:46</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>eventName: <a href="../enums/events.html#event_after_unit_die" class="tsd-signature-type">EVENT_AFTER_UNIT_DIE</a></h5>
+								</li>
+								<li>
+									<h5>data: <a href="afterunitdieevent.html" class="tsd-signature-type">AfterUnitDieEvent</a></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
@@ -774,7 +827,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in state/IGameFramework.d.ts:25</li>
+									<li>Defined in state/IGameFramework.d.ts:26</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -797,7 +850,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in state/IGameFramework.d.ts:24</li>
+									<li>Defined in state/IGameFramework.d.ts:25</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -822,13 +875,14 @@
 						<li class="tsd-signature tsd-kind-icon">on<span class="tsd-signature-symbol">(</span>eventName<span class="tsd-signature-symbol">: </span><a href="../enums/events.html#event_after_turn_end" class="tsd-signature-type">EVENT_AFTER_TURN_END</a>, eventHandler<span class="tsd-signature-symbol">: </span><a href="igameframework.html#afterturnend" class="tsd-signature-type">afterTurnEnd</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
 						<li class="tsd-signature tsd-kind-icon">on<span class="tsd-signature-symbol">(</span>eventName<span class="tsd-signature-symbol">: </span><a href="../enums/events.html#event_before_game_starts" class="tsd-signature-type">EVENT_BEFORE_GAME_STARTS</a>, eventHandler<span class="tsd-signature-symbol">: </span><a href="igameframework.html#beforegamestarts" class="tsd-signature-type">beforeGameStarts</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
 						<li class="tsd-signature tsd-kind-icon">on<span class="tsd-signature-symbol">(</span>eventName<span class="tsd-signature-symbol">: </span><a href="../enums/events.html#event_after_game_starts" class="tsd-signature-type">EVENT_AFTER_GAME_STARTS</a>, eventHandler<span class="tsd-signature-symbol">: </span><a href="igameframework.html#aftergamestarts" class="tsd-signature-type">afterGameStarts</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
+						<li class="tsd-signature tsd-kind-icon">on<span class="tsd-signature-symbol">(</span>eventName<span class="tsd-signature-symbol">: </span><a href="../enums/events.html#event_after_unit_die" class="tsd-signature-type">EVENT_AFTER_UNIT_DIE</a>, eventHandler<span class="tsd-signature-symbol">: </span><a href="igameframework.html#afterunitdie" class="tsd-signature-type">afterUnitDie</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Overrides EventEmitter.on</p>
 								<ul>
-									<li>Defined in state/IGameFramework.d.ts:26</li>
+									<li>Defined in state/IGameFramework.d.ts:27</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -846,7 +900,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides EventEmitter.on</p>
 								<ul>
-									<li>Defined in state/IGameFramework.d.ts:28</li>
+									<li>Defined in state/IGameFramework.d.ts:29</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -864,7 +918,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides EventEmitter.on</p>
 								<ul>
-									<li>Defined in state/IGameFramework.d.ts:30</li>
+									<li>Defined in state/IGameFramework.d.ts:31</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -882,7 +936,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides EventEmitter.on</p>
 								<ul>
-									<li>Defined in state/IGameFramework.d.ts:32</li>
+									<li>Defined in state/IGameFramework.d.ts:33</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -900,7 +954,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides EventEmitter.on</p>
 								<ul>
-									<li>Defined in state/IGameFramework.d.ts:34</li>
+									<li>Defined in state/IGameFramework.d.ts:35</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -918,7 +972,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides EventEmitter.on</p>
 								<ul>
-									<li>Defined in state/IGameFramework.d.ts:36</li>
+									<li>Defined in state/IGameFramework.d.ts:37</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -936,7 +990,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides EventEmitter.on</p>
 								<ul>
-									<li>Defined in state/IGameFramework.d.ts:38</li>
+									<li>Defined in state/IGameFramework.d.ts:39</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -954,7 +1008,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides EventEmitter.on</p>
 								<ul>
-									<li>Defined in state/IGameFramework.d.ts:40</li>
+									<li>Defined in state/IGameFramework.d.ts:41</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -972,7 +1026,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides EventEmitter.on</p>
 								<ul>
-									<li>Defined in state/IGameFramework.d.ts:42</li>
+									<li>Defined in state/IGameFramework.d.ts:43</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -982,6 +1036,24 @@
 								</li>
 								<li>
 									<h5>eventHandler: <a href="igameframework.html#aftergamestarts" class="tsd-signature-type">afterGameStarts</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4>
+						</li>
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Overrides EventEmitter.on</p>
+								<ul>
+									<li>Defined in state/IGameFramework.d.ts:45</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>eventName: <a href="../enums/events.html#event_after_unit_die" class="tsd-signature-type">EVENT_AFTER_UNIT_DIE</a></h5>
+								</li>
+								<li>
+									<h5>eventHandler: <a href="igameframework.html#afterunitdie" class="tsd-signature-type">afterUnitDie</a></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4>
@@ -1232,7 +1304,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in state/IGameFramework.d.ts:22</li>
+									<li>Defined in state/IGameFramework.d.ts:23</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -1274,7 +1346,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in state/IGameFramework.d.ts:20</li>
+									<li>Defined in state/IGameFramework.d.ts:21</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1296,7 +1368,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in state/IGameFramework.d.ts:21</li>
+									<li>Defined in state/IGameFramework.d.ts:22</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -1355,6 +1427,9 @@
 							</li>
 							<li class=" tsd-kind-event tsd-parent-kind-interface">
 								<a href="igameframework.html#afterturnend" class="tsd-kind-icon">after<wbr>Turn<wbr>End</a>
+							</li>
+							<li class=" tsd-kind-event tsd-parent-kind-interface">
+								<a href="igameframework.html#afterunitdie" class="tsd-kind-icon">after<wbr>Unit<wbr>Die</a>
 							</li>
 							<li class=" tsd-kind-event tsd-parent-kind-interface">
 								<a href="igameframework.html#afterunitselection" class="tsd-kind-icon">after<wbr>Unit<wbr>Selection</a>
