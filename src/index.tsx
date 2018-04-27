@@ -1,23 +1,17 @@
 
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import { App } from './components/App';
-import registerServiceWorker from './registerServiceWorker';
-import './index.css';
-import { Game } from './state/game';
-import { State } from 'state/state';
-import { Behavior } from 'state/behavior';
+import * as React from 'react'
+import * as ReactDOM from 'react-dom'
+import { App } from './components/App'
+import registerServiceWorker from './registerServiceWorker'
+import './index.css'
+import { Game } from './state/game'
+import { State } from 'state/state'
+import { Behavior } from 'state/behavior'
 
 ReactDOM.render(
   <App />,
-  document.getElementById('root') as HTMLElement
+  document.getElementById('root') as HTMLElement,
 )
 
-// setTimeout(() => {
-  
-  // State.get()
-  // Behavior.get()
-  Game.getInstance().start()  
-  registerServiceWorker()
-
-// }, 200);
+Game.getInstance().start()  
+registerServiceWorker()

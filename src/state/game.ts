@@ -34,7 +34,7 @@ export class Game extends EventEmitter implements IGameFramework {
     if (State.get().game.realTime) {
       this.intervalId = setInterval(() => {
         this.nextTurn()
-      }, State.get().game.interval)
+      },                            State.get().game.interval)
     }
   }
 
@@ -51,7 +51,7 @@ export class Game extends EventEmitter implements IGameFramework {
     }
     if (!State.get().game.paused) {
       const action: ITurnEndAction = {
-        type: ACTION_GAME_LOOP_INCREMENT_INTERVAL
+        type: ACTION_GAME_LOOP_INCREMENT_INTERVAL,
       }
       store().dispatch(action)
       Behavior.get().players.forEach(p => p.ia && p.ia.yourTurn(State.get()))

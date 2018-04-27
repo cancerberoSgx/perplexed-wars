@@ -6,11 +6,11 @@ import { changeGameSettings } from './changeGameSettings'
 import { IState } from '../state/state-interfaces'
 
 let storeInternal
-export function store () {
+export function store() {
   if (!storeInternal) {
 
     const allReducers = combineReducers({
-      addNewUnit, clickAddNewUnitButton, gameLoop, selectUnit, changeGameSettings
+      addNewUnit, clickAddNewUnitButton, gameLoop, selectUnit, changeGameSettings,
     })
     storeInternal = createStore(allReducers)
   }

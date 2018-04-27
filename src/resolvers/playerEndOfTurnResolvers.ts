@@ -26,5 +26,5 @@ export interface PlayerEndOfTurnResolverData {
 }
 export const playerEndOfTurnResolvers: PlayerEndOfTurnResolver[] = [
   // new IaEndOfTurnResolver(),
-  new PlayerEndOfTurnResourceResolver()
+  new PlayerEndOfTurnResourceResolver(),
 ]

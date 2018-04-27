@@ -12,7 +12,7 @@ export enum Events {
   EVENT_AFTER_ADD_UNIT = 'afterAddUnit',
   EVENT_BEFORE_GAME_FINISH = 'beforeGameFinish',
   EVENT_BEFORE_TURN_END = 'beforeTurnEnd',
-  EVENT_AFTER_TURN_END = 'afterTurnEnd'
+  EVENT_AFTER_TURN_END = 'afterTurnEnd',
 
 }
 
@@ -56,7 +56,7 @@ export interface IGameFramework extends EventEmitter {
  * @asMemberOf IGameFramework
  * @event
  */
-export declare function afterTurnEnd (event: AfterTurnEndEvent): void
+export declare function afterTurnEnd(event: AfterTurnEndEvent): void
 
 /** triggered just before turn ends (units didn't moved yet) */
 export interface AfterTurnEndEvent extends GameFrameworkEvent {
@@ -68,7 +68,7 @@ export interface AfterTurnEndEvent extends GameFrameworkEvent {
  * @asMemberOf IGameFramework
  * @event
  */
-export declare function beforeTurnEnd (event: BeforeTurnEndEvent): void
+export declare function beforeTurnEnd(event: BeforeTurnEndEvent): void
 
 /** triggered just before turn ends (units didn't moved yet) */
 export interface BeforeTurnEndEvent extends GameFrameworkCancelableEvent {
@@ -88,10 +88,11 @@ export interface GameFrameworkCancelableEvent extends GameFrameworkEvent {
  * @asMemberOf IGameFramework
  * @event
  */
-export declare function beforeUnitSelection (event: BeforeUnitSelectionEvent): void
+export declare function beforeUnitSelection(event: BeforeUnitSelectionEvent): void
 
 /** triggered just before user select a unit */
 export interface BeforeUnitSelectionEvent extends GameFrameworkEvent {
+  // tslint:disable-next-line:prefer-array-literal
   selection: Array<{
     unitId: string;
     boxId: string;
@@ -104,7 +105,7 @@ export interface BeforeUnitSelectionEvent extends GameFrameworkEvent {
  * @asMemberOf IGameFramework
  * @event
  */
-export declare function afterUnitSelection (event: AfterUnitSelectionEvent): void
+export declare function afterUnitSelection(event: AfterUnitSelectionEvent): void
 
 /** triggered after user selected a unit */
 export interface AfterUnitSelectionEvent extends GameFrameworkEvent {
@@ -124,7 +125,7 @@ export interface AfterUnitSelectionEvent extends GameFrameworkEvent {
  * @asMemberOf IGameFramework
  * @event
  */
-export declare function beforeAddUnitSuccess (event: BeforeAddUnitSuccessEvent): void
+export declare function beforeAddUnitSuccess(event: BeforeAddUnitSuccessEvent): void
 export interface BeforeAddUnitSuccessEvent extends GameFrameworkCancelableEvent {
   action: IAddUnitAction
   player: IPlayerUIState
@@ -135,7 +136,7 @@ export interface BeforeAddUnitSuccessEvent extends GameFrameworkCancelableEvent 
  * @asMemberOf IGameFramework
  * @event
  */
-export declare function afterAddUnit (event: AfterAddUnitEvent): void
+export declare function afterAddUnit(event: AfterAddUnitEvent): void
 export interface AfterAddUnitEvent extends GameFrameworkEvent {
   action: IAddUnitAction
   newUnit: IUnit
@@ -148,7 +149,7 @@ export interface AfterAddUnitEvent extends GameFrameworkEvent {
  * @asMemberOf IGameFramework
  * @event
  */
-export declare function beforeGameFinish (event: BeforeGameFinishEvent): void
+export declare function beforeGameFinish(event: BeforeGameFinishEvent): void
 export interface BeforeGameFinishEvent extends GameFrameworkEvent {
   /** id of the winner player */
   winner: string

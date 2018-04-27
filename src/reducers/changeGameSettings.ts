@@ -10,7 +10,7 @@ export interface IChangeGameSettingsAction extends Action {
   interval?: number
   allowDiagonal?: boolean
 }
-export function changeGameSettings (state: IState, action: IChangeGameSettingsAction): IState {
+export function changeGameSettings(state: IState, action: IChangeGameSettingsAction): IState {
   state = state || State.get()
   if (action.type !== ACTION_CHANGE_GAME_SETTINGS) {
     return state
@@ -25,7 +25,7 @@ export function changeGameSettings (state: IState, action: IChangeGameSettingsAc
       setTimeout(() => {
         Game.getInstance().stop()
         Game.getInstance().start()
-      }, 100)
+      },         100)
     }
   })
 }

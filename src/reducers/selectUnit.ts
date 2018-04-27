@@ -12,7 +12,7 @@ export interface ISelectUnitAction extends Action {
   union: boolean // user is pressing ctrl+click
 }
 
-export function selectUnit (state: IState, action: ISelectUnitAction): IState {
+export function selectUnit(state: IState, action: ISelectUnitAction): IState {
   state = state || State.get()
   if (action.type !== ACTION_SELECT_UNIT) {
     return state

@@ -1,10 +1,10 @@
-import * as React from 'react';
-import { range } from '../util/util';
-import { BaseComponent } from './BaseComponent';
-import { BoardRow } from './BoardRow';
+import * as React from 'react'
+import { range } from '../util/util'
+import { BaseComponent } from './BaseComponent'
+import { BoardRow } from './BoardRow'
 
 export class Board extends BaseComponent<{}> {
-  constructor(props:{}){
+  constructor(props:{}) {
     super(props)
   }
   public render() {
@@ -12,12 +12,12 @@ export class Board extends BaseComponent<{}> {
       <table className="Board">
         <tbody>
         {
-          range(this.state.board.m).map(n=>
-            <BoardRow key={n} n={n}/>
+          range(this.state.board.m).map(n =>
+            <BoardRow key={n} n={n}/>,
           )
         }
         </tbody>
       </table>
-    );
+    )
   }
 }

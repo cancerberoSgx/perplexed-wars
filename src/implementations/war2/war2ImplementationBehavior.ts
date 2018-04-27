@@ -8,21 +8,21 @@ import { IA } from '../../ia/ia-interfaces'
 import { StateAccessHelper } from '../../state/StateAccessHelper'
 
 /** build all the behavior (state modifiers) if war2 impl */
-export function war2ImplementationBehavior (): IBehavior {
+export function war2ImplementationBehavior(): IBehavior {
   return {
     unitTypes: buildUnitBehaviors(),
-    players: buildPlayerBehaviors()
+    players: buildPlayerBehaviors(),
   }
 }
 
-function buildPlayerBehaviors () {
+function buildPlayerBehaviors() {
 
   // heads up! this variable is the initial state and obsolete - we only read unit types ids that we know doesn't change
   const initialState = war2ImplementationInitialState()
   const playerBehaviors = initialState.players.map<IPlayerBehavior>(p => ({
     id: p.id,
     stateModifiers: [],
-    ia: p.isAI ? new SimpleIa1() : undefined
+    ia: p.isAI ? new SimpleIa1() : undefined,
   }))
 
   playerBehaviors.forEach(playerBehavior => {
@@ -42,17 +42,17 @@ function buildPlayerBehaviors () {
         })
 
         if (notEnough) {
-          event.cancelCallback('Impossible to train unit, you don\'t have enough resources') // TODO: say whay's missing
+          event.cancelCallback('Impossible to train unit, you don\'t have enough resources') // TODO: say what's missing
           // TODO: unfortunately we cannot cancel events using eventEmitter
         }
-      }
+      },
     }
     playerBehavior.stateModifiers.push(checkEnoughMoney)
   })
   return playerBehaviors
 }
 
-function buildUnitBehaviors () {
+function buildUnitBehaviors() {
   // heads up! this variable is the initial state and obsolete - we only read unit types ids that we know doesn't change
   const initialState = war2ImplementationInitialState()
 
@@ -77,7 +77,7 @@ function buildUnitBehaviors () {
             playerResource.value -= cost.value
           }
         })
-      }
+      },
     }
     const utb: IUnitTypeBehavior = {
       id: unitBehavior.id,
@@ -86,20 +86,21 @@ function buildUnitBehaviors () {
       buildCondition: (player: IPlayer) => {
         if (unitBehavior.isBase) {
           return { canBuild: false, whyNot: `Only one base allowed in this game` }
-        } else { // do I have sufficient resources ?
-
-          const unitType = StateAccessHelper.get().unitType(unitBehavior.id)
-          const resourceCost = unitType.custom && (unitType.custom as War2PlayerCustom).cost
-          const notEnough = resourceCost.find(cost => {
-            const playerResource = player.resources.find(r => r.id === cost.resourceId)
-            return playerResource && playerResource.value < cost.value
-          })
-          return { canBuild: !notEnough, whyNot: ' You cannot build that - not enough resources' } // TODO: inform which resources and how much is missing
-        }
+        }  
+        
+        // do I have sufficient resources ?
+        const unitType = StateAccessHelper.get().unitType(unitBehavior.id)
+        const resourceCost = unitType.custom && (unitType.custom as War2PlayerCustom).cost
+        const notEnough = resourceCost.find(cost => {
+          const playerResource = player.resources.find(r => r.id === cost.resourceId)
+          return playerResource && playerResource.value < cost.value
+        })
+        return { canBuild: !notEnough, whyNot: ' You cannot build that - not enough resources' } // TODO: inform which resources and how much is missing
+        
       },
       stateModifiers: [
-        chargeNewUnitModifier
-      ]
+        chargeNewUnitModifier,
+      ],
     }
 
     unitBehaviors.push(utb)

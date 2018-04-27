@@ -40,12 +40,12 @@ export class SimpleIa1 implements IA {
     }
     // find a available board box
     const addUnitAction: IAddUnitAction = {
-      'type': ACTION_ADD_UNIT,
+      type: ACTION_ADD_UNIT,
       unitId: strongCanBuy.id,
       many: 1,
       x: availablePlaces[0].x,
       y: availablePlaces[0].y,
-      playerId: this.id
+      playerId: this.id,
     }
     store().dispatch(addUnitAction)
 

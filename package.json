@@ -16,7 +16,7 @@
     "test": "react-scripts-ts test --env=jsdom",
     "eject": "react-scripts-ts eject",
     "lint": "tslint src/**/*.ts",
-    "lint-fix": "tslint --fix src/**/*.ts",
+    "lint-fix": "tslint --fix src/**/*.ts src/**/*.tsx",
     "tsc": "tsc --project tsconfig_for_typedoc.json",
     "tsc-watch": "tsc --project tsconfig_for_typedoc.json --watch",
     "doc": "tsc --project tsconfig_for_typedoc.json && typedoc --options typedoc.ts --plugin typedoc-plugin-as-member-of",
@@ -34,7 +34,6 @@
     "react-scripts-ts": "2.15.1",
     "tslint": "^5.9.1",
     "tslint-config-airbnb": "^5.8.0",
-    "tslint-config-standard": "^7.0.0",
     "typedoc": "^0.11.1",
     "typedoc-plugin-as-member-of": "^1.0.2",
     "typescript": "^2.8.1"

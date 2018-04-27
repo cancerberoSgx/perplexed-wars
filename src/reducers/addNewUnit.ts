@@ -14,7 +14,7 @@ export interface IClickAddUnitButtonAction extends Action {
   playerId: string
 }
 
-export function clickAddNewUnitButton (state: IState, action: IClickAddUnitButtonAction): IState {
+export function clickAddNewUnitButton(state: IState, action: IClickAddUnitButtonAction): IState {
   state = state || State.get()
   if (action.type !== ACTION_ADD_UNIT_CLICK_BUTTON) {
     return state
@@ -46,7 +46,7 @@ export interface IAddUnitAction extends Action {
   ctrlKey?: boolean
 }
 
-export function addNewUnit (state: IState, action: IAddUnitAction): IState {
+export function addNewUnit(state: IState, action: IAddUnitAction): IState {
 
   state = State.get()
   if (action.type !== ACTION_ADD_UNIT) {
@@ -54,7 +54,7 @@ export function addNewUnit (state: IState, action: IAddUnitAction): IState {
   }
   const playerIsHuman = !action.playerId
 
-  const playerUi = state.uiState.playerControls.find(pc => (!playerIsHuman ? (pc.playerId === action.playerId) : !!pc.addUnitButtons.find(but => but.pressed))
+  const playerUi = state.uiState.playerControls.find(pc => (!playerIsHuman ? (pc.playerId === action.playerId) : !!pc.addUnitButtons.find(but => but.pressed)),
   )
 
   if (!playerUi) { // this probably means that user is selecting a unit in the board (didn't previously clicked add-unit button)
@@ -76,7 +76,7 @@ export function addNewUnit (state: IState, action: IAddUnitAction): IState {
       Game.getInstance().emit(Events.EVENT_BEFORE_ADD_UNIT_SUCCESS, {
         action, player: playerUi, box, state, cancelCallback: (reason: string) => {
           cancelledReason = reason
-        }
+        },
       })
       if (cancelledReason && playerIsHuman) {
         alert('Cannot comply: ' + cancelledReason)

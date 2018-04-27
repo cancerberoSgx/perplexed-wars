@@ -2,7 +2,6 @@
   "extends": ["tslint-config-airbnb", "tslint-react"],
   "linterOptions": {
     "exclude": [
-      "src/components/*",
       "config/**/*.js",
       "node_modules/**/*.ts",
       "build",
@@ -13,5 +12,13 @@
   "defaultSeverity": "error",
   
   "rules": {
+    "no-parameter-reassignment": false,
+    "max-line-length": false,
+    "semicolon": {"options": "never"},
+    "ter-arrow-parens": false,
+    "object-shorthand-properties-first": false,
+    "prefer-array-literal": false,
+    "no-increment-decrement": false,
+    "jsx-no-multiline-js": false
   }
 }

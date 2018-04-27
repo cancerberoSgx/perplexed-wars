@@ -14,5 +14,5 @@ export interface IUnitActionResolverData {
 }
 export const unitActionResolvers: IUnitActionResolver[] = [
   new AttackResolver(),
-  new MoveResolver()
+  new MoveResolver(),
 ]

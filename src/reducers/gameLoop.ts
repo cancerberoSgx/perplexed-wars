@@ -19,7 +19,7 @@ export interface ITurnEndAction {
  * @param state
  * @param action
  */
-export function gameLoop (state: IState, action: Action): IState {
+export function gameLoop(state: IState, action: Action): IState {
   state = state || State.get()
   if (action.type !== ACTION_GAME_LOOP_INCREMENT_INTERVAL) {
     return state

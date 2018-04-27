@@ -1,27 +1,28 @@
-import * as React from 'react';
-import { store } from '../reducers/store';
-import { ACTION_SELECT_UNIT } from '../reducers/selectUnit';
-import { IBox, IUnit } from '../state/state-interfaces';
-import { State } from '../state/state';
-import { BaseComponent } from './BaseComponent';
-import './Units.css';
+import * as React from 'react'
+import { store } from '../reducers/store'
+import { ACTION_SELECT_UNIT } from '../reducers/selectUnit'
+import { IBox, IUnit } from '../state/state-interfaces'
+import { State } from '../state/state'
+import { BaseComponent } from './BaseComponent'
+import './Units.css'
 
 export class Units extends BaseComponent<{units:IUnit[], box:IBox}>  {
-  constructor(props:{units:IUnit[], box:IBox}){
+  constructor(props:{units:IUnit[], box:IBox}) {
     super(props)
   }
   public render() {
     return (
       <div key={this.props.box.id} className={this.buildClassName('Units', this.props.box.id)}> {
-        this.props.units.map(unit=> 
+        this.props.units.map(unit => 
           <div key={unit.id}  className="unit-container">
           <img 
             data-unit-id={unit.id}
             src={unit.type.image}
             className={this.buildClassName('Unit', this.props.box.id, unit.id)}
-            onClick={unitClicked}/>
+            onClick={unitClicked}
+          />
           <span className="unit-health">{unit.state.health}</span>
-          </div>
+          </div>,
         )
       }
       </div>
@@ -29,24 +30,24 @@ export class Units extends BaseComponent<{units:IUnit[], box:IBox}>  {
   }
   protected buildClassName(main:string, box:string, unit?:string): string {
     const classes = [main]
-    if(main==='Units' && this.state.uiState.unitSelection.find(s=>s.boxId===this.props.box.id)){
+    if (main === 'Units' && this.state.uiState.unitSelection.find(s => s.boxId === this.props.box.id)) {
       classes.push('selected')
     }
-    if(main==='Unit' && this.state.uiState.unitAttacks.find(death=>death.attacked===unit)){
+    if (main === 'Unit' && this.state.uiState.unitAttacks.find(death => death.attacked === unit)) {
       classes.push('attacked')
     }
-    if(main==='Unit' && this.state.uiState.unitAttacks.find(death=>death.attacker===unit)){
+    if (main === 'Unit' && this.state.uiState.unitAttacks.find(death => death.attacker === unit)) {
       classes.push('attacker')
     }
     return classes.join(' ')
   }
 }
 
-function unitClicked(e:React.MouseEvent<HTMLElement>){
+function unitClicked(e:React.MouseEvent<HTMLElement>) {
   store().dispatch({
     type: ACTION_SELECT_UNIT,
     unitId: e.currentTarget.getAttribute('data-unit-id'),
-    union: e.ctrlKey
+    union: e.ctrlKey,
   })
 }
 

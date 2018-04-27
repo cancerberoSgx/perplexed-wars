@@ -1,6 +1,6 @@
 import { IState, IBox, IUnit, IPlayer } from '../state/state-interfaces'
 
-export function range (n: number): number[] {
+export function range(n: number): number[] {
   const a = new Array(n)
   for (let i = 0; i < a.length; i++) {
     a[i] = i
@@ -8,7 +8,7 @@ export function range (n: number): number[] {
   return a
 }
 
-export function getAvailablePlacesFor (playerId: string, state: IState): IBox[] {
+export function getAvailablePlacesFor(playerId: string, state: IState): IBox[] {
   let result: IBox[] = []
   iterateUnits(state, (box, u) => {
     if (u.state.territoryRadius > 0 && u.playerId === playerId) {
@@ -19,11 +19,11 @@ export function getAvailablePlacesFor (playerId: string, state: IState): IBox[] 
   return result
 }
 
-export function clone<T> (t: T): T {
+export function clone<T>(t: T): T {
   return JSON.parse(JSON.stringify(t)) as T
 }
 
-export function getPathMatrix (state: IState): number[][] {
+export function getPathMatrix(state: IState): number[][] {
   // TODO: make me faster and use a cache! also implement units.properties.transpasable
   const result = []
 
@@ -37,7 +37,7 @@ export function getPathMatrix (state: IState): number[][] {
   return result
 }
 
-export function findUnit (state: IState, predicate: (u: IUnit, box: IBox) => boolean): Array<{unit: IUnit,box?: IBox}> {
+export function findUnit(state: IState, predicate: (u: IUnit, box: IBox) => boolean): Array<{unit: IUnit,box?: IBox}> {
   // TODO: make me faster!
   const found: Array<{unit: IUnit,box: IBox}> = []
   state.board.boxes.forEach(box => box.units.forEach(unit => {
@@ -48,7 +48,7 @@ export function findUnit (state: IState, predicate: (u: IUnit, box: IBox) => boo
   return found
 }
 
-export function getUnitsNear ({ state, unit, box, radio, predicate }: {state: IState, unit: IUnit, box: IBox, radio: number, predicate?: (u: IUnit) => boolean}): Array<{targetUnit: IUnit, targetBox: IBox}> {
+export function getUnitsNear({ state, unit, box, radio, predicate }: {state: IState, unit: IUnit, box: IBox, radio: number, predicate?: (u: IUnit) => boolean}): Array<{targetUnit: IUnit, targetBox: IBox}> {
   const near = state.board.boxes.filter(b => Math.abs(b.x - box.x) <= radio && Math.abs(b.y - box.y) <= radio)
   const result: Array<{targetUnit: IUnit, targetBox: IBox}> = []
   near.forEach(b =>
@@ -56,17 +56,17 @@ export function getUnitsNear ({ state, unit, box, radio, predicate }: {state: IS
       if (!predicate || predicate(u)) {
         result.push({ targetUnit: u, targetBox: b })
       }
-    })
+    }),
   )
   return result
 }
 
-export function getBoxesNear ({ state, box, radio, predicate }: {state: IState, box: IBox, radio: number, predicate?: (b: IBox) => boolean}): IBox[] {
+export function getBoxesNear({ state, box, radio, predicate }: {state: IState, box: IBox, radio: number, predicate?: (b: IBox) => boolean}): IBox[] {
   predicate = predicate || (b => true)
   return state.board.boxes.filter(b => Math.abs(b.x - box.x) <= radio && Math.abs(b.y - box.y) <= radio && predicate(b))
 }
 
-export function iterateUnits (state: IState, iterator: (box: IBox, unit: IUnit) => void) {
+export function iterateUnits(state: IState, iterator: (box: IBox, unit: IUnit) => void) {
   state.board.boxes.forEach(box => {
     box.units.forEach(unit => {
       iterator(box, unit)
@@ -85,7 +85,7 @@ export function iterateUnits (state: IState, iterator: (box: IBox, unit: IUnit) 
 // }
 
 // utilities for poblate the initial state data:
-export function buildUIStatePlayerControls (state: IState) {
+export function buildUIStatePlayerControls(state: IState) {
   state.players.forEach(p => {
     const playerControl = { playerId: p.id, addUnitButtons: [] }
     p.unitTypes.forEach(unitType => {
@@ -94,7 +94,7 @@ export function buildUIStatePlayerControls (state: IState) {
     state.uiState.playerControls.push(playerControl)
   })
 }
-export function createBoxes (state: IState, n: number, m: number, player0BaseId: string, player1BaseId: string) {
+export function createBoxes(state: IState, n: number, m: number, player0BaseId: string, player1BaseId: string) {
   const boxes = state.board.boxes = []
   for (let i = 0; i < n; i++) {
     for (let j = 0; j < m; j++) {
@@ -103,7 +103,7 @@ export function createBoxes (state: IState, n: number, m: number, player0BaseId:
         y: j,
         terrain: 'grey',
         units: [],
-        id: `box-${i}-${j}`
+        id: `box-${i}-${j}`,
       }
       if (i === 0 && j === 0) {
         box.units.push(newUnit(state, player0BaseId, state.players[0].id))
@@ -119,7 +119,7 @@ export function createBoxes (state: IState, n: number, m: number, player0BaseId:
 
 let newUnitCounter: number = 0
 
-export function newUnit (state: IState, typeId: string, playerId: string): IUnit {
+export function newUnit(state: IState, typeId: string, playerId: string): IUnit {
   const type = state.unitsTypes.find(ut => ut.id === typeId)
   return {
     type,
@@ -127,6 +127,6 @@ export function newUnit (state: IState, typeId: string, playerId: string): IUnit
     id: `unit-${playerId}-${newUnitCounter++}`,
     timestamp: Date.now(),
     state: clone(type.properties),
-    killCount: 0
+    killCount: 0,
   }
 }

@@ -1,16 +1,16 @@
-import * as React from 'react';
-import * as logo from '../assets/logo.png';
-import { Game } from '../state/game';
-import './App.css';
-import { BaseComponent } from './BaseComponent';
-import { Board } from './Board';
-import { UnitsPanel } from './UnitsPanel';
-import { store } from '../reducers/store';
-import { State } from '../state/state';
-import { ACTION_CHANGE_GAME_SETTINGS, IChangeGameSettingsAction } from '../reducers/changeGameSettings';
+import * as React from 'react'
+import * as logo from '../assets/logo.png'
+import { Game } from '../state/game'
+import './App.css'
+import { BaseComponent } from './BaseComponent'
+import { Board } from './Board'
+import { UnitsPanel } from './UnitsPanel'
+import { store } from '../reducers/store'
+import { State } from '../state/state'
+import { ACTION_CHANGE_GAME_SETTINGS, IChangeGameSettingsAction } from '../reducers/changeGameSettings'
 
 export class App extends BaseComponent<{}> {
-  constructor(props:{}){
+  constructor(props:{}) {
     super(props)
   }
   public render() {
@@ -33,10 +33,10 @@ export class App extends BaseComponent<{}> {
 
             {this.state.game.realTime && <span><input type="checkbox" checked={this.state.game.paused} onChange={pauseClicked} /> Paused  </span>}
 
-            {this.state.game.realTime && <span>Interval: <input type="number" onChange={changeInterval} defaultValue={this.state.game.interval+''}/></span>}
+            {this.state.game.realTime && <span>Interval: <input type="number" onChange={changeInterval} defaultValue={this.state.game.interval + ''}/></span>}
 
 
-            <div>TIME: {this.state.game.time/1000} </div>
+            <div>TIME: {this.state.game.time / 1000} </div>
           </div>  
         
         </header>
@@ -46,7 +46,7 @@ export class App extends BaseComponent<{}> {
         
       {/* <div className="line" style={lineStyle()} /> */}
       </div>
-    );
+    )
   }
 }
 
@@ -58,30 +58,30 @@ export class App extends BaseComponent<{}> {
 //   return result;
 // }
 
-function changeInterval(e:React.ChangeEvent<HTMLInputElement>){
+function changeInterval(e:React.ChangeEvent<HTMLInputElement>) {
   const interval = parseInt(e.currentTarget.value, 10)
-  if(interval>200) { // TODO: validation and throttle
+  if (interval > 200) { // TODO: validation and throttle
     store().dispatch({
       type: ACTION_CHANGE_GAME_SETTINGS,
-      interval
+      interval,
     }as IChangeGameSettingsAction)
   }
 }
-function allowDiagonalChanged(e:React.ChangeEvent<HTMLInputElement>){
+function allowDiagonalChanged(e:React.ChangeEvent<HTMLInputElement>) {
   store().dispatch({
     type: ACTION_CHANGE_GAME_SETTINGS,
-    allowDiagonal: !State.get().game.allowDiagonal
+    allowDiagonal: !State.get().game.allowDiagonal,
   }as IChangeGameSettingsAction)
 }
-function realTimeChanged(e:React.ChangeEvent<HTMLInputElement>){
+function realTimeChanged(e:React.ChangeEvent<HTMLInputElement>) {
   store().dispatch({
     type: ACTION_CHANGE_GAME_SETTINGS,
-    realTime: !!e.currentTarget.checked
+    realTime: !!e.currentTarget.checked,
   }as IChangeGameSettingsAction)
 }
-function pauseClicked(e:React.ChangeEvent<HTMLInputElement>){
+function pauseClicked(e:React.ChangeEvent<HTMLInputElement>) {
   store().dispatch({
     type: ACTION_CHANGE_GAME_SETTINGS,
-    paused: !State.get().game.paused
+    paused: !State.get().game.paused,
   }as IChangeGameSettingsAction)
 }

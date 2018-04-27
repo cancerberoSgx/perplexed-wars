@@ -57,15 +57,17 @@ export interface IUnitTypeBehavior extends IStateModifierBehavior {
    *
    * Note: this is not about IA, this is about unit movement policy. Remember units movement and attack arer automatically users, including IA cannot decide anything about it.
    */
+  // tslint:disable-next-line:variable-name
   unitShouldMove: ({ unit: IUnit, box: IBox }) => IBox | true
 
   /**
    * same logic as [[unitShouldMove]] but for attacking
    */
+  // tslint:disable-next-line:variable-name
   unitShouldAttack: ({ unit: IUnit, box: IBox }) => boolean
 
   /**
-   * can the player build this unit at this moment ? (ie has sufficiente resources ? )
+   * can the player build this unit at this moment ? (ie has sufficient resources ? )
    * for example: player.resources.find(r=>r.name==='gold').value>50 && player=>player.resources.find(r=>r.name==='gold')
    */
   buildCondition: (player: IPlayer) => BuildConditionResult
