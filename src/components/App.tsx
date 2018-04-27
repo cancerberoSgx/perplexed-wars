@@ -37,7 +37,7 @@ export class App extends BaseComponent<{}> {
             {this.state.game.realTime && <span>Interval: <input type="number" onChange={changeInterval} defaultValue={this.state.game.interval + ''}/></span>}
 
 
-            <div>TIME: {this.state.game.time / 1000} - {this.state.players[0].isAI + ' ' + this.state.players[0].unitTypes.join(' ')}</div>
+            <div>TIME: {this.state.game.time / 1000}</div>
           </div>  
         
         </header>

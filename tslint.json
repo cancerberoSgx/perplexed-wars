@@ -21,6 +21,7 @@
     "no-increment-decrement": false,
     "jsx-no-multiline-js": false,
     "jsx-self-close": false,
-    "align": false
+    "align": false,
+    "import-name": false
   }
 }

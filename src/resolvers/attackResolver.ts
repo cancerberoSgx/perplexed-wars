@@ -18,7 +18,7 @@ export class AttackResolver implements IUnitActionResolver {
           unit.killCount = unit.killCount || 0
           unit.killCount ++
           Game.getInstance().emit(Events.EVENT_AFTER_UNIT_DIE, { state, attackerPlayer: player, attacked: targetUnit, attackedBox: targetBox, attacker: unit,  attackerBox: box })
-          console.log('die, ' + targetUnit.id + ' by ' + unit.id)
+          // console.log('die, ' + targetUnit.id + ' by ' + unit.id)
         }
         unit.moved = true
       }

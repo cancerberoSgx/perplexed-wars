@@ -37,7 +37,7 @@ export function getPathMatrix(state: IState): number[][] {
   return result
 }
 
-export function findUnit(state: IState, predicate: (u: IUnit, box: IBox) => boolean): Array<{unit: IUnit,box?: IBox}> {
+export function findUnit(state: IState, predicate: (u: IUnit, box: IBox) => boolean): Array<{unit: IUnit, box: IBox}> {
   // TODO: make me faster!
   const found: Array<{unit: IUnit,box: IBox}> = []
   state.board.boxes.forEach(box => box.units.forEach(unit => {

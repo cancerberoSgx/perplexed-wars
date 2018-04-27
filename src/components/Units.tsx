@@ -30,7 +30,7 @@ export class Units extends BaseComponent<{units:IUnit[], box:IBox}>  {
   }
   protected buildClassName(main:string, box:string, unit?:string): string {
     const classes = [main]
-    if (main === 'Units' && this.state.uiState.unitSelection.find(s => s.boxId === this.props.box.id)) {
+    if (main === 'Units' && this.state.uiState.unitSelection.find(s => s.box.id === this.props.box.id)) {
       classes.push('selected')
     }
     if (main === 'Unit' && this.state.uiState.unitAttacks.find(death => death.attacked === unit)) {

@@ -1,7 +1,15 @@
 .UnitSelectionInfo {
   position: absolute;
+  border-radius: 10px;
   right: 0px;
   bottom: 0px;
-  background: white;
-  opacity: 0.5
+  background: #999999;
+  opacity: 0.8; 
+  max-width: 40%;
 }
+
+
+/* .UnitSelectionInfo.is-pointer-down {
+  background: #09F;
+}
+.UnitSelectionInfo.is-dragging { opacity: 0.6; } */

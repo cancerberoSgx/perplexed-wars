@@ -4,26 +4,12 @@
   "description": "real-time tower-defense-like game but where you decide if attack or defend.",
   "private": true,
   "dependencies": {
-    "draggabilly": "^2.2.0",
     "pathfinding": "^0.4.18",
     "plugin-container": "^1.0.3",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
+    "react-draggable": "^3.0.5",
     "redux": "^4.0.0"
-  },
-  "scripts": {
-    "start": "react-scripts-ts start",
-    "build": "react-scripts-ts build",
-    "test": "react-scripts-ts test --env=jsdom",
-    "eject": "react-scripts-ts eject",
-    "lint": "tslint src/**/*.ts",
-    "lint-fix": "tslint --fix src/**/*.ts src/**/*.tsx",
-    "tsc": "tsc --project tsconfig_for_typedoc.json",
-    "tsc-watch": "tsc --project tsconfig_for_typedoc.json --watch",
-    "doc": "tsc --project tsconfig_for_typedoc.json && typedoc --options typedoc.ts --plugin typedoc-plugin-as-member-of",
-    "clean": "rm -rf types docs build",
-    "all": "npm run lint-fix && npm run clean && npm run tsc && npm run doc && npm run build",
-    "test-clone": "rm -rf ../perplexed-wars-test; mkdir ../perplexed-wars-test; cd ../perplexed-wars-test; git clone ../perplexed-wars/.git;  cd perplexed-wars ; npm install ; npm test"
   },
   "devDependencies": {
     "@types/jest": "^22.2.3",
@@ -38,5 +24,19 @@
     "typedoc": "^0.11.1",
     "typedoc-plugin-as-member-of": "^1.0.2",
     "typescript": "^2.8.1"
+  },
+  "scripts": {
+    "start": "react-scripts-ts start",
+    "build": "react-scripts-ts build",
+    "test": "react-scripts-ts test --env=jsdom",
+    "eject": "react-scripts-ts eject",
+    "lint": "tslint src/**/*.ts",
+    "lint-fix": "tslint --fix src/**/*.ts src/**/*.tsx",
+    "tsc": "tsc --project tsconfig_for_typedoc.json",
+    "tsc-watch": "tsc --project tsconfig_for_typedoc.json --watch",
+    "doc": "tsc --project tsconfig_for_typedoc.json && typedoc --options typedoc.ts --plugin typedoc-plugin-as-member-of",
+    "clean": "rm -rf types docs build",
+    "all": "npm run lint-fix && npm run clean && npm run tsc && npm run doc && npm run build",
+    "test-clone": "rm -rf ../perplexed-wars-test; mkdir ../perplexed-wars-test; cd ../perplexed-wars-test; git clone ../perplexed-wars/.git;  cd perplexed-wars ; npm install ; npm test"
   }
 }

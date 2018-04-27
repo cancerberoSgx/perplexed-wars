@@ -58,9 +58,9 @@ export interface IUnit extends IThing {
    */
   state: IUnitProperties
   killCount: number
-
+  /** if implemetators want to show extra properties when user select units in the UnitSelection panel he ca add them here. The value is html string */
+  extraDescriptionProperties?: {key: string, value: string}[]
 }
-
 /**
  * [[IPlayer]] is associated with resources. Each player can have different list of resource definitions
  * [[IUnit]] are associated with resources also since the predicate [[buildCondition]] is based on the resources the player has (in part). For example, I need 50 gold in order to build a soldier. [[IResource.value]].
@@ -89,6 +89,8 @@ export interface IUnitType extends IThing {
   icon: string
   properties: IUnitProperties
   isBase?: boolean
+  /** if implemetators want to show extra properties when user select units in the UnitSelection panel he ca add them here. The value is html string */
+  extraDescriptionProperties?: {key: string, value: string}[]
 }
 export interface IUnitProperties {
   damage: number
@@ -116,6 +118,6 @@ export interface IPlayerStateAddUnitButtonState {
   unitTypeId: string
 }
 export interface IUnitSelectionInfo {
-  unitId: string, 
-  boxId?: string
+  unit: IUnit// : string,
+  box: IBox// ?: string
 }

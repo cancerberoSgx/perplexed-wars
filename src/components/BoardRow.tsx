@@ -34,7 +34,7 @@ export class BoardRow extends BaseComponent<{n:number}>  {
   }
   protected buildClassName(b:IBox):string {
     const classes = ['BoardBox']
-    if (this.state.uiState.unitSelection.find(s => s.boxId === b.id)) {
+    if (this.state.uiState.unitSelection.find(s => s.box.id === b.id)) {
       classes.push('selected')
     }
     if (this.state.uiState.unitDeads.find(death => death.attackedBox === b.id)) {
