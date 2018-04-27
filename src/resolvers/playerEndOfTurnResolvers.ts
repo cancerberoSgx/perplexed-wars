@@ -1,5 +1,7 @@
 import { Behavior } from '../state/behavior'
 import { IPlayer, IState } from '../state/state-interfaces'
+import { getAvailablePlacesFor } from 'util/util'
+import { PlayerResources } from 'components/PlayerResources'
 
 export class PlayerEndOfTurnResourceResolver implements PlayerEndOfTurnResolver {
   public resolve ({ state, player }: { state: IState, player: IPlayer }): void {
@@ -12,11 +14,11 @@ export class PlayerEndOfTurnResourceResolver implements PlayerEndOfTurnResolver 
   }
 }
 
-// export class IaEndOfTurnResolver implements PlayerEndOfTurnResolver {
-//   public resolve({ state, player }: { state: IState, player: IPlayer }): void {
-//     Behavior.get().players.forEach(p => p.ia && p.ia.yourTurn(state))
-//   }
-// }
+export class PlayerEndOfTurnAvailablePlacesResolver implements PlayerEndOfTurnResolver {
+  public resolve ({ state, player }: { state: IState, player: IPlayer }): void {
+    state.uiState.playerControls.find(pc => pc.playerId === player.id).availablePlaces = getAvailablePlacesFor(player.id, state)
+  }
+}
 
 export interface PlayerEndOfTurnResolver {
   resolve ({ state, player }: PlayerEndOfTurnResolverData): void
@@ -25,6 +27,5 @@ export interface PlayerEndOfTurnResolverData {
   state: IState, player: IPlayer
 }
 export const playerEndOfTurnResolvers: PlayerEndOfTurnResolver[] = [
-  // new IaEndOfTurnResolver(),
-  new PlayerEndOfTurnResourceResolver(),
+  new PlayerEndOfTurnResourceResolver(), new PlayerEndOfTurnAvailablePlacesResolver(),
 ]

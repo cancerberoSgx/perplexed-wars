@@ -23,9 +23,9 @@ export function changeGameSettings(state: IState, action: IChangeGameSettingsAct
 
     if (action.realTime !== undefined || action.interval !== undefined) {
       setTimeout(() => {
-        Game.getInstance().stop()
-        Game.getInstance().start()
-      },         100)
+        // Game.getInstance().stop()
+        Game.getInstance().resume()
+      }, 100)
     }
   })
 }

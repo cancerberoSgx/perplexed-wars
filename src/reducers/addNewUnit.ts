@@ -1,11 +1,9 @@
-import { IState, IUnit } from '../state/state-interfaces'
-import { State } from '../state/state'
 import { Action } from 'redux'
-import { getAvailablePlacesFor, newUnit } from '../util/util'
-import { Game } from '../state/game'
-import { Behavior } from '../state/behavior'
 import { Events } from '../state/IGameFramework'
-import { StateAccessHelper } from 'state/StateAccessHelper'
+import { Game } from '../state/game'
+import { State } from '../state/state'
+import { IState, IUnit } from '../state/state-interfaces'
+import { getAvailablePlacesFor, newUnit } from '../util/util'
 
 export const ACTION_ADD_UNIT_CLICK_BUTTON: string = 'add-unit-click-button'
 
@@ -19,18 +17,24 @@ export function clickAddNewUnitButton(state: IState, action: IClickAddUnitButton
   if (action.type !== ACTION_ADD_UNIT_CLICK_BUTTON) {
     return state
   }
-  const buildCondition = Behavior.get().unitTypes.find(ut => ut.id === action.unitId).buildCondition(state.players.find(p => p.id === action.playerId))
-  if (!buildCondition.canBuild) {
-    alert('Cannot build unit, reason: ' + buildCondition.whyNot)
-    return state
-  }
-  return State.modify(state, s => {
-    // turn all buttons off
-    s.uiState.playerControls.forEach(pc => pc.addUnitButtons.forEach(b => b.pressed = false))
 
-    s.uiState.playerControls.find(pc => pc.playerId === action.playerId).addUnitButtons.forEach(b => {
-      b.pressed = b.unitTypeId === action.unitId
+  return State.modify(state, s => {
+    // reset current selection first (excluding the target button)
+    s.uiState.playerControls.forEach(pc => pc.addUnitButtons.forEach(b => !b.pressed && (b.pressed = false)))
+    s.uiState.unitSelection = []
+
+    if (s.players.find(p => p.id === action.playerId).isAI) { // human toggle ia unit buttons
+      return
+    }
+
+    const addUnitButtons = s.uiState.playerControls.find(pc => pc.playerId === action.playerId).addUnitButtons
+    addUnitButtons.forEach(b => {
+      b.pressed = b.unitTypeId === action.unitId && !b.pressed // will toggle matched button
     })
+
+    s.uiState.unitTypeSelection = s.unitsTypes.find(u => u.id === action.unitId && !!addUnitButtons.find(b => b.pressed && b.unitTypeId === action.unitId))
+
+    // TODO: trigger event afterUnitTypeSelected
   })
 }
 
@@ -40,8 +44,8 @@ export interface IAddUnitAction extends Action {
   many: number
   x: number
   y: number
-  playerId?: string // if player is human doesn't matter who is it because we know he has to have a button pressed
-
+  /**if player is human doesn't matter who is it because we know he has to have a button pressed */
+  playerId?: string 
   /** means user ctrl-click for adding the unit - in that case we wont turn off the add-unit-buttons */
   ctrlKey?: boolean
 }
@@ -49,6 +53,7 @@ export interface IAddUnitAction extends Action {
 export function addNewUnit(state: IState, action: IAddUnitAction): IState {
 
   state = State.get()
+
   if (action.type !== ACTION_ADD_UNIT) {
     return state
   }
@@ -79,19 +84,19 @@ export function addNewUnit(state: IState, action: IAddUnitAction): IState {
         },
       })
       if (cancelledReason && playerIsHuman) {
-        alert('Cannot comply: ' + cancelledReason)
+        alert(cancelledReason)
         return s
       }
       const unit: IUnit = newUnit(state, action.unitId, playerUi.playerId)
 
       box.units.push(unit)
-      if (!action.ctrlKey && playerIsHuman) { // reset all add-unit-buttons
+      // reset all add-unit-buttons
+      if (!action.ctrlKey && playerIsHuman) { 
         s.uiState.playerControls.forEach(pc => pc.addUnitButtons.forEach(b => b.pressed = false))
       }
       Game.getInstance().emit(Events.EVENT_AFTER_ADD_UNIT, { newUnit: unit, action, player: playerUi, box, state })
     } else if (playerIsHuman) {
       alert('Cannot add unit there - box is outside territory')
     }
-    return s
   })
 }

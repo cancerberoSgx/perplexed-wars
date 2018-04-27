@@ -74,28 +74,19 @@ export function iterateUnits(state: IState, iterator: (box: IBox, unit: IUnit) =
   })
 }
 
-// export function sanitizeState(state:IState){
-//   // console.log(sanitizeState)
-//   state.unitsTypes.forEach(ut=>{
-//     ut.unitShouldAttack=(info=>true)
-//     ut.unitShouldMove=(info=>true)
-//     ut.stateModifiers = []
-//     ut.buildCondition = (player=>true)
+// export function buildUIStatePlayerControls(state: IState) {
+//   state.players.forEach(p => {
+//     const playerControl = { playerId: p.id, addUnitButtons: [] }
+//     p.unitTypes.forEach(unitType => {
+//       playerControl.addUnitButtons.push({ unitTypeId: unitType, pressed: false })
+//     })
+//     state.uiState.playerControls.push(playerControl)
 //   })
 // }
-
-// utilities for poblate the initial state data:
-export function buildUIStatePlayerControls(state: IState) {
-  state.players.forEach(p => {
-    const playerControl = { playerId: p.id, addUnitButtons: [] }
-    p.unitTypes.forEach(unitType => {
-      playerControl.addUnitButtons.push({ unitTypeId: unitType, pressed: false })
-    })
-    state.uiState.playerControls.push(playerControl)
-  })
-}
-export function createBoxes(state: IState, n: number, m: number, player0BaseId: string, player1BaseId: string) {
+export function createBoxes(state: IState, n: number, m: number) {
   const boxes = state.board.boxes = []
+  
+  
   for (let i = 0; i < n; i++) {
     for (let j = 0; j < m; j++) {
       const box: IBox = {
@@ -106,10 +97,12 @@ export function createBoxes(state: IState, n: number, m: number, player0BaseId: 
         id: `box-${i}-${j}`,
       }
       if (i === 0 && j === 0) {
-        box.units.push(newUnit(state, player0BaseId, state.players[0].id))
+        const player0Base = state.unitsTypes.find(ut => !!state.players[0].unitTypes.find(put => ut.id === put && ut.isBase))
+        box.units.push(newUnit(state, player0Base.id, state.players[0].id))
       }
       if (i === n - 1 && j === m - 1) {
-        box.units.push(newUnit(state, player1BaseId, state.players[1].id))
+        const player1Base = state.unitsTypes.find(ut => !!state.players[1].unitTypes.find(put => ut.id === put && ut.isBase))
+        box.units.push(newUnit(state, player1Base.id, state.players[1].id))
       }
       boxes.push(box)
     }
@@ -130,3 +123,5 @@ export function newUnit(state: IState, typeId: string, playerId: string): IUnit 
     killCount: 0,
   }
 }
+
+export const isDevelopment = location.host.startsWith('localhost')

@@ -11,6 +11,7 @@ export abstract class BaseComponent<Prop> extends React.Component<Prop, IState>{
     super(props)
     this.state = State.get()
     this.storeUnsubscribe = store().subscribe(() => {
+      // console.log('BaseComponent setState', this.context)
       this.setState(State.get())
     })
   }

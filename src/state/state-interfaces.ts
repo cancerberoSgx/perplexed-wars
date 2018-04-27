@@ -10,7 +10,7 @@ export interface IThing {
 export interface IState extends IThing {
   board: IBoard
   players: IPlayer[]
-  uiState: IUIState
+  uiState?: IUIState
   unitsTypes: IUnitType[]
   game: IGame
 }
@@ -23,6 +23,7 @@ export interface IGame extends IThing {
   gameFinish: boolean
   winner: string
   paused: boolean
+  // promptForInitialPlayerInformation?: boolean
 }
 
 export interface IBoard {
@@ -100,15 +101,21 @@ export interface IUnitProperties {
 export interface IUIState {
   currentPlayer: string
   playerControls: IPlayerUIState[]
-  unitSelection: Array<{unitId: string, boxId: string}>
+  unitSelection: Array<IUnitSelectionInfo>
   unitAttacks: Array<{attacker: string, attacked: string, attackedBox: string}>
   unitDeads: Array<{attacker: string, attacked: string, attackedBox: string}>
+  unitTypeSelection?: IUnitType
 }
 export interface IPlayerUIState {
   addUnitButtons: IPlayerStateAddUnitButtonState[]
   playerId: string
+  availablePlaces?: IBox[]
 }
 export interface IPlayerStateAddUnitButtonState {
   pressed: boolean
   unitTypeId: string
+}
+export interface IUnitSelectionInfo {
+  unitId: string, 
+  boxId?: string
 }

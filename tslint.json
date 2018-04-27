@@ -19,6 +19,8 @@
     "object-shorthand-properties-first": false,
     "prefer-array-literal": false,
     "no-increment-decrement": false,
-    "jsx-no-multiline-js": false
+    "jsx-no-multiline-js": false,
+    "jsx-self-close": false,
+    "align": false
   }
 }

@@ -1,25 +1,65 @@
-import { IUnitTypeBehavior, IBehavior, IPlayerBehavior, IStateModifierAfterAddUnit, IStateModifierBeforeAddUnitSuccess } from '../../state/behavior-interfaces'
+import { IUnitTypeBehavior, IBehavior, IPlayerBehavior, IStateModifierAfterAddUnit, IStateModifierBeforeAddUnitSuccess, BuildConditionResultMissing, IGameBehavior, IStateModifierBehavior } from '../../state/behavior-interfaces'
 import { war2ImplementationInitialState, War2PlayerCustom } from './war2ImplementationInitialState'
-import { Events, afterAddUnit, AfterUnitSelectionEvent, AfterAddUnitEvent, BeforeAddUnitSuccessEvent } from '../../state/IGameFramework'
+import { Events, afterAddUnit, AfterUnitSelectionEvent, AfterAddUnitEvent, BeforeAddUnitSuccessEvent, BeforeGameStartsEvent } from '../../state/IGameFramework'
 import { IState, IPlayer } from '../../state/state-interfaces'
 import { SimpleIa1 } from '../../ia/simpleIa1'
 import { Game } from '../../state/game'
 import { IA } from '../../ia/ia-interfaces'
 import { StateAccessHelper } from '../../state/StateAccessHelper'
+import { isDevelopment } from 'util/util'
 
 /** build all the behavior (state modifiers) if war2 impl */
 export function war2ImplementationBehavior(): IBehavior {
   return {
-    unitTypes: buildUnitBehaviors(),
-    players: buildPlayerBehaviors(),
+    unitTypes: getUnitBehaviors(),
+    players: getPlayerBehaviors(),
+    gameBehaviors: getGameBehaviors(),
   }
 }
 
-function buildPlayerBehaviors() {
+function initialGamePrompt(state:IState) {
+  if (isDevelopment) {
+    return 
+  }
+  const human = state.players.find(p => !p.isAI)
+  human.name = prompt('Name for your player?')
+  const answer = confirm('Want to play with humans ?')
+  if (!answer) {
+    const ia = state.players.find(p => p.isAI)
+    const iaOriginalUnits = ia.unitTypes
+    ia.unitTypes = human.unitTypes
+    human.unitTypes = iaOriginalUnits
+  }
+}
+let gameBehaviors:IGameBehavior[]
+function getGameBehaviors(): IGameBehavior[] {
+  if (gameBehaviors) {
+    return gameBehaviors
+  }
+  const initialState = war2ImplementationInitialState()
+  gameBehaviors = []
+  gameBehaviors.push({
+    stateModifiers: [
+      { 
+        eventName: Events.EVENT_BEFORE_GAME_STARTS, modifier: (e:BeforeGameStartsEvent) => {
+          initialGamePrompt(e.state)        
+          e.ready()
+        } },
+    ],
+    id: initialState.game.id,
+  })
+  return gameBehaviors
+}
 
+
+let playerBehaviors 
+function getPlayerBehaviors() {
+  if (playerBehaviors) {
+    return playerBehaviors
+  }
   // heads up! this variable is the initial state and obsolete - we only read unit types ids that we know doesn't change
   const initialState = war2ImplementationInitialState()
-  const playerBehaviors = initialState.players.map<IPlayerBehavior>(p => ({
+  playerBehaviors = initialState.players.map<IPlayerBehavior>(p => ({
     id: p.id,
     stateModifiers: [],
     ia: p.isAI ? new SimpleIa1() : undefined,
@@ -34,16 +74,10 @@ function buildPlayerBehaviors() {
         }
         const unitType = event.state.unitsTypes.find(ut => ut.id === event.action.unitId)
         const player = event.state.players.find(p => p.id === playerBehavior.id)
-        const resourceCost = unitType.custom && (unitType.custom as War2PlayerCustom).cost
-
-        const notEnough = resourceCost.find(cost => {
-          const playerResource = player.resources.find(r => r.id === cost.resourceId)
-          return playerResource && playerResource.value < cost.value
-        })
-
-        if (notEnough) {
-          event.cancelCallback('Impossible to train unit, you don\'t have enough resources') // TODO: say what's missing
-          // TODO: unfortunately we cannot cancel events using eventEmitter
+        const unitBehavior =  getUnitBehaviors().find(ub => ub.id === unitType.id)
+        const canBuild = unitBehavior.buildCondition(player)
+        if (!canBuild.canBuild) {
+          event.cancelCallback(canBuild.whyNot) 
         }
       },
     }
@@ -52,11 +86,16 @@ function buildPlayerBehaviors() {
   return playerBehaviors
 }
 
-function buildUnitBehaviors() {
+let unitBehaviors: IUnitTypeBehavior[]
+
+function getUnitBehaviors() {
+  if (unitBehaviors) {
+    return unitBehaviors
+  }
   // heads up! this variable is the initial state and obsolete - we only read unit types ids that we know doesn't change
   const initialState = war2ImplementationInitialState()
 
-  const unitBehaviors: IUnitTypeBehavior[] = []
+  unitBehaviors = []
 
   // Note: we are adding a listener for each unit type - we could do differently and add only one listener to the user and check every unit type there.
   initialState.unitsTypes.forEach(unitBehavior => {
@@ -73,7 +112,6 @@ function buildUnitBehaviors() {
         resourceCost.forEach(cost => {
           const playerResource = player.resources.find(r => r.id === cost.resourceId)
           if (playerResource && playerResource.value) {
-            // console.log(player.name, playerResource, event.newUnit.type.id)
             playerResource.value -= cost.value
           }
         })
@@ -87,15 +125,26 @@ function buildUnitBehaviors() {
         if (unitBehavior.isBase) {
           return { canBuild: false, whyNot: `Only one base allowed in this game` }
         }  
-        
         // do I have sufficient resources ?
         const unitType = StateAccessHelper.get().unitType(unitBehavior.id)
-        const resourceCost = unitType.custom && (unitType.custom as War2PlayerCustom).cost
-        const notEnough = resourceCost.find(cost => {
+        const resourceCost = unitType.custom && (unitType.custom as War2PlayerCustom).cost 
+        const resourceMissing:BuildConditionResultMissing[] = []
+        const notEnough = resourceCost.find((cost) => {
           const playerResource = player.resources.find(r => r.id === cost.resourceId)
-          return playerResource && playerResource.value < cost.value
+          if (playerResource && playerResource.value < cost.value) {
+            resourceMissing.push({ 
+              resourceId: playerResource.id, 
+              missing: cost.value - playerResource.value, 
+            })
+            return true
+          }
+          return false
         })
-        return { canBuild: !notEnough, whyNot: ' You cannot build that - not enough resources' } // TODO: inform which resources and how much is missing
+
+        return {
+          canBuild: !notEnough, 
+          whyNot: 'Not enough resources. ' + (resourceMissing.length ? ('Missing: ' + resourceMissing.map(rm => rm.missing + ' of ' + rm.resourceId)) : ''),  
+        } 
         
       },
       stateModifiers: [

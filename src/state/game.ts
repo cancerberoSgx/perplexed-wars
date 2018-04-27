@@ -14,14 +14,14 @@ import { Behavior } from './behavior'
  * usage: `Game.getInstance()` which returns [[IGameFramework]]
  */
 export class Game extends EventEmitter implements IGameFramework {
-
   private static instance
   private intervalId: NodeJS.Timer
+  private alreadyStarted:boolean = false
 
   private constructor () {
     super()
+    this.setMaxListeners(100)
   }
-
   public static getInstance (): IGameFramework {
     if (!this.instance) {
       this.instance = new Game()
@@ -30,11 +30,42 @@ export class Game extends EventEmitter implements IGameFramework {
   }
 
   public start () {
+    if (!this.alreadyStarted) {
+      const state = State.get()
+      if (!Behavior.get().gameBehaviors || !Behavior.get().gameBehaviors.length) {
+        this.on(Events.EVENT_BEFORE_GAME_STARTS, (e) => {e.ready()})
+      }
+      state.uiState = state.uiState ||  { 
+        currentPlayer: state.players.find(p => !p.isAI).id,
+        playerControls: [],
+        unitSelection: [],
+        unitAttacks: [],
+        unitDeads: [],
+      }
+      this.emit(Events.EVENT_BEFORE_GAME_STARTS, {state, ready: () => {
+        state.players.forEach(p => {
+          const playerControl = { playerId: p.id, addUnitButtons: [] }
+          p.unitTypes.forEach(unitType => {
+            playerControl.addUnitButtons.push({ unitTypeId: unitType, pressed: false })
+          })
+          state.uiState.playerControls.push(playerControl)
+        })
+        this.emit(Events.EVENT_AFTER_GAME_STARTS, { state })
+        this.resume()
+      }})
+      
+      this.alreadyStarted = true
+    } else {
+      this.resume()
+    }
+  }
+  public resume() {
+    clearInterval(this.intervalId)
     this.nextTurn()
     if (State.get().game.realTime) {
       this.intervalId = setInterval(() => {
         this.nextTurn()
-      },                            State.get().game.interval)
+      }, State.get().game.interval)
     }
   }
 

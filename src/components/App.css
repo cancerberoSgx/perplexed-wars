@@ -6,8 +6,11 @@
 .App-logo{
   line-break: auto;
 }
-
+.App * {
+  user-select: none !important;  
+}
 .App a{
- color: #ededed
+ color: #ededed;
+ font-weight: bold;
 }
 

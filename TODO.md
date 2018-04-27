@@ -1,5 +1,6 @@
 # ISSUES
 
+ * human can add IA units
 
  * urgent. make helpers for lal the .finds, .filter etccthat are in the code. Make SuperState that wrapps the State instance with helpers!! if notm refactoring will be crazys. We might even improve performance by cahing some stuff that doesnt change like payers, resources, unittypes, techs, etc, unittypebehavior
 
@@ -9,9 +10,10 @@
 
 # TODO
 
+ * unit composition : for buildings like foundry / blacksmith - user click the building and a new dialog (or unitselectioninfo) shows buttons for research. These BTW are units but they wont appear in the map and when created a steemodifier modifies unit.state.damage and unittypes.properties.damage
+
  * build time of units ??!!
 
- * IA?
 
 * save as png icons of war2 like we did for src/implementations/war2/assets/HumanTownhall.png
 

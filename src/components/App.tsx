@@ -8,6 +8,7 @@ import { UnitsPanel } from './UnitsPanel'
 import { store } from '../reducers/store'
 import { State } from '../state/state'
 import { ACTION_CHANGE_GAME_SETTINGS, IChangeGameSettingsAction } from '../reducers/changeGameSettings'
+import { UnitSelectionInfo } from './UnitSelectionInfo'
 
 export class App extends BaseComponent<{}> {
   constructor(props:{}) {
@@ -36,10 +37,13 @@ export class App extends BaseComponent<{}> {
             {this.state.game.realTime && <span>Interval: <input type="number" onChange={changeInterval} defaultValue={this.state.game.interval + ''}/></span>}
 
 
-            <div>TIME: {this.state.game.time / 1000} </div>
+            <div>TIME: {this.state.game.time / 1000} - {this.state.players[0].isAI + ' ' + this.state.players[0].unitTypes.join(' ')}</div>
           </div>  
         
         </header>
+
+        <UnitSelectionInfo unitSelection={this.state.uiState.unitSelection} unitTypeSelection={this.state.uiState.unitTypeSelection}/>
+        
         <UnitsPanel />
 
         <Board />

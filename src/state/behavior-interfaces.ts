@@ -16,14 +16,21 @@ export interface IBehavior {
    * state modifiers and behavior definers at the unit level
    */
   players: IPlayerBehavior[]
+  /** important: is mandatory that, if there are any gameBehaviors registered, they call the [[]] at least one game behavior that calls the ready callback is present, if not the game never starts.  */
+  gameBehaviors: IGameBehavior[]
 }
 
-/** define behavior at the player level. For example global conditions for victory... some things that can be done with IUnitBehavior also can be done with IPlayerBehavior and makes more sense because of preformance. ie. instead of many listeners - just one listener that iterates. example: if a unit can be bougth */
+/** define behavior at the player level. For example global conditions for victory... some things that can be done with IUnitBehavior also can be done with IPlayerBehavior and makes more sense because of performance. ie. instead of many listeners - just one listener that iterates. example: if a unit can be bought */
 export interface IPlayerBehavior extends IStateModifierBehavior {
   stateModifiers: IStateModifier[]
   ia?: IA
 }
+/**
+ * game- level behaviors, for example, when the game starts it could ask the user to prompt for name and choose the race so the implementation have the change to assign the correct race to the human player
+ */
+export interface IGameBehavior extends IStateModifierBehavior {
 
+}
 /**
  * Units and Players can modify the [[IState]] instance. They can modify the [[IResource.thisTurnValue]] , board, and other units.
  *
@@ -77,8 +84,12 @@ export interface IUnitTypeBehavior extends IStateModifierBehavior {
 export interface BuildConditionResult {
   canBuild: boolean
   whyNot?: string
+  resourceMissing?: BuildConditionResultMissing[]
 }
-
+export interface BuildConditionResultMissing{
+  resourceId: string, 
+  missing: number
+}
 export interface IStateModifier extends IThing {
   priority?: number
   eventName: any

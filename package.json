@@ -4,6 +4,7 @@
   "description": "real-time tower-defense-like game but where you decide if attack or defend.",
   "private": true,
   "dependencies": {
+    "draggabilly": "^2.2.0",
     "pathfinding": "^0.4.18",
     "plugin-container": "^1.0.3",
     "react": "^16.3.2",

@@ -1,5 +1,5 @@
 import { IState } from '../../state/state-interfaces'
-import { buildUIStatePlayerControls, createBoxes, clone } from '../../util/util'
+import {  createBoxes, clone, isDevelopment } from '../../util/util'
 import * as HumanTownHall from './assets/HumanTownhall.gif'
 import * as goldIcon from './assets/gold.gif'
 import * as foodIcon from './assets/food.png'
@@ -8,6 +8,15 @@ import * as humanFarm from './assets/HumanFarm.gif'
 import * as orcFarm from './assets/OrcFarm.gif'
 import * as humanTower1 from './assets/HumanTower1.gif'
 import * as orcTower1 from './assets/OrcTower1.gif'
+import * as goldMine from './assets/goldMine.gif'
+import * as orcGreatHall from './assets/orcGreatHall.gif'
+
+
+const n = 15
+const m = 10
+const goldDefaultValuePerTurn = 50
+const foodDefaultValue = 4
+
 
 export enum RESOURCE_ID { lumber = 'lumber', gold = 'gold', food = 'food' }
 export interface War2UnitCost {
@@ -18,17 +27,14 @@ export interface War2PlayerCustom {
   cost: War2UnitCost[]
 }
 
-
 export function war2ImplementationInitialState(): IState {
-  const n = 15
-  const m = 10
 
   // resources are the same for both "races"
   const resources = [{
     id: RESOURCE_ID.gold,
     name: RESOURCE_ID.gold,
-    defaultValuePerTurn: 10,
-    value: 900,
+    defaultValuePerTurn: goldDefaultValuePerTurn,
+    value: 1200,
     thisTurnValue: 0,
     icon: goldIcon,
   }, {
@@ -46,12 +52,13 @@ export function war2ImplementationInitialState(): IState {
     thisTurnValue: 0,
     icon: foodIcon,
   }]
+
   const state: IState = {
     game: {
-      interval: 1000,
+      interval: 500,
       allowDiagonal: true,
       time: 0,
-      realTime: false,
+      realTime: !isDevelopment,
       winner: '',
       gameFinish: false,
       paused: false,
@@ -67,11 +74,32 @@ export function war2ImplementationInitialState(): IState {
         id: 'human-base',
         isBase: true,
         properties: {
-          damage: 18,
+          damage: 0,
           speed: 0,
-          health: 1200,
-          range: 3,
+          health: 1200 * 1.2,
+          range: 0,
           territoryRadius: 2,
+        },
+      },
+      {
+        name: 'Gold Mine',
+        image: goldMine,
+        icon: goldMine,
+        id: 'goldMine',
+        description: `Gives +${goldDefaultValuePerTurn} gold per turn`,
+        properties: {
+          damage: 0,
+          speed: 0,
+          health: 400 * 1.2,
+          range: 0,
+          territoryRadius: 0,
+        },
+        custom: {
+          cost: [
+            { resourceId: RESOURCE_ID.gold, value: 500 },
+            { resourceId: RESOURCE_ID.food, value: 0 },
+            { resourceId: RESOURCE_ID.lumber, value: 250 },
+          ],
         },
       },
       {
@@ -79,10 +107,11 @@ export function war2ImplementationInitialState(): IState {
         image: humanFarm,
         icon: humanFarm,
         id: 'humanFarm',
+        description: `Feeds ${foodDefaultValue} units`,
         properties: {
           damage: 0,
           speed: 0,
-          health: 400,
+          health: 400 * 1.2,
           range: 0,
           territoryRadius: 0,
         },
@@ -102,7 +131,7 @@ export function war2ImplementationInitialState(): IState {
         properties: {
           damage: 10,
           speed: 0,
-          health: 100,
+          health: 100 * 1.2,
           range: 3,
           territoryRadius: 1,
         },
@@ -116,15 +145,15 @@ export function war2ImplementationInitialState(): IState {
       },
       {
         name: 'Great Hall',
-        image: 'https://d1u5p3l4wpay3k.cloudfront.net/wowpedia/e/e0/OrcTownhall.gif',
-        icon: 'https://d1u5p3l4wpay3k.cloudfront.net/wowpedia/e/e0/OrcTownhall.gif',
+        image: orcGreatHall,
+        icon: orcGreatHall,
         id: 'orc-base',
         isBase: true,
         properties: {
-          damage: 18,
+          damage: 0,
           speed: 0,
-          health: 1200,
-          range: 3,
+          health: 1200 * 1.2,
+          range: 0,
           territoryRadius: 2,
         },
       },
@@ -133,10 +162,11 @@ export function war2ImplementationInitialState(): IState {
         image: orcFarm,
         icon: orcFarm,
         id: 'orcFarm',
+        description: `Feeds ${foodDefaultValue} units`,
         properties: {
           damage: 0,
           speed: 0,
-          health: 400,
+          health: 400 * 1.2,
           range: 0,
           territoryRadius: 0,
         },
@@ -156,7 +186,7 @@ export function war2ImplementationInitialState(): IState {
         properties: {
           damage: 10,
           speed: 0,
-          health: 100,
+          health: 100 * 1.2,
           range: 3,
           territoryRadius: 1,
         },
@@ -174,6 +204,7 @@ export function war2ImplementationInitialState(): IState {
         image: 'https://d1u5p3l4wpay3k.cloudfront.net/wowpedia/5/53/HumanFootman.gif',
         icon: 'https://d1u5p3l4wpay3k.cloudfront.net/wowpedia/9/9d/Foot.gif',
         id: 'footman',
+        description: `Footmen are the initial line of defense against the Horde. Arrayed in hardened steel armor, they courageously wield broadsword and shield in hand-to-hand combat against their vile Orcish foes. The valorous Footmen are ever-prepared to heed the call to arms`,
         properties: {
           damage: 9,
           speed: 1,
@@ -195,7 +226,7 @@ export function war2ImplementationInitialState(): IState {
         id: 'elven-archer',
         isBase: false,
         properties: {
-          damage: 9 + 6,
+          damage: 9,
           speed: 1,
           health: 50,
           range: 3,
@@ -236,7 +267,7 @@ export function war2ImplementationInitialState(): IState {
         id: 'troll',
         isBase: false,
         properties: {
-          damage: 9 + 6,
+          damage: 9,
           speed: 1,
           health: 50,
           range: 3,
@@ -263,7 +294,7 @@ export function war2ImplementationInitialState(): IState {
         name: 'Seba',
         isAI: false,
         color: 'blue',
-        unitTypes: ['human-base', 'humanFarm', 'humanTower1', 'footman', 'elven-archer'],
+        unitTypes: ['human-base', 'goldMine', 'humanFarm', 'humanTower1', 'footman', 'elven-archer'],
         resources: clone(resources),
       },
       {
@@ -271,21 +302,13 @@ export function war2ImplementationInitialState(): IState {
         name: 'Data',
         color: 'red',
         isAI: true,
-        unitTypes: ['orc-base', 'orcFarm', 'orcTower1', 'grunt', 'troll'],
+        unitTypes: ['orc-base', 'goldMine', 'orcFarm', 'orcTower1', 'grunt', 'troll'],
         resources: clone(resources),
       },
     ],
-    uiState: {
-      currentPlayer: 'player1',
-      playerControls: [],
-      unitSelection: [],
-      unitAttacks: [],
-      unitDeads: [],
-    },
   }
 
-  createBoxes(state, n, m, 'human-base', 'orc-base')
-  buildUIStatePlayerControls(state)
+  createBoxes(state, n, m)
 
   return state
 }

@@ -11,6 +11,13 @@ export class State {
 
   private constructor () {
     this.stateInternal = initialState()
+    this.stateInternal.uiState = this.stateInternal.uiState || {
+      currentPlayer:this.stateInternal.players.find(p => !p.isAI).id,
+      playerControls: [],
+      unitSelection: [],
+      unitAttacks: [],
+      unitDeads: [],
+    }
   }
 
   public static getInstance (): State {

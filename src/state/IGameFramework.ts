@@ -1,7 +1,7 @@
 import { ISelectUnitAction } from '../reducers/selectUnit'
 import { IAddUnitAction } from '../reducers/addNewUnit'
 import { EventEmitter } from 'events'
-import { IPlayerUIState, IBox, IUnit, IState, IPlayer } from './state-interfaces'
+import { IPlayerUIState, IBox, IUnit, IState, IPlayer, IUnitSelectionInfo } from './state-interfaces'
 import { IA } from '../ia/ia-interfaces'
 import { ITurnEndAction } from 'reducers/gameLoop'
 
@@ -13,6 +13,8 @@ export enum Events {
   EVENT_BEFORE_GAME_FINISH = 'beforeGameFinish',
   EVENT_BEFORE_TURN_END = 'beforeTurnEnd',
   EVENT_AFTER_TURN_END = 'afterTurnEnd',
+  EVENT_BEFORE_GAME_STARTS = 'beforeGameStarts',
+  EVENT_AFTER_GAME_STARTS = 'afterGameStart',
 
 }
 
@@ -22,7 +24,8 @@ export interface IGameFramework extends EventEmitter {
   start (): void
 
   stop (): void
-
+  
+  resume(): void
   /** implements next turn (setInterval / setTimeout)  accordingly to [[IGame.isRealTime]] and [[IGame.interval]] */
   nextTurn (): void
 
@@ -49,6 +52,13 @@ export interface IGameFramework extends EventEmitter {
   on (eventName: Events.EVENT_AFTER_TURN_END, eventHandler: typeof afterTurnEnd): this
   emit (eventName: Events.EVENT_AFTER_TURN_END, data: AfterTurnEndEvent): boolean
 
+  on (eventName: Events.EVENT_BEFORE_GAME_STARTS, eventHandler: typeof beforeGameStarts): this
+  emit (eventName: Events.EVENT_BEFORE_GAME_STARTS, data: BeforeGameStartsEvent): boolean
+
+
+  on (eventName: Events.EVENT_AFTER_GAME_STARTS, eventHandler: typeof afterGameStarts): this
+  emit (eventName: Events.EVENT_AFTER_GAME_STARTS, data: AfterGameStartsEvent): boolean
+  
 }
 
 /**
@@ -61,6 +71,29 @@ export declare function afterTurnEnd(event: AfterTurnEndEvent): void
 /** triggered just before turn ends (units didn't moved yet) */
 export interface AfterTurnEndEvent extends GameFrameworkEvent {
   action: ITurnEndAction
+}
+/**
+ * Triggered just before turn is about to end (units didn't moved yet)
+ * @asMemberOf IGameFramework
+ * @event
+ */
+export declare function afterGameStarts(event: GameFrameworkEvent): void
+export interface AfterGameStartsEvent extends GameFrameworkEvent {
+}
+
+
+
+/**
+ * Triggered just before the game starts (no turns passed yet, nothing was drawn yet)
+ * @asMemberOf IGameFramework
+ * @event
+ */
+export declare function beforeGameStarts(event: BeforeGameStartsEvent): void
+
+/** triggered just before turn ends (units didn't moved yet). IMPORTANT: is mandatory that the [[ready]] callback is called if not the game won't start */
+export interface BeforeGameStartsEvent extends GameFrameworkEvent {
+  /**this callback must be called if not the game won't start */
+  ready()
 }
 
 /**
@@ -93,10 +126,7 @@ export declare function beforeUnitSelection(event: BeforeUnitSelectionEvent): vo
 /** triggered just before user select a unit */
 export interface BeforeUnitSelectionEvent extends GameFrameworkEvent {
   // tslint:disable-next-line:prefer-array-literal
-  selection: Array<{
-    unitId: string;
-    boxId: string;
-  }>
+  selection: Array<IUnitSelectionInfo>
   action: ISelectUnitAction
 }
 
@@ -109,15 +139,9 @@ export declare function afterUnitSelection(event: AfterUnitSelectionEvent): void
 
 /** triggered after user selected a unit */
 export interface AfterUnitSelectionEvent extends GameFrameworkEvent {
-  selection: Array<{
-    unitId: string;
-    boxId: string;
-  }>
+  selection: Array<IUnitSelectionInfo>
   action: ISelectUnitAction
-  previousSelection: Array<{
-    unitId: string;
-    boxId: string;
-  }>
+  previousSelection: Array<IUnitSelectionInfo>
 }
 
 /**
