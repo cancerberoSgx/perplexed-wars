@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>IUnitSelectionInfo | perplexed-wars</title>
+	<title>GameUIStateHelper | perplexed-wars</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -54,21 +54,28 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="iunitselectioninfo.html">IUnitSelectionInfo</a>
+					<a href="gameuistatehelper.html">GameUIStateHelper</a>
 				</li>
 			</ul>
-			<h1>Interface IUnitSelectionInfo</h1>
+			<h1>Class GameUIStateHelper</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>helpers of Game to maintain the state of  [[IState.UIState.]] and [[IState.UIState.playerControls]].</p>
+					</div>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">IUnitSelectionInfo</span>
+						<span class="target">GameUIStateHelper</span>
 					</li>
 				</ul>
 			</section>
@@ -77,36 +84,86 @@
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
-							<h3>Properties</h3>
+							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="iunitselectioninfo.html#box" class="tsd-kind-icon">box</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="iunitselectioninfo.html#unit" class="tsd-kind-icon">unit</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="gameuistatehelper.html#initializeuistate" class="tsd-kind-icon">initializeUIState</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="gameuistatehelper.html#setaddunitchildbuttons" class="tsd-kind-icon">set<wbr>Add<wbr>Unit<wbr>Child<wbr>Buttons</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="gameuistatehelper.html#setupplayercontrols" class="tsd-kind-icon">setup<wbr>Player<wbr>Controls</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="box" class="tsd-anchor"></a>
-					<h3>box</h3>
-					<div class="tsd-signature tsd-kind-icon">box<span class="tsd-signature-symbol">:</span> <a href="ibox.html" class="tsd-signature-type">IBox</a></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in state/state-interfaces.d.ts:132</li>
-						</ul>
-					</aside>
+				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="initializeuistate" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> initializeUIState</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">initializeUIState<span class="tsd-signature-symbol">(</span>state<span class="tsd-signature-symbol">: </span><a href="../interfaces/istate.html" class="tsd-signature-type">IState</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in state/GameUIStateHelper.d.ts:4</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>state: <a href="../interfaces/istate.html" class="tsd-signature-type">IState</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="unit" class="tsd-anchor"></a>
-					<h3>unit</h3>
-					<div class="tsd-signature tsd-kind-icon">unit<span class="tsd-signature-symbol">:</span> <a href="iunit.html" class="tsd-signature-type">IUnit</a></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in state/state-interfaces.d.ts:131</li>
-						</ul>
-					</aside>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="setaddunitchildbuttons" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> set<wbr>Add<wbr>Unit<wbr>Child<wbr>Buttons</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Add<wbr>Unit<wbr>Child<wbr>Buttons<span class="tsd-signature-symbol">(</span>state<span class="tsd-signature-symbol">: </span><a href="../interfaces/istate.html" class="tsd-signature-type">IState</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in state/GameUIStateHelper.d.ts:6</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>state: <a href="../interfaces/istate.html" class="tsd-signature-type">IState</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="setupplayercontrols" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> setup<wbr>Player<wbr>Controls</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">setup<wbr>Player<wbr>Controls<span class="tsd-signature-symbol">(</span>state<span class="tsd-signature-symbol">: </span><a href="../interfaces/istate.html" class="tsd-signature-type">IState</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in state/GameUIStateHelper.d.ts:5</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>state: <a href="../interfaces/istate.html" class="tsd-signature-type">IState</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
 				</section>
 			</section>
 		</div>
@@ -122,14 +179,17 @@
 				<ul class="before-current">
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-interface">
-						<a href="iunitselectioninfo.html" class="tsd-kind-icon">IUnit<wbr>Selection<wbr>Info</a>
+					<li class="current tsd-kind-class">
+						<a href="gameuistatehelper.html" class="tsd-kind-icon">GameUIState<wbr>Helper</a>
 						<ul>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="iunitselectioninfo.html#box" class="tsd-kind-icon">box</a>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+								<a href="gameuistatehelper.html#initializeuistate" class="tsd-kind-icon">initializeUIState</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="iunitselectioninfo.html#unit" class="tsd-kind-icon">unit</a>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+								<a href="gameuistatehelper.html#setaddunitchildbuttons" class="tsd-kind-icon">set<wbr>Add<wbr>Unit<wbr>Child<wbr>Buttons</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+								<a href="gameuistatehelper.html#setupplayercontrols" class="tsd-kind-icon">setup<wbr>Player<wbr>Controls</a>
 							</li>
 						</ul>
 					</li>

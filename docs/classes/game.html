@@ -67,9 +67,10 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>responsible of the game life cycle mostly about turn and dispatching action <a href="../globals.html#action_game_loop_increment_interval">ACTION_GAME_LOOP_INCREMENT_INTERVAL</a></p>
+						<p>responsible of the game life cycle mostly about turn and dispatching action <a href="../globals.html#action_game_loop_increment_interval">ACTION_GAME_LOOP_INCREMENT_INTERVAL</a>
+							It dialogues with implementor on start to let him modify the state and then instantiate this UI related elements in IState
+						usage: <code>Game.getInstance()</code> which returns <a href="../interfaces/igameframework.html">IGameFramework</a> - for this is supported by [[UIStatePlayerControls]]</p>
 					</div>
-					<p>usage: <code>Game.getInstance()</code> which returns <a href="../interfaces/igameframework.html">IGameFramework</a></p>
 				</div>
 			</section>
 			<section class="tsd-panel tsd-hierarchy">

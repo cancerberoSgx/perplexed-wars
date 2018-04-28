@@ -23,7 +23,7 @@ export interface IGame extends IThing {
   gameFinish: boolean
   winner: string
   paused: boolean
-  // promptForInitialPlayerInformation?: boolean
+  showIAPanels: boolean
 }
 
 export interface IBoard {

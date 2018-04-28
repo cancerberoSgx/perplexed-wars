@@ -1,5 +1,5 @@
-import { IUnitTypeBehavior, IBehavior, IPlayerBehavior, IStateModifierAfterAddUnit, IStateModifierBeforeAddUnitSuccess, BuildConditionResultMissing, IGameBehavior, IStateModifierBehavior, IStateModifier } from '../../state/behavior-interfaces'
-import { war2ImplementationInitialState, War2PlayerCustom, RESOURCE_ID } from './war2State'
+import { IUnitTypeBehavior, IBehavior, IPlayerBehavior, IStateModifierAfterAddUnit, IStateModifierBeforeAddUnitSuccess, BuildConditionResultMissing, IGameBehavior, IStateModifierBehavior, IStateModifier, BuildConditionResult } from '../../state/behavior-interfaces'
+import { war2ImplementationInitialState, War2PlayerCustom, RESOURCE_ID, mineGoldPlus, lumbermillLUmberPlus } from './war2State'
 import { Events, afterAddUnit, AfterUnitSelectionEvent, AfterAddUnitEvent, BeforeAddUnitSuccessEvent, BeforeGameStartsEvent, AfterUnitDieEvent } from '../../state/IGameFramework'
 import { IState, IPlayer } from '../../state/state-interfaces'
 import { SimpleIa1 } from '../../ia/simpleIa1'
@@ -78,12 +78,15 @@ function getPlayerBehaviors() {
         if (event.player.playerId !== playerBehavior.id) {
           return
         }
+        if (event.box.units.length > 0) { // se don't allow two units in the same place. units cannot enter buildings in war2 (in war2 yes)
+          event.cancelCallback('There is already a unit there') 
+        }
         const unitType = event.state.unitsTypes.find(ut => ut.id === event.action.unitId)
         const player = event.state.players.find(p => p.id === playerBehavior.id)
         const unitBehavior =  getUnitBehaviors().find(ub => ub.id === unitType.id)
         const canBuild = unitBehavior.buildCondition(player)
         if (!canBuild.canBuild) {
-          event.cancelCallback(canBuild.whyNot) 
+          event.cancelCallback(canBuild.whyNot)
         }
       },
     }
@@ -118,7 +121,27 @@ function getPlayerBehaviors() {
       },
     }
 
-    playerBehavior.stateModifiers.push(checkEnoughMoney, librateFoodWhenUniDieModifier, chargeNewUnitModifier)
+    const mineAndLumberMillResourceAdjust: IStateModifierAfterAddUnit = {
+      eventName: Events.EVENT_AFTER_ADD_UNIT,
+      modifier: (event: AfterAddUnitEvent) => {
+        if (event.player.playerId !== playerBehavior.id) {
+          return
+        }
+        if (['humanLumbermill', 'orcLumbermill', 'goldMine'].indexOf(event.newUnit.type.id) === -1) {// TODO: lumbermill
+          return
+        }
+        const resourceMap = {
+          humanLumbermill: { resourceId: RESOURCE_ID.lumber, plus: lumbermillLUmberPlus },
+          orcLumbermill: { resourceId: RESOURCE_ID.lumber,plus: lumbermillLUmberPlus },
+          goldMine: { resourceId: RESOURCE_ID.gold, plus: mineGoldPlus },
+        }
+        const player = event.state.players.find(p => p.id === event.player.playerId)
+        const resource:{ resourceId: string, plus: number } = resourceMap[event.newUnit.type.id]
+        player.resources.find(r => r.id === resource.resourceId).defaultValuePerTurn += resource.plus
+      },
+    }
+
+    playerBehavior.stateModifiers.push(checkEnoughMoney, librateFoodWhenUniDieModifier, chargeNewUnitModifier, mineAndLumberMillResourceAdjust)
   })
   return playerBehaviors
 }
@@ -134,7 +157,6 @@ function getUnitBehaviors() {
 
   unitBehaviors = []
 
-  // Note: we are adding a listener for each unit type - we could do differently and add only one listener to the user and check every unit type there.
   state.unitsTypes.forEach(unitBehavior => {
 
     const utb: IUnitTypeBehavior = {

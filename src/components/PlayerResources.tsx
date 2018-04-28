@@ -13,7 +13,7 @@ export class PlayerResources extends BaseComponent<{player:IPlayer}> {
         {this.props.player.name}
         <ul className="resource-list">
           {this.props.player.resources.map(r =>
-          <li key={r.id}><img src={r.icon} alt={r.name}/>:{r.value}</li>,
+          <li key={r.id}><img src={r.icon} alt={r.name}/>:{r.value} (+{r.defaultValuePerTurn})</li>,
           )}
         </ul>
       </div>

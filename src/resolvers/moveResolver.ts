@@ -1,6 +1,6 @@
 import { IUnitActionResolver, IUnitActionResolverData } from './unitActionResolvers'
 import { IBox, IUnit , IState , IPlayer } from '../state/state-interfaces'
-import { findUnit, getPathMatrix } from '../util/util'
+import { findUnit, getPathMatrix, getAvailablePlacesFor } from '../util/util'
 import * as PF from 'pathfinding'
 import { Game } from '../state/game'
 
@@ -23,14 +23,21 @@ export class MoveResolver implements IUnitActionResolver {
       const path: number[][] = this.finder.findPath(box.x, box.y, foeBaseBox.x, foeBaseBox.y, grid)
       if (path && path.length > 1) {  // move the unit now! - matrix will be recalculated for each unit
         const newBox = state.board.boxes.find(b => b.x === path[1][0] && b.y === path[1][1])
-        if (newBox && !newBox.units.find(u => u.type.isBase)) {
-          box.units = box.units.filter(u => u.id !== unit.id) // remove from old box
-          newBox.units.push(unit) // add to new box
-          unit.moved = true
-        }
+        doMove(newBox, box, unit)       
       } else {
-        // TODO: if there is no path, we should still try to move the unit. Issue. if I block the two base - no unit moves no matter that all lthe board is free
+        // if there is no path, we still try to move the unit. Issue. It coul dbe the enemy base is temporarily blocked and the two players unit blocking each other eternally
+        const availablePlaces = getAvailablePlacesFor(player.id, state)
+        if (availablePlaces && availablePlaces.length) {
+          doMove(availablePlaces[Math.floor(Math.random() * availablePlaces.length)] , box, unit) 
+        }
       }
     }
+  }
+}
+function doMove(newBox:IBox, oldBox:IBox, unit: IUnit) {
+  if (newBox && !newBox.units.find(u => u.type.isBase)) {
+    oldBox.units = oldBox.units.filter(u => u.id !== unit.id) // remove from old box
+    newBox.units.push(unit) // add to new box
+    unit.moved = true
   }
 }

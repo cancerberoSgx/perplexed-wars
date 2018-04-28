@@ -16,7 +16,7 @@ export class UnitsPanel extends BaseComponent<{}> {
     return (
       <div className="UnitsPanel row">
       {
-        this.state.players.filter(p => !p.isAI).map(player =>
+        this.state.players.filter(p => State.get().game.showIAPanels || !p.isAI).map(player =>
           <div key={'player_div_' + player.id} className="col-6">
             <PlayerResources player={player}/>
             <ul key={'player_ul_' + player.id}>{this.state.uiState.playerControls.filter(c => c.playerId === player.id).map(pc =>

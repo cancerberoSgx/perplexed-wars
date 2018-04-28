@@ -12,7 +12,8 @@ import * as goldMine from './assets/goldMine.gif'
 import * as orcGreatHall from './assets/orcGreatHall.gif'
 import * as humanBlacksmith from './assets/HumanBlacksmith.gif'
 import * as orcBlacksmith from './assets/OrcBlacksmith.gif'
-
+import * as humanLumbermill from './assets/HumanLumbermill.gif'
+import * as orcLumbermill from './assets/orcLumbermill.gif'
 import * as footman from './assets/footman.gif'
 import * as footmanIcon from './assets/footmanIcon.gif'
 
@@ -26,6 +27,8 @@ const m = 10
 const goldDefaultValuePerTurn = 50
 const foodDefaultValue = 4
 
+export const mineGoldPlus = 20
+export const lumbermillLUmberPlus = 1
 
 export enum RESOURCE_ID { lumber = 'lumber', gold = 'gold', food = 'food' }
 export interface War2UnitCost {
@@ -71,6 +74,7 @@ export function war2ImplementationInitialState(): IState {
       winner: '',
       gameFinish: false,
       paused: false,
+      showIAPanels: true,
     },
     timestamp: Date.now(),
 
@@ -81,7 +85,7 @@ export function war2ImplementationInitialState(): IState {
         image: goldMine,
         icon: goldMine,
         id: 'goldMine',
-        description: `Gives +${goldDefaultValuePerTurn} gold per turn. Mined from the rich earth of Azeroth and Lordaeron, this precious metal is commonly used in exchange for goods and services.`,
+        description: `Gives +${mineGoldPlus} gold per turn. Mined from the rich earth of Azeroth and Lordaeron, this precious metal is commonly used in exchange for goods and services.`,
         properties: {
           damage: 0,
           speed: 0,
@@ -175,6 +179,30 @@ export function war2ImplementationInitialState(): IState {
           ],
         },
       },
+      {// TODO: icons upgrades from here: https://wow.gamepedia.com/Footman_(Warcraft_III)#Upgrades
+        name: 'Lumbermill',
+        image: humanLumbermill,
+        icon: humanLumbermill,
+        id: 'humanLumbermill',
+        description: `+${lumbermillLUmberPlus} lumber per turn`,
+        properties: {
+          damage: 0,
+          speed: 0,
+          health: 400 * 1.2,
+          range: 0,
+          territoryRadius: 0,
+        },
+        custom: {
+          cost: [
+            { resourceId: RESOURCE_ID.gold, value: 500 },
+            { resourceId: RESOURCE_ID.food, value: 0 },
+            { resourceId: RESOURCE_ID.lumber, value: 250 },
+          ],
+        },
+      },
+
+      
+
       {
         name: 'Upgrade Unit Damage Level 1',
         image: humanBlacksmithDamageUpgrade1,
@@ -229,6 +257,27 @@ export function war2ImplementationInitialState(): IState {
           cost: [
             { resourceId: RESOURCE_ID.gold, value: 500 },
             { resourceId: RESOURCE_ID.food, value: -4 },
+            { resourceId: RESOURCE_ID.lumber, value: 250 },
+          ],
+        },
+      },
+      {// TODO: icons upgrades from here: https://wow.gamepedia.com/Footman_(Warcraft_III)#Upgrades
+        name: 'Lumbermill',
+        image: orcLumbermill,
+        icon: orcLumbermill,
+        id: 'orcLumbermill',
+        description: `+${lumbermillLUmberPlus} lumber per turn`,
+        properties: {
+          damage: 0,
+          speed: 0,
+          health: 400 * 1.2,
+          range: 0,
+          territoryRadius: 0,
+        },
+        custom: {
+          cost: [
+            { resourceId: RESOURCE_ID.gold, value: 500 },
+            { resourceId: RESOURCE_ID.food, value: 0 },
             { resourceId: RESOURCE_ID.lumber, value: 250 },
           ],
         },
@@ -374,7 +423,7 @@ export function war2ImplementationInitialState(): IState {
         name: 'Seba',
         isAI: false,
         color: 'blue',
-        unitTypes: ['human-base', 'goldMine', 'humanFarm', 'humanBlacksmith', 'humanBlacksmithDamageUpgrade1', 'humanTower1', 'footman', 'elven-archer'],
+        unitTypes: ['human-base', 'goldMine', 'humanFarm', 'humanLumbermill', 'humanBlacksmith', 'humanBlacksmithDamageUpgrade1', 'humanTower1', 'footman', 'elven-archer'],
         resources: clone(resources),
       },
       {
@@ -382,7 +431,7 @@ export function war2ImplementationInitialState(): IState {
         name: 'Data',
         color: 'red',
         isAI: true,
-        unitTypes: ['orc-base', 'goldMine', 'orcFarm', 'orcTower1', 'humanBlacksmith', 'grunt', 'troll'],
+        unitTypes: ['orc-base', 'goldMine', 'orcFarm', 'orcLumbermill', 'orcTower1', 'humanBlacksmith', 'grunt', 'troll'],
         resources: clone(resources),
       },
     ],
