@@ -74,7 +74,8 @@ export function war2ImplementationInitialState(): IState {
       winner: '',
       gameFinish: false,
       paused: false,
-      showIAPanels: true,
+      showAIUnitsPanel: false,
+      showAIResourcesPanel: true,
     },
     timestamp: Date.now(),
 
@@ -85,7 +86,7 @@ export function war2ImplementationInitialState(): IState {
         image: goldMine,
         icon: goldMine,
         id: 'goldMine',
-        description: `Gives +${mineGoldPlus} gold per turn. Mined from the rich earth of Azeroth and Lordaeron, this precious metal is commonly used in exchange for goods and services.`,
+        description: `Gives +${mineGoldPlus} gold per turn`,
         properties: {
           damage: 0,
           speed: 0,
@@ -106,7 +107,7 @@ export function war2ImplementationInitialState(): IState {
         image: HumanTownHall,
         icon: HumanTownHall,
         id: 'human-base',
-        description: `If killed you loose the game. The Town Hall serves as a center for the community and commerce of the various towns and military outposts in Lordaeron.`,
+        description: `If killed you loose the game.`,
         isBase: true,
         properties: {
           damage: 0,
@@ -121,7 +122,7 @@ export function war2ImplementationInitialState(): IState {
         image: humanFarm,
         icon: humanFarm,
         id: 'humanFarm',
-        description: `Feeds ${foodDefaultValue} units. Farms are a vital part of the many communities in Lordaeron. Producing various grains and foodstuffs, Farms not only generate sustenance for peasants and workers, but for the armies as well. `,
+        description: `Feeds ${foodDefaultValue} units `,
         properties: {
           damage: 0,
           speed: 0,
@@ -142,7 +143,7 @@ export function war2ImplementationInitialState(): IState {
         image: humanTower1,
         icon: humanTower1,
         id: 'humanTower1',
-        description: 'Scout Towers are tall, sturdy structures constructed to guard the borders of many settlements.',
+        description: 'Good defense structure. Upgrade in Sawmill',
         properties: {
           damage: 10,
           speed: 0,
@@ -163,7 +164,7 @@ export function war2ImplementationInitialState(): IState {
         image: humanBlacksmith,
         icon: humanBlacksmith,
         id: 'humanBlacksmith',
-        description: `Infantry upgrades. Blacksmiths are an important part of many settlements dependent on military protection. While the metals that they forge are a vital component in the construction of advanced buildings, they are especially known for their skill at weapon-crafting and armoring `,
+        description: `Infantry upgrades. `,
         properties: {
           damage: 0,
           speed: 0,
@@ -184,7 +185,7 @@ export function war2ImplementationInitialState(): IState {
         image: humanLumbermill,
         icon: humanLumbermill,
         id: 'humanLumbermill',
-        description: `+${lumbermillLUmberPlus} lumber per turn`,
+        description: `+${lumbermillLUmberPlus} lumber per turn. Structure upgrades`,
         properties: {
           damage: 0,
           speed: 0,
@@ -231,7 +232,7 @@ export function war2ImplementationInitialState(): IState {
         icon: orcGreatHall,
         id: 'orc-base',
         isBase: true,
-        description: `If killed you loose the game. This structure serves many purposes, such as being the gathering place and command center, for most Orcish settlements. `,
+        description: `If killed you loose the game. `,
         properties: {
           damage: 0,
           speed: 0,
@@ -245,7 +246,7 @@ export function war2ImplementationInitialState(): IState {
         image: orcFarm,
         icon: orcFarm,
         id: 'orcFarm',
-        description: `Feeds ${foodDefaultValue} units. Farms are a vital part of the many communities in Lordaeron. Producing various grains and foodstuffs, Farms not only generate sustenance for peasants and workers, but for the armies as well.`,
+        description: `Feeds ${foodDefaultValue} units.`,
         properties: {
           damage: 0,
           speed: 0,
@@ -266,7 +267,7 @@ export function war2ImplementationInitialState(): IState {
         image: orcLumbermill,
         icon: orcLumbermill,
         id: 'orcLumbermill',
-        description: `+${lumbermillLUmberPlus} lumber per turn`,
+        description: `+${lumbermillLUmberPlus} lumber per turn. Upgrades for structures`,
         properties: {
           damage: 0,
           speed: 0,
@@ -287,7 +288,7 @@ export function war2ImplementationInitialState(): IState {
         image: orcBlacksmith,
         icon: orcBlacksmith,
         id: 'orcBlacksmith',
-        description: `Infantry upgrades. The Orcs that live and work in the Blacksmith shops are veteran warriors themselves. Understanding the value of strong steel, they are always developing new techniques and methods to improve their weapons or upgrade the quality of their armor. `,
+        description: `Infantry upgrades.`,
         properties: {
           damage: 0,
           speed: 0,
@@ -308,7 +309,7 @@ export function war2ImplementationInitialState(): IState {
         image: orcTower1,
         icon: orcTower1,
         id: 'orcTower1',
-        description:`Rising high above the treeline, Watch Towers resemble primitive huts laced with animal bones and giant tusks of every kind. `,
+        description:`Good defense structure. Upgrade in Sawmill `,
         properties: {
           damage: 10,
           speed: 0,
@@ -330,7 +331,7 @@ export function war2ImplementationInitialState(): IState {
         image: footman,
         icon: footmanIcon,
         id: 'footman',
-        description: `Footmen are the initial line of defense against the Horde. Arrayed in hardened steel armor, they courageously wield broadsword and shield in hand-to-hand combat against their vile Orcish foes.`,
+        description: `Initial line of defense - hand-to-hand combat. `,
         properties: {
           damage: 9,
           speed: 1,
@@ -351,7 +352,7 @@ export function war2ImplementationInitialState(): IState {
         icon: 'https://d1u5p3l4wpay3k.cloudfront.net/wowpedia/4/4f/Aface.gif?version=237897e7775651612b874e7d7ec5f7d8',
         id: 'elven-archer',
         isBase: false,
-        description: `Out of the mysterious forests of Quel'thalas come the Elven Archers to aid the Alliance in its darkest hour.`, 
+        description: `Initial ranged unit`, 
         properties: {
           damage: 9,
           speed: 1,
@@ -373,7 +374,7 @@ export function war2ImplementationInitialState(): IState {
         icon: 'https://d1u5p3l4wpay3k.cloudfront.net/wowpedia/e/e0/Grunt.gif',
         id: 'grunt',
         isBase: false,
-        description: `Those Orcs who distinguish themselves enough in the arts of war to be trained as Grunts epitomize the merciless spirit of the Horde. `,
+        description:`Initial line of defense - hand-to-hand combat. `,
         properties: {
           damage: 9,
           speed: 1,
@@ -394,7 +395,7 @@ export function war2ImplementationInitialState(): IState {
         icon: 'https://d1u5p3l4wpay3k.cloudfront.net/wowpedia/3/31/Axe.gif',
         id: 'troll',
         isBase: false,
-        description: `ore agile than the brutish Orcs, Trolls employ throwing axes - along with a cunning attack and retreat stratagem - to assail their foes. `,
+        description: `Initial ranged unit`, 
         properties: {
           damage: 9,
           speed: 1,

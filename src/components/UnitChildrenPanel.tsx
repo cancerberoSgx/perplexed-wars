@@ -12,33 +12,37 @@ export class UnitChildrenPanel extends BaseComponent<{playerUIState: IPlayerUISt
     super(props)
   }
   public render() {
-    if (!(this.props.playerUIState && this.props.playerUIState.addUnitChildButtons && this.props.playerUIState.addUnitChildButtons.length)) {
-      return (
-        <div className="UnitChildrenPanel" >
-        </div>
-      )
-      
-    }
-    const childUnits = State.get().unitsTypes.filter(ut => this.props.playerUIState.addUnitChildButtons.find(c => ut.id === c))
+    const canRender = 
+      this.props.playerUIState && 
+      this.props.playerUIState.addUnitChildButtons && this.props.playerUIState.addUnitChildButtons.length && 
+      this.props.playerUIState.addUnitButtons.find(c => c.pressed) 
+    const childUnits = 
+      canRender && 
+      this.state.unitsTypes.filter(ut => this.props.playerUIState.addUnitChildButtons.find(c => ut.id === c))
     return (
-        // <Draggable handle=".UnitChildrenPanel">
-        <div className="UnitChildrenPanel" >
-        {'<<drag me>>'}<br/>
-        <ul>
-          {childUnits.map(unit => 
-            <li key={unit.id}>
-            <UnitTypeButton 
-              button={State.get().uiState.playerControls
-                .find(pc => pc.playerId === this.props.playerUIState.playerId)
-                .addUnitButtons.find(ub => ub.unitTypeId === unit.id)} 
-              player={State.get().players.find(p => p.id === this.props.playerUIState.playerId)}
-            />
-            </li>,
-          )}
-         
-        </ul>
-        </div>
-        // </Draggable>
+        <Draggable 
+          handle=".UnitChildrenPanel" 
+          defaultClassName={'UnitChildrenPanelDraggable ' + (canRender ? 'has-content' :'')}
+          offsetParent={document.querySelector('.UnitsPanel')}
+          defaultPosition={{ x:0, y: 0 }}
+        >
+          <div className={'UnitChildrenPanel '}>
+          {canRender ? '<<drag me>>' : ''}
+          <ul>
+            {canRender ? childUnits.map(unit => 
+              <li key={unit.id}>
+              <UnitTypeButton 
+                button={this.state.uiState.playerControls
+                  .find(pc => pc.playerId === this.props.playerUIState.playerId)
+                  .addUnitButtons.find(ub => ub.unitTypeId === unit.id)} 
+                player={this.state.players.find(p => p.id === this.props.playerUIState.playerId)}
+              />
+              </li>,
+            ) : ''}
+            
+          </ul>
+          </div>
+        </Draggable >
     )
     
   }

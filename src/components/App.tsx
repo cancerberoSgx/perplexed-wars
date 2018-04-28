@@ -9,21 +9,22 @@ import { BaseComponent } from './BaseComponent'
 import { Board } from './Board'
 import { UnitSelectionInfo } from './UnitSelectionInfo'
 import { UnitsPanel } from './UnitsPanel'
+import { IPlayer } from '../state/state-interfaces'
+import { UnitChildrenPanel } from './UnitChildrenPanel'
 
 export class App extends BaseComponent<{}> {
+  // humanPlayer: IPlayer
   constructor(props:{}) {
     super(props)
   }
   public render() {
+    // this.humanPlayer = this.state.players.find(p => !p.isAI)
     return (
-
       <div className="container-fluid App">
         <header className="App-header row">
-
           <div className="col-4">
             <img className="App-logo" src={logo} alt="perplexed wars" />
           </div>
-
           <div className="StatusPanel col-8">
             <p><a href="https://github.com/cancerberoSgx/perplexed-wars">Project home</a></p>
             {!this.state.game.realTime && <span><button onClick={Game.getInstance().nextTurn}>Next Turn!</button></span>}
@@ -35,15 +36,14 @@ export class App extends BaseComponent<{}> {
             {this.state.game.realTime && <span><input type="checkbox" checked={this.state.game.paused} onChange={pauseClicked} /> Paused  </span>}
 
             {this.state.game.realTime && <span>Interval: <input type="number" onChange={changeInterval} defaultValue={this.state.game.interval + ''}/></span>}
-
-
+            
             <div>TIME: {this.state.game.time / 1000}</div>
           </div>  
         
         </header>
 
         <UnitSelectionInfo unitSelection={this.state.uiState.unitSelection} unitTypeSelection={this.state.uiState.unitTypeSelection}/>
-        
+        <UnitChildrenPanel playerUIState={this.state.uiState.playerControls.find(pc => pc.playerId === this.state.players.find(p => !p.isAI).id)}/>
         
         <UnitsPanel />
 

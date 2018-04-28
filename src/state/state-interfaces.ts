@@ -23,7 +23,8 @@ export interface IGame extends IThing {
   gameFinish: boolean
   winner: string
   paused: boolean
-  showIAPanels: boolean
+  showAIUnitsPanel: boolean
+  showAIResourcesPanel?:boolean
 }
 
 export interface IBoard {

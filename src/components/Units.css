@@ -1,11 +1,13 @@
 .Units {
   min-height: 60px;
   min-width: 60px;
-  border: 1px solid white
+  border: 1px solid white;
+  background: transparent;
 }
 .Unit {
   max-height: 60px;
   max-width: 60px;
+  background: transparent;
 }
 .Unit.attacked {
   border: 1px solid red

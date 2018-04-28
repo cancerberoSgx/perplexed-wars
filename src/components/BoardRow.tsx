@@ -36,7 +36,7 @@ export class BoardRow extends BaseComponent<{n:number}>  {
     )
   }
   protected buildClassName(b:IBox):string {
-    const boxIsAvailable = this.playerControl.availablePlaces && this.playerControl.availablePlaces.find(ap => ap.x === b.x && ap.y === b.y) && this.playerControl.addUnitButtons.find(b => b.pressed)    
+    const boxIsAvailable = this.playerControl && this.playerControl.availablePlaces && this.playerControl.availablePlaces.find(ap => ap.x === b.x && ap.y === b.y) && this.playerControl.addUnitButtons.find(b => b.pressed)    
     const classes = ['BoardBox']
     if (boxIsAvailable) {
       classes.push('available-for-move')

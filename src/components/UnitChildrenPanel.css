@@ -4,18 +4,21 @@
   /* right: 50%;
   bottom: 50%; */
   background: #999999;
-  opacity: 0.8; 
-  /* max-width: 30%;
-  max-height: 30%; */
-  
+  opacity: 0.7; 
+  max-width: 40%;
+  max-height: 40%;
+  z-index: 200;
+  display: none;
+  overflow: scroll;
 }
-
+.UnitChildrenPanelDraggable{
+  display: none;
+}
+.UnitChildrenPanelDraggable.has-content{
+  display: block;
+}
 .UnitChildrenPanel:after {
   content: "";
-  display: table;
-  clear: both;
+  display: table; 
+  clear: both;  
 }
-/* .UnitSelectionInfo.is-pointer-down {
-  background: #09F;
-}
-.UnitSelectionInfo.is-dragging { opacity: 0.6; } */

@@ -11,8 +11,8 @@
   padding-left: 0px;
 }
 .BoardBox.available-for-move{
-  background-color: yellow;
-  opacity: 0.5;
+  background-color: rgb(236, 236, 217);
+  /* opacity: 0.2 */
 }
 
 
