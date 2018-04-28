@@ -1,17 +1,11 @@
 .NotificationPanel {
-  position: absolute;
-  border-radius: 10px;
-  right: 10%;
-  /* bottom: 100%; */
+  /* border-radius: 10px;
   margin: 10px;
-  background-color: rgb(182, 42, 42);
   color: #ffffff;
   opacity: 0.8; 
-  max-width: 40%;
-  max-height: 40%;
-  z-index: 299;
-  /* display: none; */
-  /* overflow: scroll; */
+  max-width: 100%;
+  max-height: 100%; */
+  background-color: rgb(182, 42, 42);
 }
 .NotificationPanel .message {
   font-size: 1.2em;

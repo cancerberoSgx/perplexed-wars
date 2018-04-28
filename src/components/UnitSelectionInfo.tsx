@@ -29,7 +29,7 @@ export class UnitSelectionInfo extends BaseComponent<{unitTypeSelection: IUnitTy
       const extras = this.props.unitTypeSelection.extraDescriptionProperties && this.props.unitTypeSelection.extraDescriptionProperties || []
       return (
           <Draggable handle=".UnitSelectionInfo">
-            <table className="UnitSelectionInfo"><tbody>
+            <table className="UnitSelectionInfo AppPanel"><tbody>
               <tr><td></td><td>{'<<drag me>>'}</td></tr>
               <tr><td>Name</td><td><img src={this.props.unitTypeSelection.icon}/>{this.props.unitTypeSelection.name}</td></tr>
               <tr><td>Damage</td><td>{this.props.unitTypeSelection.properties.damage}</td></tr>

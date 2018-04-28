@@ -2,7 +2,7 @@ import { IState } from '../../state/state-interfaces'
 import {  createBoxes, clone, isDevelopment } from '../../util/util'
 import * as HumanTownHall from './assets/HumanTownhall.gif'
 import * as goldIcon from './assets/gold.gif'
-import * as foodIcon from './assets/food.png'
+import * as foodIcon from './assets/food.gif'
 import * as lumberIcon from './assets/lumber.gif'
 import * as humanFarm from './assets/HumanFarm.gif'
 import * as orcFarm from './assets/OrcFarm.gif'
@@ -16,9 +16,15 @@ import * as humanLumbermill from './assets/HumanLumbermill.gif'
 import * as orcLumbermill from './assets/orcLumbermill.gif'
 import * as footman from './assets/footman.gif'
 import * as footmanIcon from './assets/footmanIcon.gif'
-
+import * as archer from './assets/archer.gif'
+import * as archerIcon from './assets/archerIcon.gif'
+import * as grunt from './assets/grunt.gif'
+import * as gruntIcon from './assets/gruntIcon.gif'
 import * as humanBlacksmithDamageUpgrade1 from './assets/humanBlacksmithDamageUpgrade1.png'
 
+import * as troll from './assets/troll.gif'
+import * as trollIcon from './assets/trollIcon.gif'
+troll
 
 
 
@@ -348,8 +354,8 @@ export function war2ImplementationInitialState(): IState {
       },
       {
         name: 'Elven Archer',
-        image: 'https://d1u5p3l4wpay3k.cloudfront.net/wowpedia/4/4d/ElfArcher.gif',
-        icon: 'https://d1u5p3l4wpay3k.cloudfront.net/wowpedia/4/4f/Aface.gif?version=237897e7775651612b874e7d7ec5f7d8',
+        image: archer,
+        icon: archerIcon,
         id: 'elven-archer',
         isBase: false,
         description: `Initial ranged unit`, 
@@ -370,8 +376,8 @@ export function war2ImplementationInitialState(): IState {
       },
       {
         name: 'Grunt',
-        image: 'https://d1u5p3l4wpay3k.cloudfront.net/wowpedia/c/cc/OrcGrunt.gif',
-        icon: 'https://d1u5p3l4wpay3k.cloudfront.net/wowpedia/e/e0/Grunt.gif',
+        image: grunt,
+        icon: gruntIcon,
         id: 'grunt',
         isBase: false,
         description:`Initial line of defense - hand-to-hand combat. `,
@@ -391,8 +397,8 @@ export function war2ImplementationInitialState(): IState {
       },
       {
         name: 'Troll Axethrower',
-        image: 'https://d1u5p3l4wpay3k.cloudfront.net/wowpedia/7/75/TrollAxethwr.gif',
-        icon: 'https://d1u5p3l4wpay3k.cloudfront.net/wowpedia/3/31/Axe.gif',
+        image: troll,
+        icon: trollIcon,
         id: 'troll',
         isBase: false,
         description: `Initial ranged unit`, 

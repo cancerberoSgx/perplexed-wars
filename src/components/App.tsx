@@ -43,9 +43,11 @@ export class App extends BaseComponent<{}> {
         
         </header>
 
+        <div className="PanelContainer">
+        <NotificationPanel playerUIState={this.state.uiState.playerControls.find(pc => pc.playerId === this.state.players.find(p => !p.isAI).id)}/>
         <UnitSelectionInfo unitSelection={this.state.uiState.unitSelection} unitTypeSelection={this.state.uiState.unitTypeSelection}/>
         <UnitChildrenPanel playerUIState={this.state.uiState.playerControls.find(pc => pc.playerId === this.state.players.find(p => !p.isAI).id)}/>
-        <NotificationPanel playerUIState={this.state.uiState.playerControls.find(pc => pc.playerId === this.state.players.find(p => !p.isAI).id)}/>
+        </div>
         
         <UnitsPanel />
 
