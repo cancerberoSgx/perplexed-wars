@@ -11,6 +11,7 @@ import { UnitSelectionInfo } from './UnitSelectionInfo'
 import { UnitsPanel } from './UnitsPanel'
 import { IPlayer } from '../state/state-interfaces'
 import { UnitChildrenPanel } from './UnitChildrenPanel'
+import { NotificationPanel } from './NotificationPanel'
 
 export class App extends BaseComponent<{}> {
   // humanPlayer: IPlayer
@@ -44,6 +45,7 @@ export class App extends BaseComponent<{}> {
 
         <UnitSelectionInfo unitSelection={this.state.uiState.unitSelection} unitTypeSelection={this.state.uiState.unitTypeSelection}/>
         <UnitChildrenPanel playerUIState={this.state.uiState.playerControls.find(pc => pc.playerId === this.state.players.find(p => !p.isAI).id)}/>
+        <NotificationPanel playerUIState={this.state.uiState.playerControls.find(pc => pc.playerId === this.state.players.find(p => !p.isAI).id)}/>
         
         <UnitsPanel />
 

@@ -2,10 +2,10 @@ import { EventEmitter } from 'events'
 import { ACTION_GAME_LOOP_INCREMENT_INTERVAL, ITurnEndAction } from '../reducers/gameLoop'
 import { store } from '../reducers/store'
 import { State } from './state'
-import { IGameFramework, Events, BeforeUnitSelectionEvent, AfterUnitSelectionEvent, AfterAddUnitEvent, BeforeGameFinishEvent, BeforeAddUnitSuccessEvent, Log } from './IGameFramework'
+import { IGameFramework, Events, BeforeUnitSelectionEvent, AfterUnitSelectionEvent, AfterAddUnitEvent, BeforeGameFinishEvent, BeforeAddUnitSuccessEvent } from './IGameFramework'
 import { IA } from '../ia/ia-interfaces'
 import { StateAccessHelper } from './StateAccessHelper'
-import { IPlayer } from './state-interfaces'
+import { IPlayer, Log } from './state-interfaces'
 import { Behavior } from './behavior'
 import { GameUIStateHelper } from './GameUIStateHelper'
 
@@ -65,7 +65,7 @@ export class Game extends EventEmitter implements IGameFramework {
 
   public nextTurn (): void {
     if (State.get().game.gameFinish) {
-      alert('Game finish, winner is ' + State.get().game.winner + '. Bye.')
+      Game.getInstance().log({ message:'Game finish, winner is ' + State.get().game.winner + '. Bye.' })
       this.stop()
       return
     }
@@ -79,7 +79,16 @@ export class Game extends EventEmitter implements IGameFramework {
     }
   }
 
-  public log (log: Log): void {
-    console.log(log.message)
+  public log (log: Log, player:string= State.get().players.find(p => !p.isAI).id): void {
+    // alert(log.message)
+    const humanControls = State.get().uiState.playerControls.find(c => c.playerId === player)
+    State.modify(State.get(), (s) => {
+      humanControls.message = log
+    })
+    setTimeout(() => {
+      State.modify(State.get(), (s) => {
+        humanControls.message = null
+      })
+    }, humanControls.notificationTimeout || 2000)
   }
 }

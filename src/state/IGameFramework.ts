@@ -1,7 +1,7 @@
 import { ISelectUnitAction } from '../reducers/selectUnit'
 import { IAddUnitAction } from '../reducers/addNewUnit'
 import { EventEmitter } from 'events'
-import { IPlayerUIState, IBox, IUnit, IState, IPlayer, IUnitSelectionInfo } from './state-interfaces'
+import { IPlayerUIState, IBox, IUnit, IState, IPlayer, IUnitSelectionInfo, Log } from './state-interfaces'
 import { IA } from '../ia/ia-interfaces'
 import { ITurnEndAction } from 'reducers/gameLoop'
 import { IUnitActionResolverData } from 'resolvers/unitActionResolvers'
@@ -31,7 +31,7 @@ export interface IGameFramework extends EventEmitter {
   /** implements next turn (setInterval / setTimeout)  accordingly to [[IGame.isRealTime]] and [[IGame.interval]] */
   nextTurn (): void
 
-  log (log): void
+  log (log:Log): void
 
   on (eventName: Events.EVENT_BEFORE_UNIT_SELECTION, eventHandler: typeof beforeUnitSelection): this
   emit (eventName: Events.EVENT_BEFORE_UNIT_SELECTION, data: BeforeUnitSelectionEvent): boolean
@@ -200,7 +200,3 @@ export interface BeforeGameFinishEvent extends GameFrameworkEvent {
   winner: string
 }
 
-export interface Log {
-  message: string
-  type: 'internal' | 'warning' | 'error' | 'tip' | 'help' | 'internalError'
-}

@@ -119,6 +119,13 @@ export interface IPlayerUIState {
   addUnitChildButtons?: string[]
   playerId: string
   availablePlaces?: IBox[] 
+  message?: Log
+  notificationTimeout?: number
+}
+
+export interface Log {
+  message: string
+  type?: 'internal' | 'warning' | 'error' | 'tip' | 'help' | 'internalError'
 }
 export interface IPlayerStateAddUnitButtonState {
   pressed: boolean

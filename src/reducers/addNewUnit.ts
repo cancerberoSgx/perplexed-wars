@@ -36,7 +36,7 @@ export function addNewUnit(state: IState, action: IAddUnitAction): IState {
 
   const button = playerUi.addUnitButtons.find(b => b.pressed)
   if (!button && playerIsHuman) {
-    alert('No unit selected!, first click one of the add-unit buttons at the top and then the board')
+    Game.getInstance().log({ message: 'No unit selected!, first click one of the add-unit buttons at the top and then the board' })
     return state
   }
   action.unitId = action.unitId || button.unitTypeId
@@ -52,7 +52,7 @@ export function addNewUnit(state: IState, action: IAddUnitAction): IState {
         },
       })
       if (cancelledReason && playerIsHuman) {
-        alert(cancelledReason)
+        Game.getInstance().log({ message:cancelledReason })
         return s
       }
       const unit: IUnit = newUnit(state, action.unitId, playerUi.playerId)
@@ -64,7 +64,7 @@ export function addNewUnit(state: IState, action: IAddUnitAction): IState {
       }
       Game.getInstance().emit(Events.EVENT_AFTER_ADD_UNIT, { newUnit: unit, action, player: playerUi, box, state })
     } else if (playerIsHuman) {
-      alert('Cannot add unit there - box is outside territory')
+      Game.getInstance().log({ message: 'Cannot add unit there - box is outside territory' })
     }
   })
 }
