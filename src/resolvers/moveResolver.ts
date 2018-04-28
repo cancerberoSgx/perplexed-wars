@@ -24,7 +24,9 @@ export class MoveResolver implements IUnitActionResolver {
       if (path && path.length > 1) {  // move the unit now! - matrix will be recalculated for each unit
         const newBox = state.board.boxes.find(b => b.x === path[1][0] && b.y === path[1][1])
         doMove(newBox, box, unit)       
-      } else {
+      }
+      
+      if (!unit.moved) {
         // if there is no path, we still try to move the unit. Issue. It coul dbe the enemy base is temporarily blocked and the two players unit blocking each other eternally
         const availablePlaces = getAvailablePlacesFor(player.id, state)
         if (availablePlaces && availablePlaces.length) {

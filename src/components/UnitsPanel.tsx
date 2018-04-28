@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { ACTION_ADD_UNIT_CLICK_BUTTON } from '../reducers/addNewUnit'
+import { ACTION_ADD_UNIT_CLICK_BUTTON } from '../reducers/clickAddNewUnitButton'
 import { store } from '../reducers/store'
 import { State } from '../state/state'
 import { BaseComponent } from './BaseComponent'

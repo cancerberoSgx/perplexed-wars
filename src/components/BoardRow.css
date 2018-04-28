@@ -10,6 +10,12 @@
   padding-top: 0px;
   padding-left: 0px;
 }
+.BoardBox.available-for-move{
+  background-color: yellow;
+  opacity: 0.5;
+}
+
+
 .BoardBox.death{
   background-color: red;
 }

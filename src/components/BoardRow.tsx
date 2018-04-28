@@ -1,16 +1,19 @@
 import * as React from 'react'
 import { ACTION_ADD_UNIT } from '../reducers/addNewUnit'
 import { store } from '../reducers/store'
-import { IBox } from '../state/state-interfaces'
+import { IBox, IPlayer, IPlayerUIState } from '../state/state-interfaces'
 import { BaseComponent } from './BaseComponent'
 import './BoardRow.css'
 import { Units } from './Units'
+import { State } from 'state/state'
 
 export class BoardRow extends BaseComponent<{n:number}>  {
+  private playerControl: IPlayerUIState
   constructor(props:{n:number}) {
     super(props)
   }
   public render() {
+    this.playerControl = this.state.uiState.playerControls.find(pc => pc.playerId === this.state.players.find(p => !p.isAI).id)
     return (
       <tr className="BoardRow">
       {
@@ -33,7 +36,11 @@ export class BoardRow extends BaseComponent<{n:number}>  {
     )
   }
   protected buildClassName(b:IBox):string {
+    const boxIsAvailable = this.playerControl.availablePlaces && this.playerControl.availablePlaces.find(ap => ap.x === b.x && ap.y === b.y) && this.playerControl.addUnitButtons.find(b => b.pressed)    
     const classes = ['BoardBox']
+    if (boxIsAvailable) {
+      classes.push('available-for-move')
+    }
     if (this.state.uiState.unitSelection.find(s => s.box.id === b.id)) {
       classes.push('selected')
     }

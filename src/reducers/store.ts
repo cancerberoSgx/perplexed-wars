@@ -1,5 +1,6 @@
 import { createStore, Store, combineReducers, AnyAction } from 'redux'
-import { addNewUnit, clickAddNewUnitButton } from './addNewUnit'
+import { addNewUnit } from './addNewUnit'
+import { clickAddNewUnitButton } from './clickAddNewUnitButton'
 import { gameLoop } from './gameLoop'
 import { selectUnit } from './selectUnit'
 import { changeGameSettings } from './changeGameSettings'

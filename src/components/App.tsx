@@ -1,15 +1,14 @@
 import * as React from 'react'
 import * as logo from '../assets/logo.png'
+import { ACTION_CHANGE_GAME_SETTINGS, IChangeGameSettingsAction } from '../reducers/changeGameSettings'
+import { store } from '../reducers/store'
 import { Game } from '../state/game'
+import { State } from '../state/state'
 import './App.css'
 import { BaseComponent } from './BaseComponent'
 import { Board } from './Board'
-import { UnitsPanel } from './UnitsPanel'
-import { store } from '../reducers/store'
-import { State } from '../state/state'
-import { ACTION_CHANGE_GAME_SETTINGS, IChangeGameSettingsAction } from '../reducers/changeGameSettings'
 import { UnitSelectionInfo } from './UnitSelectionInfo'
-import { UnitChildrenPanel } from './UnitChildrenPanel'
+import { UnitsPanel } from './UnitsPanel'
 
 export class App extends BaseComponent<{}> {
   constructor(props:{}) {

@@ -1,12 +1,9 @@
 import * as React from 'react'
-import { ACTION_ADD_UNIT_CLICK_BUTTON } from '../reducers/addNewUnit'
+import { ACTION_ADD_UNIT_CLICK_BUTTON } from '../reducers/clickAddNewUnitButton'
+import { IPlayer, IPlayerStateAddUnitButtonState } from '../state/state-interfaces'
 import { store } from '../reducers/store'
-import { State } from '../state/state'
 import { BaseComponent } from './BaseComponent'
 import './UnitTypeButton.css'
-import { PlayerResources } from './PlayerResources'
-import { UnitChildrenPanel } from './UnitChildrenPanel'
-import { IPlayerStateAddUnitButtonState, IPlayer } from 'state/state-interfaces'
 
 export class UnitTypeButton extends BaseComponent<{button:IPlayerStateAddUnitButtonState, player: IPlayer}> {
   constructor(props: { button:IPlayerStateAddUnitButtonState, player: IPlayer }) {
@@ -26,7 +23,6 @@ export class UnitTypeButton extends BaseComponent<{button:IPlayerStateAddUnitBut
           <img className="icon" src={getUnit(this.props.button.unitTypeId, this.state).icon} />
           {getUnit(this.props.button.unitTypeId, this.state).name}
         </button>
-        
       }
       </div>
     )
