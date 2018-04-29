@@ -33,8 +33,7 @@ export class BarNav extends BaseComponent<{}> {
         <img className="AppLogo" src={logo} alt="perplexed wars" />
 
         <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-          <a className="navbar-brand" href="#">
-            <a href="https://github.com/cancerberoSgx/perplexed-wars">Project home</a></a>
+          <a className="navbar-brand" href="https://github.com/cancerberoSgx/perplexed-wars">Project home</a>
           <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
             <li className="nav-item active">
               <input type="checkbox" checked={this.state.game.realTime} onChange={realTimeChanged}/> Real Time?
