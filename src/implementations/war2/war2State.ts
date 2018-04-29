@@ -50,14 +50,14 @@ export function war2ImplementationInitialState(): IState {
     id: RESOURCE_ID.gold,
     name: RESOURCE_ID.gold,
     defaultValuePerTurn: goldDefaultValuePerTurn,
-    value: 7200,
+    value: 1200,
     thisTurnValue: 0,
     icon: goldIcon,
   }, {
     id: RESOURCE_ID.lumber,
     name: RESOURCE_ID.lumber,
     defaultValuePerTurn: 2,
-    value: 4300,
+    value: 200,
     thisTurnValue: 0,
     icon: lumberIcon,
   },{

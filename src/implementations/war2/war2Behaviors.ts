@@ -72,9 +72,8 @@ function getPlayerBehaviors() {
   if (playerBehaviors) {
     return playerBehaviors
   }
-  // heads up! this variable is the initial state and obsolete - we only read unit types ids that we know doesn't change
-  const initialState = war2ImplementationInitialState()
-  playerBehaviors = initialState.players.map<IPlayerBehavior>(p => ({
+
+  playerBehaviors = war2ImplementationInitialState().players.map<IPlayerBehavior>(p => ({
     id: p.id,
     stateModifiers: [],
     ia: p.isAI ? new SimpleIa1() : undefined,
@@ -162,12 +161,9 @@ function getUnitBehaviors() {
   if (unitBehaviors) {
     return unitBehaviors
   }
-  // heads up! this variable is the initial state and obsolete - we only read unit types ids that we know doesn't change
-  const initialState = war2ImplementationInitialState()
-
   unitBehaviors = []
 
-  initialState.unitsTypes.forEach(unitBehavior => {
+  war2ImplementationInitialState().unitsTypes.forEach(unitBehavior => {
 
     const utb: IUnitTypeBehavior = {
       id: unitBehavior.id,

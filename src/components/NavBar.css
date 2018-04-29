@@ -1,4 +1,10 @@
 .navbar{
   position: absolute;
-  width: 100%
+  width: 100%;
+  padding: 4px; 
+  z-index: 200
 } 
+.AppLogo{
+  line-break: auto;
+  height: 40px;
+}

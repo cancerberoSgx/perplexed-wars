@@ -1,19 +1,15 @@
-.App-header {
-  /* text-align: center; */
-  background-color:#1498d5;
-  color: white;
-  padding-top: 100px;
-}
-.App-logo{
-  line-break: auto;
-}
+
 .App * {
   user-select: none !important;  
 }
-.App a{
- color: #ededed;
- font-weight: bold;
-} 
+.App li {
+  list-style-type: none;
+}
+.App{
+  padding: 0;
+}
+
+
 .App .PanelContainer{
   position: absolute;
   width: 100%;
@@ -30,8 +26,7 @@
   opacity: 0.8; 
   max-width: 40%;
   max-height: 50%;
-  z-index: 200;
-  display: block
+  display: block;
 }
 .AppPanel:after {
   content: "";

@@ -33,12 +33,12 @@ export class GameUIStateHelper {
   }
 
   public static setAddUnitChildButtons(state:IState) {
-    const parent = state.uiState.unitTypeSelection
+    const parent = state.uiState.unitSelection
     if (!parent) {
       return
     }
     state.players.filter(p => !p.isAI).forEach(player => {
-      const children = state.unitsTypes.filter(ut => ut.childOf && ut.childOf.find(p => p === parent.id)).map(u => u.id)
+      const children = state.unitsTypes.filter(ut => ut.childOf && ut.childOf.find(p => !!parent.find(ps => ps.unit.type.id === p))).map(u => u.id)
       
       state.uiState.playerControls.filter(pc => pc.playerId === player.id).forEach(pc => {
         pc.addUnitChildButtons = children

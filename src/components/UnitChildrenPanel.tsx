@@ -6,8 +6,8 @@ import Draggable from 'react-draggable'
 import { State } from '../state/state'
 import { UnitTypeButton } from './UnitTypeButton'
 
-
 export class UnitChildrenPanel extends BaseComponent<{playerUIState: IPlayerUIState}> {
+  parentUnit: IUnitSelectionInfo
   constructor(props:{playerUIState: IPlayerUIState}) {
     super(props)
   }
@@ -15,11 +15,11 @@ export class UnitChildrenPanel extends BaseComponent<{playerUIState: IPlayerUISt
     const canRender = 
       this.props.playerUIState && 
       this.props.playerUIState.addUnitChildButtons && this.props.playerUIState.addUnitChildButtons.length 
-      // && 
-      // this.props.playerUIState.addUnitButtons.find(c => c.pressed) 
-    const childUnits = 
-      canRender && 
+    const childUnits = canRender && 
       this.state.unitsTypes.filter(ut => this.props.playerUIState.addUnitChildButtons.find(c => ut.id === c))
+    const parentUnitType = canRender && this.state.unitsTypes.find(ut => !!childUnits[0].childOf.find(p => p === ut.id))
+    this.parentUnit = canRender && this.state.uiState.unitSelection.find(s => s.unit.type.id === parentUnitType.id)
+
     return (
         <Draggable 
           handle=".UnitChildrenPanel" 
@@ -47,7 +47,12 @@ export class UnitChildrenPanel extends BaseComponent<{playerUIState: IPlayerUISt
     )
     
   }
-
+  componentDidUpdate() {
+    if (!this.parentUnit) {
+      return 
+    }
+  
+    const parentUnitEl = document.querySelector(`[data-x="${this.parentUnit.box.x}"][data-y="${this.parentUnit.box.y}"]`)
+    console.log(parentUnitEl && parentUnitEl.getClientRects()[0])
+  }
 }
-//  {/* {childUnits.map(ut=>)} */}
-//  hola!

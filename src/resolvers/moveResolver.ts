@@ -8,9 +8,6 @@ import { StateAccessHelper } from '../state/StateAccessHelper'
 export class MoveResolver implements IUnitActionResolver {
   private finder: any
   public resolve ({ state, unit, box, player }: IUnitActionResolverData): void {
-
-    
-    
     if (unit.type.isBase || unit.state.speed === 0 || unit.moved || unit.playerId !== player.id) {
       return 
     }
@@ -26,6 +23,8 @@ export class MoveResolver implements IUnitActionResolver {
     const matrix = getPathMatrix(state)
     const grid = new PF.Grid(matrix)
     const path: number[][] = this.finder.findPath(box.x, box.y, foeBaseBox.x, foeBaseBox.y, grid)
+
+
     if (path && path.length > 1) {  // move the unit now! - matrix will be recalculated for each unit
       const newBox = state.board.boxes.find(b => b.x === path[1][0] && b.y === path[1][1])
 

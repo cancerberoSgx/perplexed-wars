@@ -41,6 +41,8 @@ export function addNewUnitImpl(state: IState, action: IAddUnitAction): IState {
     return state
   }
 
+  action.playerId = !isNotAddableToBoard && playerUi.playerId
+
   const button = isNotAddableToBoard || playerUi.addUnitButtons.find(b => b.pressed)
   if (!isNotAddableToBoard && !button && playerIsHuman) {
     Game.getInstance().log({ message: 'No unit selected!, first click one of the add-unit buttons at the top and then the board' })
@@ -51,6 +53,7 @@ export function addNewUnitImpl(state: IState, action: IAddUnitAction): IState {
   return State.modify(state, s => {
     let box:IBox
     const unit = newUnit(state, action.unitId, action.playerId)
+
     if (isNotAddableToBoard) {
       Game.getInstance().emit(Events.EVENT_AFTER_ADD_UNIT, { newUnit: unit, action, player: playerUi, box, state: s })
     } else if ((box = s.board.boxes.find(b => b.x === action.x && b.y === action.y)) !== undefined && 
