@@ -101,6 +101,7 @@
 								<li class="tsd-kind-interface tsd-has-type-parameter"><a href="interfaces/iaddunitaction.html" class="tsd-kind-icon">IAdd<wbr>Unit<wbr>Action</a></li>
 								<li class="tsd-kind-interface"><a href="interfaces/ibehavior.html" class="tsd-kind-icon">IBehavior</a></li>
 								<li class="tsd-kind-interface"><a href="interfaces/iboard.html" class="tsd-kind-icon">IBoard</a></li>
+								<li class="tsd-kind-interface"><a href="interfaces/iboardbehavior.html" class="tsd-kind-icon">IBoard<wbr>Behavior</a></li>
 								<li class="tsd-kind-interface"><a href="interfaces/ibox.html" class="tsd-kind-icon">IBox</a></li>
 								<li class="tsd-kind-interface tsd-has-type-parameter"><a href="interfaces/ichangegamesettingsaction.html" class="tsd-kind-icon">IChange<wbr>Game<wbr>Settings<wbr>Action</a></li>
 								<li class="tsd-kind-interface tsd-has-type-parameter"><a href="interfaces/iclickaddunitbuttonaction.html" class="tsd-kind-icon">IClick<wbr>Add<wbr>Unit<wbr>Button<wbr>Action</a></li>
@@ -124,6 +125,7 @@
 								<li class="tsd-kind-interface"><a href="interfaces/iturnendaction.html" class="tsd-kind-icon">ITurn<wbr>End<wbr>Action</a></li>
 								<li class="tsd-kind-interface"><a href="interfaces/iuistate.html" class="tsd-kind-icon">IUIState</a></li>
 								<li class="tsd-kind-interface"><a href="interfaces/iunit.html" class="tsd-kind-icon">IUnit</a></li>
+								<li class="tsd-kind-interface"><a href="interfaces/iunitbox.html" class="tsd-kind-icon">IUnit<wbr>Box</a></li>
 								<li class="tsd-kind-interface"><a href="interfaces/iunitproperties.html" class="tsd-kind-icon">IUnit<wbr>Properties</a></li>
 								<li class="tsd-kind-interface"><a href="interfaces/iunitselectioninfo.html" class="tsd-kind-icon">IUnit<wbr>Selection<wbr>Info</a></li>
 								<li class="tsd-kind-interface"><a href="interfaces/iunittype.html" class="tsd-kind-icon">IUnit<wbr>Type</a></li>
@@ -149,7 +151,6 @@
 								<li class="tsd-kind-function"><a href="globals.html#changegamesettings" class="tsd-kind-icon">change<wbr>Game<wbr>Settings</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#clickaddnewunitbutton" class="tsd-kind-icon">click<wbr>Add<wbr>New<wbr>Unit<wbr>Button</a></li>
 								<li class="tsd-kind-function tsd-has-type-parameter"><a href="globals.html#clone" class="tsd-kind-icon">clone</a></li>
-								<li class="tsd-kind-function"><a href="globals.html#createboxes" class="tsd-kind-icon">create<wbr>Boxes</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#findunit" class="tsd-kind-icon">find<wbr>Unit</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#gameloop" class="tsd-kind-icon">game<wbr>Loop</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#getavailableplacesfor" class="tsd-kind-icon">get<wbr>Available<wbr>Places<wbr>For</a></li>
@@ -224,7 +225,7 @@
 					<div class="tsd-signature tsd-kind-icon">is<wbr>Development<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in util/util.d.ts:29</li>
+							<li>Defined in util/util.d.ts:28</li>
 						</ul>
 					</aside>
 				</section>
@@ -335,35 +336,6 @@
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">T</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-function">
-					<a name="createboxes" class="tsd-anchor"></a>
-					<h3>create<wbr>Boxes</h3>
-					<ul class="tsd-signatures tsd-kind-function">
-						<li class="tsd-signature tsd-kind-icon">create<wbr>Boxes<span class="tsd-signature-symbol">(</span>state<span class="tsd-signature-symbol">: </span><a href="interfaces/istate.html" class="tsd-signature-type">IState</a>, n<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, m<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in util/util.d.ts:27</li>
-								</ul>
-							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>state: <a href="interfaces/istate.html" class="tsd-signature-type">IState</a></h5>
-								</li>
-								<li>
-									<h5>n: <span class="tsd-signature-type">number</span></h5>
-								</li>
-								<li>
-									<h5>m: <span class="tsd-signature-type">number</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -667,7 +639,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in util/util.d.ts:28</li>
+									<li>Defined in util/util.d.ts:27</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -834,6 +806,9 @@
 						<a href="interfaces/iboard.html" class="tsd-kind-icon">IBoard</a>
 					</li>
 					<li class=" tsd-kind-interface">
+						<a href="interfaces/iboardbehavior.html" class="tsd-kind-icon">IBoard<wbr>Behavior</a>
+					</li>
+					<li class=" tsd-kind-interface">
 						<a href="interfaces/ibox.html" class="tsd-kind-icon">IBox</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-has-type-parameter">
@@ -903,6 +878,9 @@
 						<a href="interfaces/iunit.html" class="tsd-kind-icon">IUnit</a>
 					</li>
 					<li class=" tsd-kind-interface">
+						<a href="interfaces/iunitbox.html" class="tsd-kind-icon">IUnit<wbr>Box</a>
+					</li>
+					<li class=" tsd-kind-interface">
 						<a href="interfaces/iunitproperties.html" class="tsd-kind-icon">IUnit<wbr>Properties</a>
 					</li>
 					<li class=" tsd-kind-interface">
@@ -946,9 +924,6 @@
 					</li>
 					<li class=" tsd-kind-function tsd-has-type-parameter">
 						<a href="globals.html#clone" class="tsd-kind-icon">clone</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="globals.html#createboxes" class="tsd-kind-icon">create<wbr>Boxes</a>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#findunit" class="tsd-kind-icon">find<wbr>Unit</a>

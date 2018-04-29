@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>BuildConditionResult | perplexed-wars</title>
+	<title>IBoardBehavior | perplexed-wars</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -54,10 +54,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="buildconditionresult.html">BuildConditionResult</a>
+					<a href="iboardbehavior.html">IBoardBehavior</a>
 				</li>
 			</ul>
-			<h1>Interface BuildConditionResult</h1>
+			<h1>Interface IBoardBehavior</h1>
 		</div>
 	</div>
 </header>
@@ -68,7 +68,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">BuildConditionResult</span>
+						<span class="target">IBoardBehavior</span>
 					</li>
 				</ul>
 			</section>
@@ -79,9 +79,8 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="buildconditionresult.html#canbuild" class="tsd-kind-icon">can<wbr>Build</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="buildconditionresult.html#resourcemissing" class="tsd-kind-icon">resource<wbr>Missing</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="buildconditionresult.html#whynot" class="tsd-kind-icon">why<wbr>Not</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="iboardbehavior.html#createboxes" class="tsd-kind-icon">create<wbr>Boxes</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="iboardbehavior.html#createmainbases" class="tsd-kind-icon">create<wbr>Main<wbr>Bases</a></li>
 							</ul>
 						</section>
 					</div>
@@ -90,34 +89,66 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="canbuild" class="tsd-anchor"></a>
-					<h3>can<wbr>Build</h3>
-					<div class="tsd-signature tsd-kind-icon">can<wbr>Build<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<a name="createboxes" class="tsd-anchor"></a>
+					<h3>create<wbr>Boxes</h3>
+					<div class="tsd-signature tsd-kind-icon">create<wbr>Boxes<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in state/behavior-interfaces.d.ts:81</li>
+							<li>Defined in state/behavior-interfaces.d.ts:22</li>
 						</ul>
 					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-siganture">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property tsd-is-not-exported">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>state<span class="tsd-signature-symbol">: </span><a href="istate.html" class="tsd-signature-type">IState</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>state: <a href="istate.html" class="tsd-signature-type">IState</a></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="resourcemissing" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> resource<wbr>Missing</h3>
-					<div class="tsd-signature tsd-kind-icon">resource<wbr>Missing<span class="tsd-signature-symbol">:</span> <a href="buildconditionresultmissing.html" class="tsd-signature-type">BuildConditionResultMissing</a><span class="tsd-signature-symbol">[]</span></div>
+					<a name="createmainbases" class="tsd-anchor"></a>
+					<h3>create<wbr>Main<wbr>Bases</h3>
+					<div class="tsd-signature tsd-kind-icon">create<wbr>Main<wbr>Bases<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in state/behavior-interfaces.d.ts:83</li>
+							<li>Defined in state/behavior-interfaces.d.ts:21</li>
 						</ul>
 					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="whynot" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> why<wbr>Not</h3>
-					<div class="tsd-signature tsd-kind-icon">why<wbr>Not<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in state/behavior-interfaces.d.ts:82</li>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-siganture">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property tsd-is-not-exported">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>state<span class="tsd-signature-symbol">: </span><a href="istate.html" class="tsd-signature-type">IState</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>state: <a href="istate.html" class="tsd-signature-type">IState</a></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+									</li>
+								</ul>
+							</li>
 						</ul>
-					</aside>
+					</div>
 				</section>
 			</section>
 		</div>
@@ -134,16 +165,13 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface">
-						<a href="buildconditionresult.html" class="tsd-kind-icon">Build<wbr>Condition<wbr>Result</a>
+						<a href="iboardbehavior.html" class="tsd-kind-icon">IBoard<wbr>Behavior</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="buildconditionresult.html#canbuild" class="tsd-kind-icon">can<wbr>Build</a>
+								<a href="iboardbehavior.html#createboxes" class="tsd-kind-icon">create<wbr>Boxes</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="buildconditionresult.html#resourcemissing" class="tsd-kind-icon">resource<wbr>Missing</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="buildconditionresult.html#whynot" class="tsd-kind-icon">why<wbr>Not</a>
+								<a href="iboardbehavior.html#createmainbases" class="tsd-kind-icon">create<wbr>Main<wbr>Bases</a>
 							</li>
 						</ul>
 					</li>

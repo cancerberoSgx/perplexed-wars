@@ -94,8 +94,9 @@
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="iunittypebehavior.html#buildcondition" class="tsd-kind-icon">build<wbr>Condition</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="iunittypebehavior.html#id" class="tsd-kind-icon">id</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="iunittypebehavior.html#statemodifiers" class="tsd-kind-icon">state<wbr>Modifiers</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="iunittypebehavior.html#unitshouldattack" class="tsd-kind-icon">unit<wbr>Should<wbr>Attack</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="iunittypebehavior.html#unitshouldmove" class="tsd-kind-icon">unit<wbr>Should<wbr>Move</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="iunittypebehavior.html#unitcanmovehere" class="tsd-kind-icon">unit<wbr>Can<wbr>Move<wbr>Here</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="iunittypebehavior.html#unitshouldattackthisturn" class="tsd-kind-icon">unit<wbr>Should<wbr>Attack<wbr>This<wbr>Turn</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="iunittypebehavior.html#unitshouldmovethisturn" class="tsd-kind-icon">unit<wbr>Should<wbr>Move<wbr>This<wbr>Turn</a></li>
 							</ul>
 						</section>
 					</div>
@@ -109,7 +110,7 @@
 					<div class="tsd-signature tsd-kind-icon">build<wbr>Condition<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in state/behavior-interfaces.d.ts:69</li>
+							<li>Defined in state/behavior-interfaces.d.ts:78</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -147,7 +148,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="istatemodifierbehavior.html">IStateModifierBehavior</a>.<a href="istatemodifierbehavior.html#id">id</a></p>
 						<ul>
-							<li>Defined in state/behavior-interfaces.d.ts:42</li>
+							<li>Defined in state/behavior-interfaces.d.ts:47</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -163,7 +164,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="istatemodifierbehavior.html">IStateModifierBehavior</a>.<a href="istatemodifierbehavior.html#statemodifiers">stateModifiers</a></p>
 						<ul>
-							<li>Defined in state/behavior-interfaces.d.ts:46</li>
+							<li>Defined in state/behavior-interfaces.d.ts:51</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -173,17 +174,17 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="unitshouldattack" class="tsd-anchor"></a>
-					<h3>unit<wbr>Should<wbr>Attack</h3>
-					<div class="tsd-signature tsd-kind-icon">unit<wbr>Should<wbr>Attack<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
+					<a name="unitcanmovehere" class="tsd-anchor"></a>
+					<h3>unit<wbr>Can<wbr>Move<wbr>Here</h3>
+					<div class="tsd-signature tsd-kind-icon">unit<wbr>Can<wbr>Move<wbr>Here<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in state/behavior-interfaces.d.ts:64</li>
+							<li>Defined in state/behavior-interfaces.d.ts:73</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>same logic as <a href="iunittypebehavior.html#unitshouldmove">unitShouldMove</a> but for attacking</p>
+							<p>define movement policies - for example, can there be two units in the same box ?</p>
 						</div>
 					</div>
 					<div class="tsd-type-declaration">
@@ -191,22 +192,14 @@
 						<ul class="tsd-parameters">
 							<li class="tsd-parameter-siganture">
 								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property tsd-is-not-exported">
-									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>__namedParameters<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>unitBox<span class="tsd-signature-symbol">: </span><a href="iunitbox.html" class="tsd-signature-type">IUnitBox</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
 								</ul>
 								<ul class="tsd-descriptions">
 									<li class="tsd-description">
 										<h4 class="tsd-parameters-title">Parameters</h4>
 										<ul class="tsd-parameters">
 											<li>
-												<h5>__namedParameters: <span class="tsd-signature-type">object</span></h5>
-												<ul class="tsd-parameters">
-													<li class="tsd-parameter">
-														<h5>IBox<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></h5>
-													</li>
-													<li class="tsd-parameter">
-														<h5>IUnit<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></h5>
-													</li>
-												</ul>
+												<h5>unitBox: <a href="iunitbox.html" class="tsd-signature-type">IUnitBox</a></h5>
 											</li>
 										</ul>
 										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
@@ -217,19 +210,55 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="unitshouldmove" class="tsd-anchor"></a>
-					<h3>unit<wbr>Should<wbr>Move</h3>
-					<div class="tsd-signature tsd-kind-icon">unit<wbr>Should<wbr>Move<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
+					<a name="unitshouldattackthisturn" class="tsd-anchor"></a>
+					<h3>unit<wbr>Should<wbr>Attack<wbr>This<wbr>Turn</h3>
+					<div class="tsd-signature tsd-kind-icon">unit<wbr>Should<wbr>Attack<wbr>This<wbr>Turn<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in state/behavior-interfaces.d.ts:60</li>
+							<li>Defined in state/behavior-interfaces.d.ts:69</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>same logic as [[unitShouldMove]] but for attacking</p>
+						</div>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-siganture">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property tsd-is-not-exported">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>unitBox<span class="tsd-signature-symbol">: </span><a href="iunitbox.html" class="tsd-signature-type">IUnitBox</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>unitBox: <a href="iunitbox.html" class="tsd-signature-type">IUnitBox</a></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="unitshouldmovethisturn" class="tsd-anchor"></a>
+					<h3>unit<wbr>Should<wbr>Move<wbr>This<wbr>Turn</h3>
+					<div class="tsd-signature tsd-kind-icon">unit<wbr>Should<wbr>Move<wbr>This<wbr>Turn<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in state/behavior-interfaces.d.ts:65</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
 							<p>before automatically moving a unit, the framework ask its type if it&#39;s OK so unit type definition can customize how it moves.
 								For allow the framework to automatically move the unit, return true (default)
-								For moving to a custom box return that box. Notice that implementers are responsible of respecting the game rules (for example cannot move to a non-traspasable box
+								For moving to a custom box return that box. Notice that implementers are responsible of respecting the game rules (for example cannot move to a non-traspassable box
 							For not moving at all, just return the same box argument.</p>
 						</div>
 						<p>Note: this is not about IA, this is about unit movement policy. Remember units movement and attack arer automatically users, including IA cannot decide anything about it.</p>
@@ -239,22 +268,14 @@
 						<ul class="tsd-parameters">
 							<li class="tsd-parameter-siganture">
 								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property tsd-is-not-exported">
-									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>__namedParameters<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="ibox.html" class="tsd-signature-type">IBox</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span></li>
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>unitBox<span class="tsd-signature-symbol">: </span><a href="iunitbox.html" class="tsd-signature-type">IUnitBox</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="ibox.html" class="tsd-signature-type">IBox</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span></li>
 								</ul>
 								<ul class="tsd-descriptions">
 									<li class="tsd-description">
 										<h4 class="tsd-parameters-title">Parameters</h4>
 										<ul class="tsd-parameters">
 											<li>
-												<h5>__namedParameters: <span class="tsd-signature-type">object</span></h5>
-												<ul class="tsd-parameters">
-													<li class="tsd-parameter">
-														<h5>IBox<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></h5>
-													</li>
-													<li class="tsd-parameter">
-														<h5>IUnit<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></h5>
-													</li>
-												</ul>
+												<h5>unitBox: <a href="iunitbox.html" class="tsd-signature-type">IUnitBox</a></h5>
 											</li>
 										</ul>
 										<h4 class="tsd-returns-title">Returns <a href="ibox.html" class="tsd-signature-type">IBox</a>
@@ -294,10 +315,13 @@
 								<a href="iunittypebehavior.html#statemodifiers" class="tsd-kind-icon">state<wbr>Modifiers</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="iunittypebehavior.html#unitshouldattack" class="tsd-kind-icon">unit<wbr>Should<wbr>Attack</a>
+								<a href="iunittypebehavior.html#unitcanmovehere" class="tsd-kind-icon">unit<wbr>Can<wbr>Move<wbr>Here</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="iunittypebehavior.html#unitshouldmove" class="tsd-kind-icon">unit<wbr>Should<wbr>Move</a>
+								<a href="iunittypebehavior.html#unitshouldattackthisturn" class="tsd-kind-icon">unit<wbr>Should<wbr>Attack<wbr>This<wbr>Turn</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="iunittypebehavior.html#unitshouldmovethisturn" class="tsd-kind-icon">unit<wbr>Should<wbr>Move<wbr>This<wbr>Turn</a>
 							</li>
 						</ul>
 					</li>
