@@ -49,6 +49,12 @@ export class State {
     state.timestamp = Date.now()
     modify(state)
     this.getInstance().stateInternal = state
+    
+    // debug
+    
+    const debugWindow = window as any
+    debugWindow.PerplexedState = state
+
     return state
   }
 }

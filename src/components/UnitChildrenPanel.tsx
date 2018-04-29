@@ -14,8 +14,9 @@ export class UnitChildrenPanel extends BaseComponent<{playerUIState: IPlayerUISt
   public render() {
     const canRender = 
       this.props.playerUIState && 
-      this.props.playerUIState.addUnitChildButtons && this.props.playerUIState.addUnitChildButtons.length && 
-      this.props.playerUIState.addUnitButtons.find(c => c.pressed) 
+      this.props.playerUIState.addUnitChildButtons && this.props.playerUIState.addUnitChildButtons.length 
+      // && 
+      // this.props.playerUIState.addUnitButtons.find(c => c.pressed) 
     const childUnits = 
       canRender && 
       this.state.unitsTypes.filter(ut => this.props.playerUIState.addUnitChildButtons.find(c => ut.id === c))

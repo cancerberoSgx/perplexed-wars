@@ -53,6 +53,7 @@ export interface IPlayer extends IThing {
 export interface IUnit extends IThing {
   playerId: string
   type: IUnitType
+  /** internal - marks if this unit has already moved in this turn */
   moved?: boolean
   /**
    * current unit state - based on unittype.properties multiplied by level and spells, etc
@@ -84,18 +85,20 @@ export interface IResource extends IThing {
   defaultValuePerTurn: number
   icon: string
 }
-
+/**
+ * important. Each player must have its own unit type unit associated with him. Even if two players are same race, implementors need to duplicate unittypes for each of them
+ */
 export interface IUnitType extends IThing {
   image: string
   icon: string
   properties: IUnitProperties
   isBase?: boolean
-  /** if implemetators want to show extra properties when user select units in the UnitSelection panel he ca add them here. The value is html string */
+  /** some concepts like technologies or spells could be represented as units. WHen clicking the button of normal units, the button will be "toggled" and clicking on the board will create that unit. In the case of units isNotAddableToBoard button wont be toggle, and the unit will be added virtually, with no relationship with the board and just a NEW_UNIT_ADDED event so implementors can react.  */
+  isNotAddableToBoard?: boolean
+  /** if implementors want to show extra properties when user select units in the UnitSelection panel he ca add them here. The value is html string */
   extraDescriptionProperties?: {key: string, value: string}[]
   /** if this value is set, then the unit wont be shown in the unit panel first level , but just wneh you click a parent unit. clicking a parent unit has different effect: it will show a second container with children unit buttons inside. */
   childOf?: string[]
-  // /** filled automatically by the framework - implementos just fill childOf */
-  // _children?: string[]
 }
 export interface IUnitProperties {
   damage: number

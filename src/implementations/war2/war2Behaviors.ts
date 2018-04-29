@@ -136,13 +136,14 @@ function getPlayerBehaviors() {
         if (event.player.playerId !== playerBehavior.id) {
           return
         }
-        if (['humanLumbermill', 'orcLumbermill', 'goldMine'].indexOf(event.newUnit.type.id) === -1) {// TODO: lumbermill
+        if (['humanLumbermill', 'orcLumbermill', 'humanGoldMine', 'orcGoldMine'].indexOf(event.newUnit.type.id) === -1) {// TODO: lumbermill
           return
         }
         const resourceMap = {
           humanLumbermill: { resourceId: RESOURCE_ID.lumber, plus: lumbermillLUmberPlus },
           orcLumbermill: { resourceId: RESOURCE_ID.lumber,plus: lumbermillLUmberPlus },
-          goldMine: { resourceId: RESOURCE_ID.gold, plus: mineGoldPlus },
+          humanGoldMine: { resourceId: RESOURCE_ID.gold, plus: mineGoldPlus },
+          orcGoldMine: { resourceId: RESOURCE_ID.gold, plus: mineGoldPlus },
         }
         const player = event.state.players.find(p => p.id === event.player.playerId)
         const resource:{ resourceId: string, plus: number } = resourceMap[event.newUnit.type.id]
@@ -162,11 +163,11 @@ function getUnitBehaviors() {
     return unitBehaviors
   }
   // heads up! this variable is the initial state and obsolete - we only read unit types ids that we know doesn't change
-  const state = war2ImplementationInitialState()
+  const initialState = war2ImplementationInitialState()
 
   unitBehaviors = []
 
-  state.unitsTypes.forEach(unitBehavior => {
+  initialState.unitsTypes.forEach(unitBehavior => {
 
     const utb: IUnitTypeBehavior = {
       id: unitBehavior.id,
@@ -200,7 +201,22 @@ function getUnitBehaviors() {
         } 
       },
       stateModifiers: [
-        
+        {
+          name: 'humanBlacksmithDamageUpgrade1Modifier',
+          description: 'when unit humanBlacksmithDamageUpgrade1 is added, player\'s units in the board and player\'s unitTypes damage is increased by 2',
+          eventName: Events.EVENT_AFTER_ADD_UNIT,
+          modifier: (event: AfterAddUnitEvent) => {
+            if (unitBehavior.id === event.newUnit.type.id && event.newUnit.type.id === 'humanBlacksmithDamageUpgrade1') {
+              const playerWithThatUnitType = event.state.players.find(p => !!p.unitTypes.find(put => put === event.newUnit.type.id))
+              const playerUnitTypes = playerWithThatUnitType.unitTypes.map(put => event.state.unitsTypes.find(ut => put === ut.id))
+              playerUnitTypes.forEach(ut => {
+                if (ut.properties.damage > 0) {
+                  ut.properties.damage = ut.properties.damage +  2
+                }
+              })
+            }
+          },
+        },
       ],
     }
 

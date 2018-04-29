@@ -1,7 +1,6 @@
 
 .PlayerUnitsAndResourcesPanel li {
   display: inline;
-}
-.PlayerResourcesRow {
-  width: 50%; /* hack because I don't know why bootstrap grid is not working fine */
+  padding: 0; 
+  margin: 0; 
 }

@@ -2,6 +2,7 @@
   /* text-align: center; */
   background-color:#1498d5;
   color: white;
+  padding-top: 100px;
 }
 .App-logo{
   line-break: auto;
@@ -12,8 +13,7 @@
 .App a{
  color: #ededed;
  font-weight: bold;
-}
-
+} 
 .App .PanelContainer{
   position: absolute;
   width: 100%;
@@ -42,4 +42,9 @@
 
 .AppPanel img{
   max-width: 50px;
+}
+
+
+body ul {
+  padding-left: 0px;
 }

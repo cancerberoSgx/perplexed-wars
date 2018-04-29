@@ -32,5 +32,6 @@ export function selectUnit(state: IState, action: ISelectUnitAction): IState {
       previousSelection, action, state: s, 
     })
     GameUIStateHelper.setAddUnitChildButtons(s)   
+    
   })
 }

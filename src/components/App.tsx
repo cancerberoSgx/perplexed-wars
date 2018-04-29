@@ -12,16 +12,16 @@ import { UnitsPanel } from './UnitsPanel'
 import { IPlayer } from '../state/state-interfaces'
 import { UnitChildrenPanel } from './UnitChildrenPanel'
 import { NotificationPanel } from './NotificationPanel'
+import { BarNav } from './NavBar'
 
 export class App extends BaseComponent<{}> {
-  // humanPlayer: IPlayer
   constructor(props:{}) {
     super(props)
   }
   public render() {
-    // this.humanPlayer = this.state.players.find(p => !p.isAI)
     return (
-      <div className="container-fluid App">
+
+      <div className="container-fluid App"><BarNav/>
         <header className="App-header row">
           <div className="col-4">
             <img className="App-logo" src={logo} alt="perplexed wars" />
@@ -53,19 +53,12 @@ export class App extends BaseComponent<{}> {
 
         <Board />
         
-      {/* <div className="line" style={lineStyle()} /> */}
       </div>
     )
   }
 }
 
-// import { LineCss } from '../implementations/war2/LineCss';
-// function lineStyle():any{
-//   const styles = (LineCss as any).forPointsWithStroke({x: 50, y: 50}, {x: 120, y: 223}, 4)
-//   const result = {width: styles.width, height: styles.height,  top: styles.top, left: styles.left, transform: `rotate(${styles.degrees}deg)`, border: 'solid'}
-//   // console.log(styles , result)  
-//   return result;
-// }
+      
 
 function changeInterval(e:React.ChangeEvent<HTMLInputElement>) {
   const interval = parseInt(e.currentTarget.value, 10)
@@ -94,3 +87,18 @@ function pauseClicked(e:React.ChangeEvent<HTMLInputElement>) {
     paused: !State.get().game.paused,
   }as IChangeGameSettingsAction)
 }
+
+
+
+
+
+// line example
+
+// import { LineCss } from '../implementations/war2/LineCss';
+// function lineStyle():any{
+//   const styles = (LineCss as any).forPointsWithStroke({x: 50, y: 50}, {x: 120, y: 223}, 4)
+//   const result = {width: styles.width, height: styles.height,  top: styles.top, left: styles.left, transform: `rotate(${styles.degrees}deg)`, border: 'solid'}
+//   // console.log(styles , result)  
+//   return result;
+// }
+// { <div className="line" style={lineStyle()} /> }

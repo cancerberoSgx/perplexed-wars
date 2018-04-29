@@ -50,14 +50,14 @@ export function war2ImplementationInitialState(): IState {
     id: RESOURCE_ID.gold,
     name: RESOURCE_ID.gold,
     defaultValuePerTurn: goldDefaultValuePerTurn,
-    value: 1200,
+    value: 7200,
     thisTurnValue: 0,
     icon: goldIcon,
   }, {
     id: RESOURCE_ID.lumber,
     name: RESOURCE_ID.lumber,
     defaultValuePerTurn: 2,
-    value: 300,
+    value: 4300,
     thisTurnValue: 0,
     icon: lumberIcon,
   },{
@@ -89,7 +89,7 @@ export function war2ImplementationInitialState(): IState {
         name: 'Gold Mine',
         image: goldMine,
         icon: goldMine,
-        id: 'goldMine',
+        id: 'humanGoldMine',
         description: `Gives +${mineGoldPlus} gold per turn`,
         properties: {
           damage: 0,
@@ -118,7 +118,7 @@ export function war2ImplementationInitialState(): IState {
           speed: 0,
           health: 1200 * 1.2,
           range: 0,
-          territoryRadius: 2,
+          territoryRadius: 3,
         },
       },
       {
@@ -214,6 +214,7 @@ export function war2ImplementationInitialState(): IState {
         icon: humanBlacksmithDamageUpgrade1,
         id: 'humanBlacksmithDamageUpgrade1',
         description: `+2 damage to all units`,
+        isNotAddableToBoard: true,
         childOf: ['humanBlacksmith'],
         properties: {
           damage: 0,
@@ -230,6 +231,31 @@ export function war2ImplementationInitialState(): IState {
           ],
         },
       },
+
+
+      {
+        name: 'Gold Mine',
+        image: goldMine,
+        icon: goldMine,
+        id: 'orcGoldMine',
+        description: `Gives +${mineGoldPlus} gold per turn`,
+        properties: {
+          damage: 0,
+          speed: 0,
+          health: 400 * 1.2,
+          range: 0,
+          territoryRadius: 1,
+        },
+        custom: {
+          cost: [
+            { resourceId: RESOURCE_ID.gold, value: 500 },
+            { resourceId: RESOURCE_ID.food, value: 0 },
+            { resourceId: RESOURCE_ID.lumber, value: 250 },
+          ],
+        },
+      },
+
+
       {
         name: 'Great Hall',
         image: orcGreatHall,
@@ -242,7 +268,7 @@ export function war2ImplementationInitialState(): IState {
           speed: 0,
           health: 1200 * 1.2,
           range: 0,
-          territoryRadius: 2,
+          territoryRadius: 3,
         },
       },
       {
@@ -428,7 +454,7 @@ export function war2ImplementationInitialState(): IState {
         name: 'Seba',
         isAI: false,
         color: 'blue',
-        unitTypes: ['human-base', 'goldMine', 'humanFarm', 'humanLumbermill', 'humanBlacksmith', 'humanBlacksmithDamageUpgrade1', 'humanTower1', 'footman', 'elven-archer'],
+        unitTypes: ['human-base', 'humanGoldMine', 'humanFarm', 'humanLumbermill', 'humanBlacksmith', 'humanBlacksmithDamageUpgrade1', 'humanTower1', 'footman', 'elven-archer'],
         resources: clone(resources),
       },
       {
@@ -436,7 +462,7 @@ export function war2ImplementationInitialState(): IState {
         name: 'Data',
         color: 'red',
         isAI: true,
-        unitTypes: ['orc-base', 'goldMine', 'orcFarm', 'orcLumbermill', 'orcTower1', 'humanBlacksmith', 'grunt', 'troll'],
+        unitTypes: ['orc-base', 'orcGoldMine', 'orcFarm', 'orcLumbermill', 'orcTower1', /*'orcBlacksmith',*/ 'grunt', 'troll'],
         resources: clone(resources),
       },
     ],
