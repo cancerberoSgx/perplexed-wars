@@ -1,14 +1,14 @@
 import * as React from 'react'
+import { ACTION_VOID, store } from '../reducers/store'
+import { State } from '../state/state'
 import './App.css'
 import { BaseComponent } from './BaseComponent'
-import { Board } from './board/Board'
 import { BarNav } from './NavBar'
+import { Board } from './board/Board'
 import { NotificationPanel } from './dialogs/NotificationPanel'
 import { UnitChildrenPanel } from './dialogs/UnitChildrenPanel'
 import { UnitSelectionInfo } from './dialogs/UnitSelectionInfo'
 import { UnitsPanel } from './toolPanel/UnitsPanel'
-import { State } from 'state/state'
-import { ACTION_VOID, store } from 'reducers/store'
 
 export class App extends BaseComponent<{}> {
   constructor(props:{}) {
@@ -20,7 +20,6 @@ export class App extends BaseComponent<{}> {
       (!playerControls.addUnitChildButtons || !playerControls.addUnitChildButtons.length) && 
       (!this.state.uiState.unitSelection || !this.state.uiState.unitSelection.length) && 
       !this.state.uiState.unitTypeSelection
-    // debugger
     return (
       <div className="container-fluid App">
         <BarNav/>

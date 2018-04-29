@@ -1,5 +1,5 @@
 import { IUnitTypeBehavior, IBehavior, IPlayerBehavior, IStateModifierAfterAddUnit, IStateModifierBeforeAddUnitSuccess, BuildConditionResultMissing, IGameBehavior, IStateModifierBehavior, IStateModifier, BuildConditionResult } from '../../state/behavior-interfaces'
-import { war2ImplementationInitialState, War2PlayerCustom, RESOURCE_ID, mineGoldPlus, lumbermillLUmberPlus, createMainBases, createBoxes } from './war2State'
+import { war2ImplementationInitialState, War2PlayerCustom, RESOURCE_ID,createMainBases, createBoxes } from './war2State'
 import { Events, afterAddUnit, AfterUnitSelectionEvent, AfterAddUnitEvent, BeforeAddUnitSuccessEvent, BeforeGameStartsEvent, AfterUnitDieEvent } from '../../state/IGameFramework'
 import { IState, IPlayer, IUnitBox } from '../../state/state-interfaces'
 import { SimpleIa1 } from '../../ia/simpleIa1'
@@ -7,6 +7,7 @@ import { Game } from '../../state/game'
 import { IA } from '../../ia/ia-interfaces'
 import { StateAccessHelper } from '../../state/StateAccessHelper'
 import { isDevelopment } from '../../util/util'
+import { lumbermillLUmberPlus, mineGoldPlus } from './war2Units'
 
 /** build all the behavior (state modifiers) if war2 impl */
 export function war2ImplementationBehavior(): IBehavior {

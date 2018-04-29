@@ -5,7 +5,7 @@ import { gameLoop } from './gameLoop'
 import { selectUnit } from './selectUnit'
 import { changeGameSettings } from './changeGameSettings'
 import { IState } from '../state/state-interfaces'
-import { State } from 'state/state'
+import { State } from '../state/state'
 
 export const ACTION_VOID = 'void-action'
 export interface IVoidAction {

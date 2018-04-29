@@ -15,13 +15,13 @@ export class Units extends BaseComponent<{units:IUnit[], box:IBox}>  {
       <div key={this.props.box.id} className={this.buildClassName('Units', this.props.box.id)}> {
         this.props.units.map(unit => 
           <div key={unit.id}  className="unit-container">
+          <div className="unit-health">{unit.state.health}</div>
           <img 
             data-unit-id={unit.id}
             src={unit.type.image}
             className={this.buildClassName('Unit', this.props.box.id, unit.id)}
             onClick={unitClicked}
           />
-          <span className="unit-health">{unit.state.health}</span>
           </div>,
         )
       }

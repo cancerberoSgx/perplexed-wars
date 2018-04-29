@@ -22,13 +22,14 @@
 .Unit.attacker {
   border: 1px solid blue;
 }
+.unit-container {
+  position: relative;
+}
 .unit-health {
   position: absolute;
+  left: calc(var(--box-width) - 5px); 
 }
 
-
-
-
-.line {
+/* .line {
   position: absolute
-}
+} */
