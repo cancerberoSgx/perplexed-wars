@@ -9,8 +9,3 @@
 .UnitChildrenPanelDraggable.has-content{
   display: block;
 }
-.UnitChildrenPanel:after {
-  content: "";
-  display: table; 
-  clear: both;  
-}

@@ -1,11 +1,11 @@
 import * as React from 'react'
 import { ACTION_ADD_UNIT } from '../reducers/addNewUnit'
 import { store } from '../reducers/store'
-import { IBox, IPlayer, IPlayerUIState } from '../state/state-interfaces'
+import { IBox, IPlayerUIState } from '../state/state-interfaces'
+import { isTouchDevice } from '../util/util'
 import { BaseComponent } from './BaseComponent'
 import './BoardRow.css'
 import { Units } from './Units'
-import { State } from 'state/state'
 
 export class BoardRow extends BaseComponent<{n:number}>  {
   private playerControl: IPlayerUIState
@@ -57,6 +57,6 @@ function boxClicked(e:React.MouseEvent<HTMLElement>) {
     type: ACTION_ADD_UNIT,  
     x: parseInt(e.currentTarget.getAttribute('data-x') || '0', 10), 
     y: parseInt(e.currentTarget.getAttribute('data-y') || '0', 10),
-    ctrlKey: e.ctrlKey,
+    ctrlKey: e.ctrlKey || isTouchDevice,
   })
 }

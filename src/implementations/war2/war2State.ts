@@ -478,9 +478,11 @@ function buildExtraDescriptionProperties(state:IState) {
   icons[RESOURCE_ID.lumber] = lumberIcon
   state.unitsTypes.forEach(ut => {
     ut.extraDescriptionProperties = []
+    const desc = { key: 'Cost', value: '' }
+    ut.extraDescriptionProperties.push(desc)
     if ((ut.custom as War2PlayerCustom) && ((ut.custom as War2PlayerCustom).cost as War2UnitCost[])) {
       ((ut.custom as War2PlayerCustom).cost as War2UnitCost[]).forEach(cost => {
-        ut.extraDescriptionProperties.push({ key: cost.resourceId, value: `<img src="${icons[cost.resourceId]}"/>${cost.value}` })
+        desc.value += `<img src="${icons[cost.resourceId]}"/>${cost.value}`
       })
     }
   })

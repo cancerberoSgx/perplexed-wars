@@ -20,11 +20,9 @@ export interface IAddUnitAction extends Action {
 
 export function addNewUnit(state: IState, action: IAddUnitAction): IState {
   state = State.get()
-
   if (action.type !== ACTION_ADD_UNIT) {
     return state
   }
-
   return addNewUnitImpl(state, action)
 }
 
@@ -35,7 +33,9 @@ export function addNewUnitImpl(state: IState, action: IAddUnitAction): IState {
 
   const isNotAddableToBoard = action.unitId && state.unitsTypes.find(u => u.id === action.unitId).isNotAddableToBoard as any
 
-  const playerUi = state.uiState.playerControls.find(pc => (!playerIsHuman ? (pc.playerId === action.playerId) : !!pc.addUnitButtons.find(but => but.pressed)))  || state.uiState.playerControls.find(pc => pc.playerId === action.playerId)
+  const playerUi = state.uiState.playerControls
+    .find(pc => (!playerIsHuman ? (pc.playerId === action.playerId) : !!pc.addUnitButtons.find(but => but.pressed))) || state.uiState.playerControls
+    .find(pc => pc.playerId === action.playerId)
 
   if (!isNotAddableToBoard && !playerUi) { // this probably means that user is selecting a unit in the board (didn't previously clicked add-unit button)
     return state
@@ -51,11 +51,13 @@ export function addNewUnitImpl(state: IState, action: IAddUnitAction): IState {
   action.unitId = action.unitId || button.unitTypeId
 
   return State.modify(state, s => {
+
     let box:IBox
     const unit = newUnit(state, action.unitId, action.playerId)
 
     if (isNotAddableToBoard) {
       Game.getInstance().emit(Events.EVENT_AFTER_ADD_UNIT, { newUnit: unit, action, player: playerUi, box, state: s })
+
     } else if ((box = s.board.boxes.find(b => b.x === action.x && b.y === action.y)) !== undefined && 
       getAvailablePlacesFor(playerUi.playerId, s).find(p => p.x === action.x && p.y === action.y)) {
      
@@ -70,11 +72,15 @@ export function addNewUnitImpl(state: IState, action: IAddUnitAction): IState {
         return s
       }
       box.units.push(unit)
+
       // reset all add-unit-buttons
       if (!action.ctrlKey && playerIsHuman) { 
         s.uiState.playerControls.forEach(pc => pc.addUnitButtons.forEach(b => b.pressed = false))
+        s.uiState.unitSelection = []
+        s.uiState.unitTypeSelection = null
       }
       Game.getInstance().emit(Events.EVENT_AFTER_ADD_UNIT, { newUnit: unit, action, player: playerUi, box, state: s })
+      
     } else if (playerIsHuman) {
       Game.getInstance().log({ message: 'Cannot add unit there - box is outside territory' })
     }

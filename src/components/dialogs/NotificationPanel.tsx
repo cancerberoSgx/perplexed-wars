@@ -1,10 +1,10 @@
 import * as React from 'react'
-import { BaseComponent } from './BaseComponent'
+import { BaseComponent } from '../BaseComponent'
 import { IUnitType, IUnitSelectionInfo, IPlayerUIState } from 'state/state-interfaces'
 import './NotificationPanel.css'
 import Draggable from 'react-draggable' 
-import { State } from '../state/state'
-import { UnitTypeButton } from './UnitTypeButton'
+import { State } from '../../state/state'
+import { UnitTypeButton } from '../UnitTypeButton'
 
 
 export class NotificationPanel extends BaseComponent<{playerUIState: IPlayerUIState}> {

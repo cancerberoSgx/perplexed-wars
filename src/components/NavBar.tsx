@@ -19,6 +19,9 @@ export class BarNav extends BaseComponent<{}> {
           <span className="navbar-toggler-icon"></span>
         </button>
 
+        <span><input type="checkbox" checked={this.state.game.realTime} onChange={realTimeChanged}/> Real Time?</span> 
+
+
         {/* <span><input type="checkbox" checked={this.state.game.allowDiagonal} onChange={allowDiagonalChanged}/>Allow Diagonals</span>
 
         {this.state.game.realTime && <span><input type="checkbox" checked={this.state.game.paused} onChange={pauseClicked} /> Paused  </span>}
@@ -27,9 +30,9 @@ export class BarNav extends BaseComponent<{}> {
 
         <span><input type="checkbox" checked={this.state.game.realTime} onChange={realTimeChanged}/> Real Time?</span> */}
 
-        <span>{!this.state.game.realTime && <button onClick={Game.getInstance().nextTurn}>Next Turn!</button>}</span>
+        {/* <span>{!this.state.game.realTime && <button onClick={Game.getInstance().nextTurn}>Next Turn!</button>}</span> */}
               
-        <span>TIME: {this.state.game.time / 1000}</span>
+        {/* <span>TIME: {this.state.game.time / 1000}</span> */}
         <img className="AppLogo" src={logo} alt="perplexed wars" />
 
         <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
@@ -51,10 +54,6 @@ export class BarNav extends BaseComponent<{}> {
               <input type="checkbox" checked={this.state.game.allowDiagonal} onChange={allowDiagonalChanged}/>Allow Diagonals
             </li>
           </ul>
-          <form className="form-inline my-2 my-lg-0">
-            <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
-            <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          </form>
         </div>
         
       </nav >

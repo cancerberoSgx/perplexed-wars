@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { BaseComponent } from './BaseComponent'
+import { BaseComponent } from '../BaseComponent'
 import { IUnitType, IUnitSelectionInfo } from 'state/state-interfaces'
 import './UnitSelectionInfo.css'
 import Draggable from 'react-draggable' 

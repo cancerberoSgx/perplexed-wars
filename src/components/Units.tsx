@@ -1,8 +1,8 @@
 import * as React from 'react'
-import { store } from '../reducers/store'
+import { isTouchDevice } from 'util/util'
 import { ACTION_SELECT_UNIT } from '../reducers/selectUnit'
+import { store } from '../reducers/store'
 import { IBox, IUnit } from '../state/state-interfaces'
-import { State } from '../state/state'
 import { BaseComponent } from './BaseComponent'
 import './Units.css'
 
@@ -47,7 +47,7 @@ function unitClicked(e:React.MouseEvent<HTMLElement>) {
   store().dispatch({
     type: ACTION_SELECT_UNIT,
     unitId: e.currentTarget.getAttribute('data-unit-id'),
-    union: e.ctrlKey,
+    union: e.ctrlKey || isTouchDevice,
   })
 }
 

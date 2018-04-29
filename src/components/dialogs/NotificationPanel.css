@@ -4,8 +4,3 @@
 .NotificationPanel .message {
   font-size: 1.2em;
 }
-.NotificationPanel:after {
-  content: "";
-  display: table; 
-  clear: both;  
-}

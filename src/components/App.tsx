@@ -3,9 +3,9 @@ import './App.css'
 import { BaseComponent } from './BaseComponent'
 import { Board } from './Board'
 import { BarNav } from './NavBar'
-import { NotificationPanel } from './NotificationPanel'
-import { UnitChildrenPanel } from './UnitChildrenPanel'
-import { UnitSelectionInfo } from './UnitSelectionInfo'
+import { NotificationPanel } from './dialogs/NotificationPanel'
+import { UnitChildrenPanel } from './dialogs/UnitChildrenPanel'
+import { UnitSelectionInfo } from './dialogs/UnitSelectionInfo'
 import { UnitsPanel } from './UnitsPanel'
 
 export class App extends BaseComponent<{}> {

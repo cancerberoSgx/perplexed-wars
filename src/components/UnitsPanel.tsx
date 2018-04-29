@@ -5,7 +5,7 @@ import { State } from '../state/state'
 import { BaseComponent } from './BaseComponent'
 import './UnitsPanel.css'
 import { PlayerResources } from './PlayerResources'
-import { UnitChildrenPanel } from './UnitChildrenPanel'
+import { UnitChildrenPanel } from './dialogs/UnitChildrenPanel'
 import { UnitTypeButton } from './UnitTypeButton'
 
 export class UnitsPanel extends BaseComponent<{}> {
