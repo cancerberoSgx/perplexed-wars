@@ -1,5 +1,5 @@
-import { IState } from '../../state/state-interfaces'
-import {  createBoxes, clone, isDevelopment } from '../../util/util'
+import { IState, IBox } from '../../state/state-interfaces'
+import {  clone, isDevelopment, newUnit } from '../../util/util'
 import * as HumanTownHall from './assets/HumanTownhall.gif'
 import * as goldIcon from './assets/gold.gif'
 import * as foodIcon from './assets/food.gif'
@@ -24,12 +24,10 @@ import * as humanBlacksmithDamageUpgrade1 from './assets/humanBlacksmithDamageUp
 
 import * as troll from './assets/troll.gif'
 import * as trollIcon from './assets/trollIcon.gif'
+import { isatty } from 'tty'
 troll
 
 
-
-const n = 15
-const m = 10
 const goldDefaultValuePerTurn = 50
 const foodDefaultValue = 4
 
@@ -73,7 +71,7 @@ export function war2ImplementationInitialState(): IState {
 
   const state: IState = {
     game: {
-      interval: 500,
+      interval: 300,
       allowDiagonal: true,
       time: 0,
       realTime: !isDevelopment,
@@ -98,7 +96,7 @@ export function war2ImplementationInitialState(): IState {
           speed: 0,
           health: 400 * 1.2,
           range: 0,
-          territoryRadius: 0,
+          territoryRadius: 1,
         },
         custom: {
           cost: [
@@ -197,7 +195,7 @@ export function war2ImplementationInitialState(): IState {
           speed: 0,
           health: 400 * 1.2,
           range: 0,
-          territoryRadius: 0,
+          territoryRadius: 1,
         },
         custom: {
           cost: [
@@ -258,7 +256,7 @@ export function war2ImplementationInitialState(): IState {
           speed: 0,
           health: 400 * 1.2,
           range: 0,
-          territoryRadius: 0,
+          territoryRadius: 1,
         },
         custom: {
           cost: [
@@ -279,7 +277,7 @@ export function war2ImplementationInitialState(): IState {
           speed: 0,
           health: 400 * 1.2,
           range: 0,
-          territoryRadius: 0,
+          territoryRadius: 1,
         },
         custom: {
           cost: [
@@ -421,7 +419,7 @@ export function war2ImplementationInitialState(): IState {
 
     ],
     board: {
-      n, m,
+      n: 15, m: 10,
       boxes: [],
     },
     players: [
@@ -445,7 +443,6 @@ export function war2ImplementationInitialState(): IState {
   }
 
   buildExtraDescriptionProperties(state)
-  createBoxes(state, n, m)
 
   return state
 }
@@ -464,3 +461,30 @@ function buildExtraDescriptionProperties(state:IState) {
     }
   })
 }
+
+
+export function createBoxes(state: IState) {
+  const boxes = state.board.boxes = []
+  const n = state.board.n
+  const m = state.board.m
+  for (let i = 0; i < n; i++) {
+    for (let j = 0; j < m; j++) {
+      boxes.push({
+        x: i,
+        y: j,
+        terrain: 'grey',
+        units: [],
+        id: `box-${i}-${j}`,
+      })
+    }
+  }
+  return boxes
+}
+
+export function createMainBases(state: IState) {
+  let base = state.unitsTypes.find(ut => !!state.players[0].unitTypes.find(put => ut.id === put && ut.isBase))
+  state.board.boxes[0].units.push(newUnit(state, base.id, state.players[0].id))
+  base = state.unitsTypes.find(ut => !!state.players[1].unitTypes.find(put => ut.id === put && ut.isBase))
+  state.board.boxes[state.board.n * state.board.m - 1].units.push(newUnit(state, base.id, state.players[1].id))
+}
+

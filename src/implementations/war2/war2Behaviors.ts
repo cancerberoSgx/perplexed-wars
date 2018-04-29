@@ -1,12 +1,12 @@
 import { IUnitTypeBehavior, IBehavior, IPlayerBehavior, IStateModifierAfterAddUnit, IStateModifierBeforeAddUnitSuccess, BuildConditionResultMissing, IGameBehavior, IStateModifierBehavior, IStateModifier, BuildConditionResult } from '../../state/behavior-interfaces'
-import { war2ImplementationInitialState, War2PlayerCustom, RESOURCE_ID, mineGoldPlus, lumbermillLUmberPlus } from './war2State'
+import { war2ImplementationInitialState, War2PlayerCustom, RESOURCE_ID, mineGoldPlus, lumbermillLUmberPlus, createMainBases, createBoxes } from './war2State'
 import { Events, afterAddUnit, AfterUnitSelectionEvent, AfterAddUnitEvent, BeforeAddUnitSuccessEvent, BeforeGameStartsEvent, AfterUnitDieEvent } from '../../state/IGameFramework'
-import { IState, IPlayer } from '../../state/state-interfaces'
+import { IState, IPlayer, IUnitBox } from '../../state/state-interfaces'
 import { SimpleIa1 } from '../../ia/simpleIa1'
 import { Game } from '../../state/game'
 import { IA } from '../../ia/ia-interfaces'
 import { StateAccessHelper } from '../../state/StateAccessHelper'
-import { isDevelopment } from 'util/util'
+import { isDevelopment } from '../../util/util'
 
 /** build all the behavior (state modifiers) if war2 impl */
 export function war2ImplementationBehavior(): IBehavior {
@@ -14,6 +14,15 @@ export function war2ImplementationBehavior(): IBehavior {
     unitTypes: getUnitBehaviors(),
     players: getPlayerBehaviors(),
     gameBehaviors: getGameBehaviors(),
+    boardBehavior: getBoardBehavior(),
+  }
+}
+
+
+function getBoardBehavior() {
+  return {
+    createMainBases,
+    createBoxes,
   }
 }
 
@@ -161,8 +170,11 @@ function getUnitBehaviors() {
 
     const utb: IUnitTypeBehavior = {
       id: unitBehavior.id,
-      unitShouldMove: () => true,
-      unitShouldAttack: () => true,
+      unitShouldMoveThisTurn: (unitBox: IUnitBox) => true,
+      unitShouldAttackThisTurn: (unitBox: IUnitBox) => true,
+      unitCanMoveHere: (unitBox: IUnitBox) => {
+        return unitBox.box.units.length === 0
+      },
       buildCondition: (player: IPlayer) => {
         if (unitBehavior.isBase) {
           return { canBuild: false, whyNot: `Only one base allowed in this game` }

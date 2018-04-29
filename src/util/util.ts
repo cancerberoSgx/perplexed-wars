@@ -74,42 +74,6 @@ export function iterateUnits(state: IState, iterator: (box: IBox, unit: IUnit) =
   })
 }
 
-// export function buildUIStatePlayerControls(state: IState) {
-//   state.players.forEach(p => {
-//     const playerControl = { playerId: p.id, addUnitButtons: [] }
-//     p.unitTypes.forEach(unitType => {
-//       playerControl.addUnitButtons.push({ unitTypeId: unitType, pressed: false })
-//     })
-//     state.uiState.playerControls.push(playerControl)
-//   })
-// }
-export function createBoxes(state: IState, n: number, m: number) {
-  const boxes = state.board.boxes = []
-  
-  
-  for (let i = 0; i < n; i++) {
-    for (let j = 0; j < m; j++) {
-      const box: IBox = {
-        x: i,
-        y: j,
-        terrain: 'grey',
-        units: [],
-        id: `box-${i}-${j}`,
-      }
-      if (i === 0 && j === 0) {
-        const player0Base = state.unitsTypes.find(ut => !!state.players[0].unitTypes.find(put => ut.id === put && ut.isBase))
-        box.units.push(newUnit(state, player0Base.id, state.players[0].id))
-      }
-      if (i === n - 1 && j === m - 1) {
-        const player1Base = state.unitsTypes.find(ut => !!state.players[1].unitTypes.find(put => ut.id === put && ut.isBase))
-        box.units.push(newUnit(state, player1Base.id, state.players[1].id))
-      }
-      boxes.push(box)
-    }
-  }
-  return boxes
-}
-
 let newUnitCounter: number = 0
 
 export function newUnit(state: IState, typeId: string, playerId: string): IUnit {

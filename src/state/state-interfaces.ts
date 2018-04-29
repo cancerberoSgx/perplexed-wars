@@ -125,7 +125,7 @@ export interface IPlayerUIState {
 
 export interface Log {
   message: string
-  type?: 'internal' | 'warning' | 'error' | 'tip' | 'help' | 'internalError'
+  type?: 'internal' | 'warning' | 'error' | 'tip' | 'help' | 'internalError' | 'blocking'
 }
 export interface IPlayerStateAddUnitButtonState {
   pressed: boolean
@@ -135,4 +135,10 @@ export interface IPlayerStateAddUnitButtonState {
 export interface IUnitSelectionInfo {
   unit: IUnit// : string,
   box: IBox// ?: string
+}
+
+export interface IUnitBox { 
+  unit: IUnit
+  box: IBox 
+  oldBox?: IBox
 }

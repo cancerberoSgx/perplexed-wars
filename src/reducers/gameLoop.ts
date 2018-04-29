@@ -55,9 +55,9 @@ export function gameLoop(state: IState, action: Action): IState {
 
   return State.modify(state, s => {// TOOD: I think everything should be inside this!
     if (winner) {
+      Game.getInstance().emit(Events.EVENT_BEFORE_GAME_FINISH, { winner, state })
       s.game.gameFinish = true
       s.game.winner = winner
-      Game.getInstance().emit(Events.EVENT_BEFORE_GAME_FINISH, { winner, state })
     } else {
       s.game.time = s.game.time + s.game.interval
       Game.getInstance().emit(Events.EVENT_AFTER_TURN_END, { action, state })

@@ -1,6 +1,7 @@
 import { IState, IPlayerStateAddUnitButtonState } from './state-interfaces'
 import { StateAccessHelper } from './StateAccessHelper'
 import { addNewUnit } from 'reducers/addNewUnit'
+import { Behavior } from './behavior'
 
 /** helpers of Game to maintain the state of  [[IState.UIState.]] and [[IState.UIState.playerControls]]. */
 export class GameUIStateHelper {
@@ -19,17 +20,18 @@ export class GameUIStateHelper {
       const playerControl:{playerId:string,addUnitButtons:IPlayerStateAddUnitButtonState[]} = { playerId: p.id, addUnitButtons: [] }
       p.unitTypes.forEach(utId => {
         const unitType = H.unitType(utId)
-        // if (!unitType.childOf || !unitType.childOf.length) {
         playerControl.addUnitButtons.push({ 
           unitTypeId: utId, 
           pressed: false, 
           isPrimary: !unitType.childOf || !unitType.childOf.length, 
         })
-        // } 
       })
       state.uiState.playerControls.push(playerControl)
     })
+    Behavior.get().boardBehavior.createBoxes(state)
+    Behavior.get().boardBehavior.createMainBases(state)
   }
+
   public static setAddUnitChildButtons(state:IState) {
     const parent = state.uiState.unitTypeSelection
     if (!parent) {

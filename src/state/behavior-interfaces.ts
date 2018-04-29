@@ -1,4 +1,4 @@
-import { IPlayer, IBox, IState, IThing } from './state-interfaces'
+import { IPlayer, IBox, IState, IThing, IUnit, IUnitBox } from './state-interfaces'
 import { Events, BeforeUnitSelectionEvent, AfterUnitSelectionEvent, beforeUnitSelection, afterAddUnit, GameFrameworkEvent, beforeAddUnitSuccess, afterUnitSelection } from './IGameFramework'
 import { IA } from 'ia/ia-interfaces'
 
@@ -18,6 +18,13 @@ export interface IBehavior {
   players: IPlayerBehavior[]
   /** important: is mandatory that, if there are any gameBehaviors registered, they call the [[]] at least one game behavior that calls the ready callback is present, if not the game never starts.  */
   gameBehaviors: IGameBehavior[]
+
+  boardBehavior: IBoardBehavior
+}
+
+export interface IBoardBehavior{
+  createMainBases: (state: IState) => void
+  createBoxes: (state: IState) => void
 }
 
 /** define behavior at the player level. For example global conditions for victory... some things that can be done with IUnitBehavior also can be done with IPlayerBehavior and makes more sense because of performance. ie. instead of many listeners - just one listener that iterates. example: if a unit can be bought */
@@ -29,7 +36,6 @@ export interface IPlayerBehavior extends IStateModifierBehavior {
  * game- level behaviors, for example, when the game starts it could ask the user to prompt for name and choose the race so the implementation have the change to assign the correct race to the human player
  */
 export interface IGameBehavior extends IStateModifierBehavior {
-
 }
 /**
  * Units and Players can modify the [[IState]] instance. They can modify the [[IResource.thisTurnValue]] , board, and other units.
@@ -59,19 +65,24 @@ export interface IUnitTypeBehavior extends IStateModifierBehavior {
   /**
    * before automatically moving a unit, the framework ask its type if it's OK so unit type definition can customize how it moves.
    * For allow the framework to automatically move the unit, return true (default)
-   * For moving to a custom box return that box. Notice that implementers are responsible of respecting the game rules (for example cannot move to a non-traspasable box
+   * For moving to a custom box return that box. Notice that implementers are responsible of respecting the game rules (for example cannot move to a non-traspassable box
    * For not moving at all, just return the same box argument.
    *
    * Note: this is not about IA, this is about unit movement policy. Remember units movement and attack arer automatically users, including IA cannot decide anything about it.
    */
   // tslint:disable-next-line:variable-name
-  unitShouldMove: ({ unit: IUnit, box: IBox }) => IBox | true
+  unitShouldMoveThisTurn: (unitBox: IUnitBox) => IBox | true
 
   /**
    * same logic as [[unitShouldMove]] but for attacking
    */
   // tslint:disable-next-line:variable-name
-  unitShouldAttack: ({ unit: IUnit, box: IBox }) => boolean
+  unitShouldAttackThisTurn: (unitBox: IUnitBox) => boolean
+
+  /**
+   * define movement policies - for example, can there be two units in the same box ? 
+   */
+  unitCanMoveHere: (unitBox: IUnitBox) => boolean
 
   /**
    * can the player build this unit at this moment ? (ie has sufficient resources ? )
@@ -80,7 +91,6 @@ export interface IUnitTypeBehavior extends IStateModifierBehavior {
   buildCondition: (player: IPlayer) => BuildConditionResult
 
 }
-
 export interface BuildConditionResult {
   canBuild: boolean
   whyNot?: string

@@ -28,8 +28,18 @@
   border-radius: 10px;
   background: #999999;
   opacity: 0.8; 
-  max-width: 100%;
-  max-height: 100%;
+  max-width: 40%;
+  max-height: 50%;
   z-index: 200;
   display: block
+}
+.AppPanel:after {
+  content: "";
+  display: table; 
+  clear: both;  
+}
+
+
+.AppPanel img{
+  max-width: 50px;
 }

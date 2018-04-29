@@ -1,13 +1,11 @@
 import { EventEmitter } from 'events'
 import { ACTION_GAME_LOOP_INCREMENT_INTERVAL, ITurnEndAction } from '../reducers/gameLoop'
 import { store } from '../reducers/store'
-import { State } from './state'
-import { IGameFramework, Events, BeforeUnitSelectionEvent, AfterUnitSelectionEvent, AfterAddUnitEvent, BeforeGameFinishEvent, BeforeAddUnitSuccessEvent } from './IGameFramework'
-import { IA } from '../ia/ia-interfaces'
-import { StateAccessHelper } from './StateAccessHelper'
-import { IPlayer, Log } from './state-interfaces'
-import { Behavior } from './behavior'
 import { GameUIStateHelper } from './GameUIStateHelper'
+import { Events, IGameFramework } from './IGameFramework'
+import { Behavior } from './behavior'
+import { State } from './state'
+import { Log } from './state-interfaces'
 
 /**
  * responsible of the game life cycle mostly about turn and dispatching action [[ACTION_GAME_LOOP_INCREMENT_INTERVAL]]
@@ -42,12 +40,12 @@ export class Game extends EventEmitter implements IGameFramework {
         this.emit(Events.EVENT_AFTER_GAME_STARTS, { state })
         this.resume()
       }})
-      
       this.alreadyStarted = true
     } else {
       this.resume()
     }
   }
+  
   public resume() {
     clearInterval(this.intervalId)
     this.nextTurn()
@@ -65,7 +63,10 @@ export class Game extends EventEmitter implements IGameFramework {
 
   public nextTurn (): void {
     if (State.get().game.gameFinish) {
-      Game.getInstance().log({ message:'Game finish, winner is ' + State.get().game.winner + '. Bye.' })
+      State.modify(State.get(), (state) => {
+        state.uiState.playerControls.find(p => !!state.players.find(p => !p.isAI)).message = { message:'Game finish, winner is ' + state.game.winner + '. Bye.' , type: 'blocking' }
+      })
+      store().dispatch({ type: ACTION_GAME_LOOP_INCREMENT_INTERVAL })
       this.stop()
       return
     }
@@ -75,12 +76,10 @@ export class Game extends EventEmitter implements IGameFramework {
       }
       store().dispatch(action)
       Behavior.get().players.forEach(p => p.ia && p.ia.yourTurn(State.get()))
-
     }
   }
 
   public log (log: Log, player:string= State.get().players.find(p => !p.isAI).id): void {
-    // alert(log.message)
     const humanControls = State.get().uiState.playerControls.find(c => c.playerId === player)
     State.modify(State.get(), (s) => {
       humanControls.message = log

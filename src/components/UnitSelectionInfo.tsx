@@ -15,7 +15,7 @@ export class UnitSelectionInfo extends BaseComponent<{unitTypeSelection: IUnitTy
       const selected = this.props.unitSelection[0]
       return (
         <Draggable handle=".UnitSelectionInfo">
-        <table className="UnitSelectionInfo" ><tbody>
+        <table className="UnitSelectionInfo AppPanel" ><tbody>
         <tr><td></td><td>{'<<drag me>>'}</td></tr>
         <tr><td>Name: </td><td><img src={selected.unit.type.icon}/>{selected.unit.type.name}</td></tr>
         <tr><td>Health: </td><td>{selected.unit.state.health} / {selected.unit.type.properties.health}</td></tr>
@@ -31,7 +31,7 @@ export class UnitSelectionInfo extends BaseComponent<{unitTypeSelection: IUnitTy
           <Draggable handle=".UnitSelectionInfo">
             <table className="UnitSelectionInfo AppPanel"><tbody>
               <tr><td></td><td>{'<<drag me>>'}</td></tr>
-              <tr><td>Name</td><td><img src={this.props.unitTypeSelection.icon}/>{this.props.unitTypeSelection.name}</td></tr>
+              <tr><td>Name</td><td><img className="UnitSelectionInfoUnitTypeImage" src={this.props.unitTypeSelection.icon}/>{this.props.unitTypeSelection.name}</td></tr>
               <tr><td>Damage</td><td>{this.props.unitTypeSelection.properties.damage}</td></tr>
               <tr><td>Health</td><td>{this.props.unitTypeSelection.properties.health}</td></tr>
               <tr><td>Range</td><td>  {this.props.unitTypeSelection.properties.range}</td></tr>
@@ -43,7 +43,9 @@ export class UnitSelectionInfo extends BaseComponent<{unitTypeSelection: IUnitTy
       )
     } 
     return (
-      <div className="UnitSelectionInfo"/>
+      <Draggable handle=".UnitSelectionInfo">
+      <table className="UnitSelectionInfo AppPanel" ><tbody></tbody></table>
+      </Draggable>
     )   
   }
 

@@ -15,7 +15,6 @@ export class NotificationPanel extends BaseComponent<{playerUIState: IPlayerUISt
     const canRender = 
       this.props.playerUIState && 
       this.props.playerUIState.message
-    // debugger
     return (
       <Draggable 
         handle=".NotificationPanel" 
@@ -29,7 +28,3 @@ export class NotificationPanel extends BaseComponent<{playerUIState: IPlayerUISt
     )    
   }
 }
-
- 
-
-// 
