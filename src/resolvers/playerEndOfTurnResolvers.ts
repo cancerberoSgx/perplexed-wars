@@ -1,7 +1,5 @@
-import { Behavior } from '../state/behavior'
 import { IPlayer, IState } from '../state/state-interfaces'
-import { getAvailablePlacesFor } from 'util/util'
-import { PlayerResources } from 'components/PlayerResources'
+import { getAvailablePlacesFor } from '../util/util'
 
 export class PlayerEndOfTurnResourceResolver implements PlayerEndOfTurnResolver {
   public resolve ({ state, player }: { state: IState, player: IPlayer }): void {

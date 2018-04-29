@@ -1,9 +1,9 @@
-import { getAvailablePlacesFor } from 'util/util'
 import { ACTION_ADD_UNIT, IAddUnitAction } from '../reducers/addNewUnit'
 import { store } from '../reducers/store'
 import { StateAccessHelper } from '../state/StateAccessHelper'
 import { BuildConditionResult } from '../state/behavior-interfaces'
-import { IState, IResource } from '../state/state-interfaces'
+import { IState } from '../state/state-interfaces'
+import { getAvailablePlacesFor } from '../util/util'
 import { IA, IAInformation } from './ia-interfaces'
 
 /**

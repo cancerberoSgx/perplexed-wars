@@ -38,10 +38,8 @@ export class GameUIStateHelper {
       return
     }
     state.players.filter(p => !p.isAI).forEach(player => {
-      // debugger
       const children = state.unitsTypes.filter(ut => ut.childOf && ut.childOf.find(p => p === parent.id)).map(u => u.id)
       
-      // const children2 = children.map(u => u.id).filter(c => player.unitTypes.find(ut => ut === c)) // these are the unit types of the player that are child
       state.uiState.playerControls.filter(pc => pc.playerId === player.id).forEach(pc => {
         pc.addUnitChildButtons = children
       })
