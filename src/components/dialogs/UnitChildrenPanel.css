@@ -1,7 +1,6 @@
-
 .UnitChildrenPanel {
-
   display: none;
+  pointer-events:all;
 }
 .UnitChildrenPanelDraggable{
   display: none;

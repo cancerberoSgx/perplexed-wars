@@ -1,7 +1,13 @@
+.UnitSelectionInfo {
+  pointer-events:all;
+  line-height: 10px;
+}
 .UnitSelectionInfo img {
-  max-height: 30px;
+  max-height: var(--box-height);
 }
 .UnitSelectionInfo td {
   padding: 0;
-  font-size: 14px;
+}
+.UnitSelectionInfo .value {
+  font-weight: bold;
 }

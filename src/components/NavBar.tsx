@@ -30,13 +30,13 @@ export class BarNav extends BaseComponent<{}> {
 
         <span><input type="checkbox" checked={this.state.game.realTime} onChange={realTimeChanged}/> Real Time?</span> */}
 
-        <span>{!this.state.game.realTime && <button onClick={Game.getInstance().nextTurn}>Turn!</button>}</span>
+        <span>{!this.state.game.realTime && <button className="btn" onClick={Game.getInstance().nextTurn}>Turn!</button>}</span>
               
         {/* <span>TIME: {this.state.game.time / 1000}</span> */}
-        <img className="AppLogo" src={logo} alt="perplexed wars" />
+        {/* <img className="AppLogo" src={logo} alt="perplexed wars" /> */}
 
         <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-          <a className="navbar-brand" href="https://github.com/cancerberoSgx/perplexed-wars">Project home</a>
+          <a className="navbar-brand" href="https://github.com/cancerberoSgx/perplexed-wars"><img className="AppLogo" src={logo} alt="perplexed wars" />Project home</a>
           <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
             <li className="nav-item active">
               <span>{!this.state.game.realTime && <button onClick={Game.getInstance().nextTurn}>Next Turn!</button>}</span>

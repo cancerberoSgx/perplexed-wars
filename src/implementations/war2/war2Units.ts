@@ -24,11 +24,6 @@ import { IUnitType } from 'state/state-interfaces'
 
 const foodDefaultValue = 4
 
-// export enum RESOURCE_ID { // TODO: duplicated enum - the truth is in war2state.ts - but there sn issue in the devtools cannot import !
-//   lumber = 'lumber', 
-//   gold = 'gold', 
-//   food = 'food', 
-// }
 export const mineGoldPlus = 20
 export const lumbermillLUmberPlus = 1
 

@@ -1,15 +1,19 @@
 .App * {
   user-select: none !important;  
+  font-size: var(--font-size);
 }
 .App row {
   position: static
+}
+.App col {
+  padding: 0;
 }
 .App li {
   list-style-type: none;
 }
 body ul {
-  padding-left: 0px;
-  margin-bottom: 0px;
+  padding: 0px;
+  margin: 0px;
 }
 .App {
   padding: 0px 5px 0px 5px;

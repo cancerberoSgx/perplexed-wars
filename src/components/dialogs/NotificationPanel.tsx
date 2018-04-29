@@ -5,6 +5,7 @@ import './NotificationPanel.css'
 import Draggable from 'react-draggable' 
 import { State } from '../../state/state'
 import { UnitTypeButton } from '../toolPanel/UnitTypeButton'
+import { cleanAllDialogs } from './DialogsContainer'
 
 
 export class NotificationPanel extends BaseComponent<{playerUIState: IPlayerUIState}> {
@@ -20,8 +21,7 @@ export class NotificationPanel extends BaseComponent<{playerUIState: IPlayerUISt
         handle=".NotificationPanel" 
         defaultClassName={canRender ? 'can-render' :''}
       >
-        <div className="NotificationPanel AppPanel"> 
-        {/* {canRender ? (<p>{'<<drag me>>'}</p>) :''} */}
+        <div className="NotificationPanel AppPanel" onClick={cleanAllDialogs}> 
         <p className="message">{canRender ? this.props.playerUIState.message.message :''}</p>
         </div>
       </Draggable>

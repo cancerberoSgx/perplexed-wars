@@ -1,11 +1,11 @@
 import * as React from 'react'
-import { ACTION_VOID, store } from '../reducers/store'
-import { State } from '../state/state'
+import { ACTION_VOID, store } from '../../reducers/store'
+import { State } from '../../state/state'
 import './DialogsContainer.css'
-import { BaseComponent } from './BaseComponent'
-import { NotificationPanel } from './dialogs/NotificationPanel'
-import { UnitChildrenPanel } from './dialogs/UnitChildrenPanel'
-import { UnitSelectionInfo } from './dialogs/UnitSelectionInfo'
+import { BaseComponent } from '../BaseComponent'
+import { NotificationPanel } from './NotificationPanel'
+import { UnitChildrenPanel } from './UnitChildrenPanel'
+import { UnitSelectionInfo } from './UnitSelectionInfo'
 
 export class DialogsContainer extends BaseComponent<{}> {
   constructor(props:{}) {
@@ -18,7 +18,7 @@ export class DialogsContainer extends BaseComponent<{}> {
       (!this.state.uiState.unitSelection || !this.state.uiState.unitSelection.length) && 
       !this.state.uiState.unitTypeSelection
     return (
-      <div className={'PanelContainer' + (panelContainerEmpty ? ' empty' : '')} onClick={panelClicked}>
+      <div className={'PanelContainer' + (panelContainerEmpty ? ' empty' : '')}>
         <NotificationPanel playerUIState={playerControls}/>
         <UnitSelectionInfo unitSelection={this.state.uiState.unitSelection} unitTypeSelection={this.state.uiState.unitTypeSelection}/>
         <UnitChildrenPanel playerUIState={playerControls}/>
@@ -28,7 +28,7 @@ export class DialogsContainer extends BaseComponent<{}> {
 }
      
 
-function panelClicked() {
+export function cleanAllDialogs() {
   State.modify(State.get(), (s) => { 
     s.uiState.unitSelection = []
     s.uiState.unitTypeSelection = null

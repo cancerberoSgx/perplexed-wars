@@ -36,7 +36,7 @@ export function war2ImplementationInitialState(): IState {
     // unit values were taking almost exactly as in https://wow.gamepedia.com/Warcraft_II_units#Footman_.2F_Grunt
     unitsTypes: war2Units(),
     board: {
-      n: 8, m: 10,
+      n: 9, m: 12,
       boxes: [],
     },
     players: [

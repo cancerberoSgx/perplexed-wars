@@ -1,27 +1,17 @@
-
-
 .UnitTypeButton {
   display: inline;
   padding: 0px;
 }
-
 .UnitTypeButton>.add-unit{
   border:2px solid #6d6d6d;
   cursor: pointer;
 }
-
 .UnitTypeButton .add-unit.pressed {
   border: 2px solid pink;
 }
-.UnitTypeButton .icon{
-  height: 40px;
+.UnitTypeButton .icon {
+  height: var(--box-height);
 }
-.UnitTypeButton button 
-{
+.UnitTypeButton button {
   padding: 3px; 
 }
-
-/* .PlayerUnitsPanel button img
-{
-  width: 40px;
-} */

@@ -6,5 +6,8 @@
 } 
 .AppLogo{
   line-break: auto;
-  height: 40px;
+  height: var(--box-height);
+}
+.navbar-toggler{
+  padding: 0;
 }
