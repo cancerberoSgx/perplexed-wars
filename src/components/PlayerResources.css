@@ -1,3 +1,5 @@
 .resource-list{
   display: inline;  
+  margin: 0; 
+  padding-left: 10px;
 }
