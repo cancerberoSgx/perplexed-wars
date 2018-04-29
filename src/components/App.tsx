@@ -3,11 +3,9 @@ import { ACTION_VOID, store } from '../reducers/store'
 import { State } from '../state/state'
 import './App.css'
 import { BaseComponent } from './BaseComponent'
+import { DialogsContainer } from './DialogsContainer'
 import { BarNav } from './NavBar'
 import { Board } from './board/Board'
-import { NotificationPanel } from './dialogs/NotificationPanel'
-import { UnitChildrenPanel } from './dialogs/UnitChildrenPanel'
-import { UnitSelectionInfo } from './dialogs/UnitSelectionInfo'
 import { UnitsPanel } from './toolPanel/UnitsPanel'
 
 export class App extends BaseComponent<{}> {
@@ -15,25 +13,12 @@ export class App extends BaseComponent<{}> {
     super(props)
   }
   public render() {
-    const playerControls = this.state.uiState.playerControls.find(pc => pc.playerId === this.state.players.find(p => !p.isAI).id)
-    const panelContainerEmpty = !playerControls.addUnitButtons.find(b => b.pressed) && 
-      (!playerControls.addUnitChildButtons || !playerControls.addUnitChildButtons.length) && 
-      (!this.state.uiState.unitSelection || !this.state.uiState.unitSelection.length) && 
-      !this.state.uiState.unitTypeSelection
     return (
       <div className="container-fluid App">
         <BarNav/>
-
-        <div className={'PanelContainer' + (panelContainerEmpty ? ' empty' : '')} onClick={panelClicked}>
-          <NotificationPanel playerUIState={playerControls}/>
-          <UnitSelectionInfo unitSelection={this.state.uiState.unitSelection} unitTypeSelection={this.state.uiState.unitTypeSelection}/>
-          <UnitChildrenPanel playerUIState={playerControls}/>
-        </div>
-        
+        <DialogsContainer/>        
         <UnitsPanel />
-
-        <Board />
-        
+        <Board />        
       </div>
     )
   }

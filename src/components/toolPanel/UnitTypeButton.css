@@ -14,5 +14,14 @@
   border: 2px solid pink;
 }
 .UnitTypeButton .icon{
-  height: 30px;
+  height: 40px;
 }
+.UnitTypeButton button 
+{
+  padding: 3px; 
+}
+
+/* .PlayerUnitsPanel button img
+{
+  width: 40px;
+} */
