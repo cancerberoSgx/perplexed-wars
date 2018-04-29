@@ -21,7 +21,7 @@ export class NotificationPanel extends BaseComponent<{playerUIState: IPlayerUISt
         defaultClassName={canRender ? 'can-render' :''}
       >
         <div className="NotificationPanel AppPanel"> 
-        {canRender ? (<p>{'<<drag me>>'}</p>) :''}
+        {/* {canRender ? (<p>{'<<drag me>>'}</p>) :''} */}
         <p className="message">{canRender ? this.props.playerUIState.message.message :''}</p>
         </div>
       </Draggable>

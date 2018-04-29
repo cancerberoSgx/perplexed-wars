@@ -20,8 +20,8 @@ export class UnitTypeButton extends BaseComponent<{button:IPlayerStateAddUnitBut
           data-unit={this.props.button.unitTypeId}
           data-player={this.props.player.id}
         >
-          <img className="icon" src={getUnit(this.props.button.unitTypeId, this.state).icon} />
-          {getUnit(this.props.button.unitTypeId, this.state).name}
+          <img className="icon" src={getUnit(this.props.button.unitTypeId, this.state).icon} title={getUnit(this.props.button.unitTypeId, this.state).name} />
+          
         </button>
       }
       </div>

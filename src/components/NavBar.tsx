@@ -19,13 +19,13 @@ export class BarNav extends BaseComponent<{}> {
           <span className="navbar-toggler-icon"></span>
         </button>
 
-        <span><input type="checkbox" checked={this.state.game.allowDiagonal} onChange={allowDiagonalChanged}/>Allow Diagonals</span>
+        {/* <span><input type="checkbox" checked={this.state.game.allowDiagonal} onChange={allowDiagonalChanged}/>Allow Diagonals</span>
 
         {this.state.game.realTime && <span><input type="checkbox" checked={this.state.game.paused} onChange={pauseClicked} /> Paused  </span>}
 
         {this.state.game.realTime && <span>Interval: <input type="number" onChange={changeInterval} defaultValue={this.state.game.interval + ''}/></span>}
 
-        <span><input type="checkbox" checked={this.state.game.realTime} onChange={realTimeChanged}/> Real Time?</span>
+        <span><input type="checkbox" checked={this.state.game.realTime} onChange={realTimeChanged}/> Real Time?</span> */}
 
         <span>{!this.state.game.realTime && <button onClick={Game.getInstance().nextTurn}>Next Turn!</button>}</span>
               
@@ -36,16 +36,19 @@ export class BarNav extends BaseComponent<{}> {
           <a className="navbar-brand" href="https://github.com/cancerberoSgx/perplexed-wars">Project home</a>
           <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
             <li className="nav-item active">
-              <input type="checkbox" checked={this.state.game.realTime} onChange={realTimeChanged}/> Real Time?
+              <span>{!this.state.game.realTime && <button onClick={Game.getInstance().nextTurn}>Next Turn!</button>}</span>
             </li>
-            <li className="nav-item">
-              <input type="checkbox" checked={this.state.game.allowDiagonal} onChange={allowDiagonalChanged}/>Allow Diagonals
+            <li className="nav-item active">
+              <input type="checkbox" checked={this.state.game.realTime} onChange={realTimeChanged}/> Real Time?
             </li>
             <li className="nav-item">
             {this.state.game.realTime && <span><input type="checkbox" checked={this.state.game.paused} onChange={pauseClicked} /> Paused  </span>}
             </li>
             <li className="nav-item">
             {this.state.game.realTime && <span>Interval: <input type="number" onChange={changeInterval} defaultValue={this.state.game.interval + ''}/></span>}
+            </li>
+            <li className="nav-item">
+              <input type="checkbox" checked={this.state.game.allowDiagonal} onChange={allowDiagonalChanged}/>Allow Diagonals
             </li>
           </ul>
           <form className="form-inline my-2 my-lg-0">

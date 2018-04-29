@@ -2,13 +2,15 @@
 .App * {
   user-select: none !important;  
 }
+.App row {
+  position: static
+}
 .App li {
   list-style-type: none;
 }
 .App{
   padding: 0;
 }
-
 
 .App .PanelContainer{
   position: absolute;

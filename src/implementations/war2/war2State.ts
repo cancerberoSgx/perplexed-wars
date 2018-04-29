@@ -24,8 +24,6 @@ import * as humanBlacksmithDamageUpgrade1 from './assets/humanBlacksmithDamageUp
 
 import * as troll from './assets/troll.gif'
 import * as trollIcon from './assets/trollIcon.gif'
-import { isatty } from 'tty'
-troll
 
 
 const goldDefaultValuePerTurn = 50
@@ -79,7 +77,7 @@ export function war2ImplementationInitialState(): IState {
       gameFinish: false,
       paused: false,
       showAIUnitsPanel: false,
-      showAIResourcesPanel: true,
+      showAIResourcesPanel: false,
     },
     timestamp: Date.now(),
 
@@ -118,7 +116,7 @@ export function war2ImplementationInitialState(): IState {
           speed: 0,
           health: 1200 * 1.2,
           range: 0,
-          territoryRadius: 3,
+          territoryRadius: 2,
         },
       },
       {
@@ -268,7 +266,7 @@ export function war2ImplementationInitialState(): IState {
           speed: 0,
           health: 1200 * 1.2,
           range: 0,
-          territoryRadius: 3,
+          territoryRadius: 2,
         },
       },
       {
@@ -445,7 +443,7 @@ export function war2ImplementationInitialState(): IState {
 
     ],
     board: {
-      n: 15, m: 10,
+      n: 8, m: 8,
       boxes: [],
     },
     players: [

@@ -12,10 +12,7 @@
 }
 .BoardBox.available-for-move{
   background-color: rgb(236, 236, 217);
-  /* opacity: 0.2 */
 }
-
-
 .BoardBox.death{
   background-color: red;
 }

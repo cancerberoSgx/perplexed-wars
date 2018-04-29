@@ -1,0 +1,5 @@
+.Board{
+  overflow: scroll;
+  /* box-sizing: content-box; */
+  /* width: 100% */
+}

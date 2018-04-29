@@ -3,8 +3,6 @@
 .UnitTypeButton {
   display: inline;
   padding: 0px;
-  /* max-height: 50px; 
-  min-height: 50px; */
 }
 
 .UnitTypeButton>.add-unit{

@@ -28,7 +28,7 @@ export class UnitChildrenPanel extends BaseComponent<{playerUIState: IPlayerUISt
           defaultPosition={{ x:0, y: 0 }}
         >
           <div className="UnitChildrenPanel AppPanel">
-          {canRender ? '<<drag me>>' : ''}
+          {/* {canRender ? '<<drag me>>' : ''} */}
           <ul>
             {canRender ? childUnits.map(unit => 
               <li key={unit.id}>

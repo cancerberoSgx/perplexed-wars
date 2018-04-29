@@ -2,6 +2,7 @@ import * as React from 'react'
 import { range } from '../util/util'
 import { BaseComponent } from './BaseComponent'
 import { BoardRow } from './BoardRow'
+import './Board.css'
 
 export class Board extends BaseComponent<{}> {
   constructor(props:{}) {
@@ -9,7 +10,8 @@ export class Board extends BaseComponent<{}> {
   }
   public render() {
     return (
-      <table className="Board">
+      <div className="Board">
+      <table>
         <tbody>
         {
           range(this.state.board.m).map(n =>
@@ -18,6 +20,7 @@ export class Board extends BaseComponent<{}> {
         }
         </tbody>
       </table>
+      </div>
     )
   }
 }
