@@ -1,32 +1,34 @@
 import * as React from 'react'
 import './App.css'
 import { BaseComponent } from './BaseComponent'
-import { Board } from './Board'
+import { Board } from './board/Board'
 import { BarNav } from './NavBar'
 import { NotificationPanel } from './dialogs/NotificationPanel'
 import { UnitChildrenPanel } from './dialogs/UnitChildrenPanel'
 import { UnitSelectionInfo } from './dialogs/UnitSelectionInfo'
-import { UnitsPanel } from './UnitsPanel'
+import { UnitsPanel } from './toolPanel/UnitsPanel'
+import { State } from 'state/state'
+import { ACTION_VOID, store } from 'reducers/store'
 
 export class App extends BaseComponent<{}> {
   constructor(props:{}) {
     super(props)
   }
   public render() {
-    const panelContainerNotification = this.state.uiState.playerControls.find(pc => pc.playerId === this.state.players.find(p => !p.isAI).id)
-    const panelContainerUnitChildren = this.state.uiState.playerControls.find(pc => pc.playerId === this.state.players.find(p => !p.isAI).id)
-    const panelContainerUnitSelection = this.state.uiState.unitSelection
-    const unitTypeSelection = this.state.uiState.unitTypeSelection
-    const panelContainerEmpty = panelContainerNotification || panelContainerUnitChildren || panelContainerUnitSelection || unitTypeSelection || unitTypeSelection
+    const playerControls = this.state.uiState.playerControls.find(pc => pc.playerId === this.state.players.find(p => !p.isAI).id)
+    const panelContainerEmpty = !playerControls.addUnitButtons.find(b => b.pressed) && 
+      (!playerControls.addUnitChildButtons || !playerControls.addUnitChildButtons.length) && 
+      (!this.state.uiState.unitSelection || !this.state.uiState.unitSelection.length) && 
+      !this.state.uiState.unitTypeSelection
+    // debugger
     return (
       <div className="container-fluid App">
         <BarNav/>
 
-        <div className={'PanelContainer' + (panelContainerEmpty ? ' empty' : '')}>
-        {/* <div className="PanelContainer"> */}
-          <NotificationPanel playerUIState={panelContainerNotification}/>
-          <UnitSelectionInfo unitSelection={panelContainerUnitSelection} unitTypeSelection={unitTypeSelection}/>
-          <UnitChildrenPanel playerUIState={panelContainerUnitChildren}/>
+        <div className={'PanelContainer' + (panelContainerEmpty ? ' empty' : '')} onClick={panelClicked}>
+          <NotificationPanel playerUIState={playerControls}/>
+          <UnitSelectionInfo unitSelection={this.state.uiState.unitSelection} unitTypeSelection={this.state.uiState.unitTypeSelection}/>
+          <UnitChildrenPanel playerUIState={playerControls}/>
         </div>
         
         <UnitsPanel />
@@ -37,8 +39,16 @@ export class App extends BaseComponent<{}> {
     )
   }
 }
+     
 
-      
+function panelClicked() {
+  State.modify(State.get(), (s) => { 
+    s.uiState.unitSelection = []
+    s.uiState.unitTypeSelection = null
+    s.uiState.playerControls.forEach(pc => pc.addUnitButtons.forEach(aub => {aub.pressed = false}))
+  })
+  store().dispatch({ type: ACTION_VOID })
+}
 
 
 

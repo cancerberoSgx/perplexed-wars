@@ -12,7 +12,6 @@
 }
 
 
-
 .App .PanelContainer{
   position: absolute;
   width: 100%;
@@ -21,6 +20,10 @@
   bottom: 0%;
   left: 50%;
   top: 50%;
+  display: block;
+}
+.PanelContainer.empty{
+  display: none
 }
 .AppPanel{
   border-radius: 10px;

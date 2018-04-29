@@ -1,9 +1,9 @@
 import * as React from 'react'
 import { isTouchDevice } from 'util/util'
-import { ACTION_SELECT_UNIT } from '../reducers/selectUnit'
-import { store } from '../reducers/store'
-import { IBox, IUnit } from '../state/state-interfaces'
-import { BaseComponent } from './BaseComponent'
+import { ACTION_SELECT_UNIT } from '../../reducers/selectUnit'
+import { store } from '../../reducers/store'
+import { IBox, IUnit } from '../../state/state-interfaces'
+import { BaseComponent } from '../BaseComponent'
 import './Units.css'
 
 export class Units extends BaseComponent<{units:IUnit[], box:IBox}>  {

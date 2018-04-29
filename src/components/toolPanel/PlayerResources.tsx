@@ -1,6 +1,6 @@
 import * as React from 'react'
-import { IPlayer } from '../state/state-interfaces'
-import { BaseComponent } from './BaseComponent'
+import { IPlayer } from '../../state/state-interfaces'
+import { BaseComponent } from '../BaseComponent'
 import './PlayerResources.css'
 
 export class PlayerResources extends BaseComponent<{player:IPlayer}> {

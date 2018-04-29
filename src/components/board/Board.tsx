@@ -1,6 +1,6 @@
 import * as React from 'react'
-import { range } from '../util/util'
-import { BaseComponent } from './BaseComponent'
+import { range } from '../../util/util'
+import { BaseComponent } from '../BaseComponent'
 import { BoardRow } from './BoardRow'
 import './Board.css'
 

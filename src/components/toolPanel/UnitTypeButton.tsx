@@ -1,8 +1,8 @@
 import * as React from 'react'
-import { ACTION_ADD_UNIT_CLICK_BUTTON } from '../reducers/clickAddNewUnitButton'
-import { IPlayer, IPlayerStateAddUnitButtonState } from '../state/state-interfaces'
-import { store } from '../reducers/store'
-import { BaseComponent } from './BaseComponent'
+import { ACTION_ADD_UNIT_CLICK_BUTTON } from '../../reducers/clickAddNewUnitButton'
+import { IPlayer, IPlayerStateAddUnitButtonState } from '../../state/state-interfaces'
+import { store } from '../../reducers/store'
+import { BaseComponent } from '../BaseComponent'
 import './UnitTypeButton.css'
 
 export class UnitTypeButton extends BaseComponent<{button:IPlayerStateAddUnitButtonState, player: IPlayer}> {

@@ -1,11 +1,11 @@
 import * as React from 'react'
-import { ACTION_ADD_UNIT_CLICK_BUTTON } from '../reducers/clickAddNewUnitButton'
-import { store } from '../reducers/store'
-import { State } from '../state/state'
-import { BaseComponent } from './BaseComponent'
+import { ACTION_ADD_UNIT_CLICK_BUTTON } from '../../reducers/clickAddNewUnitButton'
+import { store } from '../../reducers/store'
+import { State } from '../../state/state'
+import { BaseComponent } from '../BaseComponent'
 import './UnitsPanel.css'
 import { PlayerResources } from './PlayerResources'
-import { UnitChildrenPanel } from './dialogs/UnitChildrenPanel'
+import { UnitChildrenPanel } from '../dialogs/UnitChildrenPanel'
 import { UnitTypeButton } from './UnitTypeButton'
 
 export class UnitsPanel extends BaseComponent<{}> {

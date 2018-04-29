@@ -30,7 +30,7 @@ export class BarNav extends BaseComponent<{}> {
 
         <span><input type="checkbox" checked={this.state.game.realTime} onChange={realTimeChanged}/> Real Time?</span> */}
 
-        {/* <span>{!this.state.game.realTime && <button onClick={Game.getInstance().nextTurn}>Next Turn!</button>}</span> */}
+        <span>{!this.state.game.realTime && <button onClick={Game.getInstance().nextTurn}>Turn!</button>}</span>
               
         {/* <span>TIME: {this.state.game.time / 1000}</span> */}
         <img className="AppLogo" src={logo} alt="perplexed wars" />

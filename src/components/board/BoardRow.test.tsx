@@ -1,9 +1,9 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import { BoardRow } from './BoardRow'
-import { State } from '../state/state'
+import { State } from '../../state/state'
 
-import { Game } from '../state/game'
+import { Game } from '../../state/game'
 beforeAll(() => {
   Game.getInstance().start()
 })

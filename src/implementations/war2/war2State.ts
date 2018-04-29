@@ -69,7 +69,7 @@ export function war2ImplementationInitialState(): IState {
 
   const state: IState = {
     game: {
-      interval: 300,
+      interval: 800,
       allowDiagonal: true,
       time: 0,
       realTime: !isDevelopment,
