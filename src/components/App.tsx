@@ -13,15 +13,20 @@ export class App extends BaseComponent<{}> {
     super(props)
   }
   public render() {
+    const panelContainerNotification = this.state.uiState.playerControls.find(pc => pc.playerId === this.state.players.find(p => !p.isAI).id)
+    const panelContainerUnitChildren = this.state.uiState.playerControls.find(pc => pc.playerId === this.state.players.find(p => !p.isAI).id)
+    const panelContainerUnitSelection = this.state.uiState.unitSelection
+    const unitTypeSelection = this.state.uiState.unitTypeSelection
+    const panelContainerEmpty = panelContainerNotification || panelContainerUnitChildren || panelContainerUnitSelection || unitTypeSelection || unitTypeSelection
     return (
-
       <div className="container-fluid App">
         <BarNav/>
 
-        <div className="PanelContainer">
-          <NotificationPanel playerUIState={this.state.uiState.playerControls.find(pc => pc.playerId === this.state.players.find(p => !p.isAI).id)}/>
-          <UnitSelectionInfo unitSelection={this.state.uiState.unitSelection} unitTypeSelection={this.state.uiState.unitTypeSelection}/>
-          <UnitChildrenPanel playerUIState={this.state.uiState.playerControls.find(pc => pc.playerId === this.state.players.find(p => !p.isAI).id)}/>
+        <div className={'PanelContainer' + (panelContainerEmpty ? ' empty' : '')}>
+        {/* <div className="PanelContainer"> */}
+          <NotificationPanel playerUIState={panelContainerNotification}/>
+          <UnitSelectionInfo unitSelection={panelContainerUnitSelection} unitTypeSelection={unitTypeSelection}/>
+          <UnitChildrenPanel playerUIState={panelContainerUnitChildren}/>
         </div>
         
         <UnitsPanel />
