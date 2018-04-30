@@ -1,57 +1,144 @@
-import { IState, IUnitType, IPlayer } from './state-interfaces'
-import { createSelector } from 'reselect'
 import createCachedSelector from 're-reselect'
+import { createSelector } from 'reselect'
+import { getAvailablePlacesFor, getUnitsNearImplementation } from '../util/util'
+import { IBehavior, IUnitTypeBehavior } from './behavior-interfaces'
+import { StateAccess } from './state'
+import { IBox, IState, IUnit, IPlayer, IUnitType ,IResource } from './state-interfaces'
 
-export const unitTypes = (state:IState) => state.unitsTypes
-export const players = (state:IState) => state.players
+const unitTypes = (state:IState) => state.unitsTypes
+const players = (state:IState) => state.players
 
-export const iaPlayer = createSelector(
-  players,
-  players => players.find(p => p.isAI), 
-) 
-export const humanPlayer = createSelector(
-  players,
-  players => players.find(p => !p.isAI),
-) 
-export const unitType = (state:IState, unitTypeId: string) => unitType2(state.unitsTypes, unitTypeId)
+export class StateAccessReSelectImpl implements StateAccess {
 
-export const unitType2 = createCachedSelector( 
-  (unitTypes:IUnitType[]) => unitTypes,               // S -> R1
-  (unitTypes:IUnitType[], unitTypeId:string) => unitTypeId,         // S -> R2
-  (unitTypes, unitTypeId) =>                      // R1, R2 => REAL_RESULT
-    unitTypes.find(ut => ut.id === unitTypeId),
-)((unitTypes, unitTypeId) => 'unitType_' + unitTypeId)  // S, R2 => cache key
+  public unitsNear: (state: IState, box: IBox, radio: number) => {targetUnit: IUnit, targetBox: IBox}[] 
+  = createCachedSelector( 
+    (state:IState) => state, 
+    (state:IState, box: IBox) => box,
+    (state:IState, box: IBox, radio: number) => radio,
+    (state, box, radio) => {
+      return getUnitsNearImplementation(state, box, radio)
+    },
+  )((state, playerId) => 'unitsNear_' + playerId) 
 
-export const player = (state:IState, playerId: string) => player2(state.players, playerId)
-export const player2 = createCachedSelector( 
-  (players:IPlayer[]) => players,               // S -> R1
-  (players:IPlayer[], playerId:string) => playerId,         // S -> R2
-  (players, playerId) =>                        // R1, R2 => REAL_RESULT
-    players.find(ut => ut.id === playerId),
-)((unitTypes, playerId) => 'player_' + playerId)  // S, R2 => cache key
-
-export const playerUnitTypes = createCachedSelector( 
-  (state:IState) => state, 
-  (state:IState, playerId: string) => playerId,
-  (state, playerId) =>                        
-    player(state, playerId).unitTypes.map(id => unitType(state, id)),
-)((state, unitTypeId) => 'playerUnitsTypes' + unitTypeId) 
+  public getAvailablePlacesFor = (createCachedSelector( 
+    (state:IState) => state, 
+    (state:IState, playerId: string) => playerId,
+    getAvailablePlacesFor,
+  )((state, playerId) => 'getAvailablePlacesFor_' + playerId))as any 
 
 
+  public player: (state:IState, playerId: string) => IPlayer 
+  = createCachedSelector( 
+    (state:IState) => state,               
+    (state:IState, playerId:string) => playerId,         
+    (state, playerId) =>                        
+      state.players.find(ut => ut.id === playerId),
+  )((unitTypes, playerId) => 'player_' + playerId) 
+  
+  public playerUnitTypes = createCachedSelector( 
+    (state:IState) => state, 
+    (state:IState, playerId: string) => playerId,
+    (state, playerId) =>                        
+      this.player(state, playerId).unitTypes.map(id => this.unitType(state, id)),
+  )((state, unitTypeId) => 'playerUnitsTypes_' + unitTypeId) as any
 
-// export const playerUnitType = (state:IState, playerId, unitTypeId) => unitType2(player(state, unitTypeId), unitTypeId)
+
+  public iaPlayer = createSelector(
+    players,
+    players => players.find(p => p.isAI), 
+  ) 
+  public iaPlayers: (state:IState) => IPlayer[] = createSelector(
+    players,
+    players => players.filter(p => p.isAI), 
+  ) 
+  public humanPlayer: (state:IState) => IPlayer = createSelector(
+    players,
+    players => players.find(p => !p.isAI),
+  )  
+  public humanPlayers: (state:IState) => IPlayer[] = createSelector(
+    players,
+    players => players.filter(p => !p.isAI),
+  ) 
+
+  public unitType = createCachedSelector( 
+    (state:IState) => state,               
+    (state:IState, unitTypeId:string) => unitTypeId,         
+    (state, unitTypeId) =>                      
+      state.unitsTypes.find(ut => ut.id === unitTypeId),
+  )((state, unitTypeId) => 'unitType_' + unitTypeId) 
+
+
+  public unitBehavior = createCachedSelector( 
+    (behavior: IBehavior) => behavior,               
+    (behavior: IBehavior, behaviorId:string) => behaviorId,         
+    (behavior, behaviorId) =>                      
+      behavior.unitTypes.find(u => u.id === behaviorId),
+  )((state, behaviorId) => 'unitBehavior_' + behaviorId) 
+
+
+  public playerResource :  (state:IState, playerId: string, resourceId: string) => IResource
+  = createCachedSelector( 
+    (state:IState) => state,               
+    (state:IState, playerId:string) => playerId,  
+    (state:IState, resourceId:string) => resourceId,       
+    (state, playerId, resourceId) =>                      
+      this.player(state, playerId).resources.find(r => r.id === resourceId),
+  )((state, stateId) => 'playerResource_' + stateId) 
+  
+  
+}
+
+
+
+
+// export const unitType = (state:IState, unitTypeId: string) => unitType2(state.unitsTypes, unitTypeId)
+
+// export const unitType2 = createCachedSelector( 
+//   (state:IState) => state,               
+//   (state:IState, unitTypeId:string) => unitTypeId,         
+//   (state, unitTypeId) =>                      
+//     state.unitsTypes.find(ut => ut.id === unitTypeId),
+// )((state, unitTypeId) => 'unitType_' + unitTypeId) 
+
+// export const player = (state:IState, playerId: string) => player2(state.players, playerId)
 // export const player = createCachedSelector( 
-//   (state:IState) => state.players,               // S -> R1
-//   (state:IState, playerId:string) => playerId,         // S -> R2
-//   (players, playerId) =>                        // R1, R2 => REAL_RESULT
-//     players.find(ut => ut.id === playerId),
-// )((state, playerId) => 'player_' + playerId)  // S, R2 => cache key
+//   (state:IState) => state,               
+//   (state:IState, playerId:string) => playerId,         
+//   (state, playerId) =>                        
+//     state.players.find(ut => ut.id === playerId),
+// )((unitTypes, playerId) => 'player_' + playerId) 
+
+// export const playerUnitTypes = createCachedSelector( 
+//   (state:IState) => state, 
+//   (state:IState, playerId: string) => playerId,
+//   (state, playerId) =>                        
+//     player(state, playerId).unitTypes.map(id => unitType(state, id)),
+// )((state, unitTypeId) => 'playerUnitsTypes_' + unitTypeId) 
 
 
+// export const getAvailablePlacesFor = createCachedSelector( 
+//   (state:IState) => state, 
+//   (state:IState, playerId: string) => playerId,
+//   (state, playerId) => {
+//     let result: IBox[] = []
+//     iterateUnits(state, (box, u) => {
+//       if (u.state.territoryRadius > 0 && u.playerId === playerId) {
+//         result = result.concat(getBoxesNearImpl(state, box, u.state.territoryRadius))
+//         // TODO: remove duplicates
+//       }
+//     })
+//     return result
+//   },
+// )((state, playerId) => 'getAvailablePlacesFor_' + playerId) 
 
-// export const unitType = createCachedSelector( 
-//   (state:IState) => state.unitsTypes,               // S -> R1
-//   (state:IState, unitTypeId:string) => unitTypeId,         // S -> R2
-//   (unitTypes, unitTypeId) =>                        // R1, R2 => REAL_RESULT
-//     unitTypes.find(ut => ut.id === unitTypeId),
-// )((state, unitTypeId) => 'unitType_' + unitTypeId)  // S, R2 => cache key
+
+// export const unitsNear = createCachedSelector( 
+//   (state:IState) => state, 
+//   (state:IState, box: IBox) => box,
+//   (state:IState, box: IBox, radio: number) => radio,
+//   (state, box, radio) => {
+//     return getUnitsNearImplementation(state, box, radio)
+//   },
+// )((state, playerId) => 'unitsNear_' + playerId) 
+
+

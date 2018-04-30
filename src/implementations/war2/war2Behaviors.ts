@@ -8,6 +8,7 @@ import { IA } from '../../ia/ia-interfaces'
 import { StateAccessHelper } from '../../state/StateAccessHelper'
 import { isDevelopment } from '../../util/util'
 import { lumbermillLUmberPlus, mineGoldPlus } from './war2Units'
+import { State } from '../../state/state'
 
 /** build all the behavior (state modifiers) if war2 impl */
 export function war2ImplementationBehavior(): IBehavior {
@@ -178,7 +179,7 @@ function getUnitBehaviors() {
           return { canBuild: false, whyNot: `Only one base allowed in this game` }
         }  
         // do I have sufficient resources ?
-        const unitType = StateAccessHelper.get().unitType(unitBehavior.id)
+        const unitType = State.getHelper().unitType(State.get(), unitBehavior.id)
         const resourceCost = unitType.custom && (unitType.custom as War2PlayerCustom).cost 
         const resourceMissing:BuildConditionResultMissing[] = []
         const notEnough = resourceCost.find((cost) => {

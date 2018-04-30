@@ -26,7 +26,7 @@ export function gameLoop(state: IState, action: Action): IState {
   }
 
   Game.getInstance().emit(Events.EVENT_BEFORE_TURN_END, { state, action } as BeforeTurnEndEvent)
-
+  // console.time('gameLoop')
   let winner: string = null
   let gameFinish = true
   state.uiState.unitAttacks = []
@@ -50,10 +50,9 @@ export function gameLoop(state: IState, action: Action): IState {
     playerEndOfTurnResolvers.forEach(resolver => {
       resolver.resolve(({ player, state }))
     })
-
   })
 
-  return State.modify(state, s => {// TOOD: I think everything should be inside this!
+  return State.modify(state, s => {
     if (winner) {
       Game.getInstance().emit(Events.EVENT_BEFORE_GAME_FINISH, { winner, state })
       s.game.gameFinish = true
@@ -63,4 +62,6 @@ export function gameLoop(state: IState, action: Action): IState {
       Game.getInstance().emit(Events.EVENT_AFTER_TURN_END, { action, state })
     }
   })
+  // console.timeEnd('gameLoop')
+  // return s
 }

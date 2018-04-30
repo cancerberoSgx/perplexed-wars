@@ -25,14 +25,14 @@ export class App extends BaseComponent<{}> {
 }
      
 
-function panelClicked() {
-  State.modify(State.get(), (s) => { 
-    s.uiState.unitSelection = []
-    s.uiState.unitTypeSelection = null
-    s.uiState.playerControls.forEach(pc => pc.addUnitButtons.forEach(aub => {aub.pressed = false}))
-  })
-  store().dispatch({ type: ACTION_VOID })
-}
+// function panelClicked() {
+//   State.modify(State.get(), (s) => { 
+//     s.uiState.unitSelection = []
+//     s.uiState.unitTypeSelection = null
+//     s.uiState.playerControls.forEach(pc => pc.addUnitButtons.forEach(aub => {aub.pressed = false}))
+//   })
+//   store().dispatch({ type: ACTION_VOID })
+// }
 
 
 

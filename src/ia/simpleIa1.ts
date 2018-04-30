@@ -3,8 +3,9 @@ import { store } from '../reducers/store'
 import { StateAccessHelper } from '../state/StateAccessHelper'
 import { BuildConditionResult } from '../state/behavior-interfaces'
 import { IState } from '../state/state-interfaces'
-import { getAvailablePlacesFor } from '../util/util'
 import { IA, IAInformation } from './ia-interfaces'
+import { State } from '../state/state'
+import { Behavior } from '../state/behavior'
 
 /**
  * TODO: in war example: when no more food build house. But the problem is, to be agnostic, how do we know which building to build to bring the missing resource ? I think th implementation should provide this info.
@@ -27,16 +28,16 @@ export class SimpleIa1 implements IA {
 
   // lastResources: IResource[]
   public yourTurn (state: IState) {
-    const s: StateAccessHelper = StateAccessHelper.get()
-    const player = s.player(this.id)
+    const s = State.getHelper()
+    const player = s.player(state, this.id)
 
     let c: BuildConditionResult
     
     // order by health
-    const strongCanBuy = s.playerUnitTypes(this.id).concat() // clone the array we dont want to modify it!
+    const strongCanBuy = s.playerUnitTypes(state, this.id).concat() // clone the array we dont want to modify it!
       .sort((a,b) => a.properties.health < b.properties.health ? 1 : -1) // units ordered by health
       .find(u => {// get the first that we can buy
-        const buildResult = !u.isBase && u.properties.damage > 0 && (c = s.unitBehavior(u.id).buildCondition(player))
+        const buildResult = !u.isBase && u.properties.damage > 0 && (c = s.unitBehavior(Behavior.get(), u.id).buildCondition(player))
         return buildResult.canBuild
       }) 
 
@@ -44,7 +45,7 @@ export class SimpleIa1 implements IA {
       return
     }
 
-    const availablePlaces = getAvailablePlacesFor(this.id, state)
+    const availablePlaces = State.getHelper().getAvailablePlacesFor(state, this.id)
     if (!availablePlaces || !availablePlaces.length) {
       return
     }

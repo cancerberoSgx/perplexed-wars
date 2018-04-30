@@ -1,5 +1,5 @@
 import { IPlayer, IState } from '../state/state-interfaces'
-import { getAvailablePlacesFor } from '../util/util'
+import { State } from '../state/state'
 
 export class PlayerEndOfTurnResourceResolver implements PlayerEndOfTurnResolver {
   public resolve ({ state, player }: { state: IState, player: IPlayer }): void {
@@ -14,7 +14,7 @@ export class PlayerEndOfTurnResourceResolver implements PlayerEndOfTurnResolver 
 
 export class PlayerEndOfTurnAvailablePlacesResolver implements PlayerEndOfTurnResolver {
   public resolve ({ state, player }: { state: IState, player: IPlayer }): void {
-    state.uiState.playerControls.find(pc => pc.playerId === player.id).availablePlaces = getAvailablePlacesFor(player.id, state)
+    state.uiState.playerControls.find(pc => pc.playerId === player.id).availablePlaces = State.getHelper().getAvailablePlacesFor(state, player.id)
   }
 }
 

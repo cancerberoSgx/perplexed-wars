@@ -3,7 +3,7 @@ import { Events } from '../state/IGameFramework'
 import { Game } from '../state/game'
 import { State } from '../state/state'
 import { IState, IUnit, IPlayerStateAddUnitButtonState, IBox } from '../state/state-interfaces'
-import { getAvailablePlacesFor, newUnit } from '../util/util'
+import { newUnit } from '../util/util'
 
 
 export const ACTION_ADD_UNIT: string = 'add-unit'
@@ -59,7 +59,7 @@ export function addNewUnitImpl(state: IState, action: IAddUnitAction): IState {
       Game.getInstance().emit(Events.EVENT_AFTER_ADD_UNIT, { newUnit: unit, action, player: playerUi, box, state: s })
 
     } else if ((box = s.board.boxes.find(b => b.x === action.x && b.y === action.y)) !== undefined && 
-      getAvailablePlacesFor(playerUi.playerId, s).find(p => p.x === action.x && p.y === action.y)) {
+      State.getHelper().getAvailablePlacesFor(s, playerUi.playerId).find(p => p.x === action.x && p.y === action.y)) {
      
       let cancelledReason: string
       Game.getInstance().emit(Events.EVENT_BEFORE_ADD_UNIT_SUCCESS, {

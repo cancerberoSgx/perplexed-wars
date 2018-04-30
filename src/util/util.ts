@@ -8,11 +8,11 @@ export function range(n: number): number[] {
   return a
 }
 
-export function getAvailablePlacesFor(playerId: string, state: IState): IBox[] {
+export function getAvailablePlacesFor(state: IState, playerId: string): IBox[] {
   let result: IBox[] = []
   iterateUnits(state, (box, u) => {
     if (u.state.territoryRadius > 0 && u.playerId === playerId) {
-      result = result.concat(getBoxesNear({ state, box, radio: u.state.territoryRadius, predicate: (b => true) }))
+      result = result.concat(getBoxesNearImpl(state, box,u.state.territoryRadius))
       // TODO: remove duplicates
     }
   })
@@ -48,22 +48,19 @@ export function findUnit(state: IState, predicate: (u: IUnit, box: IBox) => bool
   return found
 }
 
-export function getUnitsNear({ state, unit, box, radio, predicate }: {state: IState, unit: IUnit, box: IBox, radio: number, predicate?: (u: IUnit) => boolean}): Array<{targetUnit: IUnit, targetBox: IBox}> {
+export function getUnitsNearImplementation(state: IState, box: IBox, radio: number): Array<{targetUnit: IUnit, targetBox: IBox}> {
   const near = state.board.boxes.filter(b => Math.abs(b.x - box.x) <= radio && Math.abs(b.y - box.y) <= radio)
   const result: Array<{targetUnit: IUnit, targetBox: IBox}> = []
-  near.forEach(b =>
-    b.units.forEach(u => {
-      if (!predicate || predicate(u)) {
-        result.push({ targetUnit: u, targetBox: b })
-      }
-    }),
-  )
+  near.forEach(b => {
+    b.units.forEach(u => 
+      result.push({ targetUnit: u, targetBox: b }),
+    )
+  })
   return result
 }
 
-export function getBoxesNear({ state, box, radio, predicate }: {state: IState, box: IBox, radio: number, predicate?: (b: IBox) => boolean}): IBox[] {
-  predicate = predicate || (b => true)
-  return state.board.boxes.filter(b => Math.abs(b.x - box.x) <= radio && Math.abs(b.y - box.y) <= radio && predicate(b))
+export function getBoxesNearImpl(state: IState, box: IBox, radio: number): IBox[] {
+  return state.board.boxes.filter(b => Math.abs(b.x - box.x) <= radio && Math.abs(b.y - box.y) <= radio)
 }
 
 export function iterateUnits(state: IState, iterator: (box: IBox, unit: IUnit) => void) {
