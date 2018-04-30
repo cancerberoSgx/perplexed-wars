@@ -71,11 +71,13 @@ export class Game extends EventEmitter implements IGameFramework {
       return
     }
     if (!State.get().game.paused) {
+      console.time('gamenextTurn')
       const action: ITurnEndAction = {
         type: ACTION_GAME_LOOP_INCREMENT_INTERVAL,
       }
       store().dispatch(action)
       Behavior.get().players.forEach(p => p.ia && p.ia.yourTurn(State.get()))
+      console.timeEnd('gamenextTurn')
     }
   }
 

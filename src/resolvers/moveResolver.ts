@@ -3,7 +3,7 @@ import { IBox, IUnit } from '../state/state-interfaces'
 import { findUnit, getPathMatrix } from '../util/util'
 import { IUnitActionResolver, IUnitActionResolverData } from './unitActionResolvers'
 import { Behavior } from '../state/behavior'
-import { StateAccessHelper } from '../state/StateAccessHelper'
+import { StateAccessHelper } from '../state/access/StateAccessHelper'
 import { State } from '../state/state'
 
 export class MoveResolver implements IUnitActionResolver {

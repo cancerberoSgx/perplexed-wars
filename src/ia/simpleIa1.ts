@@ -1,6 +1,6 @@
 import { ACTION_ADD_UNIT, IAddUnitAction } from '../reducers/addNewUnit'
 import { store } from '../reducers/store'
-import { StateAccessHelper } from '../state/StateAccessHelper'
+import { StateAccessHelper } from '../state/access/StateAccessHelper'
 import { BuildConditionResult } from '../state/behavior-interfaces'
 import { IState } from '../state/state-interfaces'
 import { IA, IAInformation } from './ia-interfaces'
@@ -28,16 +28,16 @@ export class SimpleIa1 implements IA {
 
   // lastResources: IResource[]
   public yourTurn (state: IState) {
-    const s = State.getHelper()
-    const player = s.player(state, this.id)
+    const helper = State.getHelper()
+    const player = helper.player(state, this.id)
 
     let c: BuildConditionResult
     
     // order by health
-    const strongCanBuy = s.playerUnitTypes(state, this.id).concat() // clone the array we dont want to modify it!
+    const strongCanBuy = helper.playerUnitTypes(state, this.id).concat() // clone the array we dont want to modify it!
       .sort((a,b) => a.properties.health < b.properties.health ? 1 : -1) // units ordered by health
       .find(u => {// get the first that we can buy
-        const buildResult = !u.isBase && u.properties.damage > 0 && (c = s.unitBehavior(Behavior.get(), u.id).buildCondition(player))
+        const buildResult = !u.isBase && u.properties.damage > 0 && (c = helper.unitBehavior(Behavior.get(), u.id).buildCondition(player))
         return buildResult.canBuild
       }) 
 
@@ -45,17 +45,20 @@ export class SimpleIa1 implements IA {
       return
     }
 
-    const availablePlaces = State.getHelper().getAvailablePlacesFor(state, this.id)
-    if (!availablePlaces || !availablePlaces.length) {
-      return
+    const availablePlace = (helper.getAvailablePlacesFor(state, this.id) || [])
+      .find(box => 
+        helper.unitBehavior(Behavior.get(), strongCanBuy.id).unitCanBeCreatedHere(this.id, box),
+      )
+    if (!availablePlace) {
+      return 
     }
     // find a available board box
     const addUnitAction: IAddUnitAction = {
       type: ACTION_ADD_UNIT,
       unitId: strongCanBuy.id,
       many: 1,
-      x: availablePlaces[0].x,
-      y: availablePlaces[0].y,
+      x: availablePlace.x,
+      y: availablePlace.y,
       playerId: this.id,
     }
     store().dispatch(addUnitAction)

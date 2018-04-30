@@ -1,7 +1,7 @@
-import { getAvailablePlacesFor, getUnitsNearImplementation } from '../util/util'
-import { IBehavior, IUnitTypeBehavior } from './behavior-interfaces'
-import { StateAccess } from './state'
-import { IPlayer, IResource, IState, IUnitType } from './state-interfaces'
+import { getAvailablePlacesFor, getUnitsNearImplementation } from '../../util/util'
+import { IBehavior, IUnitTypeBehavior } from '../behavior-interfaces'
+import { IPlayer, IResource, IState, IUnitType, IBox, IPlayerUIState } from '../state-interfaces'
+import { StateAccess } from './StateAccess'
 
 export class StateAccessHelper implements StateAccess {
 
@@ -51,7 +51,13 @@ export class StateAccessHelper implements StateAccess {
     return state.players.filter(p => !p.isAI)
   }
 
+  public box(state: IState, x: number, y: number): IBox {
+    return state.board.boxes.find(b => b.x === x && b.y === y) 
+  }
 
+  public playerControls(state: IState, playerId: string): IPlayerUIState {
+    return state.uiState.playerControls.find(pc => pc.playerId === playerId)
+  }
 }
 
 

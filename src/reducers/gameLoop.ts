@@ -24,9 +24,9 @@ export function gameLoop(state: IState, action: Action): IState {
   if (action.type !== ACTION_GAME_LOOP_INCREMENT_INTERVAL) {
     return state
   }
-
-  Game.getInstance().emit(Events.EVENT_BEFORE_TURN_END, { state, action } as BeforeTurnEndEvent)
   // console.time('gameLoop')
+  Game.getInstance().emit(Events.EVENT_BEFORE_TURN_END, { state, action } as BeforeTurnEndEvent)
+ 
   let winner: string = null
   let gameFinish = true
   state.uiState.unitAttacks = []
@@ -40,7 +40,7 @@ export function gameLoop(state: IState, action: Action): IState {
       }
     })
     if (gameFinish) {
-      winner = state.players.find(p => p.id !== player.id).id
+      winner = State.getHelper().player(state, player.id).id// state.players.find(p => p.id !== player.id).id
     }
     // clean up moved flag from all units
     iterateUnits(state, (box: IBox, unit: IUnit) => {
@@ -52,7 +52,7 @@ export function gameLoop(state: IState, action: Action): IState {
     })
   })
 
-  return State.modify(state, s => {
+  const s = State.modify(state, s => {
     if (winner) {
       Game.getInstance().emit(Events.EVENT_BEFORE_GAME_FINISH, { winner, state })
       s.game.gameFinish = true
@@ -63,5 +63,5 @@ export function gameLoop(state: IState, action: Action): IState {
     }
   })
   // console.timeEnd('gameLoop')
-  // return s
+  return s
 }

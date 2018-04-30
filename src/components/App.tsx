@@ -22,6 +22,20 @@ export class App extends BaseComponent<{}> {
       </div>
     )
   }
+  // componentWillMount() {
+  //   console.time('app')
+  // }
+
+  // componentDidMount() {
+  //   console.timeEnd('app')
+  // }
+  // componentWillUpdate() {
+  //   console.time('app')
+  // }
+
+  // componentDidUpdate() {
+  //   console.timeEnd('app')
+  // }
 }
      
 

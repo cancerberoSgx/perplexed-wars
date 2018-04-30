@@ -1,11 +1,11 @@
 import { IUnitTypeBehavior, IBehavior, IPlayerBehavior, IStateModifierAfterAddUnit, IStateModifierBeforeAddUnitSuccess, BuildConditionResultMissing, IGameBehavior, IStateModifierBehavior, IStateModifier, BuildConditionResult } from '../../state/behavior-interfaces'
 import { war2ImplementationInitialState, War2PlayerCustom, RESOURCE_ID,createMainBases, createBoxes } from './war2State'
 import { Events, afterAddUnit, AfterUnitSelectionEvent, AfterAddUnitEvent, BeforeAddUnitSuccessEvent, BeforeGameStartsEvent, AfterUnitDieEvent } from '../../state/IGameFramework'
-import { IState, IPlayer, IUnitBox } from '../../state/state-interfaces'
+import { IState, IPlayer, IUnitBox, IBox } from '../../state/state-interfaces'
 import { SimpleIa1 } from '../../ia/simpleIa1'
 import { Game } from '../../state/game'
 import { IA } from '../../ia/ia-interfaces'
-import { StateAccessHelper } from '../../state/StateAccessHelper'
+import { StateAccessHelper } from '../../state/access/StateAccessHelper'
 import { isDevelopment } from '../../util/util'
 import { lumbermillLUmberPlus, mineGoldPlus } from './war2Units'
 import { State } from '../../state/state'
@@ -29,6 +29,8 @@ function getBoardBehavior() {
 }
 
 
+
+
 function initialGamePrompt(state:IState) {
   if (isDevelopment) {
     return 
@@ -37,15 +39,12 @@ function initialGamePrompt(state:IState) {
   human.name = prompt('Name for your player?')
   const answer = confirm('Want to play with humans ?')
   if (!answer) {
-    const ia = state.players.find(p => p.isAI)
+    const ia = State.getHelper().iaPlayer(state)// state.players.find(p => p.isAI)
     const iaOriginalUnits = ia.unitTypes
     ia.unitTypes = human.unitTypes
     human.unitTypes = iaOriginalUnits
   }
 }
-
-
-
 let gameBehaviors:IGameBehavior[]
 function getGameBehaviors(): IGameBehavior[] {
   if (gameBehaviors) {
@@ -157,6 +156,10 @@ function getPlayerBehaviors() {
   return playerBehaviors
 }
 
+
+
+
+
 let unitBehaviors: IUnitTypeBehavior[]
 
 function getUnitBehaviors() {
@@ -169,11 +172,21 @@ function getUnitBehaviors() {
 
     const utb: IUnitTypeBehavior = {
       id: unitBehavior.id,
+
       unitShouldMoveThisTurn: (unitBox: IUnitBox) => true,
+
       unitShouldAttackThisTurn: (unitBox: IUnitBox) => true,
+
+      unitCanBeCreatedHere: (playerId: string, box: IBox) => {
+        return box.units.length === 0 && 
+          !State.getHelper().unitType(State.get(), unitBehavior.id).isNotAddableToBoard && 
+          !!State.getHelper().getAvailablePlacesFor(State.get(), playerId).find(p => p.x === box.x && p.y === box.y)
+      },
+
       unitCanMoveHere: (unitBox: IUnitBox) => {
         return unitBox.box.units.length === 0
       },
+
       buildCondition: (player: IPlayer) => {
         if (unitBehavior.isBase) {
           return { canBuild: false, whyNot: `Only one base allowed in this game` }
@@ -198,6 +211,7 @@ function getUnitBehaviors() {
           whyNot: 'Not enough resources. ' + (resourceMissing.length ? ('Missing: ' + resourceMissing.map(rm => rm.missing + ' of ' + rm.resourceId)) : ''),  
         } 
       },
+
       stateModifiers: [
         {
           name: 'humanBlacksmithDamageUpgrade1Modifier',

@@ -49,7 +49,7 @@ export function findUnit(state: IState, predicate: (u: IUnit, box: IBox) => bool
 }
 
 export function getUnitsNearImplementation(state: IState, box: IBox, radio: number): Array<{targetUnit: IUnit, targetBox: IBox}> {
-  const near = state.board.boxes.filter(b => Math.abs(b.x - box.x) <= radio && Math.abs(b.y - box.y) <= radio)
+  const near = getBoxesNearImpl(state, box, radio)// state.board.boxes.filter(b => Math.abs(b.x - box.x) <= radio && Math.abs(b.y - box.y) <= radio)
   const result: Array<{targetUnit: IUnit, targetBox: IBox}> = []
   near.forEach(b => {
     b.units.forEach(u => 

@@ -2,8 +2,9 @@ import { war2ImplementationInitialState } from '../implementations/war2/war2Stat
 import { clone } from '../util/util'
 import { IBehavior, IUnitTypeBehavior } from './behavior-interfaces'
 import { IBox, IPlayer, IResource, IState, IUnit, IUnitType } from './state-interfaces'
-import { StateAccessReSelectImpl } from './stateSelectors'
-import { StateAccessHelper } from './StateAccessHelper'
+import { StateAccessReSelectImpl } from './access/stateSelectors'
+import { StateAccessHelper } from './access/StateAccessHelper'
+import { StateAccess } from './access/StateAccess'
 
 const initialState = war2ImplementationInitialState
 
@@ -63,32 +64,11 @@ export class State {
   private static helperInstance:StateAccess
   public static getHelper():StateAccess {
     if (!this.helperInstance) {
-      this.helperInstance = new StateAccessHelper()
-      // this.helperInstance = new StateAccessReSelectImpl()
+      // this.helperInstance = new StateAccessHelper()
+      this.helperInstance = new StateAccessReSelectImpl()
     }
     return  this.helperInstance
   }
 }
 
 
-
-export interface StateAccess {
-
-  player (state:IState, playerId: string): IPlayer
-  
-  playerResource (state:IState, playerId: string, resourceId: string): IResource
-  playerUnitTypes (state:IState, playerId: string): IUnitType[]
-  
-  unitType (state:IState, unitType: string): IUnitType
-  
-  unitBehavior (behavior: IBehavior, unitId: string): IUnitTypeBehavior
-
-  unitsNear(state: IState, box: IBox, radio: number): {targetUnit: IUnit, targetBox: IBox}[]
-  getAvailablePlacesFor(state: IState, playerId: string): IBox[]
-
-  iaPlayer(state:IState):IPlayer
-  iaPlayers(state:IState): IPlayer[]
-  humanPlayer(state:IState):IPlayer
-  humanPlayers(state:IState): IPlayer[]
-
-}

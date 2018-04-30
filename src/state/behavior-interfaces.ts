@@ -85,8 +85,12 @@ export interface IUnitTypeBehavior extends IStateModifierBehavior {
   unitCanMoveHere: (unitBox: IUnitBox) => boolean
 
   /**
-   * can the player build this unit at this moment ? (ie has sufficient resources ? )
-   * for example: player.resources.find(r=>r.name==='gold').value>50 && player=>player.resources.find(r=>r.name==='gold')
+   * define unit creation policy with respect of a place in the board
+   */
+  unitCanBeCreatedHere:(playerId: string, box: IBox) => boolean
+
+  /**
+   * define unit creation policy with respect of current resources, or other factors of the board. Can the player build this unit at this moment ? (ie has sufficient resources ? ). For example: player.resources.find(r=>r.name==='gold').value>50 && player=>player.resources.find(r=>r.name==='gold')
    */
   buildCondition: (player: IPlayer) => BuildConditionResult
 

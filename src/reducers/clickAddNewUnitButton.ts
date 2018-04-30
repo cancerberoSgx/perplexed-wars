@@ -1,6 +1,6 @@
 import { Action } from 'redux'
 import { GameUIStateHelper } from '../state/GameUIStateHelper'
-import { StateAccessHelper } from '../state/StateAccessHelper'
+import { StateAccessHelper } from '../state/access/StateAccessHelper'
 import { State } from '../state/state'
 import { IState } from '../state/state-interfaces'
 import { store } from './store'
@@ -18,8 +18,9 @@ export function clickAddNewUnitButton(state: IState, action: IClickAddUnitButton
   if (action.type !== ACTION_ADD_UNIT_CLICK_BUTTON) {
     return state
   }
+  const helper = State.getHelper()
 
-  if (state.unitsTypes.find(ut => ut.id === action.unitId).isNotAddableToBoard) {
+  if (helper.unitType(state, action.unitId).isNotAddableToBoard) {
     const addUnitAction:IAddUnitAction = {
       many: 1, 
       type: ACTION_ADD_UNIT,  
@@ -36,11 +37,11 @@ export function clickAddNewUnitButton(state: IState, action: IClickAddUnitButton
     // reset current selection first (excluding the target button)
     s.uiState.playerControls.forEach(pc => pc.addUnitButtons.forEach(b => !b.pressed && (b.pressed = false)))
     s.uiState.unitSelection = []
-    if (state.players.find(p => p.id === action.playerId).isAI) { // human can't toggle ia unit buttons
+    if (helper.player(s, action.playerId).isAI) { 
       return
     }
 
-    const addUnitButtons = s.uiState.playerControls.find(pc => pc.playerId === action.playerId).addUnitButtons
+    const addUnitButtons = helper.playerControls(s, action.playerId).addUnitButtons
     addUnitButtons.forEach(b => {
       b.pressed = b.unitTypeId === action.unitId && !b.pressed // will toggle matched button
     })

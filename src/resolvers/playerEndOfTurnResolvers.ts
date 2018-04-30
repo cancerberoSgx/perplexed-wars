@@ -14,7 +14,7 @@ export class PlayerEndOfTurnResourceResolver implements PlayerEndOfTurnResolver 
 
 export class PlayerEndOfTurnAvailablePlacesResolver implements PlayerEndOfTurnResolver {
   public resolve ({ state, player }: { state: IState, player: IPlayer }): void {
-    state.uiState.playerControls.find(pc => pc.playerId === player.id).availablePlaces = State.getHelper().getAvailablePlacesFor(state, player.id)
+    State.getHelper().playerControls(state, player.id).availablePlaces = State.getHelper().getAvailablePlacesFor(state, player.id)
   }
 }
 

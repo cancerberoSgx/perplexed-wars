@@ -39,9 +39,7 @@ export class GameUIStateHelper {
     }
     State.getHelper().humanPlayers(state).forEach(player => {
       const children = state.unitsTypes.filter(ut => ut.childOf && ut.childOf.find(p => !!parent.find(ps => ps.unit.type.id === p))).map(u => u.id)
-      state.uiState.playerControls.filter(pc => pc.playerId === player.id).forEach(pc => {
-        pc.addUnitChildButtons = children
-      })
-    })
+      State.getHelper().playerControls(state, player.id).addUnitChildButtons = children
+    })    
   }
 }

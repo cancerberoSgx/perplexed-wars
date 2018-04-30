@@ -4,11 +4,14 @@ import { Game } from '../state/game'
 import { State } from '../state/state'
 import { IState, IUnit, IPlayerStateAddUnitButtonState, IBox } from '../state/state-interfaces'
 import { newUnit } from '../util/util'
+import { StateAccessHelper } from '../state/access/StateAccessHelper'
+import { Behavior } from '../state/behavior'
 
 
 export const ACTION_ADD_UNIT: string = 'add-unit'
 export interface IAddUnitAction extends Action {
-  unitId?: string
+  /** unit type id */
+  unitId: string
   many: number
   x: number
   y: number
@@ -28,10 +31,12 @@ export function addNewUnit(state: IState, action: IAddUnitAction): IState {
 
 
 export function addNewUnitImpl(state: IState, action: IAddUnitAction): IState {
+
   state = State.get()
+  const helper = State.getHelper()
   const playerIsHuman = !action.playerId
 
-  const isNotAddableToBoard = action.unitId && state.unitsTypes.find(u => u.id === action.unitId).isNotAddableToBoard as any
+  const isNotAddableToBoard = action.unitId && helper.unitType(state, action.unitId).isNotAddableToBoard as any
 
   const playerUi = state.uiState.playerControls
     .find(pc => (!playerIsHuman ? (pc.playerId === action.playerId) : !!pc.addUnitButtons.find(but => but.pressed))) || state.uiState.playerControls
@@ -53,13 +58,17 @@ export function addNewUnitImpl(state: IState, action: IAddUnitAction): IState {
   return State.modify(state, s => {
 
     let box:IBox
+
     const unit = newUnit(state, action.unitId, action.playerId)
 
     if (isNotAddableToBoard) {
       Game.getInstance().emit(Events.EVENT_AFTER_ADD_UNIT, { newUnit: unit, action, player: playerUi, box, state: s })
 
-    } else if ((box = s.board.boxes.find(b => b.x === action.x && b.y === action.y)) !== undefined && 
-      State.getHelper().getAvailablePlacesFor(s, playerUi.playerId).find(p => p.x === action.x && p.y === action.y)) {
+    } else if ((box = helper.box(s, action.x, action.y)) !== undefined && 
+        helper.unitBehavior(Behavior.get(), action.unitId).unitCanBeCreatedHere(action.playerId, box)
+        // State.getHelper().getAvailablePlacesFor(s, playerUi.playerId).find(p => p.x === action.x && p.y === action.y)) 
+        // stateHelper.getAvailablePlacesFor(state, this.id)
+      ) {
      
       let cancelledReason: string
       Game.getInstance().emit(Events.EVENT_BEFORE_ADD_UNIT_SUCCESS, {

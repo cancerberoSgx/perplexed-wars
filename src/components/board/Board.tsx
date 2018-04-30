@@ -23,4 +23,11 @@ export class Board extends BaseComponent<{}> {
       </div>
     )
   }
+  // componentWillUpdate() {
+  //   console.time('Board')
+  // }
+
+  // componentDidUpdate() {
+  //   console.timeEnd('Board')
+  // }
 }
