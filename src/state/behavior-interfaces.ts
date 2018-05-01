@@ -74,13 +74,18 @@ export interface IUnitTypeBehavior extends IStateModifierBehavior {
   unitShouldMoveThisTurn: (unitBox: IUnitBox) => IBox | true
 
   /**
-   * same logic as [[unitShouldMove]] but for attacking
+   * in the case units attack automatically, same logic as [[unitShouldMove]] but for attacking
    */
   // tslint:disable-next-line:variable-name
   unitShouldAttackThisTurn: (unitBox: IUnitBox) => boolean
 
   /**
-   * define movement policies - for example, can there be two units in the same box ? 
+   * if the unit moves manually (don't use the framework's automatic moves), then it returns the box where it should move this turn. If it doesn't move manually (uses the framework automatic move), then return false
+   */
+  unitManualMove: () => IBox | false
+
+  /**
+   * IN the case units move automatically, define movement policies - for example, can there be two units in the same box ? 
    */
   unitCanMoveHere: (unitBox: IUnitBox) => boolean
 

@@ -22,6 +22,7 @@
     "jsx-no-multiline-js": false,
     "jsx-self-close": false,
     "align": false,
-    "import-name": false
+    "import-name": false,
+    "no-else-after-return": false
   }
 }

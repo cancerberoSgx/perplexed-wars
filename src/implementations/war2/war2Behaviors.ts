@@ -108,7 +108,7 @@ function getPlayerBehaviors() {
         }
         const unitType = event.attacked.type
         const cost = unitType.custom && (unitType.custom as War2PlayerCustom).cost
-        const resource = State.getHelper().playerResource(event.state, event.attacked.playerId, RESOURCE_ID.food)// .resources.find(r => r.id === RESOURCE_ID.food)
+        const resource = State.getHelper().playerResource(event.state, event.attacked.playerId, RESOURCE_ID.food)
         resource.value += ((cost || []).find(c => c.resourceId === RESOURCE_ID.food) || {}as any).value || 0
 
       },
@@ -122,10 +122,8 @@ function getPlayerBehaviors() {
         }
         const resourceCost = event.newUnit.type.custom && (event.newUnit.type.custom as War2PlayerCustom).cost
         if (!resourceCost) { return }
-        // const player = State.getHelper().player(event.state, event.player.playerId)
         resourceCost.forEach(cost => {
           const playerResource = State.getHelper().playerResource(event.state, event.player.playerId, cost.resourceId)
-          // console.log('sbsdfsdf', playerResource , event.player.playerId,  cost.resourceId)
           if (playerResource && playerResource.value) {
             playerResource.value -= cost.value
           }
@@ -139,7 +137,7 @@ function getPlayerBehaviors() {
         if (event.player.playerId !== playerBehavior.id) {
           return
         }
-        if (['humanLumbermill', 'orcLumbermill', 'humanGoldMine', 'orcGoldMine'].indexOf(event.newUnit.type.id) === -1) {// TODO: lumbermill
+        if (['humanLumbermill', 'orcLumbermill', 'humanGoldMine', 'orcGoldMine'].indexOf(event.newUnit.type.id) === -1) {
           return
         }
         const resourceMap = {
@@ -148,7 +146,6 @@ function getPlayerBehaviors() {
           humanGoldMine: { resourceId: RESOURCE_ID.gold, plus: mineGoldPlus },
           orcGoldMine: { resourceId: RESOURCE_ID.gold, plus: mineGoldPlus },
         }
-        // const player = State.getHelper().player(event.state, event.player.playerId)
         const resource:{ resourceId: string, plus: number } = resourceMap[event.newUnit.type.id]
         State.getHelper().playerResource(event.state, event.player.playerId, resource.resourceId).defaultValuePerTurn += resource.plus
       },
@@ -179,6 +176,8 @@ function getUnitBehaviors() {
       unitShouldMoveThisTurn: (unitBox: IUnitBox) => true,
 
       unitShouldAttackThisTurn: (unitBox: IUnitBox) => true,
+      
+      unitManualMove: () => false, // all units move automatically 
 
       unitCanBeCreatedHere: (playerId: string, box: IBox) => {
         return box.units.length === 0 && 
