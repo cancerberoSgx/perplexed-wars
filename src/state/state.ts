@@ -61,12 +61,10 @@ export class State {
     return state
   }
 
-  private static helperInstance:StateAccess
+  // private static helperInstance:StateAccess = new StateAccessHelper()
+  private static helperInstance:StateAccess = new StateAccessReSelectImpl()
+
   public static getHelper():StateAccess {
-    if (!this.helperInstance) {
-      // this.helperInstance = new StateAccessHelper()
-      this.helperInstance = new StateAccessReSelectImpl()
-    }
     return  this.helperInstance
   }
 }

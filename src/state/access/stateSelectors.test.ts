@@ -25,9 +25,14 @@ describe('stateSelectors', () => {
 
   it('playerUnitTypes', () => {
     const p = helper.playerUnitTypes(state, 'player1')
-    // console.log(p.length)
     expect(p.find(u => u.id === 'humanGoldMine')).toBeTruthy()
   })
 
+  it('should not create a copy', () => {
+    const res = helper.playerResource(state, 'player1', 'gold') 
+    const previousValue = res.value
+    res.value += 100
+    expect(res.value).toBe(previousValue + 100)
+  })
   
 })

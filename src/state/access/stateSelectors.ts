@@ -87,7 +87,7 @@ export class StateAccessReSelectImpl implements StateAccess {
   = createCachedSelector( 
     (state:IState) => state,               
     (state:IState, playerId:string) => playerId,  
-    (state:IState, resourceId:string) => resourceId,       
+    (state:IState, playerId:string, resourceId:string) => resourceId,       
     (state, playerId, resourceId) =>                      
       this.player(state, playerId).resources.find(r => r.id === resourceId),
   )((state, stateId) => 'playerResource_' + stateId) 

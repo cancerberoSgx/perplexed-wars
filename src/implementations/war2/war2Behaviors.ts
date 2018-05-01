@@ -9,6 +9,7 @@ import { StateAccessHelper } from '../../state/access/StateAccessHelper'
 import { isDevelopment } from '../../util/util'
 import { lumbermillLUmberPlus, mineGoldPlus } from './war2Units'
 import { State } from '../../state/state'
+import { Behavior } from '../../state/behavior'
 
 /** build all the behavior (state modifiers) if war2 impl */
 export function war2ImplementationBehavior(): IBehavior {
@@ -39,7 +40,7 @@ function initialGamePrompt(state:IState) {
   human.name = prompt('Name for your player?')
   const answer = confirm('Want to play with humans ?')
   if (!answer) {
-    const ia = State.getHelper().iaPlayer(state)// state.players.find(p => p.isAI)
+    const ia = State.getHelper().iaPlayer(state)
     const iaOriginalUnits = ia.unitTypes
     ia.unitTypes = human.unitTypes
     human.unitTypes = iaOriginalUnits
@@ -90,9 +91,9 @@ function getPlayerBehaviors() {
         if (event.box.units.length > 0) { // se don't allow two units in the same place. units cannot enter buildings in war2 (in war2 yes)
           event.cancelCallback('There is already a unit there') 
         }
-        const unitType = event.state.unitsTypes.find(ut => ut.id === event.action.unitId)
-        const player = event.state.players.find(p => p.id === playerBehavior.id)
-        const unitBehavior =  getUnitBehaviors().find(ub => ub.id === unitType.id)
+        const unitType = State.getHelper().unitType(event.state, event.action.unitId)
+        const player = State.getHelper().player(event.state, playerBehavior.id)
+        const unitBehavior = State.getHelper().unitBehavior(Behavior.get(), unitType.id)
         const canBuild = unitBehavior.buildCondition(player)
         if (!canBuild.canBuild) {
           event.cancelCallback(canBuild.whyNot)
@@ -107,8 +108,9 @@ function getPlayerBehaviors() {
         }
         const unitType = event.attacked.type
         const cost = unitType.custom && (unitType.custom as War2PlayerCustom).cost
-        const resource = event.state.players.find(p => p.id === event.attacked.playerId).resources.find(r => r.id === RESOURCE_ID.food)
+        const resource = State.getHelper().playerResource(event.state, event.attacked.playerId, RESOURCE_ID.food)// .resources.find(r => r.id === RESOURCE_ID.food)
         resource.value += ((cost || []).find(c => c.resourceId === RESOURCE_ID.food) || {}as any).value || 0
+
       },
     }
 
@@ -120,9 +122,10 @@ function getPlayerBehaviors() {
         }
         const resourceCost = event.newUnit.type.custom && (event.newUnit.type.custom as War2PlayerCustom).cost
         if (!resourceCost) { return }
-        const player = event.state.players.find(p => p.id === event.player.playerId)
+        // const player = State.getHelper().player(event.state, event.player.playerId)
         resourceCost.forEach(cost => {
-          const playerResource = player.resources.find(r => r.id === cost.resourceId)
+          const playerResource = State.getHelper().playerResource(event.state, event.player.playerId, cost.resourceId)
+          // console.log('sbsdfsdf', playerResource , event.player.playerId,  cost.resourceId)
           if (playerResource && playerResource.value) {
             playerResource.value -= cost.value
           }
@@ -145,9 +148,9 @@ function getPlayerBehaviors() {
           humanGoldMine: { resourceId: RESOURCE_ID.gold, plus: mineGoldPlus },
           orcGoldMine: { resourceId: RESOURCE_ID.gold, plus: mineGoldPlus },
         }
-        const player = event.state.players.find(p => p.id === event.player.playerId)
+        // const player = State.getHelper().player(event.state, event.player.playerId)
         const resource:{ resourceId: string, plus: number } = resourceMap[event.newUnit.type.id]
-        player.resources.find(r => r.id === resource.resourceId).defaultValuePerTurn += resource.plus
+        State.getHelper().playerResource(event.state, event.player.playerId, resource.resourceId).defaultValuePerTurn += resource.plus
       },
     }
 
@@ -196,7 +199,7 @@ function getUnitBehaviors() {
         const resourceCost = unitType.custom && (unitType.custom as War2PlayerCustom).cost 
         const resourceMissing:BuildConditionResultMissing[] = []
         const notEnough = resourceCost.find((cost) => {
-          const playerResource = player.resources.find(r => r.id === cost.resourceId)
+          const playerResource = State.getHelper().playerResource(State.get(), player.id, cost.resourceId)
           if (playerResource && playerResource.value < cost.value) {
             resourceMissing.push({ 
               resourceId: playerResource.id, 
