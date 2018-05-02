@@ -48,7 +48,7 @@ export class BarNav extends BaseComponent<{}> {
             {this.state.game.realTime && <span><input type="checkbox" checked={this.state.game.paused} onChange={pauseClicked} /> Paused  </span>}
             </li>
             <li className="nav-item">
-            {this.state.game.realTime && <span>Interval: <input type="number" onChange={changeInterval} defaultValue={this.state.game.interval + ''}/></span>}
+            <span>Interval: <input type="number" onChange={changeInterval} defaultValue={this.state.game.interval + ''}/></span>
             </li>
             <li className="nav-item">
               <input type="checkbox" checked={this.state.game.allowDiagonal} onChange={allowDiagonalChanged}/>Allow Diagonals

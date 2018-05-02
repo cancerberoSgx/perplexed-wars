@@ -3,6 +3,7 @@
     --box-height: 30px;
     --box-width: 30px;
     --font-size: 13px;
+    --line-height: 10px;
   }
 }
 @media only screen and (min-width: 600px) {
@@ -10,6 +11,7 @@
     --box-height: 50px;
     --box-width: 50px;
     --font-size: 16px;
+    --line-height: 14px;
   }
 }
 

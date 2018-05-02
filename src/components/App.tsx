@@ -15,10 +15,10 @@ export class App extends BaseComponent<{}> {
   public render() {
     return (
       <div className="container-fluid App">
-        <BarNav/>
-        <DialogsContainer/>        
+        <BarNav/>       
         <UnitsPanel />
-        <Board />         
+        <Board />     
+        <DialogsContainer/>     
       </div>
     )
   }

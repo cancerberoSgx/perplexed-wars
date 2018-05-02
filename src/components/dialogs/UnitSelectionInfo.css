@@ -1,6 +1,6 @@
 .UnitSelectionInfo {
   pointer-events:all;
-  line-height: 10px;
+  line-height: var(--line-height);
 }
 .UnitSelectionInfo img {
   max-height: var(--box-height);

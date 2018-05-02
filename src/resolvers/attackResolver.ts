@@ -16,7 +16,7 @@ export class AttackResolver implements IUnitActionResolver {
           return 
         }
         targetUnit.state.health = targetUnit.state.health - unit.state.damage
-        state.uiState.unitAttacks.push({ attacked: targetUnit.id, attacker: unit.id, attackedBox: targetBox, attackerBox: box })
+        state.uiState.unitAttacks.push({ attacked: targetUnit.id, attacker: unit.id, attackedBox: targetBox, attackerBox: box, attackerPlayer: player.id, attackedPlayer: targetUnit.playerId })
         if (targetUnit.state.health <= 0) {
           targetBox.units = targetBox.units.filter(u => u.id !== targetUnit.id)
           state.uiState.unitDeads.push({ attacked: targetUnit.id, attacker: unit.id, attackedBox: targetBox.id })

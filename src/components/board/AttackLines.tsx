@@ -1,3 +1,5 @@
+// TODO: this should be provided by the implementation
+
 import * as React from 'react'
 import { range } from '../../util/util'
 import { BaseComponent } from '../BaseComponent'
@@ -12,7 +14,7 @@ export class AttackLines extends BaseComponent<{}> {
   public render() {
     const attackPoints = this.state.uiState.unitAttacks.map(attack => 
       ({
-        attacker: this.state.uiState.boxesClientRects[attack.attackerBox.x + '-' + attack.attackerBox.y], 
+        attacker: { ...this.state.uiState.boxesClientRects[attack.attackerBox.x + '-' + attack.attackerBox.y], color: State.getHelper().player(this.state, attack.attackerPlayer).color }, 
         attacked: this.state.uiState.boxesClientRects[attack.attackedBox.x + '-' + attack.attackedBox.y],
         id: attack.attackedBox.id + '-' + attack.attackedBox.id,
       }),
@@ -21,18 +23,9 @@ export class AttackLines extends BaseComponent<{}> {
     return (
       <svg className="AttackLines" >
       {attackPoints.map((attack, i) => 
-        <line key={'attack-line_' + i} className="line"  x1={attack.attacker.clientRect.x} y1={attack.attacker.clientRect.y - this.state.uiState.boardClientRect.y} x2={attack.attacked.clientRect.x} y2={attack.attacked.clientRect.y - this.state.uiState.boardClientRect.y} stroke="black" />,
+        <line key={'attack-line_' + i} className="line"  x1={attack.attacker.clientRect.x + this.state.uiState.boxSize.width / 2} y1={attack.attacker.clientRect.y - this.state.uiState.boardClientRect.y + this.state.uiState.boxSize.height / 2} x2={attack.attacked.clientRect.x + this.state.uiState.boxSize.width / 2} y2={attack.attacked.clientRect.y - this.state.uiState.boardClientRect.y + this.state.uiState.boxSize.height / 2} stroke={attack.attacker.color} strokeWidth="2" />,
       )}
       </svg>
     )
   }
 }
-
-// import { LineCss } from '../../implementations/war2/LineCss'
-// function lineStyle(a: {x: number, y: number}, b: {x: number, y: number}):any {
-//   console.log(a.x, a.y, b.x, b.y)
-//   const styles = (LineCss as any).forPointsWithStroke(a, b, 2)
-//   const result = { width: styles.width, height: styles.height,  top: styles.top, left: styles.left, transform: `rotate(${styles.degrees}deg)`, border: 'solid' }
-  
-//   return result
-// }

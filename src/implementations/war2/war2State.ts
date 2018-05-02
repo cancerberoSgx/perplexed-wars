@@ -29,7 +29,7 @@ export function war2ImplementationInitialState(): IState {
       gameFinish: false,
       paused: false,
       showAIUnitsPanel: false,
-      showAIResourcesPanel: true,
+      showAIResourcesPanel: false,
     },
     timestamp: Date.now(),
 

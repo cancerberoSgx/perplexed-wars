@@ -1,10 +1,10 @@
 import * as React from 'react'
+import { State } from '../../state/state'
 import { range } from '../../util/util'
 import { BaseComponent } from '../BaseComponent'
-import { BoardRow } from './BoardRow'
-import './Board.css'
-import { State } from 'state/state'
 import { AttackLines } from './AttackLines'
+import './Board.css'
+import { BoardRow } from './BoardRow'
 
 export class Board extends BaseComponent<{}> {
   constructor(props:{}) {
@@ -13,35 +13,31 @@ export class Board extends BaseComponent<{}> {
   public render() {
     return (
       <div className="Board">
-      <table>
-        <tbody>
-        {
-          range(this.state.board.m).map(n =>
-            <BoardRow key={n} n={n}/>,
-          )
-        }
-        </tbody>
-      </table>
-
-        {/* <svg id="svg1" width="0" height="0" >
-        <line x1="10" y1="20" x2="98" y2="129" stroke="black" />
-
-         <line x1="0" y1="80" x2="100" y2="20" stroke="black" />
-        </svg> */}
+        <table>
+          <tbody>
+          {
+            range(this.state.board.m).map(n =>
+              <BoardRow key={n} n={n}/>,
+            )
+          }
+          </tbody>
+        </table>
         
-      <AttackLines/>
-
+        <AttackLines/>
       </div>
     )
   }
 
   componentDidMount() {
-    // heads up !- we will store each board DOM coordinate in the state so we must do it from here! 
-
+    console.log(' board component did mount')
+    // heads up !- we will store each board DOM coordinate in the state - we do it from here!
     const boxes = document.querySelectorAll('.BoardRow [data-x]')
     const boxesClientRects = {}
     for (let i = 0; i < boxes.length; i++) {
       const boxEl = boxes.item(i)
+      if (!boxEl) {
+        return
+      }
       const x = parseInt(boxEl.getAttribute('data-x'), 10)
       const y = parseInt(boxEl.getAttribute('data-y'), 10)
       const cr = boxEl.getClientRects()[0]
@@ -51,17 +47,10 @@ export class Board extends BaseComponent<{}> {
       }
     }
     this.state.uiState.boxesClientRects = boxesClientRects
-    const boardCR = document.querySelector('.Board').getClientRects()[0]
+    const boardEl = document.querySelector('.Board')
+    const boardCR = boardEl ? document.querySelector('.Board').getClientRects()[0] : { left: 0, top: 0 }
     this.state.uiState.boardClientRect = { x: boardCR.left, y: boardCR.top }
+    const boxEl = document.querySelector('.BoardRow [data-x]')
+    this.state.uiState.boxSize = boxEl ? { width: boxEl.getClientRects()[0].width, height: boxEl.getClientRects()[0].height } : { width: 1, height: 1 } // for testing
   }
 }
-
-
-
-// import { LineCss } from '../../implementations/war2/LineCss'
-// function lineStyle():any {
-//   const styles = (LineCss as any).forPointsWithStroke({ x: 50, y: 50 }, { x: 220, y: 323 }, 4)
-//   const result = { width: styles.width, height: styles.height,  top: styles.top, left: styles.left, transform: `rotate(${styles.degrees}deg)`, border: 'solid' }
-//   // console.log(styles , result)  
-//   return result
-// }

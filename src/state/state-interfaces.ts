@@ -112,11 +112,12 @@ export interface IUIState {
   currentPlayer: string
   playerControls: IPlayerUIState[]
   unitSelection: Array<IUnitSelectionInfo>
-  unitAttacks: Array<{attacker: string, attacked: string, attackedBox: IBox, attackerBox: IBox}>
+  unitAttacks: Array<{attacker: string, attacked: string, attackedBox: IBox, attackerBox: IBox, attackerPlayer: string, attackedPlayer: string}>
   unitDeads: Array<{attacker: string, attacked: string, attackedBox: string}>
   unitTypeSelection?: IUnitType
   boxesClientRects?: {[id:string]: {clientRect: {x:number, y:number, width: number, height: number}, boxId: string}}
   boardClientRect?: {x:number, y: number}
+  boxSize?: {width: number, height: number}
 }
 export interface IPlayerUIState {
   addUnitButtons: IPlayerStateAddUnitButtonState[]

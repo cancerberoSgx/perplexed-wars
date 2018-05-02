@@ -5,7 +5,7 @@ import './UnitChildrenPanel.css'
 import Draggable from 'react-draggable' 
 import { State } from '../../state/state'
 import { UnitTypeButton } from '../toolPanel/UnitTypeButton'
-import { cleanAllDialogs } from './DialogsContainer'
+// import { cleanAllDialogs } from './DialogsContainer'
 
 export class UnitChildrenPanel extends BaseComponent<{playerUIState: IPlayerUIState}> {
   parentUnit: IUnitSelectionInfo
@@ -28,7 +28,7 @@ export class UnitChildrenPanel extends BaseComponent<{playerUIState: IPlayerUISt
           offsetParent={document.querySelector('.UnitsPanel')}
           defaultPosition={{ x:0, y: 0 }}
         >
-          <div className="UnitChildrenPanel AppPanel" onClick={cleanAllDialogs}>
+          <div className="UnitChildrenPanel AppPanel">
           {/* {canRender ? '<<drag me>>' : ''} */}
           <ul>
             {canRender ? childUnits.map(unit => 
