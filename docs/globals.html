@@ -79,6 +79,7 @@
 								<li class="tsd-kind-class"><a href="classes/gameuistatehelper.html" class="tsd-kind-icon">GameUIState<wbr>Helper</a></li>
 								<li class="tsd-kind-class"><a href="classes/state.html" class="tsd-kind-icon">State</a></li>
 								<li class="tsd-kind-class"><a href="classes/stateaccesshelper.html" class="tsd-kind-icon">State<wbr>Access<wbr>Helper</a></li>
+								<li class="tsd-kind-class"><a href="classes/stateaccessreselectimpl.html" class="tsd-kind-icon">State<wbr>Access<wbr>ReSelect<wbr>Impl</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
@@ -132,6 +133,7 @@
 								<li class="tsd-kind-interface"><a href="interfaces/iunittypebehavior.html" class="tsd-kind-icon">IUnit<wbr>Type<wbr>Behavior</a></li>
 								<li class="tsd-kind-interface"><a href="interfaces/ivoidaction.html" class="tsd-kind-icon">IVoid<wbr>Action</a></li>
 								<li class="tsd-kind-interface"><a href="interfaces/log.html" class="tsd-kind-icon">Log</a></li>
+								<li class="tsd-kind-interface"><a href="interfaces/stateaccess.html" class="tsd-kind-icon">State<wbr>Access</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
@@ -158,9 +160,9 @@
 								<li class="tsd-kind-function"><a href="globals.html#findunit" class="tsd-kind-icon">find<wbr>Unit</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#gameloop" class="tsd-kind-icon">game<wbr>Loop</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#getavailableplacesfor" class="tsd-kind-icon">get<wbr>Available<wbr>Places<wbr>For</a></li>
-								<li class="tsd-kind-function"><a href="globals.html#getboxesnear" class="tsd-kind-icon">get<wbr>Boxes<wbr>Near</a></li>
+								<li class="tsd-kind-function"><a href="globals.html#getboxesnearimpl" class="tsd-kind-icon">get<wbr>Boxes<wbr>Near<wbr>Impl</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#getpathmatrix" class="tsd-kind-icon">get<wbr>Path<wbr>Matrix</a></li>
-								<li class="tsd-kind-function"><a href="globals.html#getunitsnear" class="tsd-kind-icon">get<wbr>Units<wbr>Near</a></li>
+								<li class="tsd-kind-function"><a href="globals.html#getunitsnearimplementation" class="tsd-kind-icon">get<wbr>Units<wbr>Near<wbr>Implementation</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#iterateunits" class="tsd-kind-icon">iterate<wbr>Units</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#newunit" class="tsd-kind-icon">new<wbr>Unit</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#range" class="tsd-kind-icon">range</a></li>
@@ -239,7 +241,7 @@
 					<div class="tsd-signature tsd-kind-icon">is<wbr>Development<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in util/util.d.ts:28</li>
+							<li>Defined in util/util.d.ts:17</li>
 						</ul>
 					</aside>
 				</section>
@@ -249,7 +251,7 @@
 					<div class="tsd-signature tsd-kind-icon">is<wbr>Touch<wbr>Device<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in util/util.d.ts:29</li>
+							<li>Defined in util/util.d.ts:18</li>
 						</ul>
 					</aside>
 				</section>
@@ -266,7 +268,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in reducers/addNewUnit.d.ts:14</li>
+									<li>Defined in reducers/addNewUnit.d.ts:15</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -292,7 +294,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in reducers/addNewUnit.d.ts:15</li>
+									<li>Defined in reducers/addNewUnit.d.ts:16</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -474,7 +476,7 @@
 					<a name="getavailableplacesfor" class="tsd-anchor"></a>
 					<h3>get<wbr>Available<wbr>Places<wbr>For</h3>
 					<ul class="tsd-signatures tsd-kind-function">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Available<wbr>Places<wbr>For<span class="tsd-signature-symbol">(</span>playerId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, state<span class="tsd-signature-symbol">: </span><a href="interfaces/istate.html" class="tsd-signature-type">IState</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="interfaces/ibox.html" class="tsd-signature-type">IBox</a><span class="tsd-signature-symbol">[]</span></li>
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Available<wbr>Places<wbr>For<span class="tsd-signature-symbol">(</span>state<span class="tsd-signature-symbol">: </span><a href="interfaces/istate.html" class="tsd-signature-type">IState</a>, playerId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="interfaces/ibox.html" class="tsd-signature-type">IBox</a><span class="tsd-signature-symbol">[]</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
@@ -486,10 +488,10 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>playerId: <span class="tsd-signature-type">string</span></h5>
+									<h5>state: <a href="interfaces/istate.html" class="tsd-signature-type">IState</a></h5>
 								</li>
 								<li>
-									<h5>state: <a href="interfaces/istate.html" class="tsd-signature-type">IState</a></h5>
+									<h5>playerId: <span class="tsd-signature-type">string</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="interfaces/ibox.html" class="tsd-signature-type">IBox</a><span class="tsd-signature-symbol">[]</span></h4>
@@ -497,54 +499,28 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-function">
-					<a name="getboxesnear" class="tsd-anchor"></a>
-					<h3>get<wbr>Boxes<wbr>Near</h3>
+					<a name="getboxesnearimpl" class="tsd-anchor"></a>
+					<h3>get<wbr>Boxes<wbr>Near<wbr>Impl</h3>
 					<ul class="tsd-signatures tsd-kind-function">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Boxes<wbr>Near<span class="tsd-signature-symbol">(</span>__namedParameters<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="interfaces/ibox.html" class="tsd-signature-type">IBox</a><span class="tsd-signature-symbol">[]</span></li>
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Boxes<wbr>Near<wbr>Impl<span class="tsd-signature-symbol">(</span>state<span class="tsd-signature-symbol">: </span><a href="interfaces/istate.html" class="tsd-signature-type">IState</a>, box<span class="tsd-signature-symbol">: </span><a href="interfaces/ibox.html" class="tsd-signature-type">IBox</a>, radio<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="interfaces/ibox.html" class="tsd-signature-type">IBox</a><span class="tsd-signature-symbol">[]</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in util/util.d.ts:20</li>
+									<li>Defined in util/util.d.ts:14</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>__namedParameters: <span class="tsd-signature-type">object</span></h5>
-									<ul class="tsd-parameters">
-										<li class="tsd-parameter">
-											<h5>box<span class="tsd-signature-symbol">: </span><a href="interfaces/ibox.html" class="tsd-signature-type">IBox</a></h5>
-										</li>
-										<li class="tsd-parameter">
-											<h5>predicate<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span></h5>
-											<ul class="tsd-parameters">
-												<li class="tsd-parameter-siganture">
-													<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-variable tsd-is-not-exported">
-														<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>b<span class="tsd-signature-symbol">: </span><a href="interfaces/ibox.html" class="tsd-signature-type">IBox</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
-													</ul>
-													<ul class="tsd-descriptions">
-														<li class="tsd-description">
-															<h4 class="tsd-parameters-title">Parameters</h4>
-															<ul class="tsd-parameters">
-																<li>
-																	<h5>b: <a href="interfaces/ibox.html" class="tsd-signature-type">IBox</a></h5>
-																</li>
-															</ul>
-															<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
-														</li>
-													</ul>
-												</li>
-											</ul>
-										</li>
-										<li class="tsd-parameter">
-											<h5>radio<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
-										</li>
-										<li class="tsd-parameter">
-											<h5>state<span class="tsd-signature-symbol">: </span><a href="interfaces/istate.html" class="tsd-signature-type">IState</a></h5>
-										</li>
-									</ul>
+									<h5>state: <a href="interfaces/istate.html" class="tsd-signature-type">IState</a></h5>
+								</li>
+								<li>
+									<h5>box: <a href="interfaces/ibox.html" class="tsd-signature-type">IBox</a></h5>
+								</li>
+								<li>
+									<h5>radio: <span class="tsd-signature-type">number</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="interfaces/ibox.html" class="tsd-signature-type">IBox</a><span class="tsd-signature-symbol">[]</span></h4>
@@ -575,10 +551,10 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-function">
-					<a name="getunitsnear" class="tsd-anchor"></a>
-					<h3>get<wbr>Units<wbr>Near</h3>
+					<a name="getunitsnearimplementation" class="tsd-anchor"></a>
+					<h3>get<wbr>Units<wbr>Near<wbr>Implementation</h3>
 					<ul class="tsd-signatures tsd-kind-function">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Units<wbr>Near<span class="tsd-signature-symbol">(</span>__namedParameters<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Units<wbr>Near<wbr>Implementation<span class="tsd-signature-symbol">(</span>state<span class="tsd-signature-symbol">: </span><a href="interfaces/istate.html" class="tsd-signature-type">IState</a>, box<span class="tsd-signature-symbol">: </span><a href="interfaces/ibox.html" class="tsd-signature-type">IBox</a>, radio<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
@@ -590,42 +566,13 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>__namedParameters: <span class="tsd-signature-type">object</span></h5>
-									<ul class="tsd-parameters">
-										<li class="tsd-parameter">
-											<h5>box<span class="tsd-signature-symbol">: </span><a href="interfaces/ibox.html" class="tsd-signature-type">IBox</a></h5>
-										</li>
-										<li class="tsd-parameter">
-											<h5>predicate<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span></h5>
-											<ul class="tsd-parameters">
-												<li class="tsd-parameter-siganture">
-													<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-variable tsd-is-not-exported">
-														<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>u<span class="tsd-signature-symbol">: </span><a href="interfaces/iunit.html" class="tsd-signature-type">IUnit</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
-													</ul>
-													<ul class="tsd-descriptions">
-														<li class="tsd-description">
-															<h4 class="tsd-parameters-title">Parameters</h4>
-															<ul class="tsd-parameters">
-																<li>
-																	<h5>u: <a href="interfaces/iunit.html" class="tsd-signature-type">IUnit</a></h5>
-																</li>
-															</ul>
-															<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
-														</li>
-													</ul>
-												</li>
-											</ul>
-										</li>
-										<li class="tsd-parameter">
-											<h5>radio<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
-										</li>
-										<li class="tsd-parameter">
-											<h5>state<span class="tsd-signature-symbol">: </span><a href="interfaces/istate.html" class="tsd-signature-type">IState</a></h5>
-										</li>
-										<li class="tsd-parameter">
-											<h5>unit<span class="tsd-signature-symbol">: </span><a href="interfaces/iunit.html" class="tsd-signature-type">IUnit</a></h5>
-										</li>
-									</ul>
+									<h5>state: <a href="interfaces/istate.html" class="tsd-signature-type">IState</a></h5>
+								</li>
+								<li>
+									<h5>box: <a href="interfaces/ibox.html" class="tsd-signature-type">IBox</a></h5>
+								</li>
+								<li>
+									<h5>radio: <span class="tsd-signature-type">number</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -642,7 +589,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in util/util.d.ts:26</li>
+									<li>Defined in util/util.d.ts:15</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -689,7 +636,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in util/util.d.ts:27</li>
+									<li>Defined in util/util.d.ts:16</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -803,6 +750,9 @@
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="classes/stateaccesshelper.html" class="tsd-kind-icon">State<wbr>Access<wbr>Helper</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/stateaccessreselectimpl.html" class="tsd-kind-icon">State<wbr>Access<wbr>ReSelect<wbr>Impl</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/afteraddunitevent.html" class="tsd-kind-icon">After<wbr>Add<wbr>Unit<wbr>Event</a>
@@ -948,6 +898,9 @@
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/log.html" class="tsd-kind-icon">Log</a>
 					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/stateaccess.html" class="tsd-kind-icon">State<wbr>Access</a>
+					</li>
 					<li class=" tsd-kind-variable">
 						<a href="globals.html#action_add_unit" class="tsd-kind-icon">ACTION_<wbr>ADD_<wbr>UNIT</a>
 					</li>
@@ -997,13 +950,13 @@
 						<a href="globals.html#getavailableplacesfor" class="tsd-kind-icon">get<wbr>Available<wbr>Places<wbr>For</a>
 					</li>
 					<li class=" tsd-kind-function">
-						<a href="globals.html#getboxesnear" class="tsd-kind-icon">get<wbr>Boxes<wbr>Near</a>
+						<a href="globals.html#getboxesnearimpl" class="tsd-kind-icon">get<wbr>Boxes<wbr>Near<wbr>Impl</a>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#getpathmatrix" class="tsd-kind-icon">get<wbr>Path<wbr>Matrix</a>
 					</li>
 					<li class=" tsd-kind-function">
-						<a href="globals.html#getunitsnear" class="tsd-kind-icon">get<wbr>Units<wbr>Near</a>
+						<a href="globals.html#getunitsnearimplementation" class="tsd-kind-icon">get<wbr>Units<wbr>Near<wbr>Implementation</a>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#iterateunits" class="tsd-kind-icon">iterate<wbr>Units</a>
