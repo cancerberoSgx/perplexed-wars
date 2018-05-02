@@ -82,6 +82,7 @@ function getPlayerBehaviors() {
   }))
 
   playerBehaviors.forEach(playerBehavior => {
+    
     const checkEnoughMoney: IStateModifierBeforeAddUnitSuccess = {
       eventName: Events.EVENT_BEFORE_ADD_UNIT_SUCCESS,
       modifier: (event: BeforeAddUnitSuccessEvent) => {

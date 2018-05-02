@@ -11,14 +11,14 @@ export function war2resources():IResource[] {
     id: RESOURCE_ID.gold,
     name: RESOURCE_ID.gold,
     defaultValuePerTurn: goldDefaultValuePerTurn,
-    value: 1200,
+    value: 2000,
     thisTurnValue: 0,
     icon: goldIcon,
   }, {
     id: RESOURCE_ID.lumber,
     name: RESOURCE_ID.lumber,
     defaultValuePerTurn: 2,
-    value: 200,
+    value: 400,
     thisTurnValue: 0,
     icon: lumberIcon,
   },{

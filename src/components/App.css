@@ -18,3 +18,7 @@ body ul {
 .App {
   padding: 0px 5px 0px 5px;
 }
+
+.App .btn {
+  padding: 0px 8px 0px 8px;
+}

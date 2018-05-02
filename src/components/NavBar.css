@@ -11,3 +11,6 @@
 .navbar-toggler{
   padding: 0;
 }
+.navbar .intervalInput {
+  width: 70px; 
+}

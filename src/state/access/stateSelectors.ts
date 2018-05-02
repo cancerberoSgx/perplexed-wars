@@ -1,6 +1,6 @@
 import createCachedSelector from 're-reselect'
 import { createSelector } from 'reselect'
-import { getAvailablePlacesFor, getUnitsNearImplementation } from '../../util/util'
+import { getAvailablePlacesFor, getUnitsNearImplementation, findUnit } from '../../util/util'
 import { IBehavior, IUnitTypeBehavior } from '../behavior-interfaces'
 import { StateAccess } from './StateAccess'
 import { IBox, IState, IUnit, IPlayer, IUnitType ,IResource, IPlayerUIState } from '../state-interfaces'
@@ -10,29 +10,20 @@ const players = (state:IState) => state.players
 
 export class StateAccessReSelectImpl implements StateAccess {
 
-  // public unitsNear: (state: IState, box: IBox, radio: number) => {targetUnit: IUnit, targetBox: IBox}[] 
-  // = createCachedSelector( 
-  //   (state:IState) => state, 
-  //   (state:IState, box: IBox) => box,
-  //   (state:IState, box: IBox, radio: number) => radio,
-  //   (state, box, radio) => {
-  //     return getUnitsNearImplementation(state, box, radio)
-  //   },
-  // )((state, box) => 'unitsNear_' + '_' + box.x + '_' + box.y) 
-
-  // public getAvailablePlacesFor = (createCachedSelector( 
-  //   (state:IState) => state, 
-  //   (state:IState, playerId: string) => playerId,
-  //   getAvailablePlacesFor,
-  // )((state, playerId) => 'getAvailablePlacesFor_' + playerId))
-
-
   public unitsNear = getUnitsNearImplementation
 
   public getAvailablePlacesFor = getAvailablePlacesFor
-
-
-
+  
+  public unit: (state:IState, unitId: string) => {unit: IUnit, box: IBox}
+  = createCachedSelector( 
+    (state:IState) => state,
+    (state:IState, unitId:string) => unitId,
+    (state, unitId) => {
+      const found = findUnit(state, () => true)
+      return found.length ? found[0] : null
+    },
+  )((unitTypes, unitId) => 'unit_' + unitId)
+  
 
   public player: (state:IState, playerId: string) => IPlayer 
   = createCachedSelector( 
@@ -107,4 +98,23 @@ export class StateAccessReSelectImpl implements StateAccess {
 
 }
 
+
+
+
+
+  // public unitsNear: (state: IState, box: IBox, radio: number) => {targetUnit: IUnit, targetBox: IBox}[] 
+  // = createCachedSelector( 
+  //   (state:IState) => state, 
+  //   (state:IState, box: IBox) => box,
+  //   (state:IState, box: IBox, radio: number) => radio,
+  //   (state, box, radio) => {
+  //     return getUnitsNearImplementation(state, box, radio)
+  //   },
+  // )((state, box) => 'unitsNear_' + '_' + box.x + '_' + box.y) 
+
+  // public getAvailablePlacesFor = (createCachedSelector( 
+  //   (state:IState) => state, 
+  //   (state:IState, playerId: string) => playerId,
+  //   getAvailablePlacesFor,
+  // )((state, playerId) => 'getAvailablePlacesFor_' + playerId))
 

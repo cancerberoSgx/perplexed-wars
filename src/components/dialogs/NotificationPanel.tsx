@@ -17,11 +17,8 @@ export class NotificationPanel extends BaseComponent<{playerUIState: IPlayerUISt
       this.props.playerUIState && 
       this.props.playerUIState.message
     return (
-      <Draggable 
-        handle=".NotificationPanel" 
-        defaultClassName={canRender ? 'can-render' :''}
-      >
-        <div className="NotificationPanel AppPanel"> 
+      <Draggable handle=".NotificationPanel">
+        <div className={'NotificationPanel AppPanel ' + (canRender ? 'can-render' :'')}> 
         <p className="message">{canRender ? this.props.playerUIState.message.message :''}</p>
         </div>
       </Draggable>

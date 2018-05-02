@@ -39,17 +39,19 @@ export function getPathMatrix(state: IState): number[][] {
 
 export function findUnit(state: IState, predicate: (u: IUnit, box: IBox) => boolean): Array<{unit: IUnit, box: IBox}> {
   // TODO: make me faster!
-  const found: Array<{unit: IUnit,box: IBox}> = []
-  state.board.boxes.forEach(box => box.units.forEach(unit => {
+  const found: {unit: IUnit, box: IBox}[] = []
+  state.board.boxes.some(box => box.units.some(unit => {
     if (predicate(unit, box)) {
       found.push({ unit, box })
+      return true
     }
+    return false
   }))
   return found
 }
 
 export function getUnitsNearImplementation(state: IState, box: IBox, radio: number): Array<{targetUnit: IUnit, targetBox: IBox}> {
-  const near = getBoxesNearImpl(state, box, radio)// state.board.boxes.filter(b => Math.abs(b.x - box.x) <= radio && Math.abs(b.y - box.y) <= radio)
+  const near = getBoxesNearImpl(state, box, radio)
   const result: Array<{targetUnit: IUnit, targetBox: IBox}> = []
   near.forEach(b => {
     b.units.forEach(u => 

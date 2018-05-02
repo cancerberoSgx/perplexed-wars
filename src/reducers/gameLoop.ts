@@ -57,7 +57,7 @@ export function gameLoop(state: IState, action: Action): IState {
       Game.getInstance().emit(Events.EVENT_BEFORE_GAME_FINISH, { winner, state })
       s.game.gameFinish = true
       s.game.winner = winner
-    } else {
+    // } else {
       s.game.time = s.game.time + s.game.interval
       Game.getInstance().emit(Events.EVENT_AFTER_TURN_END, { action, state })
     }

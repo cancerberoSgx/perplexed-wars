@@ -84,9 +84,9 @@ export function addNewUnitImpl(state: IState, action: IAddUnitAction): IState {
 
       // reset all add-unit-buttons
       if (!action.ctrlKey && playerIsHuman) { 
-        s.uiState.playerControls.forEach(pc => pc.addUnitButtons.forEach(b => b.pressed = false))
+        // s.uiState.playerControls.forEach(pc => pc.addUnitButtons.forEach(b => b.pressed = false))
         s.uiState.unitSelection = []
-        s.uiState.unitTypeSelection = null
+        // s.uiState.unitTypeSelection = null
       }
       Game.getInstance().emit(Events.EVENT_AFTER_ADD_UNIT, { newUnit: unit, action, player: playerUi, box, state: s })
       

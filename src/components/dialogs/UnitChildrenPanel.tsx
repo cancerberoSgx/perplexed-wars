@@ -24,12 +24,11 @@ export class UnitChildrenPanel extends BaseComponent<{playerUIState: IPlayerUISt
     return (
         <Draggable 
           handle=".UnitChildrenPanel" 
-          defaultClassName={'UnitChildrenPanelDraggable ' + (canRender ? 'has-content' :'')}
-          offsetParent={document.querySelector('.UnitsPanel')}
-          defaultPosition={{ x:0, y: 0 }}
+          defaultClassName={'UnitChildrenPanelDraggable '}
+          // offsetParent={document.querySelector('.UnitsPanel')}
+          // defaultPosition={{ x:0, y: 0 }}
         >
-          <div className="UnitChildrenPanel AppPanel">
-          {/* {canRender ? '<<drag me>>' : ''} */}
+          <div className={'UnitChildrenPanel AppPanel ' + canRender ? 'can-render' : ''}>
           <ul>
             {canRender ? childUnits.map(unit => 
               <li key={unit.id}>
@@ -41,19 +40,10 @@ export class UnitChildrenPanel extends BaseComponent<{playerUIState: IPlayerUISt
               />
               </li>,
             ) : ''}
-            
           </ul>
           </div>
         </Draggable >
     )
     
-  }
-  componentDidUpdate() {
-    if (!this.parentUnit) {
-      return 
-    }
-  
-    const parentUnitEl = document.querySelector(`[data-x="${this.parentUnit.box.x}"][data-y="${this.parentUnit.box.y}"]`)
-    console.log(parentUnitEl && parentUnitEl.getClientRects()[0])
   }
 }

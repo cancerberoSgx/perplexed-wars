@@ -63,21 +63,20 @@ export class Game extends EventEmitter implements IGameFramework {
 
   public nextTurn (): void {
     if (State.get().game.gameFinish) {
+      debugger
       State.modify(State.get(), (state) => {
-        state.uiState.playerControls.find(p => !!state.players.find(p => !p.isAI)).message = { message:'Game finish, winner is ' + state.game.winner + '. Bye.' , type: 'blocking' }
+        State.getHelper().playerControls(state, State.getHelper().humanPlayer(state).id).message = { message:'Game finish, winner is ' + state.game.winner + '. Bye.' , type: 'blocking' }
       })
       store().dispatch({ type: ACTION_GAME_LOOP_INCREMENT_INTERVAL })
       this.stop()
       return
     }
     if (!State.get().game.paused) {
-      // console.time('gamenextTurn')
       const action: ITurnEndAction = {
         type: ACTION_GAME_LOOP_INCREMENT_INTERVAL,
       }
       store().dispatch(action)
       Behavior.get().players.forEach(p => p.ia && p.ia.yourTurn(State.get()))
-      // console.timeEnd('gamenextTurn')
     }
   }
 

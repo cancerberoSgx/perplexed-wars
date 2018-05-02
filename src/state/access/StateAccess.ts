@@ -24,4 +24,6 @@ export interface StateAccess {
 
   playerControls(state:IState, playerId: string): IPlayerUIState
 
+  unit(state:IState, unitId: string): {unit: IUnit, box: IBox}
+
 }

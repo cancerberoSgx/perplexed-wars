@@ -1,12 +1,16 @@
 import { State } from '../state'
 import { StateAccessReSelectImpl } from './stateSelectors'
+import { Behavior } from '../behavior'
 
 describe('stateSelectors', () => {
   let state
   const helper = new StateAccessReSelectImpl()
+  
   beforeEach(() => {
     state = State.get() 
+    Behavior.get().boardBehavior.createBoxes(state)
   })
+
   it('humanPlayer', () => {
     const human = helper.humanPlayer(state)
     expect(human.isAI).toBeFalsy()
@@ -35,4 +39,11 @@ describe('stateSelectors', () => {
     expect(res.value).toBe(previousValue + 100)
   })
   
+  it('unit', () => {
+    state.board.boxes[0].units.push({ id: 'u1', name: 'mark' })
+    const result = helper.unit(state, 'u1')
+    expect(result.unit.name).toBe('mark')
+    expect(result.box.x).toBe(0)
+  })
+
 })

@@ -3,7 +3,7 @@ import Draggable from 'react-draggable'
 import { IUnitSelectionInfo, IUnitType } from '../../state/state-interfaces'
 import { BaseComponent } from '../BaseComponent'
 import './UnitSelectionInfo.css'
-// import { cleanAllDialogs } from './DialogsContainer'
+import { cleanAllDialogs } from './DialogsContainer'
 
 
 export class UnitSelectionInfo extends BaseComponent<{unitTypeSelection: IUnitType, unitSelection: IUnitSelectionInfo[]}> {
@@ -15,7 +15,7 @@ export class UnitSelectionInfo extends BaseComponent<{unitTypeSelection: IUnitTy
       const selected = this.props.unitSelection[0]
       return (
         <Draggable handle=".UnitSelectionInfo">
-        <table className="UnitSelectionInfo AppPanel can-render"><tbody>
+        <table className="UnitSelectionInfo AppPanel can-render" onClick={cleanAllDialogs}><tbody>
         <tr><td>Name: </td><td><img src={selected.unit.type.icon}/>{selected.unit.type.name}</td></tr>
         <tr><td>Health: </td><td className="value">{selected.unit.state.health} / {selected.unit.type.properties.health}</td></tr>
         <tr><td>Kill count: </td><td className="value">{selected.unit.killCount}</td></tr>

@@ -29,7 +29,7 @@ export class Board extends BaseComponent<{}> {
   }
 
   componentDidMount() {
-    console.log(' board component did mount')
+    // console.log(' board component did mount')
     // heads up !- we will store each board DOM coordinate in the state - we do it from here!
     const boxes = document.querySelectorAll('.BoardRow [data-x]')
     const boxesClientRects = {}

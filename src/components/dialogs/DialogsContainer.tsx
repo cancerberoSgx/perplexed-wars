@@ -19,6 +19,7 @@ export class DialogsContainer extends BaseComponent<{}> {
       !this.state.uiState.unitTypeSelection
     return (
       <div className={'PanelContainer' + (panelContainerEmpty ? ' empty' : '')}>
+        <button className="btn cleanAllDialogs" onClick={cleanAllDialogs}>Close</button>
         <NotificationPanel playerUIState={playerControls}/>
         <UnitSelectionInfo unitSelection={this.state.uiState.unitSelection} unitTypeSelection={this.state.uiState.unitTypeSelection}/>
         <UnitChildrenPanel playerUIState={playerControls}/>

@@ -1,6 +1,6 @@
-import { getAvailablePlacesFor, getUnitsNearImplementation } from '../../util/util'
+import { getAvailablePlacesFor, getUnitsNearImplementation, findUnit } from '../../util/util'
 import { IBehavior, IUnitTypeBehavior } from '../behavior-interfaces'
-import { IPlayer, IResource, IState, IUnitType, IBox, IPlayerUIState } from '../state-interfaces'
+import { IPlayer, IResource, IState, IUnitType, IBox, IPlayerUIState, IUnit } from '../state-interfaces'
 import { StateAccess } from './StateAccess'
 
 export class StateAccessHelper implements StateAccess {
@@ -22,6 +22,10 @@ export class StateAccessHelper implements StateAccess {
       }
     })
     return result
+  }
+  public unit (state:IState, unitId: string): {unit: IUnit, box: IBox} {
+    const found = findUnit(state, () => true)
+    return found.length ? found[0] : null
   }
 
   public unitType (state:IState, unitType: string): IUnitType { 

@@ -23,7 +23,7 @@ export function selectUnit(state: IState, action: ISelectUnitAction): IState {
       selection: s.uiState.unitSelection, 
       action, state: s, 
     })
-    const results = findUnit(s, unit => unit.id === action.unitId)// .map(r => ({ unitId: r.unit.id, boxId: r.box.id, uni }))
+    const results = findUnit(s, unit => unit.id === action.unitId)
 
     const previousSelection = s.uiState.unitSelection
     s.uiState.unitSelection = action.union ? s.uiState.unitSelection.concat(results) : results
